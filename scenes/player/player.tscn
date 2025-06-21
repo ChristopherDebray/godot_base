@@ -74,14 +74,16 @@ height = 30.0
 
 [node name="FirstElement" type="AnimatedSprite2D" parent="."]
 visible = false
-position = Vector2(-8, -32)
+position = Vector2(-10, -32)
+scale = Vector2(1.4, 1.4)
 sprite_frames = SubResource("SpriteFrames_5gtgg")
 frame = 3
 frame_progress = 0.0933576
 
 [node name="SecondElement" type="AnimatedSprite2D" parent="."]
 visible = false
-position = Vector2(8, -32)
+position = Vector2(10, -32)
+scale = Vector2(1.4, 1.4)
 sprite_frames = SubResource("SpriteFrames_5gtgg")
 frame = 3
 frame_progress = 0.0933576
