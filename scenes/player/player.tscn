@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfeydvoqaen68"]
+
+[ext_resource type="Script" uid="uid://bvhd64mv5ng16" path="res://scenes/player/player.gd" id="1_1nli5"]
+[ext_resource type="Texture2D" uid="uid://cgt4jpv0c7c1r" path="res://assets/images/caracters/survivor1_gun.png" id="1_t0n43"]
+[ext_resource type="Texture2D" uid="uid://erkh2j4ujetw" path="res://assets/images/lights/2d_light.webp" id="3_72mr7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_el4o5"]
+radius = 16.0
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 4
+collision_mask = 11
+script = ExtResource("1_1nli5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(10, 0)
+texture = ExtResource("1_t0n43")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_el4o5")
+
+[node name="CameraPlayer" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_smoothed = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(1.67188, 1.90558)
+color = Color(0.560955, 0.560955, 0.560955, 0.478431)
+energy = 0.4
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.65098)
+shadow_filter = 2
+shadow_filter_smooth = 5.0
+texture = ExtResource("3_72mr7")
+height = 30.0
