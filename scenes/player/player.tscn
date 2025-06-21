@@ -1,11 +1,48 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfeydvoqaen68"]
+[gd_scene load_steps=11 format=3 uid="uid://cfeydvoqaen68"]
 
 [ext_resource type="Script" uid="uid://bvhd64mv5ng16" path="res://scenes/player/player.gd" id="1_1nli5"]
 [ext_resource type="Texture2D" uid="uid://cgt4jpv0c7c1r" path="res://assets/images/caracters/survivor1_gun.png" id="1_t0n43"]
 [ext_resource type="Texture2D" uid="uid://erkh2j4ujetw" path="res://assets/images/lights/2d_light.webp" id="3_72mr7"]
+[ext_resource type="Texture2D" uid="uid://b4rvoo21nr8kj" path="res://assets/sprite_sheets/elements_icons.png" id="4_lvxji"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_el4o5"]
 radius = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p47bc"]
+atlas = ExtResource("4_lvxji")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75vfm"]
+atlas = ExtResource("4_lvxji")
+region = Rect2(13, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0owmy"]
+atlas = ExtResource("4_lvxji")
+region = Rect2(26, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qek5x"]
+atlas = ExtResource("4_lvxji")
+region = Rect2(39, 0, 12, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5gtgg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p47bc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75vfm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0owmy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qek5x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 4
@@ -34,3 +71,28 @@ shadow_filter = 2
 shadow_filter_smooth = 5.0
 texture = ExtResource("3_72mr7")
 height = 30.0
+
+[node name="FirstElement" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(-8, -32)
+sprite_frames = SubResource("SpriteFrames_5gtgg")
+frame = 3
+frame_progress = 0.0933576
+
+[node name="SecondElement" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(8, -32)
+sprite_frames = SubResource("SpriteFrames_5gtgg")
+frame = 3
+frame_progress = 0.0933576
+
+[node name="TimerFirstElement" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="TimerSecondElement" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="TimerFirstElement" to="." method="_on_timer_first_element_timeout"]
+[connection signal="timeout" from="TimerSecondElement" to="." method="_on_timer_second_element_timeout"]
