@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvi8nh3ajbj86"]
+
+[ext_resource type="Script" uid="uid://q7jvubseryg7" path="res://data/spells/spell_scenes/firebolt.gd" id="1_krdjp"]
+
+[node name="BaseSpell" type="Node2D"]
+script = ExtResource("1_krdjp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="LifetimeTimer" type="Timer" parent="."]
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+
+[node name="AreaOfEffect" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaOfEffect"]
+
+[connection signal="timeout" from="LifetimeTimer" to="." method="_on_lifetime_timer_timeout"]

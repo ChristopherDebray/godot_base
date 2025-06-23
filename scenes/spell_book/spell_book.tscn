@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpt6fg5knswto"]
+
+[ext_resource type="Script" uid="uid://bk1vr8tbldg3x" path="res://scenes/spell_book/spell_book.gd" id="1_cwpdl"]
+
+[node name="SpellBook" type="Node2D"]
+script = ExtResource("1_cwpdl")

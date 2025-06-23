@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cfeydvoqaen68"]
+[gd_scene load_steps=12 format=3 uid="uid://cfeydvoqaen68"]
 
 [ext_resource type="Script" uid="uid://bvhd64mv5ng16" path="res://scenes/player/player.gd" id="1_1nli5"]
 [ext_resource type="Texture2D" uid="uid://cgt4jpv0c7c1r" path="res://assets/images/caracters/survivor1_gun.png" id="1_t0n43"]
 [ext_resource type="Texture2D" uid="uid://erkh2j4ujetw" path="res://assets/images/lights/2d_light.webp" id="3_72mr7"]
 [ext_resource type="Texture2D" uid="uid://b4rvoo21nr8kj" path="res://assets/sprite_sheets/elements_icons.png" id="4_lvxji"]
+[ext_resource type="PackedScene" uid="uid://cpt6fg5knswto" path="res://scenes/spell_book/spell_book.tscn" id="5_p47bc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_el4o5"]
 radius = 16.0
@@ -95,6 +96,8 @@ one_shot = true
 [node name="TimerSecondElement" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="SpellBook" parent="." instance=ExtResource("5_p47bc")]
 
 [connection signal="timeout" from="TimerFirstElement" to="." method="_on_timer_first_element_timeout"]
 [connection signal="timeout" from="TimerSecondElement" to="." method="_on_timer_second_element_timeout"]

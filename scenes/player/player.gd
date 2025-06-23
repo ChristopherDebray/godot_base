@@ -7,28 +7,15 @@ class_name Player
 @onready var second_element: AnimatedSprite2D = $SecondElement
 @onready var timer_first_element: Timer = $TimerFirstElement
 @onready var timer_second_element: Timer = $TimerSecondElement
+@onready var spell_book: Node2D = $SpellBook
+
+const SpellEnums = preload("res://data/spells/enums.gd")
 
 var active_elements: Array[int] = []
-
-enum ELEMENTS {
-	WATER,
-	FIRE,
-	EARTH,
-	WIND,
-}
-
-var spell_book := {
-	[ELEMENTS.FIRE, ELEMENTS.FIRE]: "Fireball",
-	[ELEMENTS.WATER, ELEMENTS.WATER]: "Ice Lance",
-	[ELEMENTS.EARTH, ELEMENTS.EARTH]: "Stone Shield",
-	[ELEMENTS.WIND, ELEMENTS.WIND]: "Gust",
-
-	[ELEMENTS.FIRE, ELEMENTS.WATER]: "Steam Burst",
-	[ELEMENTS.FIRE, ELEMENTS.EARTH]: "Magma Wave",
-	[ELEMENTS.WATER, ELEMENTS.WIND]: "Blizzard",
-	[ELEMENTS.EARTH, ELEMENTS.WIND]: "Sandstorm",
-	[ELEMENTS.FIRE, ELEMENTS.WIND]: "Flame Tornado",
-	[ELEMENTS.WATER, ELEMENTS.EARTH]: "Mud Trap",
+var input_to_element = {
+	"x_1_action": SpellEnums.ELEMENTS.WATER,
+	"y_2_action": SpellEnums.ELEMENTS.FIRE,
+	"b_3_action": SpellEnums.ELEMENTS.EARTH
 }
 
 const SPEED: float = 230.0
@@ -58,12 +45,9 @@ func detect_action_inputs() -> void:
 	#detect_input_item_handler()
 
 func detect_interaction_inputs() -> void:
-	if Input.is_action_just_pressed("x_1_action"):
-		activate_element(ELEMENTS.WATER)
-	if Input.is_action_just_pressed("y_2_action"):
-		activate_element(ELEMENTS.FIRE)
-	if Input.is_action_just_pressed("b_3_action"):
-		activate_element(ELEMENTS.EARTH)
+	for input_name in input_to_element.keys():
+		if Input.is_action_just_pressed(input_name):
+			activate_element(input_to_element[input_name])
 	
 	if Input.is_action_just_pressed("validate"):
 		print("validate");
@@ -71,7 +55,7 @@ func detect_interaction_inputs() -> void:
 	if Input.is_action_just_pressed("use_spell"):
 		use_spell()
 
-func activate_element(element: ELEMENTS) -> void:
+func activate_element(element: SpellEnums.ELEMENTS) -> void:
 	if active_elements.size() >= 2:
 		_remove_element(0)
 
@@ -111,25 +95,11 @@ func get_aim_direction() -> Vector2:
 	return global_position.direction_to(get_global_mouse_position())
 
 func use_spell() -> void:
-	var spell_name = get_spell_from_elements(active_elements)
-	print("Casting spell:", spell_name)
+	if active_elements.size() < 2:
+		return
+	spell_book.use_spell(active_elements, get_aim_direction())
 	_remove_element(1)
 	_remove_element(0)
-
-func get_spell_from_elements(elements: Array[int]) -> String:
-	if elements.is_empty():
-		return "No spell"
-
-	var combo = elements.duplicate()
-	combo.sort() # ignore l’ordre d’activation
-
-	if spell_book.has(combo):
-		return spell_book[combo]
-	
-	if combo.size() == 1 and spell_book.has([combo[0]]):
-		return spell_book[[combo[0]]]
-
-	return "Unknown combination"
 
 func _on_timer_first_element_timeout() -> void:
 	if active_elements.size() > 0:
