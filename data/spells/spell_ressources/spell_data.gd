@@ -9,4 +9,5 @@ const SpellEnums = preload("res://data/spells/enums.gd")
 @export var effect: SpellEnums.EFFECTS
 @export var magnitude: float
 @export var range: float
+@export var main_element: SpellEnums.ELEMENTS
 @export var scene: PackedScene

@@ -9,7 +9,7 @@ enum ELEMENTS {
 
 enum EFFECTS {
 	POISON,
-	FIRE,
+	BURN,
 	FREEZE,
 	SHOCK,
 	SLOW,

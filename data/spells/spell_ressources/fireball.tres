@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SpellData" load_steps=3 format=3 uid="uid://duwdh0k37wgb5"]
+
+[ext_resource type="Script" uid="uid://diwutlct8ajdn" path="res://data/spells/spell_ressources/spell_data.gd" id="1_5frx1"]
+[ext_resource type="PackedScene" uid="uid://dhobulbu1frnr" path="res://scenes/spell_book/spell_scenes/firebolt.tscn" id="1_10ohq"]
+
+[resource]
+script = ExtResource("1_5frx1")
+name = "Fireball"
+damage = 30.0
+cooldown = 1.0
+effect = 1
+magnitude = 0.4
+range = 30.0
+main_element = 0
+scene = ExtResource("1_10ohq")
+metadata/_custom_type_script = "uid://diwutlct8ajdn"

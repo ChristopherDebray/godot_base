@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://dhobulbu1frnr"]
 
-[ext_resource type="PackedScene" uid="uid://dvi8nh3ajbj86" path="res://data/spells/spell_scenes/base_spell.tscn" id="1_g4hyk"]
+[ext_resource type="PackedScene" uid="uid://dvi8nh3ajbj86" path="res://scenes/spell_book/spell_scenes/base_spell.tscn" id="1_g4hyk"]
 [ext_resource type="Texture2D" uid="uid://c53oglprnqbva" path="res://assets/spells/Firebolt SpriteSheet.png" id="2_kq6xw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n30bg"]

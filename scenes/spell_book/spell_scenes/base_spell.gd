@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name BaseSpell
+
 const Enums = preload("res://data/spells/enums.gd")
 
 @export var damage: float
@@ -31,14 +33,13 @@ func on_spell_hit(body):
 	else:
 		apply_damage_and_effect(body)
 
-	# Calls an effect or override
 	on_hit()
 
 func apply_damage_and_effect(target):
-	if target.has_method("apply_damage"):
-		target.apply_damage(damage)
-	if target.has_method("apply_effect"):
-		target.apply_effect(effect)
+	var hurtable = target.get_node_or_null("Hurtable")
+	if hurtable:
+		hurtable.apply_damage(damage)
+		hurtable.apply_effect(effect)
 
 # Call the supercharged in the children
 func on_hit():

@@ -1,17 +1,17 @@
 extends Node
 
 const Enums = preload("res://data/spells/enums.gd")
-const SpellData = preload("res://data/spells/spell_data.gd")
+const SpellData = preload("res://data/spells/spell_ressources/spell_data.gd")
 
 const SPELLS: Dictionary = {
-	[Enums.ELEMENTS.FIRE, Enums.ELEMENTS.FIRE]: preload("res://data/spells/fireball.tres"),
+	[Enums.ELEMENTS.FIRE, Enums.ELEMENTS.FIRE]: preload("res://data/spells/spell_ressources/fireball.tres"),
 }
 
 const SPELLS_d: Dictionary = {
 	[Enums.ELEMENTS.FIRE, Enums.ELEMENTS.FIRE]: {
 		name = "Fireball",
 		damage = 10.5,
-		effect = Enums.EFFECTS.FIRE,
+		effect = Enums.EFFECTS.BURN,
 		magnitude = 1.0,
 		range = 30.5,
 		cooldown = 2.5

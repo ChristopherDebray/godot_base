@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://d31lqpkcyneij"]
+
+[ext_resource type="PackedScene" uid="uid://b2odxanbtxty4" path="res://scenes/_damageable/damageable.tscn" id="1_26sde"]
+[ext_resource type="Script" uid="uid://ck5ra04kx3r6w" path="res://scenes/ennemy/base_enemy.gd" id="2_7rgwx"]
+
+[node name="Damagable" instance=ExtResource("1_26sde")]
+script = ExtResource("2_7rgwx")
+health = 20.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1"]

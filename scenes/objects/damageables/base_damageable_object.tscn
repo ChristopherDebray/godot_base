@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://btkxydna1wqfb"]
+
+[ext_resource type="PackedScene" uid="uid://b2odxanbtxty4" path="res://scenes/_damageable/damageable.tscn" id="1_kb8g0"]
+[ext_resource type="Script" uid="uid://dlw3p4jx2h6tn" path="res://scenes/objects/damageables/base_damageable_object.gd" id="2_jew2j"]
+
+[node name="Damagable" instance=ExtResource("1_kb8g0")]
+script = ExtResource("2_jew2j")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." index="1"]
+visible = false
+color = Color(1, 0.435294, 0.431373, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="2"]
+region_enabled = true
+region_rect = Rect2(20, 20, 100, 100)

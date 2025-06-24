@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dvi8nh3ajbj86"]
 
-[ext_resource type="Script" uid="uid://q7jvubseryg7" path="res://data/spells/spell_scenes/firebolt.gd" id="1_krdjp"]
+[ext_resource type="Script" uid="uid://q7jvubseryg7" path="res://scenes/spell_book/spell_scenes/firebolt.gd" id="1_krdjp"]
 
 [node name="BaseSpell" type="Node2D"]
 script = ExtResource("1_krdjp")

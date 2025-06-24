@@ -1,7 +1,5 @@
 extends Node2D
 
-@onready var spell_book: Node2D = $"."
-
 const SpellEnums = preload("res://data/spells/enums.gd")
 const SpellData = preload("res://data/spells/spells.gd")
 
@@ -38,7 +36,10 @@ func use_spell(active_elements: Array[int], aim_direction: Vector2):
 	var spell = get_spell_from_elements(active_elements)
 	if (!spell):
 		return
-	print("Casting spell:", spell.name)
+
+	var spellInstance = spell.scene.instantiate()
+	spellInstance.init(aim_direction, global_position)
+	get_tree().root.add_child(spellInstance)
 
 func register_spells():
 	for key in SpellData.SPELLS.keys():
