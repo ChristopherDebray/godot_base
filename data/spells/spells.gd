@@ -5,6 +5,7 @@ const SpellData = preload("res://data/spells/spell_ressources/spell_data.gd")
 
 const SPELLS: Dictionary = {
 	[Enums.ELEMENTS.FIRE, Enums.ELEMENTS.FIRE]: preload("res://data/spells/spell_ressources/fireball.tres"),
+	[Enums.ELEMENTS.WIND, Enums.ELEMENTS.FIRE]: preload("res://data/spells/spell_ressources/lightning.tres"),
 }
 
 const SPELLS_d: Dictionary = {

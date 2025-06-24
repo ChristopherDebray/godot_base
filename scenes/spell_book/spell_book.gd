@@ -7,7 +7,6 @@ var spells: Dictionary = {}
 
 func _ready() -> void:
 	register_spells()
-	#spell_book.add_child()
 
 func _physics_process(_delta: float) -> void:
 	pass
@@ -38,8 +37,14 @@ func use_spell(active_elements: Array[int], aim_direction: Vector2):
 		return
 
 	var spellInstance = spell.scene.instantiate()
-	spellInstance.init(aim_direction, global_position)
+	handle_spell_init(spellInstance, aim_direction)
 	get_tree().root.add_child(spellInstance)
+
+func handle_spell_init(spellInstance: BaseSpell, aim_direction: Vector2):
+	if is_instance_of(spellInstance, ProjectileSpell):
+		spellInstance.init(aim_direction, global_position)
+	elif is_instance_of(spellInstance, AoeInstantSpell):
+		spellInstance.init(get_global_mouse_position())
 
 func register_spells():
 	for key in SpellData.SPELLS.keys():

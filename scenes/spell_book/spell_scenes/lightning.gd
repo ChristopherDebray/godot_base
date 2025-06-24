@@ -1,0 +1,13 @@
+extends AoeInstantSpell
+
+var _dir_of_travel: Vector2 = Vector2.ZERO
+const SPEED: float = 400.0
+
+func _ready():
+	animated_sprite_2d.play('repeat')
+
+func on_hit():
+	activate_aoe()
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	queue_free()

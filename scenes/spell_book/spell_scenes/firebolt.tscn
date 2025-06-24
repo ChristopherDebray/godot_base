@@ -64,7 +64,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qvx6v")
 }],
-"loop": true,
+"loop": false,
 "name": &"hit",
 "speed": 13.0
 }, {
@@ -94,10 +94,11 @@ height = 34.0
 
 [node name="Firebolt" instance=ExtResource("1_g4hyk")]
 effect = 1
+aoe_enabled = false
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_nuy3d")
-animation = &"repeat"
+animation = &"hit"
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2(6, 6)
@@ -108,3 +109,5 @@ shape = SubResource("CapsuleShape2D_g4hyk")
 position = Vector2(6, 6)
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_kq6xw")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

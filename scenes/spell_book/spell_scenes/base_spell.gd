@@ -11,6 +11,7 @@ const Enums = preload("res://data/spells/enums.gd")
 @export var aoe_enabled: bool = true
 
 var sender: Node
+var _has_hit: bool = false
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var lifetime_timer: Timer = $LifetimeTimer
@@ -19,21 +20,32 @@ var sender: Node
 
 func _ready():
 	lifetime_timer.start(duration)
-	hitbox.connect("body_entered", Callable(self, "_on_hitbox_body_entered"))
 
 func _on_hitbox_body_entered(body):
 	if body != sender:
 		on_spell_hit(body)
 
 func on_spell_hit(body):
+	# @todo fix to allow spell to be aoe only or have both
 	if aoe_enabled:
-		area_of_effect.visible = true
 		for receiver in area_of_effect.get_overlapping_bodies():
 			apply_damage_and_effect(receiver)
 	else:
-		apply_damage_and_effect(body)
+		for receiver in area_of_effect.get_overlapping_bodies():
+			apply_damage_and_effect(receiver)
 
+	_has_hit = true
 	on_hit()
+
+func _on_area_of_effect_body_entered(body: Node2D) -> void:
+	on_aoe_hit()
+
+func on_aoe_hit():
+	for receiver in area_of_effect.get_overlapping_bodies():
+		apply_damage_and_effect(receiver)
+
+func activate_aoe():
+	area_of_effect.monitoring = true
 
 func apply_damage_and_effect(target):
 	var hurtable = target.get_node_or_null("Hurtable")

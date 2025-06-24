@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SpellData" load_steps=3 format=3 uid="uid://086pl2l2iel"]
+
+[ext_resource type="Script" uid="uid://diwutlct8ajdn" path="res://data/spells/spell_ressources/spell_data.gd" id="1_gagiv"]
+[ext_resource type="PackedScene" uid="uid://cg7gwadaqhbcx" path="res://scenes/spell_book/spell_scenes/lightning.tscn" id="1_ohq35"]
+
+[resource]
+script = ExtResource("1_gagiv")
+name = "lightning"
+damage = 25.0
+cooldown = 5.0
+effect = 5
+magnitude = 0.0
+range = 30.0
+main_element = 3
+scene = ExtResource("1_ohq35")
+metadata/_custom_type_script = "uid://diwutlct8ajdn"

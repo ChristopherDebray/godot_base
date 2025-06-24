@@ -15,7 +15,7 @@ var active_elements: Array[int] = []
 var input_to_element = {
 	"x_1_action": SpellEnums.ELEMENTS.WATER,
 	"y_2_action": SpellEnums.ELEMENTS.FIRE,
-	"b_3_action": SpellEnums.ELEMENTS.EARTH
+	"b_3_action": SpellEnums.ELEMENTS.WIND
 }
 
 const SPEED: float = 230.0
