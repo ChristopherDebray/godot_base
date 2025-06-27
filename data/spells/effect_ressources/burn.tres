@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_u4o5x")
 name = "burn"
-name_enum = 1
+name_enum = 0
 value = 2.0
 value_type = 0
 type = 3

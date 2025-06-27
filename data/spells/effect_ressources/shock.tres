@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_bgirn")
-name = "shock"
-name_enum = 3
+name = "slow"
+name_enum = 5
 value = 15.0
 value_type = 0
 type = 1

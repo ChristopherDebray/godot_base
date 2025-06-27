@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_va7jc")
 name = "slow"
-name_enum = 4
+name_enum = 0
 value = 15.0
 value_type = 0
 type = 1

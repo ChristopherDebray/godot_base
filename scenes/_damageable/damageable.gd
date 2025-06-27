@@ -22,8 +22,8 @@ func _process(delta: float) -> void:
 	active_effects = active_effects.filter(func(effect): return effect["remaining_time"] > 0)
 
 func apply_elemental_damage(spellResource: SpellData, amount: float) -> void:
-	if spellResource.main_element in immunity_effects:
-		print("Immune to effect", spellResource.name)
+	if spellResource.main_element in immunity_elements:
+		print("Immune to damage of type", spellResource.name)
 		return
 	
 	apply_damage(amount)

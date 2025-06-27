@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_1bbg4")
 name = "freeze"
-name_enum = 2
+name_enum = 0
 value = 0.0
 value_type = 0
 type = 0
