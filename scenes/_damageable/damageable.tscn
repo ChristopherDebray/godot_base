@@ -12,3 +12,6 @@ visible = false
 color = Color(1, 0.435294, 0.431373, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="StatusFx" type="AnimatedSprite2D" parent="."]
+visible = false

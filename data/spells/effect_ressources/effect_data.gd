@@ -9,6 +9,7 @@ class_name EffectData
 @export var characteristic: String
 @export var duration: float
 @export var tick_rate: float
+@export var fx_sprite_frames: SpriteFrames
 
 func apply_tick(target: Damageable) -> void:
 	match type:

@@ -1,13 +1,81 @@
-[gd_resource type="Resource" script_class="EffectData" load_steps=2 format=3 uid="uid://bx1xn18dnsew4"]
+[gd_resource type="Resource" script_class="EffectData" load_steps=12 format=3 uid="uid://bx1xn18dnsew4"]
 
+[ext_resource type="Texture2D" uid="uid://be2ktasw32f1h" path="res://assets/effects/poison.png" id="1_tkwj3"]
 [ext_resource type="Script" uid="uid://ckos26rb4qfvx" path="res://data/spells/effect_ressources/effect_data.gd" id="1_vvn31"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkwj3"]
+atlas = ExtResource("1_tkwj3")
+region = Rect2(0, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjhgb"]
+atlas = ExtResource("1_tkwj3")
+region = Rect2(42, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtpw0"]
+atlas = ExtResource("1_tkwj3")
+region = Rect2(84, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhhty"]
+atlas = ExtResource("1_tkwj3")
+region = Rect2(126, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5iv8p"]
+atlas = ExtResource("1_tkwj3")
+region = Rect2(168, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i05fy"]
+atlas = ExtResource("1_tkwj3")
+region = Rect2(210, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vyd82"]
+atlas = ExtResource("1_tkwj3")
+region = Rect2(252, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3caed"]
+atlas = ExtResource("1_tkwj3")
+region = Rect2(294, 0, 42, 42)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hdmrx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tkwj3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjhgb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mtpw0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhhty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5iv8p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i05fy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vyd82")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3caed")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [resource]
 script = ExtResource("1_vvn31")
 name = "poison"
+name_enum = 0
 value = 3.0
+value_type = 0
 type = 3
 characteristic = "health"
 duration = 8.0
 tick_rate = 2.0
+fx_sprite_frames = SubResource("SpriteFrames_hdmrx")
 metadata/_custom_type_script = "uid://ckos26rb4qfvx"
