@@ -5,11 +5,9 @@
 
 [node name="SpellCooldownIndicator" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 script = ExtResource("1_dojd6")
 
 [node name="Icon" type="TextureRect" parent="."]
@@ -18,14 +16,14 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("2_xygbl")
 
-[node name="CooldownOverlay" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-color = Color(1, 1, 1, 0.721569)
-
 [node name="CooldownLabel" type="Label" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "ezae"
+
+[node name="CooldownOverlay" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.160784, 0.14902, 0.176471, 0.721569)

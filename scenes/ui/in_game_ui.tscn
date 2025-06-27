@@ -38,8 +38,4 @@ icon = ExtResource("2_4db6k")
 
 [node name="FireballCooldownIndicator2" parent="MarginContainer/CooldownIndicators" instance=ExtResource("1_uyty4")]
 layout_mode = 2
-spell_name = "fireball"
-
-[node name="FireballCooldownIndicator3" parent="MarginContainer/CooldownIndicators" instance=ExtResource("1_uyty4")]
-layout_mode = 2
-spell_name = "fireball"
+spell_name = "lightning"

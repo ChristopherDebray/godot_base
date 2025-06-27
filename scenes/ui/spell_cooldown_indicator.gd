@@ -34,7 +34,16 @@ func update_cooldown(remain: float, total: float):
 
 func update_ui(time_left: float):
 	var ratio = clampf(time_left / max_cooldown, 0.0, 1.0)
-	overlay.visible = time_left > 0.0
-	overlay.modulate.a = 0.6 # semi-transparent
-	overlay.size.y = size.y * ratio
-	label.text = str(round(time_left * 10.0) / 10.0) if time_left > 0.0 else ""
+
+	if time_left <= 0.0:
+		overlay.visible = false
+		return
+
+	overlay.visible = true
+	var full_height = icon_node.size.y
+	overlay.size.y = full_height * ratio
+	overlay.position.y = full_height - overlay.size.y
+
+	overlay.color = Color(0, 0, 0, 0.6)
+
+	label.text = str(round(time_left * 10.0) / 10.0)
