@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqnnqulkpfar1"]
+[gd_scene load_steps=3 format=3 uid="uid://dqnnqulkpfar1"]
 
 [ext_resource type="PackedScene" uid="uid://blvvh7m353g4l" path="res://scenes/ui/spell_cooldown_indicator.tscn" id="1_uyty4"]
+[ext_resource type="Texture2D" uid="uid://c53oglprnqbva" path="res://assets/spells/Firebolt SpriteSheet.png" id="2_4db6k"]
 
 [node name="InGameUi" type="Control"]
 layout_mode = 3
@@ -20,12 +21,12 @@ grow_vertical = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 15
+theme_override_constants/margin_bottom = 60
 
 [node name="CooldownIndicators" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 8
 theme_override_constants/separation = 100
 
 [node name="FireballCooldownIndicator" parent="MarginContainer/CooldownIndicators" instance=ExtResource("1_uyty4")]
@@ -33,6 +34,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 spell_name = "fireball"
+icon = ExtResource("2_4db6k")
 
 [node name="FireballCooldownIndicator2" parent="MarginContainer/CooldownIndicators" instance=ExtResource("1_uyty4")]
 layout_mode = 2

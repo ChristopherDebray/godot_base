@@ -5,6 +5,7 @@ class_name SpellCooldownIndicator
 @export var icon: Texture
 
 const SpellEnums = preload("res://data/spells/spells.gd")
+const Enums = preload("res://data/spells/enums.gd")
 
 var remaining_time: float = 0.0
 var max_cooldown: float = 1.0
@@ -18,15 +19,11 @@ func _ready():
 	update_ui(0)
 
 func _process(_delta):
-	var key = SpellEnums.get_key_from_spell_name(spell_name)
-	if key.is_empty():
-		return
-
-	var remain = SpellCooldownManager.get_remaining(key)
-	var spell = SpellEnums.SPELLS.get(key)
+	var spell = SpellEnums.SPELLS.get(spell_name)
 	if spell == null:
 		return
 
+	var remain = SpellCooldownManager.get_remaining(spell_name)
 	var total = spell.cooldown
 	update_cooldown(remain, total)
 

@@ -16,13 +16,14 @@ func get_spell_from_elements(elements: Array[SpellEnums.ELEMENTS]) -> SpellData:
 	if elements.is_empty():
 		return null
 
-	if spells.has(elements):
-		return spells[elements] as SpellData
-	
-	if elements.size() == 1 and spells.has([elements[0]]):
-		return spells[[elements[0]]] as SpellData
+	var combo_key = _combo_key(elements)
+	var spell_name = Spells.SPELLS_ELEMENTS.get(combo_key)
 
-	return null
+	if not spell_name:
+		return null
+
+	var spell = Spells.SPELLS.get(spell_name)
+	return spell as SpellData
 
 func register_spell(elements: Array[int], data: Dictionary):
 	var key = elements.duplicate()
@@ -34,7 +35,6 @@ func use_spell(active_elements: Array[SpellEnums.ELEMENTS], aim_direction: Vecto
 	var spell = get_spell_from_elements(active_elements)
 	
 	if (!spell):
-		print('no spell')
 		return
 
 	if not SpellCooldownManager.can_cast(active_elements):
@@ -64,9 +64,11 @@ func _register_cooldown(elementCombo: Array[SpellEnums.ELEMENTS], cooldown: floa
 
 func get_remaining_cooldown(combo: Array[SpellEnums.ELEMENTS]) -> float:
 	var key = _combo_key(combo)
-	if not _cooldowns.has(key):
+	var spellKey = Spells.SPELLS_ELEMENTS[key]
+	
+	if not _cooldowns.has(spellKey):
 		return 0.0
-	return max(0.0, _cooldowns[key] - Time.get_ticks_msec() / 1000.0)
+	return max(0.0, _cooldowns[spellKey] - Time.get_ticks_msec() / 1000.0)
 
 func _combo_key(arr: Array[SpellEnums.ELEMENTS]) -> String:
 	var sorted = arr.duplicate()
@@ -75,7 +77,5 @@ func _combo_key(arr: Array[SpellEnums.ELEMENTS]) -> String:
 
 func register_spells():
 	for key in Spells.SPELLS.keys():
-		var combo = key.duplicate()
-		combo.sort()
-		spells[combo] = Spells.SPELLS[key]
+		spells[key] = Spells.SPELLS[key]
 		var data = Spells.SPELLS[key]
