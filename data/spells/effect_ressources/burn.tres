@@ -1,6 +1,85 @@
-[gd_resource type="Resource" script_class="EffectData" load_steps=2 format=3 uid="uid://l80jahskrk20"]
+[gd_resource type="Resource" script_class="EffectData" load_steps=14 format=3 uid="uid://l80jahskrk20"]
 
+[ext_resource type="Texture2D" uid="uid://ba1lbgia3l61q" path="res://assets/effects/Explosion SpriteSheet.png" id="1_kbbe6"]
 [ext_resource type="Script" uid="uid://ckos26rb4qfvx" path="res://data/spells/effect_ressources/effect_data.gd" id="1_u4o5x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctapg"]
+atlas = ExtResource("1_kbbe6")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vamnt"]
+atlas = ExtResource("1_kbbe6")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vuvcs"]
+atlas = ExtResource("1_kbbe6")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlwy8"]
+atlas = ExtResource("1_kbbe6")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ant2s"]
+atlas = ExtResource("1_kbbe6")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xrw2"]
+atlas = ExtResource("1_kbbe6")
+region = Rect2(192, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rj28n"]
+atlas = ExtResource("1_kbbe6")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2peg"]
+atlas = ExtResource("1_kbbe6")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7i00s"]
+atlas = ExtResource("1_kbbe6")
+region = Rect2(128, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_550ld"]
+atlas = ExtResource("1_kbbe6")
+region = Rect2(192, 192, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eps5d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctapg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vamnt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vuvcs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nlwy8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ant2s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xrw2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rj28n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2peg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7i00s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_550ld")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
 
 [resource]
 script = ExtResource("1_u4o5x")
@@ -12,4 +91,5 @@ type = 3
 characteristic = "health"
 duration = 4.0
 tick_rate = 1.0
+fx_sprite_frames = SubResource("SpriteFrames_eps5d")
 metadata/_custom_type_script = "uid://ckos26rb4qfvx"

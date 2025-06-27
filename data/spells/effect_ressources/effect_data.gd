@@ -18,7 +18,7 @@ func apply_tick(target: Damageable) -> void:
 				target.apply_damage(value)
 		EffectsManager.EFFECT_TYPE.CONTROL:
 			if name == "freeze":
-				target.freeze(duration)
+				target.freeze()
 		EffectsManager.EFFECT_TYPE.BUFF:
 			handle_characteristic_modification(
 				target,

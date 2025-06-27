@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://diwutlct8ajdn" path="res://data/spells/spell_ressources/spell_data.gd" id="1_5frx1"]
 [ext_resource type="PackedScene" uid="uid://dhobulbu1frnr" path="res://scenes/spell_book/spell_scenes/firebolt.tscn" id="1_10ohq"]
-[ext_resource type="Resource" uid="uid://bx1xn18dnsew4" path="res://data/spells/effect_ressources/poison.tres" id="1_10qkg"]
+[ext_resource type="Resource" uid="uid://yd8ixi5k4xp6" path="res://data/spells/effect_ressources/freeze.tres" id="1_10qkg"]
 
 [resource]
 script = ExtResource("1_5frx1")

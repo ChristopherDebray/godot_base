@@ -57,16 +57,6 @@ func apply_effect(effect: EffectData) -> void:
 func on_death():
 	queue_free()
 
-func play_status_fx(effect: EffectData) -> void:
-	if not effect.fx_sprite_frames:
-		status_fx.stop()
-		status_fx.visible = false
-		return
-
-	status_fx.sprite_frames = effect.fx_sprite_frames
-	status_fx.play("default") # ou le nom de l'anim définie dans ton SpriteFrames
-	status_fx.visible = true
-
 func update_fx_visual():
 	if active_effects.is_empty():
 		status_fx.stop()
@@ -82,12 +72,15 @@ func update_fx_visual():
 			return
 
 		status_fx.sprite_frames = effect.fx_sprite_frames
-		status_fx.play("default") # adapte si ton anim a un autre nom
+		status_fx.play("default")
 		status_fx.visible = true
 		return
 
 	status_fx.stop()
 	status_fx.visible = false
+
+func freeze():
+	pass
 
 func modify_speed(amount: float):
 	speed += amount

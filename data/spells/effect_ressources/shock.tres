@@ -1,43 +1,27 @@
-[gd_resource type="Resource" script_class="EffectData" load_steps=13 format=3 uid="uid://b16585gw65apn"]
+[gd_resource type="Resource" script_class="EffectData" load_steps=9 format=3 uid="uid://b16585gw65apn"]
 
 [ext_resource type="Script" uid="uid://ckos26rb4qfvx" path="res://data/spells/effect_ressources/effect_data.gd" id="1_bgirn"]
-[ext_resource type="Texture2D" uid="uid://btrfw4i52p613" path="res://assets/effects/Eletric Aura.png" id="1_x7ogh"]
+[ext_resource type="Texture2D" uid="uid://r84sbyf0l72s" path="res://assets/effects/Thunder hit w blur.png" id="1_x7ogh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2qhjf"]
 atlas = ExtResource("1_x7ogh")
-region = Rect2(0, 0, 96, 96)
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_60x6t"]
 atlas = ExtResource("1_x7ogh")
-region = Rect2(96, 0, 96, 96)
+region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_glpx6"]
 atlas = ExtResource("1_x7ogh")
-region = Rect2(192, 0, 96, 96)
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n0tvo"]
 atlas = ExtResource("1_x7ogh")
-region = Rect2(288, 0, 96, 96)
+region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gp8p4"]
 atlas = ExtResource("1_x7ogh")
-region = Rect2(384, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mw6ga"]
-atlas = ExtResource("1_x7ogh")
-region = Rect2(0, 96, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sn7jn"]
-atlas = ExtResource("1_x7ogh")
-region = Rect2(96, 96, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gror0"]
-atlas = ExtResource("1_x7ogh")
-region = Rect2(192, 96, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0dm5f"]
-atlas = ExtResource("1_x7ogh")
-region = Rect2(288, 96, 96, 96)
+region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b67rm"]
 animations = [{
@@ -56,22 +40,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gp8p4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mw6ga")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sn7jn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gror0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0dm5f")
 }],
 "loop": true,
 "name": &"default",
-"speed": 10.0
+"speed": 8.0
 }]
 
 [resource]

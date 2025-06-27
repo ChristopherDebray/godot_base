@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btrfw4i52p613"
-path="res://.godot/imported/Eletric Aura.png-7c6de3a232acd72e2f69aa1e3817d4ea.ctex"
+uid="uid://c4asbpavl6jlx"
+path="res://.godot/imported/slow.png-511a58653990835c3e79664e3d826790.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/effects/Eletric Aura.png"
-dest_files=["res://.godot/imported/Eletric Aura.png-7c6de3a232acd72e2f69aa1e3817d4ea.ctex"]
+source_file="res://assets/effects/slow.png"
+dest_files=["res://.godot/imported/slow.png-511a58653990835c3e79664e3d826790.ctex"]
 
 [params]
 

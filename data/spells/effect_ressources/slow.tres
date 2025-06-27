@@ -1,6 +1,71 @@
-[gd_resource type="Resource" script_class="EffectData" load_steps=2 format=3 uid="uid://hpb4x7lrm2mu"]
+[gd_resource type="Resource" script_class="EffectData" load_steps=12 format=3 uid="uid://hpb4x7lrm2mu"]
 
 [ext_resource type="Script" uid="uid://ckos26rb4qfvx" path="res://data/spells/effect_ressources/effect_data.gd" id="1_va7jc"]
+[ext_resource type="Texture2D" uid="uid://c4asbpavl6jlx" path="res://assets/effects/slow.png" id="1_vcu8e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnvvm"]
+atlas = ExtResource("1_vcu8e")
+region = Rect2(0, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmky4"]
+atlas = ExtResource("1_vcu8e")
+region = Rect2(42, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3nmt"]
+atlas = ExtResource("1_vcu8e")
+region = Rect2(84, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1fo1"]
+atlas = ExtResource("1_vcu8e")
+region = Rect2(126, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqo1i"]
+atlas = ExtResource("1_vcu8e")
+region = Rect2(168, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6gjib"]
+atlas = ExtResource("1_vcu8e")
+region = Rect2(210, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjxdn"]
+atlas = ExtResource("1_vcu8e")
+region = Rect2(252, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qt0nw"]
+atlas = ExtResource("1_vcu8e")
+region = Rect2(294, 0, 42, 42)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ftish"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vnvvm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kmky4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3nmt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1fo1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqo1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6gjib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjxdn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qt0nw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
 
 [resource]
 script = ExtResource("1_va7jc")
@@ -12,4 +77,5 @@ type = 1
 characteristic = "speed"
 duration = 5.0
 tick_rate = 0.0
+fx_sprite_frames = SubResource("SpriteFrames_ftish")
 metadata/_custom_type_script = "uid://ckos26rb4qfvx"
