@@ -10,9 +10,8 @@ const Enums = preload("res://data/spells/enums.gd")
 var remaining_time: float = 0.0
 var max_cooldown: float = 1.0
 
-@onready var icon_node: TextureRect = $Icon
-@onready var overlay: ColorRect = $CooldownOverlay
-@onready var label: Label = $CooldownLabel
+@onready var overlay: ColorRect = $MarginContainer/CooldownOverlay
+@onready var icon_node: TextureRect = $MarginContainer/Icon
 
 func _ready():
 	icon_node.texture = icon
@@ -42,8 +41,5 @@ func update_ui(time_left: float):
 	overlay.visible = true
 	var full_height = icon_node.size.y
 	overlay.size.y = full_height * ratio
-	overlay.position.y = full_height - overlay.size.y
 
 	overlay.color = Color(0, 0, 0, 0.6)
-
-	label.text = str(round(time_left * 10.0) / 10.0)

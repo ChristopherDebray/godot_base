@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://blvvh7m353g4l"]
 
 [ext_resource type="Script" uid="uid://dcdr4stl5wkq5" path="res://scenes/ui/spell_cooldown_indicator.gd" id="1_dojd6"]
-[ext_resource type="Texture2D" uid="uid://c53oglprnqbva" path="res://assets/spells/Firebolt SpriteSheet.png" id="2_xygbl"]
+[ext_resource type="Texture2D" uid="uid://b4s7bcympbvx1" path="res://assets/spells/cadre_spell.png" id="2_xygbl"]
 
 [node name="SpellCooldownIndicator" type="Control"]
 layout_mode = 3
@@ -10,20 +10,23 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource("1_dojd6")
 
-[node name="Icon" type="TextureRect" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
 texture = ExtResource("2_xygbl")
+expand_mode = 2
 
-[node name="CooldownLabel" type="Label" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "ezae"
+[node name="Icon" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
 
-[node name="CooldownOverlay" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="CooldownOverlay" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
 color = Color(0.160784, 0.14902, 0.176471, 0.721569)
