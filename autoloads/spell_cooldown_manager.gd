@@ -1,10 +1,8 @@
 extends Node
 
-const SpellEnums = preload("res://data/spells/enums.gd")
-
 var _cooldowns := {}
 
-func _combo_key(arr: Array[SpellEnums.ELEMENTS]) -> String:
+func _combo_key(arr: Array[SpellsManager.ELEMENTS]) -> String:
 	var sorted = arr.duplicate()
 	sorted.sort()
 	return ",".join(PackedStringArray(sorted.map(func(x): return str(x))))

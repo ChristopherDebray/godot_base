@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EffectData" load_steps=2 format=3 uid="uid://yd8ixi5k4xp6"]
+
+[ext_resource type="Script" uid="uid://ckos26rb4qfvx" path="res://data/spells/effect_ressources/effect_data.gd" id="1_1bbg4"]
+
+[resource]
+script = ExtResource("1_1bbg4")
+name = "freeze"
+name_enum = 2
+value = 0.0
+value_type = 0
+type = 0
+characteristic = ""
+duration = 5.0
+tick_rate = 0.0
+metadata/_custom_type_script = "uid://ckos26rb4qfvx"

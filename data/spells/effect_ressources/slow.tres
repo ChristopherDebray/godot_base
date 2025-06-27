@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EffectData" load_steps=2 format=3 uid="uid://hpb4x7lrm2mu"]
+
+[ext_resource type="Script" uid="uid://ckos26rb4qfvx" path="res://data/spells/effect_ressources/effect_data.gd" id="1_va7jc"]
+
+[resource]
+script = ExtResource("1_va7jc")
+name = "slow"
+name_enum = 4
+value = 15.0
+value_type = 0
+type = 1
+characteristic = "speed"
+duration = 5.0
+tick_rate = 0.0
+metadata/_custom_type_script = "uid://ckos26rb4qfvx"

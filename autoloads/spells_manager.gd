@@ -1,6 +1,11 @@
 extends Node
 
-const Enums = preload("res://data/spells/enums.gd")
+enum ELEMENTS {
+	WATER,
+	FIRE,
+	EARTH,
+	WIND,
+}
 
 const SPELLS_ELEMENTS = {
 	"1,1": 'firebolt',
@@ -21,15 +26,15 @@ static func get_key_from_spell_name(name: String):
 	return []
 
 const SPELLS_d: Dictionary = {
-	[Enums.ELEMENTS.FIRE, Enums.ELEMENTS.FIRE]: {
+	[ELEMENTS.FIRE, ELEMENTS.FIRE]: {
 		name = "firebolt",
 		damage = 10.5,
-		effect = Enums.EFFECTS.BURN,
+		effect = EffectsManager.EFFECTS.BURN,
 		magnitude = 1.0,
 		range = 30.5,
 		cooldown = 2.5
 	},
-	[Enums.ELEMENTS.WATER, Enums.ELEMENTS.WATER]: {
+	[ELEMENTS.WATER, ELEMENTS.WATER]: {
 		name = "Ice Lance",
 		damage = 10.5,
 		effect = null,
@@ -37,7 +42,7 @@ const SPELLS_d: Dictionary = {
 		range = 30.5,
 		cooldown = 2.5
 	},
-	[Enums.ELEMENTS.EARTH, Enums.ELEMENTS.EARTH]: {
+	[ELEMENTS.EARTH, ELEMENTS.EARTH]: {
 		name = "Stone Shield",
 		damage = 10.5,
 		effect = null,
@@ -45,7 +50,7 @@ const SPELLS_d: Dictionary = {
 		range = 30.5,
 		cooldown = 2.5
 	},
-	[Enums.ELEMENTS.WIND, Enums.ELEMENTS.WIND]: {
+	[ELEMENTS.WIND, ELEMENTS.WIND]: {
 		name = "Gust",
 		damage = 10.5,
 		effect = null,
@@ -53,7 +58,7 @@ const SPELLS_d: Dictionary = {
 		range = 30.5,
 		cooldown = 2.5
 	},
-	[Enums.ELEMENTS.FIRE, Enums.ELEMENTS.WATER]: {
+	[ELEMENTS.FIRE, ELEMENTS.WATER]: {
 		name = "Steam Burst",
 		damage = 10.5,
 		effect = null,
@@ -61,7 +66,7 @@ const SPELLS_d: Dictionary = {
 		range = 30.5,
 		cooldown = 2.5
 	},
-	[Enums.ELEMENTS.FIRE, Enums.ELEMENTS.EARTH]: {
+	[ELEMENTS.FIRE, ELEMENTS.EARTH]: {
 		name = "Magma Wave",
 		damage = 10.5,
 		effect = null,
@@ -69,7 +74,7 @@ const SPELLS_d: Dictionary = {
 		range = 30.5,
 		cooldown = 2.5
 	},
-	[Enums.ELEMENTS.WATER, Enums.ELEMENTS.WIND]: {
+	[ELEMENTS.WATER, ELEMENTS.WIND]: {
 		name = "Blizzard",
 		damage = 10.5,
 		effect = null,
@@ -77,7 +82,7 @@ const SPELLS_d: Dictionary = {
 		range = 30.5,
 		cooldown = 2.5
 	},
-	[Enums.ELEMENTS.EARTH, Enums.ELEMENTS.WIND]: {
+	[ELEMENTS.EARTH, ELEMENTS.WIND]: {
 		name = "Sandstorm",
 		damage = 10.5,
 		effect = null,
@@ -85,7 +90,7 @@ const SPELLS_d: Dictionary = {
 		range = 30.5,
 		cooldown = 2.5
 	},
-	[Enums.ELEMENTS.FIRE, Enums.ELEMENTS.WIND]: {
+	[ELEMENTS.FIRE, ELEMENTS.WIND]: {
 		name = "Flame Tornado",
 		damage = 10.5,
 		effect = null,
@@ -93,7 +98,7 @@ const SPELLS_d: Dictionary = {
 		range = 30.5,
 		cooldown = 2.5
 	},
-	[Enums.ELEMENTS.WATER, Enums.ELEMENTS.EARTH]: {
+	[ELEMENTS.WATER, ELEMENTS.EARTH]: {
 		name = "Mud Trap",
 		damage = 10.5,
 		effect = null,

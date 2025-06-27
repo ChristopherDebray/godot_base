@@ -112,6 +112,7 @@ radius = 49.0
 [node name="Lightning" instance=ExtResource("1_7iq0p")]
 script = ExtResource("2_bp2nl")
 spellName = "lightning"
+aoe_enabled = null
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 position = Vector2(0, -30)

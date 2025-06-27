@@ -2,16 +2,13 @@ extends Node2D
 
 class_name BaseSpell
 
-const Enums = preload("res://data/spells/enums.gd")
-
 @export var spellName: String
+@export var aoe_enabled: bool = true
 var damage: float
 var aoe_damage: float
-var effect: Enums.EFFECTS
-var effect_duration: float = 2.0
+var effect: EffectData
 var duration: float = 2.0
 var range: float = 30.0
-@export var aoe_enabled: bool = true
 
 var sender: Node
 var _has_hit: bool = false
@@ -30,7 +27,6 @@ func initSpellResource(spell_data: SpellData) -> void:
 	damage = spell_data.damage
 	aoe_damage = spell_data.aoe_damage
 	effect = spell_data.effect
-	effect_duration = spell_data.effect_duration
 	range = spell_data.range
 
 func _on_hitbox_body_entered(body):
@@ -49,10 +45,7 @@ func _on_area_of_effect_body_entered(body: Node2D) -> void:
 	on_aoe_hit()
 
 func on_aoe_hit():
-	print('je tfdssf')
 	for receiver in area_of_effect.get_overlapping_bodies():
-		print('je ')
-		print(receiver)
 		apply_damage_and_effect(receiver, aoe_damage)
 
 func activate_aoe():
@@ -61,11 +54,11 @@ func activate_aoe():
 func is_aoe_activated() -> bool:
 	return area_of_effect.monitoring
 
-func apply_damage_and_effect(target, damageValue):
-	var damageable = target
-	if damageable:
-		damageable.apply_damage(damageValue)
-		damageable.apply_effect(effect)
+func apply_damage_and_effect(target: Damageable, damageValue):
+	target.apply_elemental_damage(spellResource, damageValue)
+	if !effect:
+		return
+	target.apply_effect(effect)
 
 # Call the supercharged in the children
 func on_hit():

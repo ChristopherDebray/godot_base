@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EffectData" load_steps=2 format=3 uid="uid://b16585gw65apn"]
+
+[ext_resource type="Script" uid="uid://ckos26rb4qfvx" path="res://data/spells/effect_ressources/effect_data.gd" id="1_bgirn"]
+
+[resource]
+script = ExtResource("1_bgirn")
+name = "shock"
+name_enum = 3
+value = 15.0
+value_type = 0
+type = 1
+characteristic = "defense"
+duration = 5.0
+tick_rate = 0.0
+metadata/_custom_type_script = "uid://ckos26rb4qfvx"

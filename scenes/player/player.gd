@@ -9,13 +9,11 @@ class_name Player
 @onready var timer_second_element: Timer = $TimerSecondElement
 @onready var spell_book: Node2D = $SpellBook
 
-const SpellEnums = preload("res://data/spells/enums.gd")
-
 var active_elements: Array[int] = []
 var input_to_element = {
-	"x_1_action": SpellEnums.ELEMENTS.WATER,
-	"y_2_action": SpellEnums.ELEMENTS.FIRE,
-	"b_3_action": SpellEnums.ELEMENTS.WIND
+	"x_1_action": SpellsManager.ELEMENTS.WATER,
+	"y_2_action": SpellsManager.ELEMENTS.FIRE,
+	"b_3_action": SpellsManager.ELEMENTS.WIND
 }
 
 const SPEED: float = 230.0
@@ -55,7 +53,7 @@ func detect_interaction_inputs() -> void:
 	if Input.is_action_just_pressed("use_spell"):
 		use_spell()
 
-func activate_element(element: SpellEnums.ELEMENTS) -> void:
+func activate_element(element: SpellsManager.ELEMENTS) -> void:
 	if active_elements.size() >= 2:
 		_remove_element(0)
 

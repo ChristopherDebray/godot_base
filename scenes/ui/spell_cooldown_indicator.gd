@@ -4,8 +4,6 @@ class_name SpellCooldownIndicator
 @export var spell_name: String
 @export var icon: Texture
 
-const Enums = preload("res://data/spells/enums.gd")
-
 var remaining_time: float = 0.0
 var max_cooldown: float = 1.0
 

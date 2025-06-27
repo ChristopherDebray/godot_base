@@ -4,6 +4,9 @@
 
 [node name="BaseSpell" type="Node2D"]
 script = ExtResource("1_krdjp")
+SPEED = null
+spellName = null
+aoe_enabled = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 
