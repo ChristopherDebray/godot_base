@@ -5,7 +5,8 @@ class_name ProjectileSpell
 
 var _dir_of_travel: Vector2 = Vector2.ZERO
 
-func init(aim_direction: Vector2, start_pos: Vector2) -> void:
+func init(spell_data: SpellData, aim_direction: Vector2, start_pos: Vector2) -> void:
+	initSpellResource(spell_data)
 	_dir_of_travel = aim_direction
 	global_position = start_pos
 

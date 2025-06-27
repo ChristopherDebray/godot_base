@@ -1,7 +1,6 @@
 extends Node
 
 const SpellEnums = preload("res://data/spells/enums.gd")
-const Spells = preload("res://data/spells/spells.gd")
 
 var _cooldowns := {}
 
@@ -12,7 +11,7 @@ func _combo_key(arr: Array[SpellEnums.ELEMENTS]) -> String:
 
 func can_cast(key: Array) -> bool:
 	var combo_key = _combo_key(key)
-	var spellKey = Spells.SPELLS_ELEMENTS.get(combo_key)
+	var spellKey = SpellsManager.SPELLS_ELEMENTS.get(combo_key)
 	if not spellKey:
 		return false
 	
@@ -25,7 +24,7 @@ func can_cast(key: Array) -> bool:
 func set_cooldown(key: Array, duration: float):
 	key.sort()
 	var combo_key = _combo_key(key)
-	var spellKey = Spells.SPELLS_ELEMENTS[combo_key]
+	var spellKey = SpellsManager.SPELLS_ELEMENTS[combo_key]
 	
 	_cooldowns[spellKey] = duration
 

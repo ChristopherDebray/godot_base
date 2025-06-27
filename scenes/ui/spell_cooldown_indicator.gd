@@ -4,7 +4,6 @@ class_name SpellCooldownIndicator
 @export var spell_name: String
 @export var icon: Texture
 
-const SpellEnums = preload("res://data/spells/spells.gd")
 const Enums = preload("res://data/spells/enums.gd")
 
 var remaining_time: float = 0.0
@@ -18,7 +17,7 @@ func _ready():
 	update_ui(0)
 
 func _process(_delta):
-	var spell = SpellEnums.SPELLS.get(spell_name)
+	var spell = SpellsManager.SPELLS.get(spell_name)
 	if spell == null:
 		return
 

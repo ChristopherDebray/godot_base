@@ -22,6 +22,7 @@ DataManager="*res://autoloads/data_manager.gd"
 SignalManager="*res://autoloads/signal_manager.gd"
 SoundManager="*res://autoloads/sound_manager.gd"
 SpellCooldownManager="*res://autoloads/spell_cooldown_manager.gd"
+SpellsManager="*res://autoloads/spells_manager.gd"
 
 [input]
 

@@ -93,7 +93,8 @@ height = 34.0
 height = 34.0
 
 [node name="Firebolt" instance=ExtResource("1_g4hyk")]
-effect = 1
+SPEED = 700
+spellName = "firebolt"
 aoe_enabled = false
 
 [node name="AnimatedSprite2D" parent="." index="0"]
@@ -104,6 +105,9 @@ animation = &"hit"
 position = Vector2(6, 6)
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_g4hyk")
+
+[node name="AreaOfEffect" parent="." index="3"]
+monitoring = false
 
 [node name="CollisionShape2D" parent="AreaOfEffect" index="0"]
 position = Vector2(6, 6)

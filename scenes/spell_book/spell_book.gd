@@ -1,7 +1,6 @@
 extends Node2D
 
 const SpellEnums = preload("res://data/spells/enums.gd")
-const Spells = preload("res://data/spells/spells.gd")
 
 var spells: Dictionary = {}
 var _cooldowns := {}
@@ -17,12 +16,12 @@ func get_spell_from_elements(elements: Array[SpellEnums.ELEMENTS]) -> SpellData:
 		return null
 
 	var combo_key = _combo_key(elements)
-	var spell_name = Spells.SPELLS_ELEMENTS.get(combo_key)
+	var spell_name = SpellsManager.SPELLS_ELEMENTS.get(combo_key)
 
 	if not spell_name:
 		return null
 
-	var spell = Spells.SPELLS.get(spell_name)
+	var spell = SpellsManager.SPELLS.get(spell_name)
 	return spell as SpellData
 
 func register_spell(elements: Array[int], data: Dictionary):
@@ -38,7 +37,6 @@ func use_spell(active_elements: Array[SpellEnums.ELEMENTS], aim_direction: Vecto
 		return
 
 	if not SpellCooldownManager.can_cast(active_elements):
-		print('on cooldown')
 		return
 
 	var spellInstance = spell.scene.instantiate()
@@ -47,10 +45,11 @@ func use_spell(active_elements: Array[SpellEnums.ELEMENTS], aim_direction: Vecto
 	_register_cooldown(active_elements, spell.cooldown)
 
 func handle_spell_init(spellInstance: BaseSpell, aim_direction: Vector2):
+	var spellData: SpellData = SpellsManager.SPELLS[spellInstance.spellName]
 	if is_instance_of(spellInstance, ProjectileSpell):
-		spellInstance.init(aim_direction, global_position)
+		spellInstance.init(spellData, aim_direction, global_position)
 	elif is_instance_of(spellInstance, AoeInstantSpell):
-		spellInstance.init(get_global_mouse_position())
+		spellInstance.init(spellData, get_global_mouse_position())
 
 func _can_cast(elementCombo: Array[SpellEnums.ELEMENTS], cooldown: float) -> bool:
 	var key = _combo_key(elementCombo)
@@ -64,7 +63,7 @@ func _register_cooldown(elementCombo: Array[SpellEnums.ELEMENTS], cooldown: floa
 
 func get_remaining_cooldown(combo: Array[SpellEnums.ELEMENTS]) -> float:
 	var key = _combo_key(combo)
-	var spellKey = Spells.SPELLS_ELEMENTS[key]
+	var spellKey = SpellsManager.SPELLS_ELEMENTS[key]
 	
 	if not _cooldowns.has(spellKey):
 		return 0.0
@@ -76,6 +75,6 @@ func _combo_key(arr: Array[SpellEnums.ELEMENTS]) -> String:
 	return ",".join(PackedStringArray(sorted.map(func(x): return str(x))))
 
 func register_spells():
-	for key in Spells.SPELLS.keys():
-		spells[key] = Spells.SPELLS[key]
-		var data = Spells.SPELLS[key]
+	for key in SpellsManager.SPELLS.keys():
+		spells[key] = SpellsManager.SPELLS[key]
+		var data = SpellsManager.SPELLS[key]

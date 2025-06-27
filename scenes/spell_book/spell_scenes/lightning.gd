@@ -6,8 +6,9 @@ const SPEED: float = 400.0
 func _ready():
 	animated_sprite_2d.play('repeat')
 
-func on_hit():
-	activate_aoe()
-
 func _on_animated_sprite_2d_animation_finished() -> void:
 	queue_free()
+
+func _on_animated_sprite_2d_frame_changed() -> void:
+	if animated_sprite_2d.frame >= 5 && !is_aoe_activated():
+		activate_aoe()

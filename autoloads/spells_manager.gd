@@ -3,12 +3,12 @@ extends Node
 const Enums = preload("res://data/spells/enums.gd")
 
 const SPELLS_ELEMENTS = {
-	"1,1": 'fireball',
+	"1,1": 'firebolt',
 	"1,3": 'lightning',
 }
 
 const SPELLS: Dictionary = {
-	'fireball': preload("res://data/spells/spell_ressources/fireball.tres"),
+	'firebolt': preload("res://data/spells/spell_ressources/firebolt.tres"),
 	'lightning': preload("res://data/spells/spell_ressources/lightning.tres"),
 }
 
@@ -22,7 +22,7 @@ static func get_key_from_spell_name(name: String):
 
 const SPELLS_d: Dictionary = {
 	[Enums.ELEMENTS.FIRE, Enums.ELEMENTS.FIRE]: {
-		name = "Fireball",
+		name = "firebolt",
 		damage = 10.5,
 		effect = Enums.EFFECTS.BURN,
 		magnitude = 1.0,

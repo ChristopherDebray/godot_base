@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bttpqkr228ecr"]
+
+[ext_resource type="PackedScene" uid="uid://b2odxanbtxty4" path="res://scenes/_damageable/damageable.tscn" id="1_tf0hf"]
+[ext_resource type="Texture2D" uid="uid://ca4un0p31fadn" path="res://assets/images/decorations/TopDownHouse_SmallItems.png" id="2_vfogt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tf0hf"]
+size = Vector2(73, 72)
+
+[node name="Box" instance=ExtResource("1_tf0hf")]
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(1.5, 0)
+shape = SubResource("RectangleShape2D_tf0hf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="2"]
+scale = Vector2(4.59044, 4.59044)
+texture = ExtResource("2_vfogt")
+region_enabled = true
+region_rect = Rect2(111.654, 31.8339, 16.8211, 16.3667)

@@ -111,6 +111,7 @@ radius = 49.0
 
 [node name="Lightning" instance=ExtResource("1_7iq0p")]
 script = ExtResource("2_bp2nl")
+spellName = "lightning"
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 position = Vector2(0, -30)
@@ -128,3 +129,5 @@ monitoring = false
 
 [node name="CollisionShape2D" parent="AreaOfEffect" index="0"]
 shape = SubResource("CircleShape2D_bp2nl")
+
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

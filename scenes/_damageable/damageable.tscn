@@ -2,11 +2,13 @@
 
 [ext_resource type="Script" uid="uid://cdoqf6w0fcfew" path="res://scenes/_damageable/damageable.gd" id="1_25i3q"]
 
-[node name="Damagable" type="Node2D"]
+[node name="Damagable" type="CharacterBody2D"]
+collision_layer = 24
+collision_mask = 9
 script = ExtResource("1_25i3q")
 
-[node name="Hurtbox" type="Area2D" parent="."]
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color(1, 0.435294, 0.431373, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-
-[connection signal="body_shape_entered" from="Hurtbox" to="." method="_on_hurtbox_body_shape_entered"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
