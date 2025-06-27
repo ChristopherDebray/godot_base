@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_5frx1")
-name = "Fireball"
+name = "fireball"
 damage = 30.0
 cooldown = 1.0
 effect = 1

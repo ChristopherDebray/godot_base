@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=4 uid="uid://bm3vsdux3ux7u"]
+[gd_scene load_steps=20 format=4 uid="uid://bm3vsdux3ux7u"]
 
 [ext_resource type="Texture2D" uid="uid://dvx2i200wwho3" path="res://assets/sprite_sheets/floor.png" id="1_8lvw5"]
+[ext_resource type="PackedScene" uid="uid://dqnnqulkpfar1" path="res://scenes/ui/in_game_ui.tscn" id="1_rgbux"]
 [ext_resource type="Texture2D" uid="uid://d4gkkoci0wg2x" path="res://assets/sprite_sheets/grass.png" id="2_v8w54"]
 [ext_resource type="Texture2D" uid="uid://syk4em1wlbrl" path="res://assets/sprite_sheets/walls.png" id="3_rgbux"]
 [ext_resource type="PackedScene" uid="uid://cfeydvoqaen68" path="res://scenes/player/player.tscn" id="4_v8w54"]
@@ -142,14 +143,6 @@ sources/4 = SubResource("TileSetAtlasSource_v8w54")
 
 [node name="LevelBase" type="Node2D"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="GameUi" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.814, 0.817147, 0.829577, 1)
 
@@ -184,3 +177,7 @@ position = Vector2(154, 252)
 [node name="Lights" type="Node2D" parent="."]
 
 [node name="DecorationsIntangible" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="InGameUi" parent="CanvasLayer" instance=ExtResource("1_rgbux")]

@@ -31,7 +31,7 @@ func on_spell_hit(body):
 		for receiver in area_of_effect.get_overlapping_bodies():
 			apply_damage_and_effect(receiver)
 	else:
-		for receiver in area_of_effect.get_overlapping_bodies():
+		for receiver in hitbox.get_overlapping_bodies():
 			apply_damage_and_effect(receiver)
 
 	_has_hit = true

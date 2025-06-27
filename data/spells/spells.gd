@@ -1,12 +1,19 @@
 extends Node
 
 const Enums = preload("res://data/spells/enums.gd")
-const SpellData = preload("res://data/spells/spell_ressources/spell_data.gd")
 
 const SPELLS: Dictionary = {
 	[Enums.ELEMENTS.FIRE, Enums.ELEMENTS.FIRE]: preload("res://data/spells/spell_ressources/fireball.tres"),
 	[Enums.ELEMENTS.WIND, Enums.ELEMENTS.FIRE]: preload("res://data/spells/spell_ressources/lightning.tres"),
 }
+
+static func get_key_from_spell_name(name: String) -> Array[int]:
+	for key in SPELLS.keys():
+		var spell_data := SPELLS[key] as SpellData
+		print(spell_data)
+		if spell_data and spell_data.name == name:
+			return key
+	return []
 
 const SPELLS_d: Dictionary = {
 	[Enums.ELEMENTS.FIRE, Enums.ELEMENTS.FIRE]: {
