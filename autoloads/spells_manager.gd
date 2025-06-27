@@ -8,7 +8,7 @@ enum ELEMENTS {
 }
 
 const SPELLS_ELEMENTS = {
-	"1,1": 'firebolt',
+	"1": 'firebolt',
 	"1,3": 'lightning',
 }
 

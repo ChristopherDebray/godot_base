@@ -94,6 +94,8 @@ func get_aim_direction() -> Vector2:
 
 func use_spell() -> void:
 	if active_elements.size() < 2:
+		var fireboltElement: Array[SpellsManager.ELEMENTS] = [SpellsManager.ELEMENTS.FIRE]
+		spell_book.use_spell(fireboltElement, get_aim_direction())
 		return
 	spell_book.use_spell(active_elements, get_aim_direction())
 	_remove_element(1)

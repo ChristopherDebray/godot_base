@@ -19,12 +19,8 @@ func can_cast(key: Array) -> bool:
 	var remaining = _cooldowns[spellKey] - Time.get_ticks_msec() / 1000.0
 	return remaining <= 0
 
-func set_cooldown(key: Array, duration: float):
-	key.sort()
-	var combo_key = _combo_key(key)
-	var spellKey = SpellsManager.SPELLS_ELEMENTS[combo_key]
-	
-	_cooldowns[spellKey] = duration
+func set_cooldown(spellName: String, duration: float):
+	_cooldowns[spellName] = duration
 
 func get_remaining(key: String) -> float:
 	if not _cooldowns.has(key):

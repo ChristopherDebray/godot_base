@@ -24,20 +24,23 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 60
 
-[node name="CooldownIndicators" type="HBoxContainer" parent="MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="FireballCooldownIndicator" parent="MarginContainer/MarginContainer" instance=ExtResource("1_uyty4")]
+layout_mode = 2
+size_flags_vertical = 4
+spell_name = "firebolt"
+icon = ExtResource("2_4db6k")
+
+[node name="CooldownIndicators" type="HBoxContainer" parent="MarginContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_constants/separation = 60
 
-[node name="FireballCooldownIndicator" parent="MarginContainer/CooldownIndicators" instance=ExtResource("1_uyty4")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-spell_name = "fireball"
-icon = ExtResource("2_4db6k")
-
-[node name="FireballCooldownIndicator2" parent="MarginContainer/CooldownIndicators" instance=ExtResource("1_uyty4")]
+[node name="FireballCooldownIndicator2" parent="MarginContainer/MarginContainer/CooldownIndicators" instance=ExtResource("1_uyty4")]
 layout_mode = 2
 spell_name = "lightning"
 icon = ExtResource("3_eeonk")

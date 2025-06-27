@@ -34,9 +34,8 @@ func _on_hitbox_body_entered(body):
 		on_spell_hit(body)
 
 func on_spell_hit(body):
-	# @todo fix to allow spell to be aoe only or have both
-	for receiver in hitbox.get_overlapping_bodies():
-		apply_damage_and_effect(receiver, damage)
+	if body is Damageable:
+		apply_damage_and_effect(body, damage)
 
 	_has_hit = true
 	on_hit()
@@ -46,7 +45,8 @@ func _on_area_of_effect_body_entered(body: Node2D) -> void:
 
 func on_aoe_hit():
 	for receiver in area_of_effect.get_overlapping_bodies():
-		apply_damage_and_effect(receiver, aoe_damage)
+		if receiver is Damageable:
+			apply_damage_and_effect(receiver, aoe_damage)
 
 func activate_aoe():
 	area_of_effect.monitoring = true

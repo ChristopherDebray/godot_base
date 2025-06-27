@@ -40,7 +40,7 @@ func use_spell(active_elements: Array[SpellsManager.ELEMENTS], aim_direction: Ve
 	var spellInstance = spell.scene.instantiate()
 	handle_spell_init(spellInstance, aim_direction)
 	get_tree().root.add_child(spellInstance)
-	_register_cooldown(active_elements, spell.cooldown)
+	_register_cooldown(spell.name, spell.cooldown)
 
 func handle_spell_init(spellInstance: BaseSpell, aim_direction: Vector2):
 	var spellData: SpellData = SpellsManager.SPELLS[spellInstance.spellName]
@@ -56,8 +56,8 @@ func _can_cast(elementCombo: Array[SpellsManager.ELEMENTS], cooldown: float) -> 
 	var remaining = _cooldowns[key] - Time.get_ticks_msec() / 1000.0
 	return remaining <= 0
 
-func _register_cooldown(elementCombo: Array[SpellsManager.ELEMENTS], cooldown: float) -> void:
-	SpellCooldownManager.set_cooldown(elementCombo, Time.get_ticks_msec() / 1000.0 + cooldown)
+func _register_cooldown(spellName: String, cooldown: float) -> void:
+	SpellCooldownManager.set_cooldown(spellName, Time.get_ticks_msec() / 1000.0 + cooldown)
 
 func get_remaining_cooldown(combo: Array[SpellsManager.ELEMENTS]) -> float:
 	var key = _combo_key(combo)
