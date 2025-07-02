@@ -1,0 +1,121 @@
+[gd_scene load_steps=19 format=3 uid="uid://btb6hk22uf4qq"]
+
+[ext_resource type="PackedScene" uid="uid://dvi8nh3ajbj86" path="res://scenes/spell_book/spell_scenes/base_spell.tscn" id="1_owaei"]
+[ext_resource type="Script" uid="uid://dbwkqc0yvei3n" path="res://scenes/spell_book/spell_scenes/wind_slash.gd" id="2_xyt3h"]
+[ext_resource type="Texture2D" uid="uid://bqua03ce0efbk" path="res://assets/spells/Wind Hit Effect.png" id="3_x4e05"]
+[ext_resource type="Texture2D" uid="uid://b1qrl86dmbdcs" path="res://assets/spells/Wind Projectile.png" id="4_12hc1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3rdt"]
+atlas = ExtResource("3_x4e05")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sv3ml"]
+atlas = ExtResource("3_x4e05")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a05dl"]
+atlas = ExtResource("3_x4e05")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_blt0h"]
+atlas = ExtResource("3_x4e05")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8op7c"]
+atlas = ExtResource("3_x4e05")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76dwr"]
+atlas = ExtResource("3_x4e05")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhn51"]
+atlas = ExtResource("4_12hc1")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m25s4"]
+atlas = ExtResource("4_12hc1")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1ykf"]
+atlas = ExtResource("4_12hc1")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfi2b"]
+atlas = ExtResource("4_12hc1")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dnvyt"]
+atlas = ExtResource("4_12hc1")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_toeel"]
+atlas = ExtResource("4_12hc1")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7pveq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3rdt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sv3ml")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a05dl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_blt0h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8op7c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76dwr")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhn51")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m25s4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1ykf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfi2b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dnvyt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_toeel")
+}],
+"loop": true,
+"name": &"repeat",
+"speed": 13.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_owaei"]
+radius = 23.0
+height = 58.0
+
+[node name="WindProjectile" instance=ExtResource("1_owaei")]
+script = ExtResource("2_xyt3h")
+SPEED = 700
+spellName = "wind slash"
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_7pveq")
+animation = &"repeat"
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(-3, 0)
+shape = SubResource("CapsuleShape2D_owaei")
