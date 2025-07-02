@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://dhobulbu1frnr"]
+[gd_scene load_steps=17 format=3 uid="uid://dhobulbu1frnr"]
 
 [ext_resource type="PackedScene" uid="uid://dvi8nh3ajbj86" path="res://scenes/spell_book/spell_scenes/base_spell.tscn" id="1_g4hyk"]
+[ext_resource type="Script" uid="uid://q7jvubseryg7" path="res://scenes/spell_book/spell_scenes/firebolt.gd" id="2_hysv0"]
 [ext_resource type="Texture2D" uid="uid://c53oglprnqbva" path="res://assets/spells/Firebolt SpriteSheet.png" id="2_kq6xw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n30bg"]
@@ -93,9 +94,9 @@ height = 34.0
 height = 34.0
 
 [node name="Firebolt" instance=ExtResource("1_g4hyk")]
+script = ExtResource("2_hysv0")
 SPEED = 700
 spellName = "firebolt"
-aoe_enabled = false
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_nuy3d")
@@ -113,5 +114,3 @@ monitoring = false
 position = Vector2(6, 6)
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_kq6xw")
-
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

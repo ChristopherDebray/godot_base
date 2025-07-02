@@ -3,7 +3,7 @@ extends Node2D
 class_name BaseSpell
 
 @export var spellName: String
-@export var aoe_enabled: bool = true
+@export var aoe_enabled: bool = false
 var damage: float
 var aoe_damage: float
 var effect: EffectData
@@ -71,3 +71,9 @@ func _on_lifetime_timer_timeout():
 # "Abstract" method, by default just delete the element but could be used for effect on duration over
 func on_spell_timeout():
 	queue_free()
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if animated_sprite_2d.animation == "start":
+		animated_sprite_2d.play('repeat')
+	if animated_sprite_2d.animation == "hit":
+		queue_free()

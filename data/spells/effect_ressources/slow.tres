@@ -77,5 +77,6 @@ type = 1
 characteristic = "speed"
 duration = 5.0
 tick_rate = 0.0
+is_one_shot = true
 fx_sprite_frames = SubResource("SpriteFrames_ftish")
 metadata/_custom_type_script = "uid://ckos26rb4qfvx"

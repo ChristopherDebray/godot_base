@@ -12,17 +12,28 @@ class_name Damageable
 @onready var status_fx: AnimatedSprite2D = $StatusFx
 
 var active_effects: Array[Dictionary] = []
+var to_remove_effects: Array[Dictionary] = []
 
 func _process(delta: float) -> void:
 	for entry in active_effects:
 		entry["remaining_time"] -= delta
 		entry["last_tick"] += delta
+		if entry["is_one_shot"] && entry["has_ticked"]: continue
+		
 		if entry["last_tick"] >= entry["effect"].tick_rate:
+			entry["has_ticked"] = true
 			entry["effect"].apply_tick(self)
 			entry["last_tick"] = 0.0
 
+	to_remove_effects = active_effects.filter(func(effect): return effect["remaining_time"] <= 0)
 	active_effects = active_effects.filter(func(effect): return effect["remaining_time"] > 0)
+	remove_ended_effects()
 	update_fx_visual()
+
+func remove_ended_effects() -> void:
+	for entry in to_remove_effects:
+		entry["effect"].remove_effect(self)
+	to_remove_effects.clear()
 
 func apply_elemental_damage(spellResource: SpellData, amount: float) -> void:
 	if spellResource.main_element in immunity_elements:
@@ -50,7 +61,9 @@ func apply_effect(effect: EffectData) -> void:
 	active_effects.append({
 		"effect": effect,
 		"remaining_time": effect.duration,
-		"last_tick": 0.0
+		"last_tick": 0.0,
+		"has_ticked": false,
+		"is_one_shot": effect.is_one_shot,
 	})
 
 # Can be supercharged
@@ -80,6 +93,9 @@ func update_fx_visual():
 	status_fx.visible = false
 
 func freeze():
+	pass
+
+func unfreeze():
 	pass
 
 func modify_speed(amount: float):

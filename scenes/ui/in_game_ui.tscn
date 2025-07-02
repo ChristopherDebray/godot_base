@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqnnqulkpfar1"]
+[gd_scene load_steps=5 format=3 uid="uid://dqnnqulkpfar1"]
 
 [ext_resource type="PackedScene" uid="uid://blvvh7m353g4l" path="res://scenes/ui/spell_cooldown_indicator.tscn" id="1_uyty4"]
 [ext_resource type="Texture2D" uid="uid://3b4qv17tokqm" path="res://assets/spells/firebolt_icon.png" id="2_4db6k"]
 [ext_resource type="Texture2D" uid="uid://uufldva48nc8" path="res://assets/spells/Thunderstrike_icon.png" id="3_eeonk"]
+[ext_resource type="Texture2D" uid="uid://u4sv4llnu3mf" path="res://assets/spells/ice_lance_icon.png" id="4_qvqbd"]
 
 [node name="InGameUi" type="Control"]
 layout_mode = 3
@@ -28,7 +29,7 @@ theme_override_constants/margin_bottom = 60
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="FireballCooldownIndicator" parent="MarginContainer/MarginContainer" instance=ExtResource("1_uyty4")]
+[node name="FireboltCooldownIndicator" parent="MarginContainer/MarginContainer" instance=ExtResource("1_uyty4")]
 layout_mode = 2
 size_flags_vertical = 4
 spell_name = "firebolt"
@@ -40,7 +41,12 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_constants/separation = 60
 
-[node name="FireballCooldownIndicator2" parent="MarginContainer/MarginContainer/CooldownIndicators" instance=ExtResource("1_uyty4")]
+[node name="ThunderCooldownIndicator2" parent="MarginContainer/MarginContainer/CooldownIndicators" instance=ExtResource("1_uyty4")]
 layout_mode = 2
 spell_name = "lightning"
 icon = ExtResource("3_eeonk")
+
+[node name="IceLanceCooldownIndicator3" parent="MarginContainer/MarginContainer/CooldownIndicators" instance=ExtResource("1_uyty4")]
+layout_mode = 2
+spell_name = "ice lance"
+icon = ExtResource("4_qvqbd")

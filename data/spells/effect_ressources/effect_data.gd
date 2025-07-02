@@ -9,6 +9,7 @@ class_name EffectData
 @export var characteristic: String
 @export var duration: float
 @export var tick_rate: float
+@export var is_one_shot: bool = false
 @export var fx_sprite_frames: SpriteFrames
 
 func apply_tick(target: Damageable) -> void:
@@ -37,6 +38,30 @@ func apply_tick(target: Damageable) -> void:
 			)
 		EffectsManager.EFFECT_TYPE.BUFF:
 			target.add_buff(characteristic, value)
+		_:
+			print("Effect type not handled:", type)
+
+func remove_effect(target: Damageable) -> void:
+	match type:
+		EffectsManager.EFFECT_TYPE.CONTROL:
+			if name == "freeze":
+				target.unfreeze()
+		EffectsManager.EFFECT_TYPE.BUFF:
+			handle_characteristic_modification(
+				target,
+				EffectsManager.EFFECT_TYPE.DEBUFF,
+				value,
+				value_type,
+				characteristic
+			)
+		EffectsManager.EFFECT_TYPE.DEBUFF:
+			handle_characteristic_modification(
+				target,
+				EffectsManager.EFFECT_TYPE.BUFF,
+				value,
+				value_type,
+				characteristic
+			)
 		_:
 			print("Effect type not handled:", type)
 
