@@ -42,7 +42,6 @@ animations = [{
 }]
 
 [node name="BaseEnemy" instance=ExtResource("1_51n66")]
-turn_speed_deg = 660.0
 behavior = SubResource("Resource_4gsa1")
 speed = 100.0
 

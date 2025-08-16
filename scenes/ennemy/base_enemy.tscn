@@ -10,6 +10,7 @@ attack_cooldown = 2.0
 patrol_points = NodePath("")
 initial_state = 0
 behavior = null
+roam_radius = 200.0
 health = 20.0
 metadata/_edit_vertical_guides_ = [-15.0, 15.0]
 metadata/_edit_horizontal_guides_ = [30.0]
@@ -23,8 +24,9 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SpriteContainer/FieldView" index="0"]
+position = Vector2(2.00001, -1.19209e-07)
 rotation = -1.5708
-scale = Vector2(12.4552, 13.177)
+scale = Vector2(17.3874, 18.4783)
 polygon = PackedVector2Array(0, 0, -15, 30, 15, 30)
 
 [node name="AttackTimer" type="Timer" parent="." index="4"]
