@@ -3,8 +3,44 @@
 [ext_resource type="PackedScene" uid="uid://b2odxanbtxty4" path="res://scenes/_damageable/damageable.tscn" id="1_26sde"]
 [ext_resource type="Script" uid="uid://ck5ra04kx3r6w" path="res://scenes/ennemy/base_enemy.gd" id="2_7rgwx"]
 
-[node name="Damagable" instance=ExtResource("1_26sde")]
+[node name="BaseEnemy" instance=ExtResource("1_26sde")]
 script = ExtResource("2_7rgwx")
+turn_speed_deg = 660.0
+attack_cooldown = 2.0
+patrol_points = NodePath("")
+initial_state = 0
+behavior = null
 health = 20.0
+metadata/_edit_vertical_guides_ = [-15.0, 15.0]
+metadata/_edit_horizontal_guides_ = [30.0]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1"]
+[node name="SpriteContainer" type="Node2D" parent="." index="3"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteContainer" index="0"]
+
+[node name="FieldView" type="Area2D" parent="SpriteContainer" index="1"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SpriteContainer/FieldView" index="0"]
+rotation = -1.5708
+scale = Vector2(12.4552, 13.177)
+polygon = PackedVector2Array(0, 0, -15, 30, 15, 30)
+
+[node name="AttackTimer" type="Timer" parent="." index="4"]
+one_shot = true
+
+[node name="NavAgent" type="NavigationAgent2D" parent="." index="5"]
+avoidance_enabled = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="." index="6"]
+
+[node name="Detection" type="Node2D" parent="." index="7"]
+rotation = -1.5708
+
+[node name="RayCast2D" type="RayCast2D" parent="Detection" index="0"]
+collision_mask = 5
+
+[connection signal="body_entered" from="SpriteContainer/FieldView" to="." method="_on_field_view_body_entered"]
+[connection signal="body_exited" from="SpriteContainer/FieldView" to="." method="_on_field_view_body_exited"]
+[connection signal="velocity_computed" from="NavAgent" to="." method="_on_nav_agent_velocity_computed"]

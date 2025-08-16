@@ -180,6 +180,8 @@ position = Vector2(154, 252)
 
 [node name="DecorationsIntangible" type="Node2D" parent="."]
 
+[node name="Paths" type="Node2D" parent="."]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="InGameUi" parent="CanvasLayer" instance=ExtResource("1_rgbux")]
