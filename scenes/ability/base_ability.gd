@@ -12,7 +12,7 @@ var range: float = 30.0
 
 var sender: Node
 var _has_hit: bool = false
-var abilityResource: AbilityData
+var ability_resource: AbilityData
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var lifetime_timer: Timer = $LifetimeTimer
@@ -23,7 +23,7 @@ func _ready():
 	lifetime_timer.start(duration)
 
 func initAbilityResource(ability_data: AbilityData) -> void:
-	abilityResource = ability_data
+	ability_resource = ability_data
 	damage = ability_data.damage
 	aoe_damage = ability_data.aoe_damage
 	effect = ability_data.effect
@@ -55,7 +55,7 @@ func is_aoe_activated() -> bool:
 	return area_of_effect.monitoring
 
 func apply_damage_and_effect(target: Damageable, damageValue):
-	target.apply_elemental_damage(abilityResource, damageValue)
+	target.apply_elemental_damage(ability_resource, damageValue)
 	if !effect:
 		return
 	target.apply_effect(effect)
