@@ -5,6 +5,7 @@ enum ELEMENTS {
 	FIRE,
 	EARTH,
 	WIND,
+	PHYSICAL,
 }
 
 const SPELLS_ELEMENTS = {
@@ -19,7 +20,7 @@ const SPELLS: Dictionary = {
 
 static func get_key_from_spell_name(name: String):
 	for key in SPELLS.keys():
-		var spell_data := SPELLS[key] as SpellData
+		var spell_data := SPELLS[key] as AbilityData
 		if spell_data and spell_data.name == name:
 			return key
 	

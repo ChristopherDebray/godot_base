@@ -1,8 +1,8 @@
 extends Node2D
 
-class_name BaseSpell
+class_name BaseAbility
 
-@export var spellName: String
+@export var abilityName: String
 @export var aoe_enabled: bool = true
 var damage: float
 var aoe_damage: float
@@ -12,7 +12,7 @@ var range: float = 30.0
 
 var sender: Node
 var _has_hit: bool = false
-var spellResource: SpellData
+var abilityResource: AbilityData
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var lifetime_timer: Timer = $LifetimeTimer
@@ -22,18 +22,18 @@ var spellResource: SpellData
 func _ready():
 	lifetime_timer.start(duration)
 
-func initSpellResource(spell_data: SpellData) -> void:
-	spellResource = spell_data
-	damage = spell_data.damage
-	aoe_damage = spell_data.aoe_damage
-	effect = spell_data.effect
-	range = spell_data.range
+func initAbilityResource(ability_data: AbilityData) -> void:
+	abilityResource = ability_data
+	damage = ability_data.damage
+	aoe_damage = ability_data.aoe_damage
+	effect = ability_data.effect
+	range = ability_data.range
 
 func _on_hitbox_body_entered(body):
 	if body != sender:
-		on_spell_hit(body)
+		on_ability_hit(body)
 
-func on_spell_hit(body):
+func on_ability_hit(body):
 	if body is Damageable:
 		apply_damage_and_effect(body, damage)
 
@@ -55,19 +55,19 @@ func is_aoe_activated() -> bool:
 	return area_of_effect.monitoring
 
 func apply_damage_and_effect(target: Damageable, damageValue):
-	target.apply_elemental_damage(spellResource, damageValue)
+	target.apply_elemental_damage(abilityResource, damageValue)
 	if !effect:
 		return
 	target.apply_effect(effect)
 
-# Call the supercharged in the children
+## @abstract
 func on_hit():
 	pass
 
 func _on_lifetime_timer_timeout():
 	# Call the supercharged in the children
-	on_spell_timeout()
+	on_ability_timeout()
 
-# "Abstract" method, by default just delete the element but could be used for effect on duration over
-func on_spell_timeout():
+## @abstract: by default just delete the element but could be used for effect on duration over
+func on_ability_timeout():
 	queue_free()

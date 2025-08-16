@@ -1,117 +1,104 @@
-[gd_scene load_steps=16 format=3 uid="uid://dhobulbu1frnr"]
+[gd_scene load_steps=15 format=3 uid="uid://2ewejell8oks"]
 
-[ext_resource type="PackedScene" uid="uid://dvi8nh3ajbj86" path="res://scenes/spell_book/spell_scenes/base_spell.tscn" id="1_g4hyk"]
+[ext_resource type="PackedScene" uid="uid://blec2pyy0f08v" path="res://scenes/ability/base_ability.tscn" id="1_oewwp"]
+[ext_resource type="Script" uid="uid://q7jvubseryg7" path="res://scenes/spell_book/spell_scenes/firebolt.gd" id="2_hysv0"]
 [ext_resource type="Texture2D" uid="uid://c53oglprnqbva" path="res://assets/spells/Firebolt SpriteSheet.png" id="2_kq6xw"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n30bg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hysv0"]
 atlas = ExtResource("2_kq6xw")
 region = Rect2(240, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0jni6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3djm"]
 atlas = ExtResource("2_kq6xw")
 region = Rect2(288, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_w5uvf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_akago"]
 atlas = ExtResource("2_kq6xw")
 region = Rect2(336, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ajhv7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryi1h"]
 atlas = ExtResource("2_kq6xw")
 region = Rect2(384, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_im00y"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1633"]
 atlas = ExtResource("2_kq6xw")
-region = Rect2(432, 0, 48, 48)
+region = Rect2(192, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qvx6v"]
-atlas = ExtResource("2_kq6xw")
-region = Rect2(480, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pj4qo"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4uao1"]
 atlas = ExtResource("2_kq6xw")
 region = Rect2(0, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_trn3p"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kuaqm"]
 atlas = ExtResource("2_kq6xw")
 region = Rect2(48, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_36ooi"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_etng2"]
 atlas = ExtResource("2_kq6xw")
 region = Rect2(96, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3o7br"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_x80od"]
 atlas = ExtResource("2_kq6xw")
 region = Rect2(144, 0, 48, 48)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_nuy3d"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_oewwp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_n30bg")
+"texture": SubResource("AtlasTexture_hysv0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0jni6")
+"texture": SubResource("AtlasTexture_c3djm")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_w5uvf")
+"texture": SubResource("AtlasTexture_akago")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ajhv7")
+"texture": SubResource("AtlasTexture_ryi1h")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_im00y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qvx6v")
+"texture": SubResource("AtlasTexture_b1633")
 }],
 "loop": false,
 "name": &"hit",
-"speed": 13.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pj4qo")
+"texture": SubResource("AtlasTexture_4uao1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_trn3p")
+"texture": SubResource("AtlasTexture_kuaqm")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_36ooi")
+"texture": SubResource("AtlasTexture_etng2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3o7br")
+"texture": SubResource("AtlasTexture_x80od")
 }],
 "loop": true,
 "name": &"repeat",
-"speed": 13.0
+"speed": 12.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4hyk"]
-height = 34.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0indg"]
+radius = 8.0
+height = 38.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kq6xw"]
-height = 34.0
-
-[node name="Firebolt" instance=ExtResource("1_g4hyk")]
-SPEED = 700
-spellName = "firebolt"
-aoe_enabled = false
+[node name="Firebolt" instance=ExtResource("1_oewwp")]
+script = ExtResource("2_hysv0")
+SPEED = 400
+abilityName = "firebolt"
 
 [node name="AnimatedSprite2D" parent="." index="0"]
-sprite_frames = SubResource("SpriteFrames_nuy3d")
-animation = &"hit"
+sprite_frames = SubResource("SpriteFrames_oewwp")
+animation = &"repeat"
+
+[node name="LifetimeTimer" parent="." index="1"]
+wait_time = 2.0
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
-position = Vector2(6, 6)
-rotation = 1.57079
-shape = SubResource("CapsuleShape2D_g4hyk")
-
-[node name="AreaOfEffect" parent="." index="3"]
-monitoring = false
-
-[node name="CollisionShape2D" parent="AreaOfEffect" index="0"]
-position = Vector2(6, 6)
-rotation = 1.57079
-shape = SubResource("CapsuleShape2D_kq6xw")
+position = Vector2(5, 6)
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_0indg")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

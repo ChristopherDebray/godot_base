@@ -1,9 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dbkcu5tukct3b"]
+[gd_scene load_steps=2 format=3 uid="uid://blec2pyy0f08v"]
 
-[ext_resource type="Script" uid="uid://q7jvubseryg7" path="res://scenes/spell_book/spell_scenes/firebolt.gd" id="1_krdjp"]
+[ext_resource type="Script" uid="uid://ci4tbsten4can" path="res://scenes/ability/base_ability.gd" id="1_2mqch"]
 
-[node name="BaseSpell" type="Node2D"]
-script = ExtResource("1_krdjp")
+[node name="BaseAbility" type="Node2D"]
+script = ExtResource("1_2mqch")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 

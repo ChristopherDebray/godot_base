@@ -156,6 +156,7 @@ func process_searching(delta: float):
 
 	state = STATE.PATROLLING
 
+## Attack the player if possible / valid
 func perform_attack(delta: float) -> void:
 	if not _can_attack():
 		return
@@ -295,7 +296,6 @@ func _update_facing(delta: float) -> void:
 	# 4. Idle / return → keep initial rotation
 	if state == STATE.IDLE:
 		_rotate_node_towards(self, global_position + _initial_facing_direction, delta)
-
 
 func _on_nav_agent_velocity_computed(safe_velocity: Vector2) -> void:
 	velocity = safe_velocity

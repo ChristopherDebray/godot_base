@@ -1,3 +1,4 @@
+class_name SpellBook
 extends Node2D
 
 var spells: Dictionary = {}
@@ -9,7 +10,7 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	pass
 
-func get_spell_from_elements(elements: Array[SpellsManager.ELEMENTS]) -> SpellData:
+func get_spell_from_elements(elements: Array[SpellsManager.ELEMENTS]) -> AbilityData:
 	if elements.is_empty():
 		return null
 
@@ -20,7 +21,7 @@ func get_spell_from_elements(elements: Array[SpellsManager.ELEMENTS]) -> SpellDa
 		return null
 
 	var spell = SpellsManager.SPELLS.get(spell_name)
-	return spell as SpellData
+	return spell as AbilityData
 
 func register_spell(elements: Array[int], data: Dictionary):
 	var key = elements.duplicate()
@@ -42,11 +43,11 @@ func use_spell(active_elements: Array[SpellsManager.ELEMENTS], aim_direction: Ve
 	get_tree().root.add_child(spellInstance)
 	_register_cooldown(spell.name, spell.cooldown)
 
-func handle_spell_init(spellInstance: BaseSpell, aim_direction: Vector2):
-	var spellData: SpellData = SpellsManager.SPELLS[spellInstance.spellName]
-	if is_instance_of(spellInstance, ProjectileSpell):
+func handle_spell_init(spellInstance: BaseAbility, aim_direction: Vector2):
+	var spellData: AbilityData = SpellsManager.SPELLS[spellInstance.abilityName]
+	if is_instance_of(spellInstance, ProjectileAbility):
 		spellInstance.init(spellData, aim_direction, global_position)
-	elif is_instance_of(spellInstance, AoeInstantSpell):
+	elif is_instance_of(spellInstance, AoeInstantAbility):
 		spellInstance.init(spellData, get_global_mouse_position())
 
 func _can_cast(elementCombo: Array[SpellsManager.ELEMENTS], cooldown: float) -> bool:
@@ -56,8 +57,8 @@ func _can_cast(elementCombo: Array[SpellsManager.ELEMENTS], cooldown: float) -> 
 	var remaining = _cooldowns[key] - Time.get_ticks_msec() / 1000.0
 	return remaining <= 0
 
-func _register_cooldown(spellName: String, cooldown: float) -> void:
-	SpellCooldownManager.set_cooldown(spellName, Time.get_ticks_msec() / 1000.0 + cooldown)
+func _register_cooldown(abilityName: String, cooldown: float) -> void:
+	SpellCooldownManager.set_cooldown(abilityName, Time.get_ticks_msec() / 1000.0 + cooldown)
 
 func get_remaining_cooldown(combo: Array[SpellsManager.ELEMENTS]) -> float:
 	var key = _combo_key(combo)

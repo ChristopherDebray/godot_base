@@ -21,9 +21,9 @@ func compute_desired_velocity(enemy: BaseEnemy, delta: float) -> Vector2:
 	var target := compute_target(enemy)
 	return (target - enemy.global_position).normalized() * enemy.SPEED[enemy.state]
 
-## @abstract: used to indicate if enemy can attack (distance, etc)
+## @abstract: used to indicate if enemy can attack (by default check if enemy is in range)
 func try_attack(enemy: BaseEnemy, delta: float) -> bool:
-	return false
+	return is_in_attack_range(enemy)
 
 ## @abstract: Returns true if the player is in range of attack
 func is_in_attack_range(enemy: BaseEnemy) -> bool:

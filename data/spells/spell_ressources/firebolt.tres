@@ -1,18 +1,17 @@
-[gd_resource type="Resource" script_class="SpellData" load_steps=4 format=3 uid="uid://duwdh0k37wgb5"]
+[gd_resource type="Resource" script_class="AbilityData" load_steps=3 format=3 uid="uid://duwdh0k37wgb5"]
 
-[ext_resource type="Script" uid="uid://diwutlct8ajdn" path="res://data/spells/spell_ressources/spell_data.gd" id="1_5frx1"]
-[ext_resource type="PackedScene" uid="uid://dhobulbu1frnr" path="res://scenes/spell_book/spell_scenes/firebolt.tscn" id="1_10ohq"]
-[ext_resource type="Resource" uid="uid://yd8ixi5k4xp6" path="res://data/spells/effect_ressources/freeze.tres" id="1_10qkg"]
+[ext_resource type="PackedScene" uid="uid://2ewejell8oks" path="res://scenes/spell_book/spell_scenes/firebolt.tscn" id="1_10ohq"]
+[ext_resource type="Script" uid="uid://dn3xcfj4pt4op" path="res://data/abilities/ability_data.gd" id="1_mfb84"]
 
 [resource]
-script = ExtResource("1_5frx1")
+script = ExtResource("1_mfb84")
 name = "firebolt"
-damage = 5.0
-aoe_damage = 0.0
 cooldown = 0.5
-effect = ExtResource("1_10qkg")
 magnitude = 1.0
 range = 30.0
-main_element = 1
+faction = "player"
+kind = 0
 scene = ExtResource("1_10ohq")
-metadata/_custom_type_script = "uid://diwutlct8ajdn"
+damage = 5.0
+aoe_damage = 0.0
+main_element = 1

@@ -30,7 +30,3 @@ func compute_desired_velocity(enemy: BaseEnemy, delta: float) -> Vector2:
 	move += perp * _strafe_dir * strafe_bias
 
 	return move.normalized() * enemy.speed
-
-## By default the archer will only attack if player is at range
-func try_attack(enemy: BaseEnemy, delta: float) -> bool:
-	return is_in_attack_range(enemy)

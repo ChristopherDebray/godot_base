@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 	active_effects = active_effects.filter(func(effect): return effect["remaining_time"] > 0)
 	update_fx_visual()
 
-func apply_elemental_damage(spellResource: SpellData, amount: float) -> void:
+func apply_elemental_damage(spellResource: AbilityData, amount: float) -> void:
 	if spellResource.main_element in immunity_elements:
 		print("Immune to damage of type", spellResource.name)
 		return
