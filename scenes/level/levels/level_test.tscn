@@ -45,14 +45,15 @@ tile_map_data = PackedByteArray("AAAJAAIABAAEAAAAAAAxAP//BAACAAAAAAAyAP//BAACAAA
 [node name="Player" parent="Players" index="0"]
 position = Vector2(620, 101)
 
-[node name="BaseEnemy" parent="Enemies" index="0" instance=ExtResource("3_2heyh")]
-position = Vector2(589, 217)
-patrol_points = NodePath("../../Paths/Path")
-initial_state = 3
-
-[node name="BaseEnemy2" parent="Enemies" index="1" instance=ExtResource("3_2heyh")]
+[node name="BaseEnemy2" parent="Enemies" index="0" instance=ExtResource("3_2heyh")]
 position = Vector2(24, 550)
 initial_state = 2
+is_zone_locked = false
+
+[node name="BaseEnemy" parent="Enemies" index="1" instance=ExtResource("3_2heyh")]
+position = Vector2(779, 246)
+patrol_points = NodePath("../../Paths/Path")
+initial_state = 3
 
 [node name="Box" parent="Objects" index="0" instance=ExtResource("2_5l38v")]
 position = Vector2(877, 367)

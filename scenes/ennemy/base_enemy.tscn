@@ -5,12 +5,13 @@
 
 [node name="BaseEnemy" instance=ExtResource("1_26sde")]
 script = ExtResource("2_7rgwx")
-turn_speed_deg = 660.0
+turn_speed_deg = 2000.0
 attack_cooldown = 2.0
 patrol_points = NodePath("")
 initial_state = 0
 behavior = null
 roam_radius = 200.0
+is_zone_locked = true
 health = 20.0
 metadata/_edit_vertical_guides_ = [-15.0, 15.0]
 metadata/_edit_horizontal_guides_ = [30.0]
@@ -42,6 +43,9 @@ rotation = -1.5708
 
 [node name="RayCast2D" type="RayCast2D" parent="Detection" index="0"]
 collision_mask = 5
+
+[node name="Muzzle" type="Marker2D" parent="." index="8"]
+position = Vector2(18, 0)
 
 [connection signal="body_entered" from="SpriteContainer/FieldView" to="." method="_on_field_view_body_entered"]
 [connection signal="body_exited" from="SpriteContainer/FieldView" to="." method="_on_field_view_body_exited"]

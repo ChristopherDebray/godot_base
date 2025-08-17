@@ -104,7 +104,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bp2nl"]
-radius = 95.021
+radius = 224.502
 
 [node name="Lightning" instance=ExtResource("1_7iq0p")]
 script = ExtResource("2_bp2nl")

@@ -12,6 +12,7 @@ func init(ability_data: AbilityData, aim_direction: Vector2, start_pos: Vector2)
 
 # Act as the parent on ready
 func setup_on_ready():
+	super._ready()
 	rotation = _dir_of_travel.angle()
 
 func _physics_process(delta: float) -> void:

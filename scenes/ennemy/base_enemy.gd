@@ -11,14 +11,18 @@ class_name BaseEnemy extends Damageable
 @onready var ray_cast_2d: RayCast2D = $Detection/RayCast2D
 @onready var field_view: Area2D = $SpriteContainer/FieldView
 @onready var attack_timer: Timer = $AttackTimer
+@onready var muzzle: Marker2D = $Muzzle
 
-@export var turn_speed_deg: float = 660.0 # FOV rotation speed (deg/sec)
+## FOV rotation speed (deg/sec)
+@export var turn_speed_deg: float = 2000.0
 
 @export var attack_cooldown: float = 2.0
 @export var patrol_points: NodePath
 @export var initial_state: STATE = STATE.IDLE
 @export var behavior: EnemyBehavior
 @export var roam_radius: float = 200.0
+## A non zone locked enemy will not go back to it's initial location after searching for the player
+@export var is_zone_locked: bool = true
 
 enum STATE {
 	IDLE,
@@ -150,7 +154,12 @@ func process_searching(delta: float):
 	if not nav_agent.is_navigation_finished():
 		return
 
-	if initial_state == STATE.IDLE:
+	
+	if initial_state == STATE.IDLE or initial_state == STATE.ROAMING:
+		if not is_zone_locked:
+			state = initial_state
+			_initial_position = global_position
+			return
 		state = STATE.RETURNING
 		return
 
@@ -215,7 +224,7 @@ func process_patrolling() -> void:
 func process_returning() -> void:
 	nav_agent.target_position = _initial_position
 	if nav_agent.is_navigation_finished() == true:
-		state = STATE.IDLE
+		state = initial_state
 
 ## @abstract
 func process_dead() -> void:
@@ -296,6 +305,10 @@ func _update_facing(delta: float) -> void:
 	# 4. Idle / return → keep initial rotation
 	if state == STATE.IDLE:
 		_rotate_node_towards(self, global_position + _initial_facing_direction, delta)
+
+func search_player():
+	_last_seen_pos = _player_ref.global_position
+	state = STATE.ATTACKING
 
 func _on_nav_agent_velocity_computed(safe_velocity: Vector2) -> void:
 	velocity = safe_velocity

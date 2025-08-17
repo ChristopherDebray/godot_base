@@ -38,17 +38,11 @@ func use_spell(active_elements: Array[SpellsManager.ELEMENTS], aim_direction: Ve
 	if not SpellCooldownManager.can_cast(active_elements):
 		return
 
-	var spellInstance = spell.scene.instantiate()
-	handle_spell_init(spellInstance, aim_direction)
-	get_tree().root.add_child(spellInstance)
+	if spell.kind == AbilityData.ABILITY_KIND.AOE:
+		SignalManager.use_ability.emit(spell, get_global_mouse_position(), global_position, AbilityManager.TARGET_TYPE.PLAYER)
+	elif spell.kind == AbilityData.ABILITY_KIND.PROJECTILE:
+		SignalManager.use_ability.emit(spell, aim_direction, global_position, AbilityManager.TARGET_TYPE.PLAYER)
 	_register_cooldown(spell.name, spell.cooldown)
-
-func handle_spell_init(spellInstance: BaseAbility, aim_direction: Vector2):
-	var spellData: AbilityData = SpellsManager.SPELLS[spellInstance.abilityName]
-	if is_instance_of(spellInstance, ProjectileAbility):
-		spellInstance.init(spellData, aim_direction, global_position)
-	elif is_instance_of(spellInstance, AoeInstantAbility):
-		spellInstance.init(spellData, get_global_mouse_position())
 
 func _can_cast(elementCombo: Array[SpellsManager.ELEMENTS], cooldown: float) -> bool:
 	var key = _combo_key(elementCombo)

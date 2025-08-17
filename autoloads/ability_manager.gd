@@ -1,0 +1,35 @@
+extends Node
+
+enum TARGET_TYPE { ENEMY, PLAYER, ALL }
+
+const COLLISION_MASKS = {
+	'TILES': 1,
+	'PLAYER': 3,
+	'NPC': 4,
+}
+
+const COLLISION_MASKS_GROUPS = {
+	TARGET_TYPE.ENEMY: [COLLISION_MASKS.TILES, COLLISION_MASKS.PLAYER],
+	TARGET_TYPE.PLAYER: [COLLISION_MASKS.TILES, COLLISION_MASKS.NPC],
+	TARGET_TYPE.ALL: [COLLISION_MASKS.TILES, COLLISION_MASKS.PLAYER, COLLISION_MASKS.NPC]
+}
+
+func _ready():
+	SignalManager.use_ability.connect(_on_use_ability)
+
+func _on_use_ability(data: AbilityData, target: Vector2, origin: Vector2, target_type: TARGET_TYPE):
+	if data == null or data.scene == null:
+		push_error("AbilityData invalid or missing scene: %s" % (data and data.id))
+		return null
+
+	var instance = data.scene.instantiate() as BaseAbility
+	instance.configure_masks(COLLISION_MASKS_GROUPS[target_type])
+
+	if is_instance_of(instance, ProjectileAbility):
+		instance.init(data, target, origin)
+	elif is_instance_of(instance, AoeInstantAbility):
+		instance.init(data, target)
+
+	get_tree().current_scene.add_child(instance)
+	
+	return instance

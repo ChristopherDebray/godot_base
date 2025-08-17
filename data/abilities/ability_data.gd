@@ -3,6 +3,7 @@ class_name AbilityData
 
 enum ABILITY_KIND { PROJECTILE, AOE, MELEE, HEAL, BUFF, DEBUFF }
 enum ABILITY_FACTION { PLAYER, ENEMY }
+
 @export var name: String
 @export var cooldown: float = 0.5
 ## Maginitude of the effect
