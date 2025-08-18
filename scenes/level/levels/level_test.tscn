@@ -57,6 +57,10 @@ initial_state = 3
 
 [node name="Box" parent="Objects" index="0" instance=ExtResource("2_5l38v")]
 position = Vector2(877, 367)
+defense = null
+speed = null
+immunity_elements = null
+resistence_elements = null
 
 [node name="Path" type="Node2D" parent="Paths" index="0"]
 

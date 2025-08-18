@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Damageable
 
 class_name Player
 
@@ -16,7 +16,6 @@ var input_to_element = {
 	"b_3_action": SpellsManager.ELEMENTS.WIND
 }
 
-const SPEED: float = 230.0
 const PROBE_SIZE = Vector2(50, 50)
 
 func _ready() -> void:
@@ -36,7 +35,7 @@ func get_movement_input() -> void:
 	# Returns a value from 0 to 1, depending on the "strength" used mostly for controllers
 	nv.x = Input.get_action_strength("right") - Input.get_action_strength("left")
 	nv.y = Input.get_action_strength("down") - Input.get_action_strength("up")
-	velocity = nv.normalized() * SPEED
+	velocity = nv.normalized() * speed
 
 func detect_action_inputs() -> void:
 	detect_interaction_inputs();

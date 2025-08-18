@@ -11,7 +11,12 @@ class_name EffectData
 @export var tick_rate: float
 @export var fx_sprite_frames: SpriteFrames
 
-func apply_tick(target: Damageable) -> void:
+func apply_tick(target: Damageable) -> Dictionary:
+	var result := {
+		"type": type,
+		"applied": {}  # ex: {"speed": +2.0}
+	}
+	
 	match type:
 		EffectsManager.EFFECT_TYPE.DAMAGE:
 			if characteristic == "health":
@@ -19,26 +24,22 @@ func apply_tick(target: Damageable) -> void:
 		EffectsManager.EFFECT_TYPE.CONTROL:
 			if name == "freeze":
 				target.freeze()
-		EffectsManager.EFFECT_TYPE.BUFF:
-			handle_characteristic_modification(
+				result.applied["freeze"] = 1
+		EffectsManager.EFFECT_TYPE.BUFF, EffectsManager.EFFECT_TYPE.DEBUFF:
+			var applied := handle_characteristic_modification(
 				target,
-				EffectsManager.EFFECT_TYPE.BUFF,
+				type,
 				value,
 				value_type,
 				characteristic
 			)
-		EffectsManager.EFFECT_TYPE.DEBUFF:
-			handle_characteristic_modification(
-				target,
-				EffectsManager.EFFECT_TYPE.DEBUFF,
-				value,
-				value_type,
-				characteristic
-			)
-		EffectsManager.EFFECT_TYPE.BUFF:
-			target.add_buff(characteristic, value)
+			# applied est 0.0 si la caractéristique n'est pas reconnue
+			if abs(applied) > 0.0:
+				result.applied[characteristic] = applied
 		_:
 			print("Effect type not handled:", type)
+	
+	return result
 
 func handle_characteristic_modification(
 	target: Damageable,
@@ -46,7 +47,7 @@ func handle_characteristic_modification(
 	value: float,
 	value_type: EffectsManager.EFFECT_VALUE_TYPE,
 	characteristic: String
-):
+) -> float:
 	var final_value = value
 
 	# Apply percentage logic
@@ -68,3 +69,5 @@ func handle_characteristic_modification(
 			target.modify_speed(final_value)
 		"defense":
 			target.modify_defense(final_value)
+	
+	return final_value

@@ -22,7 +22,6 @@ var _pending_masks: Array
 
 
 func configure_masks(masks: Array) -> void:
-	print(masks)
 	_pending_masks = masks
 
 func _ready():
@@ -54,7 +53,6 @@ func _on_area_of_effect_body_entered(body: Node2D) -> void:
 	on_aoe_hit()
 
 func on_aoe_hit():
-	print(area_of_effect.get_overlapping_bodies())
 	for receiver in area_of_effect.get_overlapping_bodies():
 		if receiver is Damageable:
 			apply_damage_and_effect(receiver, aoe_damage)

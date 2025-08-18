@@ -35,7 +35,6 @@ animations = [{
 [node name="Testemy" instance=ExtResource("1_51n66")]
 script = ExtResource("2_yxw5o")
 behavior = SubResource("Resource_lsexk")
-is_zone_locked = true
 health = 40.0
 speed = 90.0
 
