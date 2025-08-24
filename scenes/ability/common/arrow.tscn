@@ -1,53 +1,18 @@
-[gd_scene load_steps=12 format=3 uid="uid://bmgmuckt747un"]
+[gd_scene load_steps=7 format=3 uid="uid://bmgmuckt747un"]
 
 [ext_resource type="PackedScene" uid="uid://blec2pyy0f08v" path="res://scenes/ability/base_ability.tscn" id="1_n1ytv"]
 [ext_resource type="Script" uid="uid://bjw6kfsop2vd0" path="res://scenes/ability/common/arrow.gd" id="2_sxjem"]
-[ext_resource type="Texture2D" uid="uid://b1qrl86dmbdcs" path="res://assets/spells/Wind Projectile.png" id="3_y2mxl"]
+[ext_resource type="Texture2D" uid="uid://da4ehgp7k5ijc" path="res://assets/spells/arrow.png" id="3_y2mxl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6jyfm"]
 atlas = ExtResource("3_y2mxl")
 region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7tvqe"]
-atlas = ExtResource("3_y2mxl")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mpudr"]
-atlas = ExtResource("3_y2mxl")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_55hlb"]
-atlas = ExtResource("3_y2mxl")
-region = Rect2(0, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eqxtu"]
-atlas = ExtResource("3_y2mxl")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_loudi"]
-atlas = ExtResource("3_y2mxl")
-region = Rect2(64, 32, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vl6u5"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6jyfm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7tvqe")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mpudr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_55hlb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eqxtu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_loudi")
 }],
 "loop": true,
 "name": &"repeat",
@@ -55,7 +20,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y2mxl"]
-height = 20.0
+radius = 2.0
+height = 22.0
 
 [node name="Arrow" instance=ExtResource("1_n1ytv")]
 script = ExtResource("2_sxjem")
@@ -71,7 +37,7 @@ frame_progress = 0.889914
 collision_mask = 21
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
-position = Vector2(-1, 0)
+position = Vector2(1, 0)
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_y2mxl")
 

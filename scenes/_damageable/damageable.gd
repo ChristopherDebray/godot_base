@@ -104,6 +104,7 @@ func apply_effect(effect: EffectData) -> void:
 
 # Can be supercharged
 func on_death():
+	SignalManager.died.emit(self)
 	queue_free()
 
 func update_fx_visual():

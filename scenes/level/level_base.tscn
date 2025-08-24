@@ -171,6 +171,8 @@ tile_set = SubResource("TileSet_bpyhd")
 
 [node name="Player" parent="Players" instance=ExtResource("4_v8w54")]
 
+[node name="SpawnPoints" type="Node2D" parent="."]
+
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Objects" type="Node2D" parent="."]
