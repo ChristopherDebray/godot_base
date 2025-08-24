@@ -59,6 +59,7 @@ position = Vector2(796, 80)
 position = Vector2(1177, 360)
 
 [node name="Box" parent="Objects" index="0" instance=ExtResource("2_5l38v")]
+process_mode = 0
 position = Vector2(877, 367)
 
 [node name="Path" type="Node2D" parent="Paths" index="0"]

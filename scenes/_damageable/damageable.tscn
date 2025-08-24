@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cdoqf6w0fcfew" path="res://scenes/_damageable/damageable.gd" id="1_25i3q"]
 
 [node name="Damagable" type="CharacterBody2D"]
+process_mode = 1
 collision_layer = 24
 collision_mask = 9
 script = ExtResource("1_25i3q")

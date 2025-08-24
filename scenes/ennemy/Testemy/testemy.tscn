@@ -33,6 +33,7 @@ animations = [{
 }]
 
 [node name="Testemy" instance=ExtResource("1_51n66")]
+process_mode = 0
 script = ExtResource("2_yxw5o")
 behavior = SubResource("Resource_lsexk")
 health = 40.0

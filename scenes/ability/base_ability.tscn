@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ci4tbsten4can" path="res://scenes/ability/base_ability.gd" id="1_2mqch"]
 
 [node name="BaseAbility" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_2mqch")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
