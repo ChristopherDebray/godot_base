@@ -26,6 +26,13 @@ SpellsManager="*res://autoloads/spells_manager.gd"
 EffectsManager="*res://autoloads/effects_manager.gd"
 AbilityManager="*res://autoloads/ability_manager.gd"
 
+[file_customization]
+
+folder_colors={
+"res://assets/": "blue",
+"res://autoloads/": "green"
+}
+
 [input]
 
 up={

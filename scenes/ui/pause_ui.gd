@@ -1,5 +1,21 @@
 extends Control
 
+@onready var ability_list: VBoxContainer = $MarginContainer/TabContainer/Spells/MarginContainer/VScrollBar/AbilityList
+
+@export var sheet: Texture2D
+@export var cell_size: Vector2i = Vector2i(32, 32)
+
+var _cache: Dictionary = {}
+
+const ABILITY_DETAIL = preload("res://scenes/ui/ability_detail.tscn")
+
+func _ready() -> void:
+	var ability_datas = SpellsManager.SPELLS.values()
+	for ability_data in ability_datas:
+		var ability_detail_ui = ABILITY_DETAIL.instantiate()
+		ability_detail_ui.ability_data = ability_data
+		ability_list.add_child(ability_detail_ui)
+
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
 		var is_paused = get_tree().paused

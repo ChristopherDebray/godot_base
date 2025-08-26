@@ -37,7 +37,6 @@ process_mode = 0
 script = ExtResource("2_yxw5o")
 behavior = SubResource("Resource_lsexk")
 health = 40.0
-speed = 90.0
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(-7, 0)

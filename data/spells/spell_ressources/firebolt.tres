@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="AbilityData" load_steps=3 format=3 uid="uid://duwdh0k37wgb5"]
+[gd_resource type="Resource" script_class="SpellRessource" load_steps=3 format=3 uid="uid://cskk5gga4ssdl"]
 
 [ext_resource type="PackedScene" uid="uid://2ewejell8oks" path="res://scenes/spell_book/spell_scenes/firebolt.tscn" id="1_10ohq"]
-[ext_resource type="Script" uid="uid://dn3xcfj4pt4op" path="res://data/abilities/ability_data.gd" id="1_mfb84"]
+[ext_resource type="Script" uid="uid://cslt7nnwgts0o" path="res://data/spells/spell_ressources/spell_ressource.gd" id="2_ojw01"]
 
 [resource]
-script = ExtResource("1_mfb84")
+script = ExtResource("2_ojw01")
+elements = Array[int]([1])
 name = "firebolt"
 cooldown = 0.5
 magnitude = 1.0
@@ -15,3 +16,5 @@ scene = ExtResource("1_10ohq")
 damage = 5.0
 aoe_damage = 0.0
 main_element = 1
+description = "boule de feu"
+metadata/_custom_type_script = "uid://cslt7nnwgts0o"

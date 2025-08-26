@@ -1,0 +1,99 @@
+[gd_scene load_steps=16 format=3 uid="uid://cvqmwlcvxlteu"]
+
+[ext_resource type="PackedScene" uid="uid://d31lqpkcyneij" path="res://scenes/ennemy/base_enemy.tscn" id="1_lmff4"]
+[ext_resource type="Script" uid="uid://dsouchen7w363" path="res://scenes/ennemy/Kamikaze/kamikaze.gd" id="2_82ftp"]
+[ext_resource type="Texture2D" uid="uid://dwtg4hm8uihu4" path="res://assets/characters/boomer_cute.png" id="3_h07k7"]
+[ext_resource type="Script" uid="uid://brbi5q8wnxxps" path="res://scenes/ennemy/behaviors/kamikaze_behavior.gd" id="3_xgp0h"]
+
+[sub_resource type="Resource" id="Resource_m3a88"]
+script = ExtResource("3_xgp0h")
+preferred_range = 30.0
+stop_range = 30.0
+strafe_bias = 0.6
+jitter = 0.25
+metadata/_custom_type_script = "uid://brbi5q8wnxxps"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xgp0h"]
+size = Vector2(23, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgp0h"]
+atlas = ExtResource("3_h07k7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3a88"]
+atlas = ExtResource("3_h07k7")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h52g0"]
+atlas = ExtResource("3_h07k7")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1kho"]
+atlas = ExtResource("3_h07k7")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebusg"]
+atlas = ExtResource("3_h07k7")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6mq5y"]
+atlas = ExtResource("3_h07k7")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3wpl"]
+atlas = ExtResource("3_h07k7")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yd2f0"]
+atlas = ExtResource("3_h07k7")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yij76"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgp0h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3a88")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h52g0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1kho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebusg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6mq5y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3wpl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yd2f0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Kamikaze" instance=ExtResource("1_lmff4")]
+script = ExtResource("2_82ftp")
+behavior = SubResource("Resource_m3a88")
+health = 10.0
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0.5, 7)
+shape = SubResource("RectangleShape2D_xgp0h")
+
+[node name="AnimatedSprite2D" parent="SpriteContainer" index="0"]
+sprite_frames = SubResource("SpriteFrames_yij76")
+
+[node name="AttackTimer" parent="." index="4"]
+wait_time = 2.0
+one_shot = false
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

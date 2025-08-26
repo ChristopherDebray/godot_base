@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="AbilityData" load_steps=3 format=3 uid="uid://dn4qicmijhx2c"]
+
+[ext_resource type="Script" uid="uid://dn3xcfj4pt4op" path="res://data/abilities/ability_data.gd" id="1_krbcr"]
+[ext_resource type="PackedScene" uid="uid://b0wdbe2ps21qj" path="res://scenes/ability/enemy/explosion.tscn" id="1_n36bi"]
+
+[resource]
+script = ExtResource("1_krbcr")
+name = "explosion"
+cooldown = 2.0
+magnitude = 1.0
+range = 160.0
+faction = 0
+kind = 1
+scene = ExtResource("1_n36bi")
+damage = 0.0
+aoe_damage = 25.0
+main_element = 1
+description = "An explosion"
+metadata/_custom_type_script = "uid://dn3xcfj4pt4op"

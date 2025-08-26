@@ -2,7 +2,7 @@ extends Resource
 class_name AbilityData
 
 enum ABILITY_KIND { PROJECTILE, AOE, MELEE, HEAL, BUFF, DEBUFF }
-enum ABILITY_FACTION { PLAYER, ENEMY }
+enum ABILITY_FACTION { PLAYER, ENEMY, ALL }
 
 @export var name: String
 @export var cooldown: float = 0.5
@@ -18,3 +18,4 @@ enum ABILITY_FACTION { PLAYER, ENEMY }
 @export var main_element: SpellsManager.ELEMENTS
 ## Optional, dot, slow, etc
 @export var effect: EffectData
+@export var description: String

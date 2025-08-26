@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bm3vsdux3ux7u" path="res://scenes/level/level_base.tscn" id="1_1btmw"]
 [ext_resource type="PackedScene" uid="uid://bttpqkr228ecr" path="res://scenes/objects/box.tscn" id="2_5l38v"]
 [ext_resource type="PackedScene" uid="uid://b0qkm4gmitvnk" path="res://scenes/_spawner/Spawner.tscn" id="4_2uvmr"]
-[ext_resource type="PackedScene" uid="uid://nepya8lc2ghl" path="res://scenes/ennemy/Testemy/testemy.tscn" id="4_8kgbu"]
+[ext_resource type="PackedScene" uid="uid://cvqmwlcvxlteu" path="res://scenes/ennemy/Kamikaze/kamikaze.tscn" id="4_8kgbu"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2heyh"]
 vertices = PackedVector2Array(1117.49, 99.1562, 32, 32, 1889.04, 100.844, 1565.49, 102.156, 1313.04, 100.844, 3552.98, 32, 2141.49, 102.156, 865.039, 97.8438, 670.062, 161, 868.93, 222.156, 661.883, 191.531, 661.883, 130.469, 3552.01, 1824.95, 2139.52, 223.844, 32, 1820.04, 1892.93, 225.156, 1115.52, 220.844, 1316.93, 225.156, 1563.52, 223.844, 639.531, 213.883, 609, 222.062, 578.469, 213.883, 556.117, 191.531, 547.938, 161, 556.117, 130.469, 578.469, 108.117, 639.531, 108.117, 609, 99.9375)

@@ -56,6 +56,8 @@ var roaming_target_position: Vector2
 var roam_delay: float = 2.0
 var _roam_timer: float = 0.0
 
+var can_move: bool = true
+
 func _ready() -> void:
 	setup()
 	call_deferred("late_setup")
@@ -231,6 +233,11 @@ func process_dead() -> void:
 	pass
 
 func _update_navigation() -> void:
+	if not can_move:
+		velocity = Vector2.ZERO
+		nav_agent.set_velocity(Vector2.ZERO) # évite les warnings
+		return
+
 	var next_vel := Vector2.ZERO
 	if behavior and state == STATE.ATTACKING:
 		# si possible, ton behavior devrait fournir un point-cible à mettre dans nav_agent.target_position
@@ -309,6 +316,18 @@ func _update_facing(delta: float) -> void:
 func search_player():
 	_last_seen_pos = _player_ref.global_position
 	state = STATE.ATTACKING
+
+func _modulate_red(enable: bool) -> void:
+	if enable:
+		animated_sprite_2d.modulate = Color(1, 0.3, 0.3)  # rouge
+	else:
+		animated_sprite_2d.modulate = Color(1, 1, 1)
+
+func _pulse_red(duration: float = 2.0) -> void:
+	var tw = create_tween()
+	tw.set_loops(ceil(duration / 0.5)) # nombre de cycles
+	tw.tween_property(animated_sprite_2d, "modulate", Color(1,0.3,0.3), 0.25).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tw.tween_property(animated_sprite_2d, "modulate", Color(1,1,1), 0.25).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 
 func _on_nav_agent_velocity_computed(safe_velocity: Vector2) -> void:
 	velocity = safe_velocity

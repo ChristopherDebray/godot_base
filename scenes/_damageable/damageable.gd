@@ -4,7 +4,7 @@ class_name Damageable
 
 @export var health: float = 10.0
 @export var defense: float = 10.0
-@export var speed: float = 10.0
+@export var speed: float = 90.0
 @export var immunity_effects: Array[EffectsManager.EFFECTS] = []
 @export var immunity_elements: Array[SpellsManager.ELEMENTS] = []
 @export var resistence_elements: Array[SpellsManager.ELEMENTS] = []
