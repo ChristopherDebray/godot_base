@@ -1,14 +1,79 @@
-[gd_scene load_steps=13 format=3 uid="uid://fvur3m50uam0"]
+[gd_scene load_steps=23 format=3 uid="uid://fvur3m50uam0"]
 
 [ext_resource type="Script" uid="uid://btp5wm141txgi" path="res://scenes/player/player.gd" id="1_1nli5"]
 [ext_resource type="PackedScene" uid="uid://b2odxanbtxty4" path="res://scenes/_damageable/damageable.tscn" id="1_75vfm"]
-[ext_resource type="Texture2D" uid="uid://cgt4jpv0c7c1r" path="res://assets/images/caracters/survivor1_gun.png" id="1_t0n43"]
+[ext_resource type="Texture2D" uid="uid://dpnrd0bglhp4g" path="res://assets/characters/shadow.png" id="3_0owmy"]
 [ext_resource type="Texture2D" uid="uid://erkh2j4ujetw" path="res://assets/images/lights/2d_light.webp" id="3_72mr7"]
+[ext_resource type="Texture2D" uid="uid://0rnesjayccpu" path="res://assets/characters/mage_cute.png" id="3_75vfm"]
 [ext_resource type="Texture2D" uid="uid://b4rvoo21nr8kj" path="res://assets/sprite_sheets/elements_icons.png" id="4_lvxji"]
 [ext_resource type="PackedScene" uid="uid://cpt6fg5knswto" path="res://scenes/spell_book/spell_book.tscn" id="5_p47bc"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_akc6e"]
-radius = 15.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gtgg"]
+atlas = ExtResource("3_75vfm")
+region = Rect2(0, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h17s1"]
+atlas = ExtResource("3_75vfm")
+region = Rect2(32, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_je7p5"]
+atlas = ExtResource("3_75vfm")
+region = Rect2(64, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fm80t"]
+atlas = ExtResource("3_75vfm")
+region = Rect2(96, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gx1jg"]
+atlas = ExtResource("3_75vfm")
+region = Rect2(128, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugbui"]
+atlas = ExtResource("3_75vfm")
+region = Rect2(160, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcs02"]
+atlas = ExtResource("3_75vfm")
+region = Rect2(192, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myrg7"]
+atlas = ExtResource("3_75vfm")
+region = Rect2(224, 0, 32, 34)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kvlxm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gtgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h17s1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_je7p5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fm80t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gx1jg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugbui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcs02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myrg7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_75vfm"]
+size = Vector2(24, 21)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p47bc"]
 atlas = ExtResource("4_lvxji")
@@ -47,25 +112,31 @@ animations = [{
 }]
 
 [node name="Player" groups=["player"] instance=ExtResource("1_75vfm")]
-collision_layer = 20
+collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_1nli5")
 health = 100.0
-speed = 230.0
+speed = 190.0
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+[node name="Shadow" type="Sprite2D" parent="." index="1"]
+position = Vector2(11, 14)
+texture = ExtResource("3_0owmy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
 position = Vector2(10, 0)
-texture = ExtResource("1_t0n43")
+sprite_frames = SubResource("SpriteFrames_kvlxm")
 
-[node name="CollisionShape2D" parent="." index="2"]
-shape = SubResource("CircleShape2D_akc6e")
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2(10, 6.5)
+shape = SubResource("RectangleShape2D_75vfm")
 
-[node name="CameraPlayer" type="Camera2D" parent="." index="4"]
+[node name="CameraPlayer" type="Camera2D" parent="." index="5"]
 limit_left = 0
 limit_top = 0
 limit_smoothed = true
 
-[node name="PointLight2D" type="PointLight2D" parent="." index="5"]
+[node name="PointLight2D" type="PointLight2D" parent="." index="6"]
+visible = false
 scale = Vector2(1.67188, 1.90558)
 color = Color(0.560955, 0.560955, 0.560955, 0.478431)
 energy = 0.4
@@ -76,25 +147,25 @@ shadow_filter_smooth = 5.0
 texture = ExtResource("3_72mr7")
 height = 30.0
 
-[node name="FirstElement" type="AnimatedSprite2D" parent="." index="6"]
+[node name="FirstElement" type="AnimatedSprite2D" parent="." index="7"]
 visible = false
 position = Vector2(-10, -32)
 scale = Vector2(1.4, 1.4)
 sprite_frames = SubResource("SpriteFrames_wegus")
 
-[node name="SecondElement" type="AnimatedSprite2D" parent="." index="7"]
+[node name="SecondElement" type="AnimatedSprite2D" parent="." index="8"]
 visible = false
 position = Vector2(10, -32)
 scale = Vector2(1.4, 1.4)
 sprite_frames = SubResource("SpriteFrames_wegus")
 
-[node name="TimerFirstElement" type="Timer" parent="." index="8"]
+[node name="TimerFirstElement" type="Timer" parent="." index="9"]
 wait_time = 3.0
 one_shot = true
 
-[node name="TimerSecondElement" type="Timer" parent="." index="9"]
+[node name="TimerSecondElement" type="Timer" parent="." index="10"]
 wait_time = 3.0
 one_shot = true
 
-[node name="SpellBook" parent="." index="10" instance=ExtResource("5_p47bc")]
+[node name="SpellBook" parent="." index="11" instance=ExtResource("5_p47bc")]
 position = Vector2(24, 0)

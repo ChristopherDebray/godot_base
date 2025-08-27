@@ -8,7 +8,10 @@ class_name Player
 @onready var timer_first_element: Timer = $TimerFirstElement
 @onready var timer_second_element: Timer = $TimerSecondElement
 @onready var spell_book: Node2D = $SpellBook
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
+var run_anim_name := "default" 
+var idle_frame_index := 1
 var active_elements: Array[int] = []
 var input_to_element = {
 	"x_1_action": SpellsManager.ELEMENTS.WATER,
@@ -28,7 +31,29 @@ func _physics_process(_delta: float) -> void:
 	get_movement_input()
 	detect_action_inputs()
 	move_and_slide()
-	rotation = velocity.angle()
+	
+	_update_facing()
+	_update_anim()
+
+func _update_facing() -> void:
+	var aim_dir := get_aim_direction()
+
+	if aim_dir.x < -0.05:
+		animated_sprite_2d.flip_h = true
+	elif aim_dir.x > 0.05:
+		animated_sprite_2d.flip_h = false
+
+func _update_anim() -> void:
+	# seuil pour éviter de “jouer/arrêter” quand la vitesse est quasi nulle
+	var moving := velocity.length_squared() > 1.0
+
+	if moving:
+		if animated_sprite_2d.animation != run_anim_name or !animated_sprite_2d.is_playing():
+			animated_sprite_2d.play(run_anim_name)
+	else:
+		if animated_sprite_2d.is_playing():
+			animated_sprite_2d.stop()
+		animated_sprite_2d.frame = idle_frame_index
 
 func get_movement_input() -> void:
 	var nv: Vector2 = Vector2.ZERO

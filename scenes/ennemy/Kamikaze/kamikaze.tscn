@@ -14,7 +14,7 @@ jitter = 0.25
 metadata/_custom_type_script = "uid://brbi5q8wnxxps"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xgp0h"]
-size = Vector2(23, 20)
+size = Vector2(27, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xgp0h"]
 atlas = ExtResource("3_h07k7")
@@ -82,14 +82,21 @@ animations = [{
 
 [node name="Kamikaze" instance=ExtResource("1_lmff4")]
 script = ExtResource("2_82ftp")
+turn_speed_deg = 3000.0
 behavior = SubResource("Resource_m3a88")
+walk_anim_name = "default"
+idle_frame_index = 0
 health = 10.0
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(0.5, 7)
+position = Vector2(0.5, 8)
 shape = SubResource("RectangleShape2D_xgp0h")
 
-[node name="AnimatedSprite2D" parent="SpriteContainer" index="0"]
+[node name="Shadow" parent="SpriteContainer" index="0"]
+position = Vector2(1, 16)
+
+[node name="AnimatedSprite2D" parent="SpriteContainer" index="1"]
+scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_yij76")
 
 [node name="AttackTimer" parent="." index="4"]

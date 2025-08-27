@@ -1,0 +1,105 @@
+[gd_scene load_steps=16 format=3 uid="uid://nepya8lc2ghl"]
+
+[ext_resource type="PackedScene" uid="uid://d31lqpkcyneij" path="res://scenes/ennemy/base_enemy.tscn" id="1_hep8r"]
+[ext_resource type="Script" uid="uid://dk2qjrts0okr0" path="res://scenes/ennemy/Skelleton/skelleton.gd" id="2_tssl6"]
+[ext_resource type="Script" uid="uid://bugmb51tkuwk" path="res://scenes/ennemy/behaviors/archer_behavior.gd" id="3_5tg1x"]
+[ext_resource type="Texture2D" uid="uid://iknyhqq2qtj4" path="res://assets/characters/skelleton_cute.png" id="4_hep8r"]
+
+[sub_resource type="Resource" id="Resource_lsexk"]
+script = ExtResource("3_5tg1x")
+preferred_range = 160.0
+stop_range = 120.0
+strafe_bias = 0.6
+jitter = 0.25
+metadata/_custom_type_script = "uid://bugmb51tkuwk"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tssl6"]
+size = Vector2(27, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tg1x"]
+atlas = ExtResource("4_hep8r")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58n7e"]
+atlas = ExtResource("4_hep8r")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vv7fs"]
+atlas = ExtResource("4_hep8r")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bh85u"]
+atlas = ExtResource("4_hep8r")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aypgb"]
+atlas = ExtResource("4_hep8r")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tw5ek"]
+atlas = ExtResource("4_hep8r")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edokq"]
+atlas = ExtResource("4_hep8r")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5bey"]
+atlas = ExtResource("4_hep8r")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4gsa1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5tg1x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_58n7e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vv7fs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bh85u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aypgb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tw5ek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_edokq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5bey")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Skelleton" instance=ExtResource("1_hep8r")]
+process_mode = 0
+script = ExtResource("2_tssl6")
+turn_speed_deg = 3000.0
+behavior = SubResource("Resource_lsexk")
+walk_anim_name = "default"
+idle_frame_index = 0
+health = 40.0
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-3.5, 6)
+shape = SubResource("RectangleShape2D_tssl6")
+
+[node name="Shadow" parent="SpriteContainer" index="0"]
+position = Vector2(-3, 13)
+
+[node name="AnimatedSprite2D" parent="SpriteContainer" index="1"]
+position = Vector2(-3, -3)
+scale = Vector2(1.2, 1.2)
+sprite_frames = SubResource("SpriteFrames_4gsa1")
+
+[node name="Muzzle" parent="." index="8"]
+position = Vector2(19, 0)

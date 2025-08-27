@@ -1,26 +1,34 @@
-[gd_scene load_steps=3 format=3 uid="uid://d31lqpkcyneij"]
+[gd_scene load_steps=4 format=3 uid="uid://d31lqpkcyneij"]
 
 [ext_resource type="PackedScene" uid="uid://b2odxanbtxty4" path="res://scenes/_damageable/damageable.tscn" id="1_26sde"]
 [ext_resource type="Script" uid="uid://ck5ra04kx3r6w" path="res://scenes/ennemy/base_enemy.gd" id="2_7rgwx"]
+[ext_resource type="Texture2D" uid="uid://dpnrd0bglhp4g" path="res://assets/characters/shadow.png" id="3_f4ai1"]
 
 [node name="BaseEnemy" instance=ExtResource("1_26sde")]
 script = ExtResource("2_7rgwx")
-turn_speed_deg = 2000.0
+turn_speed_deg = 3000.0
 attack_cooldown = 2.0
 patrol_points = NodePath("")
-initial_state = 0
+initial_state = 2
 behavior = null
 roam_radius = 200.0
 is_zone_locked = true
+walk_anim_name = "default"
+idle_frame_index = 0
 health = 20.0
 metadata/_edit_vertical_guides_ = [-15.0, 15.0]
 metadata/_edit_horizontal_guides_ = [30.0]
 
 [node name="SpriteContainer" type="Node2D" parent="." index="3"]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteContainer" index="0"]
+[node name="Shadow" type="Sprite2D" parent="SpriteContainer" index="0"]
+position = Vector2(0, 18)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("3_f4ai1")
 
-[node name="FieldView" type="Area2D" parent="SpriteContainer" index="1"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteContainer" index="1"]
+
+[node name="FieldView" type="Area2D" parent="SpriteContainer" index="2"]
 collision_layer = 0
 collision_mask = 4
 

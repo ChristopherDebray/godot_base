@@ -14,7 +14,7 @@ class_name BaseEnemy extends Damageable
 @onready var muzzle: Marker2D = $Muzzle
 
 ## FOV rotation speed (deg/sec)
-@export var turn_speed_deg: float = 2000.0
+@export var turn_speed_deg: float = 3000.0
 
 @export var attack_cooldown: float = 2.0
 @export var patrol_points: NodePath
@@ -23,6 +23,8 @@ class_name BaseEnemy extends Damageable
 @export var roam_radius: float = 200.0
 ## A non zone locked enemy will not go back to it's initial location after searching for the player
 @export var is_zone_locked: bool = true
+@export var walk_anim_name := "default"
+@export var idle_frame_index := 0
 
 enum STATE {
 	IDLE,
@@ -82,7 +84,9 @@ func _physics_process(delta: float) -> void:
 	_handle_player_detection()
 	_update_action_by_state(delta)
 	_update_navigation()
-	_update_facing(delta)  
+	_update_facing(delta)
+	_update_sprite_facing()
+	_update_sprite_anim()
 
 ## Set the state and next position based on player _last_seen_pos and if the player is detected or not
 func _handle_player_detection():
@@ -287,31 +291,49 @@ func _rotate_node_towards(node: Node2D, target: Vector2, delta: float) -> void:
 func _update_facing(delta: float) -> void:
 	# 1. Combat, turns to player
 	if state == STATE.ATTACKING and _player_in_fov and _check_raycast_to_player():
-		_rotate_node_towards(self, _player_ref.global_position, delta)
+		_rotate_node_towards(field_view, _player_ref.global_position, delta)
 		return
 	
 	# 2. Search turns to last_seen_pos
 	if state == STATE.SEARCHING:
-		_rotate_node_towards(self, _last_seen_pos, delta)
+		_rotate_node_towards(field_view, _last_seen_pos, delta)
 		return
 	
 	if state == STATE.RETURNING:
-		_rotate_node_towards(self, _initial_position, delta)
+		_rotate_node_towards(field_view, _initial_position, delta)
 		return
 
 	# 3. Patrol rotates toward the next point
 	if state == STATE.PATROLLING and _waypoints.size() > 0:
 		var target = _waypoints[_current_wp - 1] if _current_wp > 0 else _waypoints[0]
-		_rotate_node_towards(self, target, delta)
+		_rotate_node_towards(field_view, target, delta)
 		return
 	
 	if state == STATE.ROAMING:
-		_rotate_node_towards(self, roaming_target_position, delta)
+		_rotate_node_towards(field_view, roaming_target_position, delta)
 		return
 	
 	# 4. Idle / return → keep initial rotation
 	if state == STATE.IDLE:
-		_rotate_node_towards(self, global_position + _initial_facing_direction, delta)
+		_rotate_node_towards(field_view, global_position + _initial_facing_direction, delta)
+
+func _update_sprite_facing() -> void:
+	# flip uniquement en X, basé sur velocity
+	if velocity.x < -0.05:
+		animated_sprite_2d.flip_h = true
+	elif velocity.x > 0.05:
+		animated_sprite_2d.flip_h = false
+
+func _update_sprite_anim() -> void:
+	var moving := velocity.length_squared() > 1.0
+
+	if moving:
+		if animated_sprite_2d.animation != walk_anim_name or not animated_sprite_2d.is_playing():
+			animated_sprite_2d.play(walk_anim_name)
+	else:
+		if animated_sprite_2d.is_playing():
+			animated_sprite_2d.stop()
+		animated_sprite_2d.frame = idle_frame_index
 
 func search_player():
 	_last_seen_pos = _player_ref.global_position

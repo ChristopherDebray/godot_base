@@ -80,5 +80,5 @@ position = Vector2(828, 251)
 enemy_scene = ExtResource("4_8kgbu")
 player = NodePath("../Players/Player")
 spawn_points_container = NodePath("../SpawnPoints")
-total_to_spawn = 4
-max_alive_at_once = 4
+total_to_spawn = 1
+max_alive_at_once = 1
