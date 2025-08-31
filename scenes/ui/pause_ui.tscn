@@ -55,9 +55,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 100
+theme_override_constants/margin_left = 140
 theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 100
+theme_override_constants/margin_right = 140
 theme_override_constants/margin_bottom = 30
 
 [node name="VBoxContainer4" type="VBoxContainer" parent="MarginContainer/TabContainer/Options/MarginContainer"]
