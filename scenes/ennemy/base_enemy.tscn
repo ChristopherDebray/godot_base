@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dpnrd0bglhp4g" path="res://assets/characters/shadow.png" id="3_f4ai1"]
 
 [node name="BaseEnemy" instance=ExtResource("1_26sde")]
+collision_mask = 137
 script = ExtResource("2_7rgwx")
 turn_speed_deg = 3000.0
 attack_cooldown = 2.0
