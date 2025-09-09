@@ -25,6 +25,7 @@ SpellCooldownManager="*res://autoloads/spell_cooldown_manager.gd"
 SpellsManager="*res://autoloads/spells_manager.gd"
 EffectsManager="*res://autoloads/effects_manager.gd"
 AbilityManager="*res://autoloads/ability_manager.gd"
+TargetManager="*res://autoloads/target_manager.gd"
 
 [file_customization]
 

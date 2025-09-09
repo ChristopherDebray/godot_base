@@ -7,5 +7,5 @@ func _do_attack(delta: float) -> bool:
 	var target = _player_ref.global_position
 	var origin = muzzle.global_position
 	var direction = origin.direction_to(target)
-	SignalManager.use_ability.emit(ARROW_DATA, direction, origin, AbilityManager.TARGET_TYPE.ENEMY)
+	SignalManager.use_ability.emit(ARROW_DATA, direction, origin, current_attack_target_type)
 	return true

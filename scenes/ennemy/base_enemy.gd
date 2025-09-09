@@ -47,11 +47,12 @@ var _waypoints: Array = []
 var _current_wp: int = 0
 
 var _player_ref: Player
+var _target_ref: Damageable
 
 var _initial_facing_direction: Vector2
 var _initial_position: Vector2
 
-var _player_in_fov: bool = false
+var _target_in_fov: bool = false
 var _last_seen_pos: Vector2 = Vector2.ZERO
 
 var roaming_target_position: Vector2
@@ -71,6 +72,9 @@ func setup():
 	_initial_facing_direction = animated_sprite_2d.global_transform.x.normalized()
 	_initial_position = global_position
 	_create_wp()
+	set_initial_attack_target_type(AbilityManager.TARGET_TYPE.ENEMY)
+	set_current_attack_target_type(AbilityManager.TARGET_TYPE.ENEMY)
+	set_current_detection_type(TargetManager.TARGET_TYPE.ENEMY, field_view)
 
 ## A deffered setup for elements that need to be loaded before it
 func late_setup():
@@ -90,7 +94,7 @@ func _physics_process(delta: float) -> void:
 
 ## Set the state and next position based on player _last_seen_pos and if the player is detected or not
 func _handle_player_detection():
-	if not _player_in_fov:
+	if not _target_in_fov:
 		if state == STATE.ATTACKING:
 			state = STATE.SEARCHING
 			set_nav_to_position(_last_seen_pos)
@@ -108,7 +112,7 @@ func _handle_player_detection():
 
 ## Checks if user is in pov / field_view with overlaps_body, body_entered with area isn't enough
 func _refresh_fov_poll() -> void:
-	_player_in_fov = field_view.overlaps_body(_player_ref)
+	_target_in_fov = field_view.overlaps_body(_player_ref)
 
 ## Set the raycast to point to the player and check if there is no obstacle between
 ## It is only used when player is on fov to avoid too many recalculation
@@ -290,7 +294,7 @@ func _rotate_node_towards(node: Node2D, target: Vector2, delta: float) -> void:
 
 func _update_facing(delta: float) -> void:
 	# 1. Combat, turns to player
-	if state == STATE.ATTACKING and _player_in_fov and _check_raycast_to_player():
+	if state == STATE.ATTACKING and _target_in_fov and _check_raycast_to_player():
 		_rotate_node_towards(field_view, _player_ref.global_position, delta)
 		return
 	
