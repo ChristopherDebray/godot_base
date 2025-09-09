@@ -84,7 +84,7 @@ animations = [{
 [resource]
 script = ExtResource("1_u4o5x")
 name = "burn"
-name_enum = 0
+name_enum = 1
 value = 2.0
 value_type = 0
 type = 3

@@ -18,4 +18,5 @@ damage = 0.0
 aoe_damage = 25.0
 main_element = 1
 effect = ExtResource("1_008yo")
+description = ""
 metadata/_custom_type_script = "uid://cslt7nnwgts0o"

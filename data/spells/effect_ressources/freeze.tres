@@ -119,7 +119,7 @@ animations = [{
 [resource]
 script = ExtResource("1_1bbg4")
 name = "freeze"
-name_enum = 0
+name_enum = 2
 value = 0.0
 value_type = 0
 type = 0

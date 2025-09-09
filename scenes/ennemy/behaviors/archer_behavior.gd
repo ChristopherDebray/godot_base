@@ -5,7 +5,7 @@ var _jitter_timer := 0.0
 var _strafe_dir := 1.0
 
 func compute_desired_velocity(enemy: BaseEnemy, delta: float) -> Vector2:
-	var player := enemy._player_ref
+	var player := enemy._attack_target
 	if player == null:
 		return Vector2.ZERO
 

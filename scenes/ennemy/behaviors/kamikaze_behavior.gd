@@ -2,7 +2,7 @@ class_name KamikazeBehavior
 extends EnemyBehavior
 
 func compute_desired_velocity(enemy: BaseEnemy, delta: float) -> Vector2:
-	var player := enemy._player_ref
+	var player := enemy._attack_target
 	if player == null:
 		return Vector2.ZERO
 

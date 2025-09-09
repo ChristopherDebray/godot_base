@@ -4,8 +4,8 @@ const ARROW_DATA: AbilityData = preload("res://data/abilities/common/arrow.tres"
 
 func _do_attack(delta: float) -> bool:
 	#instance, target, origin
-	var target = _player_ref.global_position
+	var target = _attack_target.global_position
 	var origin = muzzle.global_position
 	var direction = origin.direction_to(target)
-	SignalManager.use_ability.emit(ARROW_DATA, direction, origin, current_attack_target_type)
+	SignalManager.use_ability.emit(ARROW_DATA, direction, origin, current_attack_target_type, self)
 	return true

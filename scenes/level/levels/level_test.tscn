@@ -114,8 +114,8 @@ position = Vector2(828, 251)
 enemy_scene = ExtResource("6_uonu5")
 player = NodePath("../Players/Player")
 spawn_points_container = NodePath("../SpawnPoints")
-total_to_spawn = 2
-max_alive_at_once = 2
+total_to_spawn = 5
+max_alive_at_once = 5
 
 [node name="CanvasLayer" parent="." index="12"]
 visible = false

@@ -37,11 +37,13 @@ func use_spell(active_elements: Array[SpellsManager.ELEMENTS], aim_direction: Ve
 
 	if not SpellCooldownManager.can_cast(active_elements):
 		return
+	var nodes := get_tree().get_nodes_in_group("player")
+	var player = nodes[0] as Player
 
 	if spell.kind == AbilityData.ABILITY_KIND.AOE:
-		SignalManager.use_ability.emit(spell, get_global_mouse_position(), global_position, AbilityManager.TARGET_TYPE.PLAYER)
+		SignalManager.use_ability.emit(spell, get_global_mouse_position(), global_position, AbilityManager.TARGET_TYPE.PLAYER, player)
 	elif spell.kind == AbilityData.ABILITY_KIND.PROJECTILE:
-		SignalManager.use_ability.emit(spell, aim_direction, global_position, AbilityManager.TARGET_TYPE.PLAYER)
+		SignalManager.use_ability.emit(spell, aim_direction, global_position, AbilityManager.TARGET_TYPE.PLAYER, player)
 	_register_cooldown(spell.name, spell.cooldown)
 
 func _can_cast(elementCombo: Array[SpellsManager.ELEMENTS], cooldown: float) -> bool:

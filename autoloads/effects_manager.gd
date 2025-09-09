@@ -6,6 +6,7 @@ enum EFFECTS {
 	FREEZE,
 	SHOCK,
 	SLOW,
+	CHARM,
 	NONE
 }
 

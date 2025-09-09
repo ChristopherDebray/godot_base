@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 class_name Damageable
 
+enum FACTION { PLAYER, ENEMY, NEUTRAL }
+
+@export var faction: FACTION = FACTION.ENEMY
 @export var health: float = 10.0
 @export var defense: float = 10.0
 @export var speed: float = 90.0
@@ -17,6 +20,8 @@ var current_attack_target_type: AbilityManager.TARGET_TYPE
 var current_detection_type: TargetManager.TARGET_TYPE
 var active_effects: Array[Dictionary] = []
 var _frozen := false
+var _charm := false
+var is_alive := true
 
 func _process(delta: float) -> void:
 	var still_active: Array[Dictionary] = []
@@ -108,6 +113,7 @@ func apply_effect(effect: EffectData) -> void:
 
 # Can be supercharged
 func on_death():
+	is_alive = false
 	SignalManager.died.emit(self)
 	queue_free()
 
@@ -136,6 +142,9 @@ func update_fx_visual():
 func freeze(state: bool = true) -> void:
 	_frozen = state
 
+func charm(state: bool = true) -> void:
+	_charm = state
+
 func modify_speed(amount: float):
 	speed += amount
 	print("Speed modified by ", amount, " -> new speed: ", speed)
@@ -152,4 +161,4 @@ func set_initial_attack_target_type(target_type: AbilityManager.TARGET_TYPE):
 
 func set_current_detection_type(target_type: TargetManager.TARGET_TYPE, detection_field: Area2D):
 	current_detection_type = target_type
-	TargetManager.set_detection_mask_group(current_detection_type, detection_field)
+	TargetManager.set_detection_mask_for(faction, current_attack_target_type, detection_field)

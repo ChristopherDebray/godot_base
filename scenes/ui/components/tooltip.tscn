@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://yc2cufr7m3v2"]
+
+[ext_resource type="Script" uid="uid://baf5kergqhcv5" path="res://scenes/ui/components/tooltip.gd" id="1_ieeu5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ieeu5"]
+bg_color = Color(0.880256, 0.387611, 0.747322, 1)
+corner_detail = 1
+
+[node name="Tooltip" type="Panel"]
+custom_minimum_size = Vector2(20, 20)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ieeu5")
+script = ExtResource("1_ieeu5")
+
+[node name="Description" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0

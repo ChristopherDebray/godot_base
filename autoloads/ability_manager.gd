@@ -1,5 +1,9 @@
 extends Node
 
+# TARGET_TYPE:
+# - ENEMY: collide/target opposite faction
+# - PLAYER: collide/target same faction (allies)
+# - ALL:    collide/target both
 enum TARGET_TYPE { ENEMY, PLAYER, ALL }
 
 const COLLISION_MASKS = {
@@ -17,12 +21,13 @@ const COLLISION_MASKS_GROUPS = {
 func _ready():
 	SignalManager.use_ability.connect(_on_use_ability)
 
-func _on_use_ability(data: AbilityData, target: Vector2, origin: Vector2, target_type: TARGET_TYPE):
+func _on_use_ability(data: AbilityData, target: Vector2, origin: Vector2, target_type: TARGET_TYPE, sender: Damageable = null):
 	if data == null or data.scene == null:
 		push_error("AbilityData invalid or missing scene: %s" % (data and data.id))
 		return null
 
 	var instance = data.scene.instantiate() as BaseAbility
+	instance.sender = sender
 	instance.configure_masks(COLLISION_MASKS_GROUPS[target_type])
 
 	if is_instance_of(instance, ProjectileAbility):

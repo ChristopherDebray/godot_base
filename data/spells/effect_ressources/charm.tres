@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="EffectData" load_steps=3 format=3 uid="uid://owvmr2cmn7mv"]
+
+[ext_resource type="Script" uid="uid://ckos26rb4qfvx" path="res://data/spells/effect_ressources/effect_data.gd" id="1_u36hr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u36hr"]
+
+[resource]
+script = ExtResource("1_u36hr")
+name = "charm"
+name_enum = 5
+value = 0.0
+value_type = 0
+type = 0
+characteristic = ""
+duration = 20.0
+tick_rate = 0.0
+fx_sprite_frames = SubResource("SpriteFrames_u36hr")
+metadata/_custom_type_script = "uid://ckos26rb4qfvx"

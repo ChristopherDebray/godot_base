@@ -70,7 +70,7 @@ animations = [{
 [resource]
 script = ExtResource("1_va7jc")
 name = "slow"
-name_enum = 0
+name_enum = 4
 value = 15.0
 value_type = 1
 type = 1

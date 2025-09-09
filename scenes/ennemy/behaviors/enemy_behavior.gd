@@ -12,8 +12,8 @@ extends Resource
 
 ## @abstract: Returns the position to go to, by default returns the player position
 func compute_target(enemy: BaseEnemy) -> Vector2:
-	if enemy._player_ref:
-		return enemy._player_ref.global_position
+	if enemy._attack_target:
+		return enemy._attack_target.global_position
 	return enemy.global_position
 
 ## @abstract: Returns the velocity used to move by default returns a simple chase velocity
@@ -27,7 +27,7 @@ func try_attack(enemy: BaseEnemy, delta: float) -> bool:
 
 ## @abstract: Returns true if the player is in range of attack
 func is_in_attack_range(enemy: BaseEnemy) -> bool:
-	var player = enemy._player_ref
+	var player = enemy._attack_target
 	if player == null:
 		return false
 	var dist := enemy.global_position.distance_to(player.global_position)

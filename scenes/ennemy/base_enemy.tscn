@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://ck5ra04kx3r6w" path="res://scenes/ennemy/base_enemy.gd" id="2_7rgwx"]
 [ext_resource type="Texture2D" uid="uid://dpnrd0bglhp4g" path="res://assets/characters/shadow.png" id="3_f4ai1"]
 
-[node name="BaseEnemy" instance=ExtResource("1_26sde")]
+[node name="BaseEnemy" groups=["enemy"] instance=ExtResource("1_26sde")]
 collision_mask = 137
 script = ExtResource("2_7rgwx")
 turn_speed_deg = 3000.0
@@ -16,6 +16,19 @@ roam_radius = 200.0
 is_zone_locked = true
 walk_anim_name = "default"
 idle_frame_index = 0
+fov_poll_interval = 0.18
+min_lock_time = 5.0
+retarget_cooldown = 0.8
+los_grace_time = 0.9
+switch_score_gain = 1.25
+max_candidates_considered = 8
+max_los_checks_per_poll = 3
+auto_aggro_on_spawn = true
+initial_aggro_group = "player"
+w_distance = 1.0
+w_angle = 0.5
+w_same_as_current_bonus = -0.4
+w_recent_attacker_bonus = -0.6
 health = 20.0
 metadata/_edit_vertical_guides_ = [-15.0, 15.0]
 metadata/_edit_horizontal_guides_ = [30.0]

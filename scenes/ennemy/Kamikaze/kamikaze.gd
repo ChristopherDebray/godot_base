@@ -11,7 +11,7 @@ func _do_attack(delta: float) -> bool:
 
 func _launch_explosion():
 	var origin = global_position
-	SignalManager.use_ability.emit(EXPLOSION, origin, origin, AbilityManager.TARGET_TYPE.ALL)
+	SignalManager.use_ability.emit(EXPLOSION, origin, origin, AbilityManager.TARGET_TYPE.ALL, self)
 
 func _on_attack_timer_timeout() -> void:
 	_launch_explosion()
