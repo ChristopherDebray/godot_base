@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dh0sf6oievhy8" path="res://assets/wilderness/bush.png" id="3_i43yl"]
 [ext_resource type="PackedScene" uid="uid://b0qkm4gmitvnk" path="res://scenes/_spawner/Spawner.tscn" id="4_2uvmr"]
 [ext_resource type="Texture2D" uid="uid://0o8rl0r2ms3v" path="res://assets/wilderness/tree_square.png" id="4_3r7qr"]
-[ext_resource type="PackedScene" uid="uid://nepya8lc2ghl" path="res://scenes/ennemy/Skelleton/skelleton.tscn" id="6_uonu5"]
+[ext_resource type="PackedScene" uid="uid://cm5nim8ogpayf" path="res://scenes/npc/ennemy/skelleton_2.tscn" id="6_uonu5"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2heyh"]
 vertices = PackedVector2Array(1117.49, 99.1562, 32, 32, 1889.04, 100.844, 1565.49, 102.156, 1313.04, 100.844, 3552.98, 32, 2141.49, 102.156, 865.039, 97.8438, 670.062, 161, 868.93, 222.156, 661.883, 191.531, 661.883, 130.469, 3552.01, 1824.95, 2139.52, 223.844, 32, 1820.04, 1892.93, 225.156, 1115.52, 220.844, 1316.93, 225.156, 1563.52, 223.844, 639.531, 213.883, 609, 222.062, 578.469, 213.883, 556.117, 191.531, 547.938, 161, 556.117, 130.469, 578.469, 108.117, 639.531, 108.117, 609, 99.9375)

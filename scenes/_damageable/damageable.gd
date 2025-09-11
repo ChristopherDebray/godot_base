@@ -15,9 +15,7 @@ enum FACTION { PLAYER, ENEMY, NEUTRAL }
 @onready var status_fx: AnimatedSprite2D = $StatusFx
 
 var current_target: Damageable
-var initial_attack_target_type: AbilityManager.TARGET_TYPE
-var current_attack_target_type: AbilityManager.TARGET_TYPE
-var current_detection_type: TargetManager.TARGET_TYPE
+
 var active_effects: Array[Dictionary] = []
 var _frozen := false
 var _charm := false
@@ -152,13 +150,3 @@ func modify_speed(amount: float):
 func modify_defense(amount: float):
 	defense += amount
 	print("Defense modified by ", amount, " -> new defense: ", defense)
-
-func set_current_attack_target_type(target_type: AbilityManager.TARGET_TYPE):
-	current_attack_target_type = target_type
-
-func set_initial_attack_target_type(target_type: AbilityManager.TARGET_TYPE):
-	initial_attack_target_type = target_type
-
-func set_current_detection_type(target_type: TargetManager.TARGET_TYPE, detection_field: Area2D):
-	current_detection_type = target_type
-	TargetManager.set_detection_mask_for(faction, current_attack_target_type, detection_field)

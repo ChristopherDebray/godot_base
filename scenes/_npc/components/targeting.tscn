@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyypj64ygk60y"]
+
+[ext_resource type="Script" uid="uid://g2rxkduvmr5o" path="res://scenes/_npc/components/targeting_component.gd" id="1_amr8j"]
+
+[node name="Targeting" type="Node2D"]
+visible = false
+script = ExtResource("1_amr8j")

@@ -1,9 +1,9 @@
-extends BaseEnemy
+extends BaseNpc
 
 const EXPLOSION = preload("res://data/abilities/enemy/explosion.tres")
 
 func _do_attack(delta: float) -> bool:
-	can_move = false
+	locomotion.can_move = false
 	_pulse_red(attack_timer.wait_time)
 	attack_timer.start()
 
@@ -15,4 +15,3 @@ func _launch_explosion():
 
 func _on_attack_timer_timeout() -> void:
 	_launch_explosion()
-	_modulate_red(false)

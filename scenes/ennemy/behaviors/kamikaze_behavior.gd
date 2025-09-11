@@ -1,14 +1,14 @@
 class_name KamikazeBehavior
-extends EnemyBehavior
+extends NpcBehavior
 
-func compute_desired_velocity(enemy: BaseEnemy, delta: float) -> Vector2:
-	var player := enemy._attack_target
-	if player == null:
+func compute_desired_velocity(enemy: BaseNpc, delta: float) -> Vector2:
+	var target = enemy._attack_target
+	if target == null:
 		return Vector2.ZERO
 
-	var to_player := player.global_position - enemy.global_position
-	var dist := to_player.length()
-	var dir := to_player.normalized()
+	var to_target = target.global_position - enemy.global_position
+	var dist = to_target.length()
+	var dir = to_target.normalized()
 
 	# kiting
 	var move := Vector2.ZERO

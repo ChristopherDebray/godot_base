@@ -1,0 +1,82 @@
+[gd_scene load_steps=14 format=3 uid="uid://cm5nim8ogpayf"]
+
+[ext_resource type="PackedScene" uid="uid://dbvgcyxkunrkl" path="res://scenes/_npc/base_npc.tscn" id="1_xgvfd"]
+[ext_resource type="Texture2D" uid="uid://iknyhqq2qtj4" path="res://assets/characters/skelleton_cute.png" id="2_qur4j"]
+[ext_resource type="Script" uid="uid://dlta7uajlqo1k" path="res://scenes/npc/ennemy/skelleton_2.gd" id="2_tt02g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qur4j"]
+size = Vector2(22, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tt02g"]
+atlas = ExtResource("2_qur4j")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3r3f4"]
+atlas = ExtResource("2_qur4j")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6af3"]
+atlas = ExtResource("2_qur4j")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tb4kw"]
+atlas = ExtResource("2_qur4j")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_filbk"]
+atlas = ExtResource("2_qur4j")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gt7iv"]
+atlas = ExtResource("2_qur4j")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yidvh"]
+atlas = ExtResource("2_qur4j")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tx5mr"]
+atlas = ExtResource("2_qur4j")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tki78"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tt02g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3r3f4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6af3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tb4kw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_filbk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gt7iv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yidvh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tx5mr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Skelleton2" instance=ExtResource("1_xgvfd")]
+script = ExtResource("2_tt02g")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_qur4j")
+
+[node name="AnimatedSprite2D" parent="SpriteContainer" index="1"]
+sprite_frames = SubResource("SpriteFrames_tki78")

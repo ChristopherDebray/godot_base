@@ -42,12 +42,12 @@ func _ready() -> void:
 
 func _spawn():
 	var spawn_point: Marker2D = _markers.pick_random()
-	var instance: BaseEnemy = enemy_scene.instantiate()
+	var instance: BaseNpc = enemy_scene.instantiate()
 	instance.is_zone_locked = false
 	instance.global_position = spawn_point.global_position
 	
 	get_tree().current_scene.add_child(instance)
-	instance.state = BaseEnemy.STATE.ATTACKING
+	instance.state = BaseNpc.STATE.ATTACKING
 	_spawned_count += 1
 	_alive_count += 1
 	

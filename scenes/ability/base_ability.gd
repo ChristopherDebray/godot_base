@@ -45,15 +45,15 @@ func on_ability_hit(body):
 		apply_damage_and_effect(body, damage)
 
 		# Notify enemies in a generic way (no player ref needed)
-		if body is BaseEnemy:
-			var enemy := body as BaseEnemy
+		if body is BaseNpc:
+			var enemy := body as BaseNpc
 			# Prefer the true instigator; fallback to this ability node
 			var instigator: Node
 			if (sender != null):
 				instigator = sender
 			else:
 				instigator = self
-			enemy.on_alert_from(instigator)
+			enemy.targeting.on_alert_from(instigator)
 
 	_has_hit = true
 	on_hit()
@@ -65,14 +65,14 @@ func on_aoe_hit():
 	for receiver in area_of_effect.get_overlapping_bodies():
 		if receiver is Damageable:
 			apply_damage_and_effect(receiver, aoe_damage)
-			if receiver is BaseEnemy:
-				var enemy := receiver as BaseEnemy
+			if receiver is BaseNpc:
+				var enemy := receiver as BaseNpc
 				var instigator: Node
 				if (sender != null):
 					instigator = sender
 				else:
 					instigator = self
-				enemy.on_alert_from(instigator)
+				enemy.targeting.on_alert_from(instigator)
 
 func activate_aoe():
 	area_of_effect.monitoring = true

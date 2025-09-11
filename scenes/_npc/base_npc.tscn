@@ -1,41 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://d31lqpkcyneij"]
+[gd_scene load_steps=7 format=3 uid="uid://dbvgcyxkunrkl"]
 
-[ext_resource type="PackedScene" uid="uid://b2odxanbtxty4" path="res://scenes/_damageable/damageable.tscn" id="1_26sde"]
-[ext_resource type="Script" uid="uid://ck5ra04kx3r6w" path="res://scenes/ennemy/base_enemy.gd" id="2_7rgwx"]
-[ext_resource type="Texture2D" uid="uid://dpnrd0bglhp4g" path="res://assets/characters/shadow.png" id="3_f4ai1"]
+[ext_resource type="PackedScene" uid="uid://b2odxanbtxty4" path="res://scenes/_damageable/damageable.tscn" id="1_rcddc"]
+[ext_resource type="Script" uid="uid://dbmrhnfb7wqqh" path="res://scenes/_npc/base_npc.gd" id="2_flwcu"]
+[ext_resource type="Texture2D" uid="uid://dpnrd0bglhp4g" path="res://assets/characters/shadow.png" id="3_muicc"]
+[ext_resource type="Script" uid="uid://f4kldhtjhj0h" path="res://scenes/_npc/components/perception_component.gd" id="4_qeoa2"]
+[ext_resource type="PackedScene" uid="uid://dyypj64ygk60y" path="res://scenes/_npc/components/targeting.tscn" id="5_5urbc"]
+[ext_resource type="PackedScene" uid="uid://d0ln4bfkemrnx" path="res://scenes/_npc/components/locomotion.tscn" id="6_gbn1b"]
 
-[node name="BaseEnemy" groups=["enemy"] instance=ExtResource("1_26sde")]
+[node name="BaseNpc" groups=["enemy"] instance=ExtResource("1_rcddc")]
 collision_mask = 137
-script = ExtResource("2_7rgwx")
-turn_speed_deg = null
-attack_cooldown = null
-patrol_points = null
-initial_state = 2
+script = ExtResource("2_flwcu")
+turn_speed_deg = 3000.0
+attack_cooldown = 2.0
+initial_state = 0
 behavior = null
-roam_radius = null
-is_zone_locked = null
-walk_anim_name = null
-idle_frame_index = null
-fov_poll_interval = null
-min_lock_time = null
-retarget_cooldown = null
-los_grace_time = null
-switch_score_gain = null
-max_candidates_considered = null
-max_los_checks_per_poll = null
-auto_aggro_on_spawn = null
-initial_aggro_group = null
-w_distance = null
-w_angle = null
-w_same_as_current_bonus = null
-w_recent_attacker_bonus = null
-faction = null
-health = 20.0
-defense = null
-speed = null
-immunity_effects = null
-immunity_elements = null
-resistence_elements = null
+roam_radius = 200.0
+is_zone_locked = true
+walk_anim_name = "default"
+idle_frame_index = 0
 metadata/_edit_vertical_guides_ = [-15.0, 15.0]
 metadata/_edit_horizontal_guides_ = [30.0]
 
@@ -44,13 +26,14 @@ metadata/_edit_horizontal_guides_ = [30.0]
 [node name="Shadow" type="Sprite2D" parent="SpriteContainer" index="0"]
 position = Vector2(0, 18)
 scale = Vector2(1.2, 1.2)
-texture = ExtResource("3_f4ai1")
+texture = ExtResource("3_muicc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteContainer" index="1"]
 
 [node name="FieldView" type="Area2D" parent="SpriteContainer" index="2"]
 collision_layer = 0
 collision_mask = 4
+script = ExtResource("4_qeoa2")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SpriteContainer/FieldView" index="0"]
 position = Vector2(2.00001, -1.19209e-07)
@@ -74,6 +57,11 @@ collision_mask = 5
 
 [node name="Muzzle" type="Marker2D" parent="." index="8"]
 position = Vector2(18, 0)
+
+[node name="Targeting" parent="." index="9" instance=ExtResource("5_5urbc")]
+fov_poll_interval = 0.22
+
+[node name="Locomotion" parent="." index="10" instance=ExtResource("6_gbn1b")]
 
 [connection signal="body_entered" from="SpriteContainer/FieldView" to="." method="_on_field_view_body_entered"]
 [connection signal="body_exited" from="SpriteContainer/FieldView" to="." method="_on_field_view_body_exited"]
