@@ -1,12 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://cvqmwlcvxlteu"]
+[gd_scene load_steps=16 format=3 uid="uid://bmensnrge14wo"]
 
-[ext_resource type="PackedScene" uid="uid://d31lqpkcyneij" path="res://scenes/ennemy/base_enemy.tscn" id="1_lmff4"]
-[ext_resource type="Script" uid="uid://dsouchen7w363" path="res://scenes/ennemy/Kamikaze/kamikaze.gd" id="2_82ftp"]
-[ext_resource type="Texture2D" uid="uid://dwtg4hm8uihu4" path="res://assets/characters/boomer_cute.png" id="3_h07k7"]
-[ext_resource type="Script" uid="uid://brbi5q8wnxxps" path="res://scenes/ennemy/behaviors/kamikaze_behavior.gd" id="3_xgp0h"]
+[ext_resource type="PackedScene" uid="uid://dbvgcyxkunrkl" path="res://scenes/_npc/base_npc.tscn" id="1_6nvvx"]
+[ext_resource type="Script" uid="uid://c6scenl56ox0e" path="res://scenes/npc/ennemy/kamikaze/kamikaze.gd" id="2_mqnfx"]
+[ext_resource type="Texture2D" uid="uid://dwtg4hm8uihu4" path="res://assets/characters/boomer_cute.png" id="3_b82lb"]
+[ext_resource type="Script" uid="uid://b6xjnpa1omirn" path="res://scenes/_npc/behaviors/kamikaze_behavior.gd" id="3_xon5h"]
 
 [sub_resource type="Resource" id="Resource_m3a88"]
-script = ExtResource("3_xgp0h")
+script = ExtResource("3_xon5h")
 preferred_range = 30.0
 stop_range = 30.0
 strafe_bias = 0.6
@@ -17,35 +17,35 @@ metadata/_custom_type_script = "uid://brbi5q8wnxxps"
 size = Vector2(27, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xgp0h"]
-atlas = ExtResource("3_h07k7")
+atlas = ExtResource("3_b82lb")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m3a88"]
-atlas = ExtResource("3_h07k7")
+atlas = ExtResource("3_b82lb")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h52g0"]
-atlas = ExtResource("3_h07k7")
+atlas = ExtResource("3_b82lb")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u1kho"]
-atlas = ExtResource("3_h07k7")
+atlas = ExtResource("3_b82lb")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ebusg"]
-atlas = ExtResource("3_h07k7")
+atlas = ExtResource("3_b82lb")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6mq5y"]
-atlas = ExtResource("3_h07k7")
+atlas = ExtResource("3_b82lb")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f3wpl"]
-atlas = ExtResource("3_h07k7")
+atlas = ExtResource("3_b82lb")
 region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yd2f0"]
-atlas = ExtResource("3_h07k7")
+atlas = ExtResource("3_b82lb")
 region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yij76"]
@@ -80,10 +80,9 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Kamikaze" instance=ExtResource("1_lmff4")]
-script = ExtResource("2_82ftp")
+[node name="Kamikaze" instance=ExtResource("1_6nvvx")]
+script = ExtResource("2_mqnfx")
 behavior = SubResource("Resource_m3a88")
-health = 10.0
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(0.5, 8)

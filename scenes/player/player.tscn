@@ -73,7 +73,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75vfm"]
-size = Vector2(24, 21)
+size = Vector2(22, 23)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p47bc"]
 atlas = ExtResource("4_lvxji")
@@ -128,7 +128,7 @@ position = Vector2(10, 0)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
 
 [node name="CollisionShape2D" parent="." index="3"]
-position = Vector2(10, 6.5)
+position = Vector2(10, 4.5)
 shape = SubResource("RectangleShape2D_75vfm")
 
 [node name="CameraPlayer" type="Camera2D" parent="." index="5"]
