@@ -30,9 +30,14 @@ func _on_use_ability(data: AbilityData, target: Vector2, origin: Vector2, target
 	instance.sender = sender
 	instance.configure_masks(COLLISION_MASKS_GROUPS[target_type])
 	instance.initAbilityResource(data)
-
-	var ctx = AimContext.from_mouse(sender, instance)
-
+	
+	var target_world := CastService._coerce_target_world(sender, target, instance.range)
+	var ctx
+	if is_instance_of(sender, Player):
+		ctx = AimContext.from_mouse(sender, instance)
+	else:
+		ctx = AimContext.from_node(sender, instance, target_world)
+	
 	if is_instance_of(instance, ProjectileAbility):
 		instance.init(data, ctx)
 	elif is_instance_of(instance, AoeInstantAbility):

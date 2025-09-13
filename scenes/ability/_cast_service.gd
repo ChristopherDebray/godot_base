@@ -18,23 +18,25 @@ static func _compute_aoe_spawn_with_los(
 	ctx: AimContext,
 	aoe_radius_px: float,
 ) -> Vector2:
-	print('HELLO')
 	sender.raycast_ability_to(ctx.clamp_point)
-
 	var ray := sender.ray_cast_ability
 
 	if not ray.is_colliding():
-		print(ctx.clamp_point)
 		return ctx.clamp_point
-		
 	var hit_point := ray.get_collision_point()
-	print('HIT_POINT')
-	print(hit_point)
-	print(hit_point - ctx.desired_dir)
-	print('aoe_radius_px')
-	print(aoe_radius_px)
-	print(hit_point - ctx.desired_dir * aoe_radius_px)
-	
-	ctx.sender_pos + hit_point
 	
 	return hit_point - ctx.desired_dir * aoe_radius_px
+
+static func _coerce_target_world(sender: Node2D, raw_target: Vector2, range_px: float) -> Vector2:
+	if sender == null:
+		return raw_target
+	# Si raw_target ressemble à une DIRECTION (norme ≤ ~1), convertis en point monde
+	if raw_target.length() <= 1.5:
+		var dir := raw_target
+		if dir == Vector2.ZERO:
+			dir = Vector2.RIGHT
+		else:
+			dir = dir.normalized()
+		return sender.global_position + dir * range_px
+	# Sinon on suppose déjà un point monde
+	return raw_target

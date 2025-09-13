@@ -22,16 +22,19 @@ static func from_mouse(player: Node2D, instance: BaseAbility) -> AimContext:
 		ctx.desired_point = Vector2.ZERO
 	return ctx
 
-static func from_dir(sender_pos: Vector2, dir: Vector2) -> AimContext:
+static func from_node(node: Node2D, instance: BaseAbility, target: Vector2) -> AimContext:
 	var ctx := AimContext.new()
-	ctx.sender_pos = sender_pos
-	ctx.has_dir = true
-	ctx.desired_dir = dir
-
-	return ctx
-
-static func from_point(sender_pos: Vector2, world_point: Vector2) -> AimContext:
-	var ctx := AimContext.new()
-	ctx.sender_pos = sender_pos
-	ctx.desired_point = world_point
+	if node != null:
+		ctx.sender_pos = node.global_position
+		ctx.desired_point = target
+		ctx.clamp_point = CastService.clamp_to_range(
+			ctx.sender_pos,
+			ctx.desired_point,
+			instance.range
+		)
+		ctx.desired_dir = ctx.sender_pos.direction_to(ctx.clamp_point)
+		print(ctx.sender_pos)
+		print(ctx.desired_point)
+		print(ctx.clamp_point)
+	
 	return ctx
