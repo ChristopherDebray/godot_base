@@ -13,6 +13,7 @@ enum FACTION { PLAYER, ENEMY, NEUTRAL }
 @export var resistence_elements: Array[SpellsManager.ELEMENTS] = []
 
 @onready var status_fx: AnimatedSprite2D = $StatusFx
+@onready var ray_cast_ability: RayCast2D = $RayCastAbility
 
 var current_target: Damageable
 
@@ -150,3 +151,6 @@ func modify_speed(amount: float):
 func modify_defense(amount: float):
 	defense += amount
 	print("Defense modified by ", amount, " -> new defense: ", defense)
+
+func raycast_ability_to(to_position: Vector2):
+	ray_cast_ability.target_position = ray_cast_ability.to_local(to_position)

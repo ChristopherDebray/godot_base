@@ -16,3 +16,5 @@ color = Color(1, 0.435294, 0.431373, 1)
 
 [node name="StatusFx" type="AnimatedSprite2D" parent="."]
 visible = false
+
+[node name="RayCastAbility" type="RayCast2D" parent="."]

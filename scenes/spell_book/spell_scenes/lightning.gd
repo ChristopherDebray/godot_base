@@ -1,6 +1,7 @@
 extends AoeInstantAbility
 
 var _dir_of_travel: Vector2 = Vector2.ZERO
+
 const SPEED: float = 400.0
 
 func _ready():
