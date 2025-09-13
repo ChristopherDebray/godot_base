@@ -154,3 +154,4 @@ func modify_defense(amount: float):
 
 func raycast_ability_to(to_position: Vector2):
 	ray_cast_ability.target_position = ray_cast_ability.to_local(to_position)
+	ray_cast_ability.force_raycast_update()

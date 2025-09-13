@@ -26,20 +26,19 @@ func _on_use_ability(data: AbilityData, target: Vector2, origin: Vector2, target
 		push_error("AbilityData invalid or missing scene: %s" % (data and data.id))
 		return null
 	
-	var ctx = AimContext.from_mouse(sender)
-
 	var instance = data.scene.instantiate() as BaseAbility
 	instance.sender = sender
 	instance.configure_masks(COLLISION_MASKS_GROUPS[target_type])
 	instance.initAbilityResource(data)
 
-	# ctx
-	if is_instance_of(instance, ProjectileAbility):
-		instance.init(data, ctx, origin)
-	elif is_instance_of(instance, AoeInstantAbility):
-		sender.raycast_ability_to(target)
-		instance.init(data, ctx)
+	var ctx = AimContext.from_mouse(sender, instance)
 
+	if is_instance_of(instance, ProjectileAbility):
+		instance.init(data, ctx)
+	elif is_instance_of(instance, AoeInstantAbility):
+		ctx.los_clamped_point = CastService._compute_aoe_spawn_with_los(sender, ctx, instance._get_aoe_radius())
+		instance.init(data, ctx)
+	
 	get_tree().current_scene.add_child(instance)
 	
 	return instance

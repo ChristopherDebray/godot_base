@@ -4,18 +4,11 @@ class_name ProjectileAbility
 @export var SPEED: float = 400.0
 var _dir_of_travel: Vector2 = Vector2.ZERO
 
-func init(ability_data: AbilityData, aim: AimContext, start_pos: Vector2) -> void:
-	global_position = start_pos
-
-	# Prend la direction depuis l’aim résolu (si souris: vers la souris; sinon: dir fournie)
-	var res := CastService.resolve_aim_target(start_pos, aim, range)
-	_dir_of_travel = res.dir
-	if _dir_of_travel == Vector2.ZERO:
-		# fallback si aucun input: droite
-		_dir_of_travel = Vector2.RIGHT
-
-	# Range unifié : on coupe quand on dépasse la distance depuis l’origine
-	start_from(start_pos, range)
+func init(ability_data: AbilityData, ctx: AimContext) -> void:
+	global_position = ctx.sender_pos
+	_dir_of_travel = ctx.desired_dir
+	
+	start_from(ctx.sender_pos, range)
 
 func setup_on_ready() -> void:
 	super._ready()
