@@ -9,17 +9,17 @@ var _current_wp: int = 0
 
 var roaming_target_position: Vector2
 var roam_delay: float = 2.0
-var _roam_timer: float = 0.0
+var roam_timer: float = 0.0
 
 var can_move: bool = true
 var npc_nav_agent: NavigationAgent2D
 
-var _initial_position: Vector2
+var initial_position: Vector2
 
 func setup(owner: BaseNpc, nav_agent: NavigationAgent2D) -> void:
 	npc = owner
 	npc_nav_agent = nav_agent
-	_initial_position = global_position
+	initial_position = global_position
 	npc_nav_agent.velocity_computed.connect(_on_npc_nav_agent_velocity_computed)
 
 func _update_navigation() -> void:

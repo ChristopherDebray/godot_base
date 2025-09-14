@@ -1,11 +1,8 @@
 class_name CastService
 
-static func safe_dir(dir: Vector2, fallback_vec: Vector2) -> Vector2:
-	return dir if dir != Vector2.ZERO else fallback_vec.normalized()
-
 static func clamp_to_range(sender_pos: Vector2, desired_pos: Vector2, range: float) -> Vector2:
-	var v := desired_pos - sender_pos
-	var dist := v.length()
+	var to_target := desired_pos - sender_pos
+	var dist := to_target.length()
 	if dist == 0.0:
 		return sender_pos
 	var dir := sender_pos.direction_to(desired_pos)
@@ -30,7 +27,7 @@ static func _compute_aoe_spawn_with_los(
 static func _coerce_target_world(sender: Node2D, raw_target: Vector2, range_px: float) -> Vector2:
 	if sender == null:
 		return raw_target
-	# Si raw_target ressemble à une DIRECTION (norme ≤ ~1), convertis en point monde
+	# If raw_target looks like a Direction, convert to a "world" point
 	if raw_target.length() <= 1.5:
 		var dir := raw_target
 		if dir == Vector2.ZERO:

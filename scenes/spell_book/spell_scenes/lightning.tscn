@@ -108,7 +108,6 @@ radius = 156.013
 
 [node name="Lightning" instance=ExtResource("1_7iq0p")]
 script = ExtResource("2_bp2nl")
-WALLS_MASK_BIT = 1
 aoe_radius_tiles = 5.0
 abilityName = "lightning"
 

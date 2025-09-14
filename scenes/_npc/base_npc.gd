@@ -1,8 +1,8 @@
-## Base class for all enemies in the game.
+## Base class for all npc in the game.
 ##
 ## Handles shared logic such as detection, navigation,
 ## attack cooldowns and basic state machine.
-## Extend this class to create specific enemy types (Archer, Melee, Mage...).
+## Extend this class to create specific npc.
 class_name BaseNpc
 extends Damageable
 
@@ -13,6 +13,7 @@ extends Damageable
 @onready var field_view: Area2D = $SpriteContainer/FieldView
 @onready var attack_timer: Timer = $AttackTimer
 @onready var muzzle: Marker2D = $Muzzle
+
 @onready var targeting: TargetingComponent = $Targeting
 @onready var locomotion: LocomotionComponent = $Locomotion
 
@@ -21,6 +22,7 @@ extends Damageable
 
 @export var attack_cooldown: float = 2.0
 @export var initial_state: STATE = STATE.IDLE
+## Behavior is used to indicate the way the npc will act in battle, archerBehavior, etc
 @export var behavior: NpcBehavior
 @export var roam_radius: float = 200.0
 ## A non zone locked enemy will not go back to its initial location after searching
@@ -41,13 +43,8 @@ enum STATE {
 
 var next_attack_timer: float
 var state: STATE
-
 var _attack_target: Damageable = null
-var _waypoints: Array = []
-var _current_wp: int = 0
-
 var _initial_facing_direction: Vector2
-
 var _last_seen_pos: Vector2 = Vector2.ZERO
 
 var roaming_target_position: Vector2
@@ -80,7 +77,6 @@ func _physics_process(delta: float) -> void:
 	targeting._handle_detection_and_state(delta)
 	_update_action_by_state(delta)
 	locomotion._update_navigation()
-	_update_facing(delta)
 	_update_sprite_facing()
 	_update_sprite_anim()
 
@@ -118,6 +114,7 @@ func process_searching(delta: float) -> void:
 	if not nav_agent.is_navigation_finished():
 		return
 	if initial_state == STATE.IDLE or initial_state == STATE.ROAMING:
+		## A non zone locked npc will be able to roam or idle freely where he stands
 		if not is_zone_locked:
 			state = initial_state
 			locomotion._initial_position = global_position
@@ -140,6 +137,7 @@ func _apply_attack_cooldown() -> void:
 	set_next_attack_timer()
 	attack_timer.start(next_attack_timer)
 
+## @abstract
 func _do_attack(delta: float) -> bool:
 	return false
 
@@ -180,43 +178,6 @@ func process_returning() -> void:
 
 func process_dead() -> void:
 	pass
-
-# ----- Navigation / visuals -----
-
-func _rotate_node_towards(node: Node2D, target: Vector2, delta: float) -> void:
-	if node == null:
-		return
-	var desired := (target - node.global_position).angle()
-	var current := node.global_rotation
-	var turn := turn_speed_deg * delta / 180.0
-	turn = clamp(turn, 0.0, 1.0)
-	node.global_rotation = lerp_angle(current, desired, turn)
-
-func _update_facing(delta: float) -> void:
-	# 1) Combat: face current target
-	if state == STATE.ATTACKING and _attack_target and is_instance_valid(_attack_target):
-		_rotate_node_towards(field_view, _attack_target.global_position, delta)
-		return
-	# 2) Searching: face last seen position
-	if state == STATE.SEARCHING:
-		_rotate_node_towards(field_view, _last_seen_pos, delta)
-		return
-	# 3) Returning: face home
-	if state == STATE.RETURNING:
-		_rotate_node_towards(field_view, locomotion._initial_position, delta)
-		return
-	# 4) Patrolling: face waypoint
-	if state == STATE.PATROLLING and _waypoints.size() > 0:
-		var target = _waypoints[max(0, _current_wp - 1)]
-		_rotate_node_towards(field_view, target, delta)
-		return
-	# 5) Roaming: face roaming target
-	if state == STATE.ROAMING:
-		_rotate_node_towards(field_view, roaming_target_position, delta)
-		return
-	# 6) Idle: keep initial rotation
-	if state == STATE.IDLE:
-		_rotate_node_towards(field_view, global_position + _initial_facing_direction, delta)
 
 func _update_sprite_facing() -> void:
 	if velocity.x < -0.05:

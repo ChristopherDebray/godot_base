@@ -80,12 +80,11 @@ func _physics_process(delta: float) -> void:
 
 func _try_auto_target_on_spawn() -> void:
 	# Pick first valid node in the configured group (e.g., "player")
-	var nodes := get_tree().get_nodes_in_group(initial_aggro_group)
-	if nodes.is_empty():
+	var candidate := get_tree().get_first_node_in_group(initial_aggro_group)
+	if not candidate:
 		return
 
 	# We expect the player to be Damageable (so we can filter/fight)
-	var candidate := nodes[0] as Damageable
 	if candidate == null: 
 		return
 	if not is_instance_valid(candidate) or not candidate.is_alive:
@@ -176,16 +175,16 @@ func _targeting_poll() -> void:
 	if best_score <= current_score / switch_score_gain:
 		_set_target(best)
 
-func _score_candidate(c: Damageable) -> float:
-	var d2 := global_position.distance_squared_to(c.global_position)
-	var dir := (c.global_position - global_position).normalized()
+func _score_candidate(candidate: Damageable) -> float:
+	var d2 := global_position.distance_squared_to(candidate.global_position)
+	var dir := (candidate.global_position - global_position).normalized()
 	var forward := npc_field_view.global_transform.x.normalized()
 	var ang_cost = 1.0 - clamp(forward.dot(dir), -1.0, 1.0) # 0=in front, ~2=behind
 
 	var score = w_distance * d2 + w_angle * ang_cost
-	if c == npc._attack_target:
+	if candidate == npc._attack_target:
 		score += w_same_as_current_bonus
-	if c == _last_attacker:
+	if candidate == _last_attacker:
 		score += w_recent_attacker_bonus
 	return score
 

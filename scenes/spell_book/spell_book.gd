@@ -5,12 +5,12 @@ var spells: Dictionary = {}
 var _cooldowns := {}
 
 func _ready() -> void:
-	register_spells()
+	register_abilities()
 
 func _physics_process(_delta: float) -> void:
 	pass
 
-func get_spell_from_elements(elements: Array[SpellsManager.ELEMENTS]) -> AbilityData:
+func get_ability_from_elements(elements: Array[SpellsManager.ELEMENTS]) -> AbilityData:
 	if elements.is_empty():
 		return null
 
@@ -19,8 +19,8 @@ func get_spell_from_elements(elements: Array[SpellsManager.ELEMENTS]) -> Ability
 
 	if not spell_name:
 		return null
-
 	var spell = SpellsManager.SPELLS.get(spell_name)
+	
 	return spell as AbilityData
 
 func register_spell(elements: Array[int], data: Dictionary):
@@ -30,7 +30,7 @@ func register_spell(elements: Array[int], data: Dictionary):
 
 func use_spell(active_elements: Array[SpellsManager.ELEMENTS], aim_direction: Vector2):
 	active_elements.sort()
-	var spell = get_spell_from_elements(active_elements)
+	var spell = get_ability_from_elements(active_elements)
 	
 	if (!spell):
 		return
@@ -69,7 +69,7 @@ func _combo_key(arr: Array[SpellsManager.ELEMENTS]) -> String:
 	sorted.sort()
 	return ",".join(PackedStringArray(sorted.map(func(x): return str(x))))
 
-func register_spells():
+func register_abilities():
 	for key in SpellsManager.SPELLS.keys():
 		spells[key] = SpellsManager.SPELLS[key]
 		var data = SpellsManager.SPELLS[key]

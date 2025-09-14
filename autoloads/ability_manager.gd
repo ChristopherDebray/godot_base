@@ -10,6 +10,7 @@ const COLLISION_MASKS = {
 	'TILES': 1,
 	'PLAYER': 3,
 	'NPC': 4,
+	'HOLES': 8,
 }
 
 const COLLISION_MASKS_GROUPS = {
@@ -29,7 +30,7 @@ func _on_use_ability(data: AbilityData, target: Vector2, origin: Vector2, target
 	var instance = data.scene.instantiate() as BaseAbility
 	instance.sender = sender
 	instance.configure_masks(COLLISION_MASKS_GROUPS[target_type])
-	instance.initAbilityResource(data)
+	instance.init_ability_resource(data)
 	
 	var target_world := CastService._coerce_target_world(sender, target, instance.range)
 	var ctx

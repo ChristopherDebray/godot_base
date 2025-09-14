@@ -58,7 +58,7 @@ func _do_tick(entry: Dictionary) -> void:
 			entry["applied_mods"][k] = entry["applied_mods"].get(k, 0.0) + res["applied"][k]
 
 func _unapply_effect(entry: Dictionary) -> void:
-	# Annule stats
+	# Cancel stat effects
 	if entry.has("applied_mods"):
 		for k in entry["applied_mods"].keys():
 			var v: float = entry["applied_mods"][k]
@@ -69,13 +69,12 @@ func _unapply_effect(entry: Dictionary) -> void:
 					modify_defense(-v)
 				_:
 					pass
-	# Annule contrôles
+	# Cancel control effects
 	if entry.has("applied_mods") and entry["applied_mods"].has("freeze"):
 		freeze(false) # unfreeze
 
 func apply_elemental_damage(spellResource: AbilityData, amount: float) -> void:
 	if spellResource.main_element in immunity_elements:
-		print("Immune to damage of type", spellResource.name)
 		return
 	
 	apply_damage(amount)
@@ -87,7 +86,6 @@ func apply_damage(amount: float) -> void:
 
 func apply_effect(effect: EffectData) -> void:
 	if effect.name_enum in immunity_effects:
-		print("Immune to effect", effect.name)
 		return
 	
 	# Reset duration if same effect already exists

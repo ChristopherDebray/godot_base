@@ -19,15 +19,10 @@ var input_to_element = {
 	"b_3_action": SpellsManager.ELEMENTS.WIND
 }
 
-const PROBE_SIZE = Vector2(50, 50)
-
 func _ready() -> void:
 	await get_tree().process_frame
 
 func _physics_process(_delta: float) -> void:
-	var transform = Transform2D()
-	transform = transform.translated(-global_position + PROBE_SIZE/2)
-	
 	get_movement_input()
 	detect_action_inputs()
 	move_and_slide()

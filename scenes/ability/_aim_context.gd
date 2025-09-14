@@ -33,8 +33,5 @@ static func from_node(node: Node2D, instance: BaseAbility, target: Vector2) -> A
 			instance.range
 		)
 		ctx.desired_dir = ctx.sender_pos.direction_to(ctx.clamp_point)
-		print(ctx.sender_pos)
-		print(ctx.desired_point)
-		print(ctx.clamp_point)
 	
 	return ctx
