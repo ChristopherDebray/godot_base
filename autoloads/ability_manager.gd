@@ -45,6 +45,6 @@ func _on_use_ability(data: AbilityData, target: Vector2, origin: Vector2, target
 		ctx.los_clamped_point = CastService._compute_aoe_spawn_with_los(sender, ctx, instance._get_aoe_radius())
 		instance.init(data, ctx)
 	
-	get_tree().current_scene.add_child(instance)
+	get_tree().current_scene.get_node("YsortLayer/Abilities").add_child(instance)
 	
 	return instance

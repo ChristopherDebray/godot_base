@@ -46,7 +46,7 @@ func _spawn():
 	instance.is_zone_locked = false
 	instance.global_position = spawn_point.global_position
 	
-	get_tree().current_scene.add_child(instance)
+	get_tree().current_scene.get_node("YsortLayer/Npcs").add_child(instance)
 	instance.state = BaseNpc.STATE.ATTACKING
 	_spawned_count += 1
 	_alive_count += 1

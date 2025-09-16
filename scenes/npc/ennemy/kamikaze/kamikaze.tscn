@@ -81,6 +81,7 @@ animations = [{
 }]
 
 [node name="Kamikaze" instance=ExtResource("1_6nvvx")]
+y_sort_enabled = false
 script = ExtResource("2_mqnfx")
 behavior = SubResource("Resource_m3a88")
 

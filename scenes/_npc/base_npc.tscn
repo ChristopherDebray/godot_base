@@ -29,6 +29,7 @@ scale = Vector2(1.2, 1.2)
 texture = ExtResource("3_muicc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteContainer" index="1"]
+y_sort_enabled = true
 
 [node name="FieldView" type="Area2D" parent="SpriteContainer" index="2"]
 collision_layer = 0

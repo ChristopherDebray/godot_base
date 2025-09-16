@@ -4,9 +4,11 @@
 
 [node name="BaseAbility" type="Node2D"]
 process_mode = 1
+y_sort_enabled = true
 script = ExtResource("1_2mqch")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
 
 [node name="LifetimeTimer" type="Timer" parent="."]
 

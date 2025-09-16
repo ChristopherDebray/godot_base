@@ -41,6 +41,7 @@ func _update_facing() -> void:
 func _update_anim() -> void:
 	# seuil pour éviter de “jouer/arrêter” quand la vitesse est quasi nulle
 	var moving := velocity.length_squared() > 1.0
+	#move_toward()
 
 	if moving:
 		if animated_sprite_2d.animation != run_anim_name or !animated_sprite_2d.is_playing():

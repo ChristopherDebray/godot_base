@@ -81,6 +81,7 @@ animations = [{
 }]
 
 [node name="Skelleton" instance=ExtResource("1_xgvfd")]
+y_sort_enabled = false
 script = ExtResource("2_tt02g")
 behavior = SubResource("Resource_mo88q")
 

@@ -86,7 +86,7 @@ height = 38.0
 
 [node name="Firebolt" instance=ExtResource("1_oewwp")]
 script = ExtResource("2_hysv0")
-SPEED = 400
+SPEED = 400.0
 abilityName = "firebolt"
 
 [node name="AnimatedSprite2D" parent="." index="0"]
