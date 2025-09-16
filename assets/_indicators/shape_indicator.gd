@@ -4,6 +4,7 @@ class_name TelegraphPolygon
 
 const FILL_COLOR_ALPHA = 0.35
 const OUTLINE_COLOR_ALPHA = 0.9
+const FLASH_COLOR_ALPHA = 0.70
 
 @export var shape: Shape2D
 @export var outline_width: float = 2.0
@@ -19,6 +20,7 @@ func _ready() -> void:
 	# Create children lazily (keeps scene clean if you add this as script-only)
 	fill_poly = Polygon2D.new()
 	fill_poly.color = fill_color
+	_pulse(self, fill_color)
 	add_child(fill_poly)
 
 	outline_line = Line2D.new()
@@ -29,27 +31,6 @@ func _ready() -> void:
 	add_child(outline_line)
 
 	_rebuild_from_shape()
-
-func set_shape(new_shape: Shape2D) -> void:
-	shape = new_shape
-	_rebuild_from_shape()
-
-func set_fill_color(c: Color) -> void:
-	fill_color = c
-	if fill_poly:
-		fill_poly.color = c
-
-func set_outline(color: Color, width: float) -> void:
-	outline_color = color
-	outline_width = width
-	if outline_line:
-		outline_line.default_color = color
-		outline_line.width = width
-
-func _notification(what: int) -> void:
-	if what == NOTIFICATION_TRANSFORM_CHANGED:
-		# Nothing to do: Polygon2D/Line2D respect Node2D transform automatically.
-		pass
 
 func _rebuild_from_shape() -> void:
 	if shape == null:
@@ -133,7 +114,9 @@ static func generate_telegraph(collision_shape_2d: CollisionShape2D, target_type
 	var telegraph := TelegraphPolygon.new()
 	var telegraph_colors = get_color_from_type(target_type)
 	telegraph.fill_color = telegraph_colors[0]
+	telegraph.fill_color.a = FILL_COLOR_ALPHA
 	telegraph.outline_color = telegraph_colors[1]
+	telegraph.outline_color.a = OUTLINE_COLOR_ALPHA
 	telegraph.shape = collision_shape_2d.shape
 	#telegraph.global_transform = collision_shape_2d.global_transform
 	telegraph.global_position = collision_shape_2d.position
@@ -146,13 +129,22 @@ static func get_color_from_type(target_type: AbilityManager.TARGET_TYPE) -> Arra
 
 	match target_type:
 		AbilityManager.TARGET_TYPE.PLAYER:
-			new_fill_color = Color(0, 0, 1, 0.35)
-			new_outline_color = Color(0, 0, 1, 0.9)
+			new_fill_color = Color(0, 0, 1)
+			new_outline_color = Color(0, 0, 1)
 		_:
-			new_fill_color = Color(1, 0, 0, 0.35)
-			new_outline_color = Color(1, 0, 0, 0.9)
+			new_fill_color = Color(1, 0, 0)
+			new_outline_color = Color(1, 0, 0)
 	
 	return [
 		new_fill_color,
 		new_outline_color
 	]
+
+func _pulse(target, color: Color) -> void:
+	var duration = 20
+	var tw = create_tween()
+	var color_tween = color
+	color_tween.a = FLASH_COLOR_ALPHA
+	tw.set_loops(ceil(duration / 0.5))
+	tw.tween_property(target, "modulate", fill_color, 0.35).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tw.tween_property(target, "modulate", color_tween, 0.35).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)

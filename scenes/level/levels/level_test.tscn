@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://cm5nim8ogpayf" path="res://scenes/npc/ennemy/skelleton/skelleton.tscn" id="6_uonu5"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2heyh"]
-vertices = PackedVector2Array(1117.49, 99.1562, 32, 32, 1889.04, 100.844, 1565.49, 102.156, 1313.04, 100.844, 3552.98, 32, 2141.49, 102.156, 865.039, 97.8438, 670.062, 161, 868.93, 222.156, 661.883, 191.531, 661.883, 130.469, 3552.01, 1824.95, 2139.52, 223.844, 32, 1820.04, 1892.93, 225.156, 1115.52, 220.844, 1316.93, 225.156, 1563.52, 223.844, 639.531, 213.883, 609, 222.062, 578.469, 213.883, 556.117, 191.531, 547.938, 161, 556.117, 130.469, 578.469, 108.117, 639.531, 108.117, 609, 99.9375)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(1, 5, 6, 2), PackedInt32Array(1, 0, 7), PackedInt32Array(8, 7, 9, 10), PackedInt32Array(7, 8, 11), PackedInt32Array(6, 5, 12, 13), PackedInt32Array(13, 12, 14, 15), PackedInt32Array(16, 0, 4, 17), PackedInt32Array(18, 3, 2, 15), PackedInt32Array(18, 15, 14, 17), PackedInt32Array(16, 17, 14, 9), PackedInt32Array(10, 9, 14, 19), PackedInt32Array(20, 19, 14), PackedInt32Array(21, 20, 14), PackedInt32Array(21, 14, 1, 22), PackedInt32Array(23, 22, 1), PackedInt32Array(24, 23, 1), PackedInt32Array(25, 24, 1), PackedInt32Array(7, 11, 26), PackedInt32Array(27, 25, 1), PackedInt32Array(27, 1, 7), PackedInt32Array(27, 7, 26)])
+vertices = PackedVector2Array(3552.01, 1824.95, 32, 1820.04, 32, 32, 3552.98, 32)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(2, 2, 2, 1850, 3582, 1855, 3583, 2)])
 agent_radius = 30.0
 
@@ -22,28 +22,8 @@ energy = 0.7
 visible = false
 navigation_polygon = SubResource("NavigationPolygon_2heyh")
 
-[node name="NavigationObstacle2D2" type="NavigationObstacle2D" parent="NavigationRegion2D" index="0"]
-position = Vector2(987, 158)
-radius = 25.0
-vertices = PackedVector2Array(-91, -30, 100, -29, 99, 33, -89, 34)
-affect_navigation_mesh = true
-
-[node name="NavigationObstacle2D3" type="NavigationObstacle2D" parent="NavigationRegion2D" index="1"]
-position = Vector2(1435, 161)
-radius = 25.0
-vertices = PackedVector2Array(-91, -30, 100, -29, 99, 33, -89, 34)
-affect_navigation_mesh = true
-
-[node name="NavigationObstacle2D4" type="NavigationObstacle2D" parent="NavigationRegion2D" index="2"]
-position = Vector2(2011, 161)
-radius = 25.0
-vertices = PackedVector2Array(-91, -30, 100, -29, 99, 33, -89, 34)
-affect_navigation_mesh = true
-
-[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="NavigationRegion2D" index="3"]
-position = Vector2(609, 161)
-radius = 30.0
-affect_navigation_mesh = true
+[node name="Player" parent="YsortLayer/Players" index="0"]
+position = Vector2(630, 390)
 
 [node name="SpawnPoints#Marker2D" type="Marker2D" parent="YsortLayer/SpawnPoints" index="0"]
 position = Vector2(249, 415)
@@ -52,10 +32,10 @@ position = Vector2(249, 415)
 position = Vector2(988, 573)
 
 [node name="SpawnPoints#Marker2D3" type="Marker2D" parent="YsortLayer/SpawnPoints" index="2"]
-position = Vector2(796, 80)
+position = Vector2(464, 258)
 
 [node name="SpawnPoints#Marker2D4" type="Marker2D" parent="YsortLayer/SpawnPoints" index="3"]
-position = Vector2(1177, 360)
+position = Vector2(1066, 360)
 
 [node name="Spawner" parent="YsortLayer" index="4" node_paths=PackedStringArray("player", "spawn_points_container") instance=ExtResource("4_2uvmr")]
 enemy_scene = ExtResource("6_uonu5")
