@@ -4,11 +4,15 @@ class_name BaseAbility
 
 @export var abilityName: String
 @export var aoe_enabled: bool = true
+@export var must_delay_attack: bool = false
+@export var windup_time: float = 0
+@export var duration: float = 2.0
+
 var damage: float
 var aoe_damage: float
 var effect: EffectData
-var duration: float = 2.0
 var range: float = 30.0
+var target_type: AbilityManager.TARGET_TYPE
 
 var sender: Node
 var _has_hit: bool = false
@@ -20,14 +24,15 @@ var _max_range_sq: float = 0.0
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var lifetime_timer: Timer = $LifetimeTimer
+@onready var delay_timer: Timer = $DelayTimer
 @onready var hitbox: Area2D = $Hitbox
 @onready var area_of_effect: Area2D = $AreaOfEffect
+@onready var area_of_effect_collision_shape: CollisionShape2D = $AreaOfEffect/CollisionShape2D
 
 func configure_masks(masks: Array) -> void:
 	_pending_masks = masks
 
 func _ready():
-	lifetime_timer.start(duration)
 	if _pending_masks:
 		set_hitboxes_targets(_pending_masks)
 
@@ -108,6 +113,20 @@ func start_from(origin: Vector2, max_range: float) -> void:
 func has_exceeded_range(current_pos: Vector2) -> bool:
 	return (current_pos - _origin).length_squared() >= _max_range_sq
 
+func begin_cast_flow() -> void:
+	if must_delay_attack and windup_time > 0.0:
+		on_windup_start()
+		delay_timer.start(windup_time)
+	else:
+		_start_impact_phase()
+
+func _start_impact_phase() -> void:
+	on_impact_start()
+	if duration > 0.0:
+		lifetime_timer.start(duration)
+	else:
+		on_ability_timeout()
+
 ## @abstract
 func on_hit():
 	pass
@@ -119,3 +138,14 @@ func _on_lifetime_timer_timeout():
 ## @abstract: by default just delete the element but could be used for effect on duration over
 func on_ability_timeout():
 	queue_free()
+
+func _on_delay_timer_timeout() -> void:
+	_start_impact_phase()
+
+## @abstract
+func on_windup_start() -> void:
+	pass
+
+## @abstract
+func on_impact_start() -> void:
+	pass

@@ -11,6 +11,10 @@ script = ExtResource("1_2mqch")
 y_sort_enabled = true
 
 [node name="LifetimeTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="DelayTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_mask = 25
@@ -23,5 +27,6 @@ collision_mask = 25
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaOfEffect"]
 
 [connection signal="timeout" from="LifetimeTimer" to="." method="_on_lifetime_timer_timeout"]
+[connection signal="timeout" from="DelayTimer" to="." method="_on_delay_timer_timeout"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_entered" from="AreaOfEffect" to="." method="_on_area_of_effect_body_entered"]

@@ -29,6 +29,7 @@ func _on_use_ability(data: AbilityData, target: Vector2, origin: Vector2, target
 	
 	var instance = data.scene.instantiate() as BaseAbility
 	instance.sender = sender
+	instance.target_type = target_type
 	instance.configure_masks(COLLISION_MASKS_GROUPS[target_type])
 	instance.init_ability_resource(data)
 	

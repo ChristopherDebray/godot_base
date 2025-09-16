@@ -3,6 +3,19 @@ class_name AoeInstantAbility
 
 ## The size of the aoe in tiles, used to avoid collision with a wall
 @export var aoe_radius_tiles: float = 1.0
+var telegraph
+
+func _ready():
+	set_telegraph()
+	begin_cast_flow()
+
+func set_telegraph() -> void:
+	telegraph = TelegraphPolygon.generate_telegraph(area_of_effect_collision_shape, self.target_type)
+	self.add_child(telegraph)
+
+func delay_attack() -> void:
+	if must_delay_attack:
+		delay_timer.start()
 
 func init(ability_data: AbilityData, ctx: AimContext) -> void:
 	start_from(ctx.los_clamped_point, range)

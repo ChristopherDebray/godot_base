@@ -117,7 +117,7 @@ func process_searching(delta: float) -> void:
 		## A non zone locked npc will be able to roam or idle freely where he stands
 		if not is_zone_locked:
 			state = initial_state
-			locomotion._initial_position = global_position
+			locomotion.initial_position = global_position
 			return
 		state = STATE.RETURNING
 		return
@@ -149,7 +149,7 @@ func process_fleeing(delta: float) -> void:
 	if (_attack_target and is_instance_valid(_attack_target)):
 		pivot = _attack_target.global_position
 	else:
-		pivot = locomotion._initial_position
+		pivot = locomotion.initial_position
 
 	var away = (global_position - pivot).normalized()
 	var random_offset = Vector2(randf_range(-0.5, 0.5), randf_range(-0.5, 0.5)).normalized()
@@ -163,7 +163,7 @@ func process_roaming(delta: float) -> void:
 	if _roam_timer > 0.0:
 		return
 	var random_offset = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized() * randf_range(50.0, roam_radius)
-	roaming_target_position = locomotion._initial_position + random_offset
+	roaming_target_position = locomotion.initial_position + random_offset
 	locomotion.set_nav_to_position(roaming_target_position)
 	_roam_timer = roam_delay + randf_range(0.5, 1.5)
 
@@ -172,7 +172,7 @@ func process_patrolling() -> void:
 		locomotion._navigate_wp()
 
 func process_returning() -> void:
-	locomotion.set_nav_to_position(locomotion._initial_position)
+	locomotion.set_nav_to_position(locomotion.initial_position)
 	if nav_agent.is_navigation_finished():
 		state = initial_state
 

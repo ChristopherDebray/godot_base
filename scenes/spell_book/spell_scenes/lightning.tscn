@@ -60,6 +60,9 @@ region = Rect2(768, 0, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_bp2nl")
 }, {
 "duration": 1.0,
@@ -110,6 +113,8 @@ radius = 156.013
 script = ExtResource("2_bp2nl")
 aoe_radius_tiles = 5.0
 abilityName = "lightning"
+must_delay_attack = true
+windup_time = 2.0
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 scale = Vector2(2, 2)
@@ -119,7 +124,10 @@ animation = &"repeat"
 [node name="LifetimeTimer" parent="." index="1"]
 wait_time = 2.0
 
-[node name="AreaOfEffect" parent="." index="3"]
+[node name="DelayTimer" parent="." index="2"]
+wait_time = 2.0
+
+[node name="AreaOfEffect" parent="." index="4"]
 monitoring = false
 
 [node name="CollisionShape2D" parent="AreaOfEffect" index="0"]
