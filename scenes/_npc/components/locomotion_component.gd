@@ -6,6 +6,7 @@ class_name LocomotionComponent
 var npc: BaseNpc
 var _waypoints: Array = []
 var _current_wp: int = 0
+var _wp_dir: int = 1 # 1 = forward, -1 = backward
 
 var roaming_target_position: Vector2
 var roam_delay: float = 2.0
@@ -47,16 +48,44 @@ func set_nav_to_position(nav_position: Vector2) -> void:
 	npc_nav_agent.target_position = nav_position
 
 func _create_wp() -> void:
-	if npc.state != npc.STATE.PATROLLING:
+	_waypoints.clear()
+
+	if patrol_points.is_empty():
 		return
-	for wp in npc.get_node(patrol_points).get_children():
-		_waypoints.append(wp.global_position)
+
+	var points_parent := get_node_or_null(patrol_points)
+	if points_parent == null:
+		push_error("LocomotionComponent: 'patrol_points' does not resolve to a valid node.")
+		return
+
+	for child in points_parent.get_children():
+		if child is Node2D:
+			_waypoints.append(child.global_position)
+
+	_current_wp = 0
+	_wp_dir = 1
 
 func _navigate_wp() -> void:
-	if _current_wp >= _waypoints.size():
-		_current_wp = 0
+	if _waypoints.is_empty():
+		return
+
+	# Set current target
 	npc_nav_agent.target_position = _waypoints[_current_wp]
-	_current_wp += 1
+
+	# Prepare next index (called only when nav is finished)
+	if _waypoints.size() == 1:
+		return
+
+	_current_wp += _wp_dir
+
+	# Bounce on edges
+	if _current_wp >= _waypoints.size():
+		_wp_dir = -1
+		_current_wp = _waypoints.size() - 2
+	elif _current_wp < 0:
+		_wp_dir = 1
+		_current_wp = 1
+
 
 func _on_npc_nav_agent_velocity_computed(safe_velocity: Vector2) -> void:
 	npc.velocity = safe_velocity

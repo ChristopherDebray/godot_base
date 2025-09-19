@@ -883,10 +883,13 @@ process_mode = 0
 y_sort_enabled = false
 
 [node name="SpawnPoints" type="Node2D" parent="YsortLayer"]
+y_sort_enabled = true
 
 [node name="Npcs" type="Node2D" parent="YsortLayer"]
+y_sort_enabled = true
 
 [node name="Objects" type="Node2D" parent="YsortLayer"]
+y_sort_enabled = true
 
 [node name="Lights" type="Node2D" parent="."]
 

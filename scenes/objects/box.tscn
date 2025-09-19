@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ca4un0p31fadn" path="res://assets/images/decorations/TopDownHouse_SmallItems.png" id="2_vfogt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tf0hf"]
-size = Vector2(73, 72)
+size = Vector2(29, 32)
 
 [node name="Box" instance=ExtResource("1_tf0hf")]
 health = 100.0
@@ -15,7 +15,7 @@ position = Vector2(1.5, 0)
 shape = SubResource("RectangleShape2D_tf0hf")
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="2"]
-scale = Vector2(4.59044, 4.59044)
+scale = Vector2(2.125, 2.125)
 texture = ExtResource("2_vfogt")
 region_enabled = true
 region_rect = Rect2(111.654, 31.8339, 16.8211, 16.3667)

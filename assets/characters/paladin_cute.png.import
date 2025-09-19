@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://calu7oq5i7iyy"
-path="res://.godot/imported/ranger_cute.png-f6dbe0f74b6da7539bd59c5fd573c63b.ctex"
+uid="uid://br7dubf3wh47c"
+path="res://.godot/imported/paladin_cute.png-1c1d879500812779cde92100ca3c23fb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/ranger_cute.png"
-dest_files=["res://.godot/imported/ranger_cute.png-f6dbe0f74b6da7539bd59c5fd573c63b.ctex"]
+source_file="res://assets/characters/paladin_cute.png"
+dest_files=["res://.godot/imported/paladin_cute.png-1c1d879500812779cde92100ca3c23fb.ctex"]
 
 [params]
 
