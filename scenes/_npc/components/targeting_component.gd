@@ -26,9 +26,9 @@ var npc_ray_cast_2d: RayCast2D
 
 var _candidates: Array[Damageable] = []
 var _last_attacker: Damageable = null
-var initial_attack_target_type: AbilityManager.TARGET_TYPE
+var initial_ability_target_type: AbilityManager.TARGET_TYPE
 
-var current_attack_target_type: AbilityManager.TARGET_TYPE
+var current_ability_target_type: AbilityManager.TARGET_TYPE
 var current_detection_type: TargetManager.TARGET_TYPE
 
 var _poll_accum: float = randf_range(0.0, 0.2)  # phase offset to spread load
@@ -41,19 +41,19 @@ func setup(owner: BaseNpc, field_view: Area2D, ray_cast_2d: RayCast2D) -> void:
 	npc_field_view = field_view
 	npc_ray_cast_2d = ray_cast_2d
 	
-	set_initial_attack_target_type(AbilityManager.TARGET_TYPE.ENEMY)
-	set_current_attack_target_type(AbilityManager.TARGET_TYPE.ENEMY)
+	set_initial_ability_target_type(AbilityManager.TARGET_TYPE.ENEMY)
+	set_current_ability_target_type(AbilityManager.TARGET_TYPE.ENEMY)
 	npc_field_view.body_entered.connect(_on_field_view_body_entered)
 	npc_field_view.body_exited.connect(_on_field_view_body_exited)
 
 	# If we want initial aggro on "enemy" group (same-faction),
 	# we MUST flip the filter to 'PLAYER' (== allies in your enum).
 	if initial_aggro_group == "enemy":
-		set_current_attack_target_type(AbilityManager.TARGET_TYPE.PLAYER)
+		set_current_ability_target_type(AbilityManager.TARGET_TYPE.PLAYER)
 	elif initial_aggro_group == "player":
-		set_current_attack_target_type(AbilityManager.TARGET_TYPE.ENEMY)
+		set_current_ability_target_type(AbilityManager.TARGET_TYPE.ENEMY)
 
-	TargetManager.set_detection_mask_for(npc.faction, current_attack_target_type, npc_field_view)
+	TargetManager.set_detection_mask_for(npc.faction, current_ability_target_type, npc_field_view)
 	# Optional: keep track of recent attackers for aggro bonus if you emit this signal
 	if SignalManager.has_signal("damaged"):
 		SignalManager.damaged.connect(func(victim: Damageable, attacker: Damageable):
@@ -66,8 +66,8 @@ func setup(owner: BaseNpc, field_view: Area2D, ray_cast_2d: RayCast2D) -> void:
 		SignalManager.died.connect(func(victim: Damageable):
 			if victim == null: return
 			_candidates.erase(victim)
-			if victim == npc._attack_target:
-				npc._attack_target = null
+			if victim == npc._ability_target:
+				npc._ability_target = null
 				npc.state = npc.STATE.SEARCHING
 		)
 	
@@ -107,7 +107,7 @@ func _matches_target_filter(damageable: Damageable) -> bool:
 	if not damageable.is_alive: return false
 	if damageable == npc: return false
 
-	match current_attack_target_type:
+	match current_ability_target_type:
 		AbilityManager.TARGET_TYPE.ENEMY:
 			return damageable.faction != npc.faction
 		AbilityManager.TARGET_TYPE.PLAYER: # “PLAYER” means same-faction (ally) in your enum
@@ -161,17 +161,17 @@ func _targeting_poll() -> void:
 	if best == null:
 		return
 
-	if npc._attack_target == null:
+	if npc._ability_target == null:
 		_set_target(best)
 		return
 
-	if npc._attack_target == best:
+	if npc._ability_target == best:
 		return
 
 	if _lock_timer > 0.0 or _retarget_timer > 0.0:
 		return
 
-	var current_score := _score_candidate(npc._attack_target)
+	var current_score := _score_candidate(npc._ability_target)
 	if best_score <= current_score / switch_score_gain:
 		_set_target(best)
 
@@ -182,7 +182,7 @@ func _score_candidate(candidate: Damageable) -> float:
 	var ang_cost = 1.0 - clamp(forward.dot(dir), -1.0, 1.0) # 0=in front, ~2=behind
 
 	var score = w_distance * d2 + w_angle * ang_cost
-	if candidate == npc._attack_target:
+	if candidate == npc._ability_target:
 		score += w_same_as_current_bonus
 	if candidate == _last_attacker:
 		score += w_recent_attacker_bonus
@@ -197,19 +197,19 @@ func _has_line_of_sight(to: Node2D) -> bool:
 	var collider := npc_ray_cast_2d.get_collider()
 	return collider != null and collider == to
 
-func set_current_attack_target_type(target_type: AbilityManager.TARGET_TYPE):
-	current_attack_target_type = target_type
-	TargetManager.set_detection_mask_for(npc.faction, current_attack_target_type, npc_field_view)
+func set_current_ability_target_type(target_type: AbilityManager.TARGET_TYPE):
+	current_ability_target_type = target_type
+	TargetManager.set_detection_mask_for(npc.faction, current_ability_target_type, npc_field_view)
 
-func set_initial_attack_target_type(target_type: AbilityManager.TARGET_TYPE):
-	initial_attack_target_type = target_type
+func set_initial_ability_target_type(target_type: AbilityManager.TARGET_TYPE):
+	initial_ability_target_type = target_type
 
 func set_current_detection_type(target_type: TargetManager.TARGET_TYPE, detection_field: Area2D):
 	current_detection_type = target_type
-	TargetManager.set_detection_mask_for(npc.faction, current_attack_target_type, detection_field)
+	TargetManager.set_detection_mask_for(npc.faction, current_ability_target_type, detection_field)
 
 func _set_target(target: Damageable) -> void:
-	npc._attack_target = target
+	npc._ability_target = target
 	_lock_timer = min_lock_time
 	_retarget_timer = retarget_cooldown
 	_los_lost_timer = 0.0
@@ -217,14 +217,14 @@ func _set_target(target: Damageable) -> void:
 	npc.state = npc.STATE.ATTACKING
 
 func _handle_detection_and_state(delta: float) -> void:
-	if npc._attack_target and is_instance_valid(npc._attack_target) and npc._attack_target.is_alive:
-		npc._last_seen_pos = npc._attack_target.global_position
-		if _has_line_of_sight(npc._attack_target):
+	if npc._ability_target and is_instance_valid(npc._ability_target) and npc._ability_target.is_alive:
+		npc._last_seen_pos = npc._ability_target.global_position
+		if _has_line_of_sight(npc._ability_target):
 			_los_lost_timer = 0.0
 		else:
 			_los_lost_timer += delta
 			if _los_lost_timer >= los_grace_time:
-				npc._attack_target = null
+				npc._ability_target = null
 				npc.state = npc.STATE.SEARCHING
 	else:
 		if npc.state == npc.STATE.ATTACKING:
@@ -236,7 +236,7 @@ func on_alert_from(source: Node) -> void:
 		var dmg := source as Damageable
 		npc._last_seen_pos = dmg.global_position
 		# If no current target and filter matches, try to lock immediately
-		if npc._attack_target == null and _matches_target_filter(dmg):
+		if npc._ability_target == null and _matches_target_filter(dmg):
 			# Respect lock/cooldown heuristics implicitly through _set_target
 			if _has_line_of_sight(dmg):
 				_set_target(dmg)
@@ -251,7 +251,7 @@ func on_alert_from(source: Node) -> void:
 
 func _force_retarget(immediate: bool = true) -> void:
 	# Clear current target and timers so we are allowed to switch now
-	npc._attack_target = null
+	npc._ability_target = null
 	_los_lost_timer = 0.0
 	if immediate:
 		_lock_timer = 0.0        # break the 5s lock
@@ -261,7 +261,7 @@ func _force_retarget(immediate: bool = true) -> void:
 	_targeting_poll()
 
 	# If nothing picked (e.g., no LOS yet), go searching toward nearest valid candidate
-	if npc._attack_target == null and _candidates.size() > 0:
+	if npc._ability_target == null and _candidates.size() > 0:
 		var best: Damageable = null
 		var best_d2 := 1e12
 		for c in _candidates:
@@ -279,10 +279,12 @@ func _force_retarget(immediate: bool = true) -> void:
 
 func _on_field_view_body_entered(body: Node) -> void:
 	if body != npc and body is Damageable and _matches_target_filter(body):
+		print('new candidate')
 		_candidates.append(body)
 
 func _on_field_view_body_exited(body: Node) -> void:
 	if body is Damageable:
+		print('no more candidated')
 		_candidates.erase(body)
 
 func charm(state: bool = true) -> void:
@@ -292,13 +294,13 @@ func charm(state: bool = true) -> void:
 	if state:
 		# While charmed, invert who we consider as "valid targets"
 		if initial_aggro_group == "player":
-			set_current_attack_target_type(AbilityManager.TARGET_TYPE.PLAYER) # attack allies instead of player
+			set_current_ability_target_type(AbilityManager.TARGET_TYPE.PLAYER) # ability allies instead of player
 		else:
-			set_current_attack_target_type(AbilityManager.TARGET_TYPE.ENEMY)  # attack opponents instead of enemies
+			set_current_ability_target_type(AbilityManager.TARGET_TYPE.ENEMY)  # attack opponents instead of enemies
 
 		# Break current lock and pick a new target now
 		_force_retarget(true)
 	else:
 		# Restore the original intent when charm ends
-		set_current_attack_target_type(initial_attack_target_type)
+		set_current_ability_target_type(initial_ability_target_type)
 		_force_retarget(true)

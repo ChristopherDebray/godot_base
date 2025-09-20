@@ -1,8 +1,9 @@
 extends Resource
 class_name AbilityData
 
-enum ABILITY_KIND { PROJECTILE, AOE, MELEE, HEAL, BUFF, DEBUFF }
+enum ABILITY_KIND { PROJECTILE, AOE, MELEE, HEAL, BUFF, DEBUFF, SELF }
 enum ABILITY_FACTION { PLAYER, ENEMY, ALL }
+enum ABILITY_TAG { AOE, PROJECTILE, BUFF, DEBUFF, INSTANT, FINISHER }
 
 @export var name: String
 @export var cooldown: float = 0.5
@@ -19,3 +20,9 @@ enum ABILITY_FACTION { PLAYER, ENEMY, ALL }
 ## Optional, dot, slow, etc
 @export var effect: EffectData
 @export var description: String
+@export var tags: Array[ABILITY_TAG] = []
+
+# Canalisation (optionnal)
+@export var is_channeled: bool = false
+@export var channel_tick_rate: float = 0.5 # tick effect during channel
+@export var max_channel_duration: float = 3.0

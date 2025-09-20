@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwo0l3vgwptw5"]
+
+[ext_resource type="Script" uid="uid://d3xs5nj52utmy" path="res://scenes/_npc/components/ability_runner.gd" id="1_rqmo7"]
+
+[node name="AbilityRunnerComponent" type="Node2D"]
+script = ExtResource("1_rqmo7")

@@ -1,23 +1,36 @@
-[gd_scene load_steps=7 format=3 uid="uid://dbvgcyxkunrkl"]
+[gd_scene load_steps=11 format=3 uid="uid://bx54vyeawn6f3"]
 
 [ext_resource type="PackedScene" uid="uid://b2odxanbtxty4" path="res://scenes/_damageable/damageable.tscn" id="1_rcddc"]
 [ext_resource type="Script" uid="uid://dbmrhnfb7wqqh" path="res://scenes/_npc/base_npc.gd" id="2_flwcu"]
+[ext_resource type="Script" uid="uid://ck57yu62phkan" path="res://scenes/_npc/behaviors/archer_behavior.gd" id="3_gbn1b"]
 [ext_resource type="Texture2D" uid="uid://dpnrd0bglhp4g" path="res://assets/characters/shadow.png" id="3_muicc"]
 [ext_resource type="Script" uid="uid://f4kldhtjhj0h" path="res://scenes/_npc/components/perception_component.gd" id="4_qeoa2"]
 [ext_resource type="PackedScene" uid="uid://dyypj64ygk60y" path="res://scenes/_npc/components/targeting.tscn" id="5_5urbc"]
 [ext_resource type="PackedScene" uid="uid://d0ln4bfkemrnx" path="res://scenes/_npc/components/locomotion.tscn" id="6_gbn1b"]
+[ext_resource type="PackedScene" uid="uid://dwo0l3vgwptw5" path="res://scenes/_npc/components/ability_runner_component.tscn" id="8_no8tt"]
+[ext_resource type="PackedScene" uid="uid://e7rggvn4fe4c" path="res://scenes/_npc/components/cooldown_bank_component.tscn" id="9_7u3u1"]
+
+[sub_resource type="Resource" id="Resource_fgb20"]
+script = ExtResource("3_gbn1b")
+preferred_range = 160.0
+stop_range = 120.0
+strafe_bias = 0.6
+jitter = 0.25
+metadata/_custom_type_script = "uid://ck57yu62phkan"
 
 [node name="BaseNpc" groups=["enemy"] instance=ExtResource("1_rcddc")]
 collision_mask = 137
 script = ExtResource("2_flwcu")
 turn_speed_deg = 3000.0
-attack_cooldown = 2.0
+ability_cooldown = 2.0
 initial_state = 0
-behavior = null
+behavior = SubResource("Resource_fgb20")
 roam_radius = 200.0
 is_zone_locked = true
 walk_anim_name = "default"
 idle_frame_index = 0
+ability_loadout = null
+use_global_cooldown = true
 metadata/_edit_vertical_guides_ = [-15.0, 15.0]
 metadata/_edit_horizontal_guides_ = [30.0]
 
@@ -42,7 +55,7 @@ rotation = -1.5708
 scale = Vector2(17.3874, 18.4783)
 polygon = PackedVector2Array(0, 0, -15, 30, 15, 30)
 
-[node name="AttackTimer" type="Timer" parent="." index="4"]
+[node name="AbilityTimer" type="Timer" parent="." index="4"]
 one_shot = true
 
 [node name="NavAgent" type="NavigationAgent2D" parent="." index="5"]
@@ -63,6 +76,12 @@ position = Vector2(18, 0)
 fov_poll_interval = 0.22
 
 [node name="Locomotion" parent="." index="10" instance=ExtResource("6_gbn1b")]
+
+[node name="AbilityRunnerComponent" parent="." index="11" instance=ExtResource("8_no8tt")]
+visible = false
+
+[node name="CooldownBankComponent" parent="." index="12" instance=ExtResource("9_7u3u1")]
+visible = false
 
 [connection signal="body_entered" from="SpriteContainer/FieldView" to="." method="_on_field_view_body_entered"]
 [connection signal="body_exited" from="SpriteContainer/FieldView" to="." method="_on_field_view_body_exited"]

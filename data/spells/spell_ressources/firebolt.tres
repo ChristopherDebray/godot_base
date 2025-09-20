@@ -19,4 +19,5 @@ aoe_damage = 0.0
 main_element = 1
 effect = ExtResource("1_10qkg")
 description = "boule de feu"
+tags = Array[int]([])
 metadata/_custom_type_script = "uid://cslt7nnwgts0o"

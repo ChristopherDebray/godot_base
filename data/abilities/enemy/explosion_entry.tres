@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="AbilityEntry" load_steps=3 format=3 uid="uid://xnxh8278s0r3"]
+
+[ext_resource type="Script" uid="uid://n52hp84chjuo" path="res://scenes/_npc/ability_entry.gd" id="1_n85dp"]
+[ext_resource type="Resource" uid="uid://dn4qicmijhx2c" path="res://data/abilities/enemy/explosion.tres" id="1_s30uf"]
+
+[resource]
+script = ExtResource("1_n85dp")
+ability = ExtResource("1_s30uf")
+weight = 1.0
+min_range = 0.0
+max_range = 20.0
+requires_los = false
+cooldown_override = -1.0
+cast_time = 1.5
+recovery_time = 0.0
+lock_movement_during_cast = true
+interruptible = true
+start_icd_on = 1
+animation_name = ""
+metadata/_custom_type_script = "uid://n52hp84chjuo"

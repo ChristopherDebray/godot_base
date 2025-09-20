@@ -1,9 +1,9 @@
 class_name NpcBehavior
 extends Resource
 
-## Preferred range mostly for attacks
+## Preferred range to use it's abilities
 @export var preferred_range: float = 160.0
-## Distance to stop before touching the player
+## Distance to stop before the player
 @export var stop_range: float = 120.0
 ## Strafe variation
 @export var strafe_bias: float = 0.6
@@ -11,24 +11,24 @@ extends Resource
 @export var jitter: float = 0.25
 
 ## @abstract: Returns the position to go to, by default returns the player position
-func compute_target(enemy: BaseNpc) -> Vector2:
-	if enemy._attack_target:
-		return enemy._attack_target.global_position
-	return enemy.global_position
+func compute_target(npc: BaseNpc) -> Vector2:
+	if npc._ability_target:
+		return npc._ability_target.global_position
+	return npc.global_position
 
 ## @abstract: Returns the velocity used to move by default returns a simple chase velocity
-func compute_desired_velocity(enemy: BaseNpc, delta: float) -> Vector2:
-	var target := compute_target(enemy)
-	return (target - enemy.global_position).normalized() * enemy.SPEED[enemy.state]
+func compute_desired_velocity(npc: BaseNpc, delta: float) -> Vector2:
+	var target := compute_target(npc)
+	return (target - npc.global_position).normalized() * npc.SPEED[npc.state]
 
-## @abstract: used to indicate if enemy can attack (by default check if enemy is in range)
-func try_attack(enemy: BaseNpc, delta: float) -> bool:
-	return is_in_attack_range(enemy)
+## @abstract: used to indicate if npc can ability (by default check if npc is in range)
+func try_ability(npc: BaseNpc, delta: float) -> bool:
+	return is_in_ability_range(npc)
 
-## @abstract: Returns true if the player is in range of attack
-func is_in_attack_range(enemy: BaseNpc) -> bool:
-	var player = enemy._attack_target
+## @abstract: Returns true if the player is in range of ability
+func is_in_ability_range(npc: BaseNpc) -> bool:
+	var player = npc._ability_target
 	if player == null:
 		return false
-	var dist := enemy.global_position.distance_to(player.global_position)
+	var dist := npc.global_position.distance_to(player.global_position)
 	return dist <= preferred_range

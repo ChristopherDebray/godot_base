@@ -4,9 +4,15 @@ class_name BaseAbility
 
 @export var abilityName: String
 @export var aoe_enabled: bool = true
-@export var must_delay_attack: bool = false
+@export var must_delay_ability: bool = false
 @export var windup_time: float = 0
 @export var duration: float = 2.0
+@export var tags: Array[AbilityData.ABILITY_TAG] = []
+
+# Canalisation (optionnal)
+@export var is_channeled: bool = false
+@export var channel_tick_rate: float = 0.5 # tick effect during channel
+@export var max_channel_duration: float = 3.0
 
 var damage: float
 var aoe_damage: float
@@ -114,7 +120,7 @@ func has_exceeded_range(current_pos: Vector2) -> bool:
 	return (current_pos - _origin).length_squared() >= _max_range_sq
 
 func begin_cast_flow() -> void:
-	if must_delay_attack and windup_time > 0.0:
+	if must_delay_ability and windup_time > 0.0:
 		on_windup_start()
 		delay_timer.start(windup_time)
 	else:

@@ -128,7 +128,7 @@ abilityName = "explosion"
 scale = Vector2(1.8, 1.8)
 sprite_frames = SubResource("SpriteFrames_7rxqy")
 
-[node name="AreaOfEffect" parent="." index="3"]
+[node name="AreaOfEffect" parent="." index="4"]
 monitoring = false
 
 [node name="CollisionShape2D" parent="AreaOfEffect" index="0"]

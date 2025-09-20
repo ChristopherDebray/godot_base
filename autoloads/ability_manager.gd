@@ -4,7 +4,7 @@ extends Node
 # - ENEMY: collide/target opposite faction
 # - PLAYER: collide/target same faction (allies)
 # - ALL:    collide/target both
-enum TARGET_TYPE { ENEMY, PLAYER, ALL }
+enum TARGET_TYPE { ENEMY, PLAYER, ALL, SELF }
 
 const COLLISION_MASKS = {
 	'TILES': 1,

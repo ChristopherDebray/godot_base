@@ -13,8 +13,8 @@ func set_telegraph() -> void:
 	telegraph = TelegraphPolygon.generate_telegraph(area_of_effect_collision_shape, self.target_type)
 	self.add_child(telegraph)
 
-func delay_attack() -> void:
-	if must_delay_attack:
+func delay_ability() -> void:
+	if must_delay_ability:
 		delay_timer.start()
 
 func init(ability_data: AbilityData, ctx: AimContext) -> void:

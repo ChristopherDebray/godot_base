@@ -6,3 +6,8 @@ signal wave_started(total: int)
 signal wave_cleared()
 
 signal died(target: Damageable)
+
+signal ability_started(ability: AbilityData)
+signal ability_launched(ability: AbilityData)
+signal ability_interrupted(ability: AbilityData)
+signal ability_finished(ability: AbilityData)

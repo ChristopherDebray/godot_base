@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://e7rggvn4fe4c"]
+
+[ext_resource type="Script" uid="uid://oa2uapwad17l" path="res://scenes/_npc/components/cooldown_bank.gd" id="1_hgg50"]
+
+[node name="CooldownBankComponent" type="Node2D"]
+script = ExtResource("1_hgg50")

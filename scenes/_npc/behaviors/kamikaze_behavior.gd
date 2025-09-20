@@ -2,7 +2,7 @@ class_name KamikazeBehavior
 extends NpcBehavior
 
 func compute_desired_velocity(enemy: BaseNpc, delta: float) -> Vector2:
-	var target = enemy._attack_target
+	var target = enemy._ability_target
 	if target == null:
 		return Vector2.ZERO
 
@@ -12,10 +12,10 @@ func compute_desired_velocity(enemy: BaseNpc, delta: float) -> Vector2:
 
 	# kiting
 	var move := Vector2.ZERO
-	if dist < stop_range:
-		move -= dir # backs down
-	elif dist > preferred_range:
+	if dist > preferred_range:
 		move += dir # approaches
+	else:
+		return Vector2(0, 0)
 
 	# strafe side
 	var perp := Vector2(-dir.y, dir.x)
