@@ -1,6 +1,6 @@
 extends Control
 
-@onready var ability_list: VBoxContainer = $MarginContainer/TabContainer/Spells/MarginContainer/VScrollBar/AbilityList
+@onready var ability_list: VBoxContainer = $MarginContainer/TextureRect/MarginContainer/TabContainer/Spells/MarginContainer/VScrollBar/AbilityList
 
 @export var sheet: Texture2D
 @export var cell_size: Vector2i = Vector2i(32, 32)

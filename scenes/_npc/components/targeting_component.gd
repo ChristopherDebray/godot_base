@@ -279,12 +279,10 @@ func _force_retarget(immediate: bool = true) -> void:
 
 func _on_field_view_body_entered(body: Node) -> void:
 	if body != npc and body is Damageable and _matches_target_filter(body):
-		print('new candidate')
 		_candidates.append(body)
 
 func _on_field_view_body_exited(body: Node) -> void:
 	if body is Damageable:
-		print('no more candidated')
 		_candidates.erase(body)
 
 func charm(state: bool = true) -> void:

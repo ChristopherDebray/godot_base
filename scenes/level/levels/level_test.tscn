@@ -39,7 +39,7 @@ position = Vector2(464, 258)
 position = Vector2(1066, 360)
 
 [node name="Skelleton" parent="YsortLayer/Npcs" index="0" instance=ExtResource("6_uonu5")]
-position = Vector2(214, 289)
+position = Vector2(37, 231)
 
 [node name="Spawner" parent="YsortLayer" index="4" node_paths=PackedStringArray("player", "spawn_points_container") instance=ExtResource("4_2uvmr")]
 enemy_scene = ExtResource("3_uonu5")

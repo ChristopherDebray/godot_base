@@ -28,7 +28,7 @@ theme_override_constants/margin_bottom = 60
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="FireballCooldownIndicator" parent="MarginContainer/MarginContainer" instance=ExtResource("1_uyty4")]
+[node name="AbilityCooldownIndicator" parent="MarginContainer/MarginContainer" instance=ExtResource("1_uyty4")]
 layout_mode = 2
 size_flags_vertical = 4
 spell_name = "firebolt"
@@ -40,7 +40,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_constants/separation = 60
 
-[node name="FireballCooldownIndicator2" parent="MarginContainer/MarginContainer/CooldownIndicators" instance=ExtResource("1_uyty4")]
+[node name="AbilityCooldownIndicator" parent="MarginContainer/MarginContainer/CooldownIndicators" instance=ExtResource("1_uyty4")]
 layout_mode = 2
 spell_name = "lightning"
 icon = ExtResource("3_eeonk")
