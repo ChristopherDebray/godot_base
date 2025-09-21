@@ -36,6 +36,14 @@ extends Damageable
 @export var ability_loadout: AbilityLoadout
 @export var use_global_cooldown: bool = true
 
+var facing_follow_speed: float = 8.0   # how fast the sprite reacts (higher = snappier)
+var facing_deadzone: float = 0.2       # hysteresis around 0 to avoid jitter
+var facing_flip_cooldown: float = 0.35
+
+var _facing_smoothed: float = 1.0              # smoothed signed direction in [-1, 1]
+var _last_flip_time: float = -10.0             # last time we flipped
+var _last_facing_sign: int = 1
+
 enum STATE {
 	IDLE,
 	RETURNING,
@@ -64,6 +72,10 @@ func _ready() -> void:
 	setup()
 	locomotion.setup(self, nav_agent)
 	targeting.setup(self, field_view, ray_cast_2d)
+	_last_facing_sign = 1
+	if animated_sprite_2d.flip_h:
+		_last_facing_sign = -1
+	_facing_smoothed = float(_last_facing_sign)
 	call_deferred("late_setup")
 
 func setup():
@@ -84,7 +96,7 @@ func _physics_process(delta: float) -> void:
 	targeting._handle_detection_and_state(delta)
 	_update_action_by_state(delta)
 	locomotion._update_navigation()
-	_update_sprite_facing()
+	_update_sprite_facing(delta)
 	_update_sprite_anim()
 
 func _update_action_by_state(delta: float) -> void:
@@ -256,11 +268,51 @@ func process_returning() -> void:
 func process_dead() -> void:
 	pass
 
-func _update_sprite_facing() -> void:
-	if velocity.x < -0.05:
-		animated_sprite_2d.flip_h = true
-	elif velocity.x > 0.05:
-		animated_sprite_2d.flip_h = false
+func _compute_desired_facing() -> float:
+	# Priority 1: target (combat intent)
+	if _ability_target != null and is_instance_valid(_ability_target):
+		var dx = _ability_target.global_position.x - global_position.x
+		if abs(dx) > 1.0:
+			if dx > 0.0:
+				return 1.0
+			else:
+				return -1.0
+
+	# Priority 2: movement (non-combat)
+	# Use navigation/physics velocity but ignore tiny jitter
+	if abs(velocity.x) > 8.0:
+		if velocity.x > 0.0:
+			return 1.0
+		else:
+			return -1.0
+
+	# No strong hint → keep current smoothed direction
+	return _facing_smoothed
+
+func _update_sprite_facing(delta: float) -> void:
+	var desired = _compute_desired_facing()
+	
+	# Exponential smoothing toward desired (clamped slope)
+	var torward = clamp(delta * facing_follow_speed, 0.0, 1.0)
+	_facing_smoothed = lerp(_facing_smoothed, desired, torward)
+	var sign_now: int = _last_facing_sign
+	
+	if _facing_smoothed > facing_deadzone:
+		sign_now = 1
+	elif _facing_smoothed < -facing_deadzone:
+		sign_now = -1
+	else:
+		# inside deadzone → keep previous sign
+		sign_now = _last_facing_sign
+
+	# Flip cooldown: avoid left-right-left in a few frames during strafes
+	var time_now = Time.get_ticks_msec() / 1000.0
+	var can_flip = (time_now - _last_flip_time) >= facing_flip_cooldown
+
+	if sign_now != _last_facing_sign and can_flip:
+		animated_sprite_2d.flip_h = (sign_now == -1)
+		_last_facing_sign = sign_now
+		_last_flip_time = time_now
 
 func _update_sprite_anim() -> void:
 	var moving := velocity.length_squared() > 1.0
