@@ -12,12 +12,14 @@ const SPELLS_ELEMENTS = {
 	"1": 'firebolt',
 	"1,3": 'thunderstrike',
 	"0,3": 'ice spike',
+	"3,3": 'wind shield',
 }
 
 const SPELLS: Dictionary = {
 	'firebolt': preload("res://data/spells/spell_ressources/firebolt.tres"),
 	'thunderstrike': preload("res://data/spells/spell_ressources/thunderstrike.tres"),
 	'ice spike': preload("res://data/spells/spell_ressources/ice_spike.tres"),
+	'wind shield': preload("res://data/spells/spell_ressources/wind_shield.tres"),
 }
 
 static func get_key_from_spell_name(name: String):

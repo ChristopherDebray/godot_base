@@ -1,0 +1,68 @@
+[gd_scene load_steps=11 format=3 uid="uid://bfe6md0m2hv08"]
+
+[ext_resource type="PackedScene" uid="uid://blec2pyy0f08v" path="res://scenes/ability/base_ability.tscn" id="1_dsh7a"]
+[ext_resource type="Script" uid="uid://gc5sq352ynvw" path="res://scenes/ability/common/wind_shield.gd" id="2_rl1wh"]
+[ext_resource type="Texture2D" uid="uid://dlkv8g35iidv" path="res://assets/spells/wind_shield.png" id="2_uacmp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rl1wh"]
+atlas = ExtResource("2_uacmp")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e753c"]
+atlas = ExtResource("2_uacmp")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gp1q"]
+atlas = ExtResource("2_uacmp")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yf0br"]
+atlas = ExtResource("2_uacmp")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jntfk"]
+atlas = ExtResource("2_uacmp")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wvrn6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rl1wh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e753c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gp1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yf0br")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jntfk")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 14.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vxu6j"]
+radius = 78.0064
+
+[node name="WindShield" instance=ExtResource("1_dsh7a")]
+script = ExtResource("2_rl1wh")
+aoe_radius_tiles = 1.0
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_wvrn6")
+frame = 1
+frame_progress = 0.580054
+
+[node name="CollisionShape2D" parent="AreaOfEffect" index="0"]
+position = Vector2(3, 0)
+shape = SubResource("CircleShape2D_vxu6j")

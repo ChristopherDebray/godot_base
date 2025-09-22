@@ -25,7 +25,7 @@ height = 22.0
 
 [node name="Arrow" instance=ExtResource("1_n1ytv")]
 script = ExtResource("2_sxjem")
-SPEED = 400
+SPEED = 400.0
 abilityName = "arrow"
 
 [node name="AnimatedSprite2D" parent="." index="0"]
@@ -33,7 +33,7 @@ sprite_frames = SubResource("SpriteFrames_vl6u5")
 animation = &"repeat"
 frame_progress = 0.889914
 
-[node name="Hitbox" parent="." index="2"]
+[node name="Hitbox" parent="." index="3"]
 collision_mask = 21
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
@@ -41,5 +41,5 @@ position = Vector2(1, 0)
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_y2mxl")
 
-[node name="AreaOfEffect" parent="." index="3"]
+[node name="AreaOfEffect" parent="." index="4"]
 collision_mask = 21
