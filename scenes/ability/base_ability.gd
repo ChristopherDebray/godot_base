@@ -68,8 +68,15 @@ func on_ability_hit(body):
 				instigator = self
 			enemy.targeting.on_alert_from(instigator)
 
-	_has_hit = true
-	on_hit()
+	if (not tags.has(AbilityData.ABILITY_TAG.PIERCE)):
+		_has_hit = true
+		on_hit()
+		return
+	
+	if (is_instance_of(body, TileMapLayer)):
+		_has_hit = true
+		on_hit()
+		return
 
 func _on_area_of_effect_body_entered(body: Node2D) -> void:
 	on_aoe_hit()

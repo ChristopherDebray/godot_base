@@ -10,12 +10,14 @@ enum ELEMENTS {
 
 const SPELLS_ELEMENTS = {
 	"1": 'firebolt',
-	"1,3": 'lightning',
+	"1,3": 'thunderstrike',
+	"0,3": 'ice spike',
 }
 
 const SPELLS: Dictionary = {
 	'firebolt': preload("res://data/spells/spell_ressources/firebolt.tres"),
-	'lightning': preload("res://data/spells/spell_ressources/lightning.tres"),
+	'thunderstrike': preload("res://data/spells/spell_ressources/thunderstrike.tres"),
+	'ice spike': preload("res://data/spells/spell_ressources/ice_spike.tres"),
 }
 
 static func get_key_from_spell_name(name: String):

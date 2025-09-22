@@ -1,0 +1,124 @@
+[gd_scene load_steps=17 format=3 uid="uid://cd3nrgw013liu"]
+
+[ext_resource type="PackedScene" uid="uid://blec2pyy0f08v" path="res://scenes/ability/base_ability.tscn" id="1_hedjp"]
+[ext_resource type="Script" uid="uid://87xnahpolnn" path="res://scenes/ability/common/ice_spike.gd" id="2_dva8q"]
+[ext_resource type="Texture2D" uid="uid://cs3n173a8pi62" path="res://assets/spells/ice_pike.png" id="2_dwla7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dva8q"]
+atlas = ExtResource("2_dwla7")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4uic"]
+atlas = ExtResource("2_dwla7")
+region = Rect2(1024, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chnvy"]
+atlas = ExtResource("2_dwla7")
+region = Rect2(1152, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drv3y"]
+atlas = ExtResource("2_dwla7")
+region = Rect2(1280, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7tio"]
+atlas = ExtResource("2_dwla7")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4aqw1"]
+atlas = ExtResource("2_dwla7")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvysm"]
+atlas = ExtResource("2_dwla7")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kf6u"]
+atlas = ExtResource("2_dwla7")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_055fd"]
+atlas = ExtResource("2_dwla7")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vrdf"]
+atlas = ExtResource("2_dwla7")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_os6wc"]
+atlas = ExtResource("2_dwla7")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_faqg2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dva8q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4uic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chnvy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drv3y")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"hit",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7tio")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4aqw1")
+}],
+"loop": false,
+"name": &"repeat",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvysm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0kf6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_055fd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vrdf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_os6wc")
+}],
+"loop": false,
+"name": &"start",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dwla7"]
+height = 96.0
+
+[node name="IceSpike" instance=ExtResource("1_hedjp")]
+script = ExtResource("2_dva8q")
+SPEED = 800.0
+aoe_enabled = false
+duration = 5.0
+tags = Array[int]([1, 6])
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_faqg2")
+animation = &"start"
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(0, -1)
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_dwla7")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
