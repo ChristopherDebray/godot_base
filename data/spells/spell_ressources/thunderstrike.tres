@@ -1,22 +1,26 @@
 [gd_resource type="Resource" script_class="SpellRessource" load_steps=4 format=3 uid="uid://bnn4njvt30wml"]
 
 [ext_resource type="Resource" uid="uid://b16585gw65apn" path="res://data/spells/effect_ressources/shock.tres" id="1_008yo"]
-[ext_resource type="PackedScene" uid="uid://b3u4summtc5is" path="res://scenes/spell_book/spell_scenes/lightning.tscn" id="1_ohq35"]
+[ext_resource type="PackedScene" uid="uid://cmmqbvxky0xdg" path="res://scenes/ability/common/thunderstrike.tscn" id="2_008yo"]
 [ext_resource type="Script" uid="uid://cslt7nnwgts0o" path="res://data/spells/spell_ressources/spell_ressource.gd" id="3_008yo"]
 
 [resource]
 script = ExtResource("3_008yo")
 elements = Array[int]([1, 3])
-name = "lightning"
+name = "thunderstrike"
 cooldown = 5.0
 magnitude = 1.0
 range = 400.0
 faction = 0
 kind = 1
-scene = ExtResource("1_ohq35")
+scene = ExtResource("2_008yo")
 damage = 0.0
 aoe_damage = 25.0
 main_element = 1
 effect = ExtResource("1_008yo")
 description = ""
+tags = Array[int]([])
+is_channeled = false
+channel_tick_rate = 0.5
+max_channel_duration = 3.0
 metadata/_custom_type_script = "uid://cslt7nnwgts0o"

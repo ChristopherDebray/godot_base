@@ -113,7 +113,6 @@ radius = 107.042
 script = ExtResource("2_bp2nl")
 aoe_radius_tiles = 5.0
 abilityName = "lightning"
-must_delay_attack = true
 windup_time = 2.0
 
 [node name="AnimatedSprite2D" parent="." index="0"]

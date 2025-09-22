@@ -1,4 +1,4 @@
-class_name ArcherBehavior
+class_name SkirmisherBehavior
 extends NpcBehavior
 
 var _jitter_timer := 0.0

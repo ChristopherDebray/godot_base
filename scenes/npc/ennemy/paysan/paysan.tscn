@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://8muainttdlro"]
 
-[ext_resource type="PackedScene" uid="uid://dbvgcyxkunrkl" path="res://scenes/_npc/base_npc.tscn" id="1_02nig"]
+[ext_resource type="PackedScene" uid="uid://bx54vyeawn6f3" path="res://scenes/_npc/base_npc.tscn" id="1_02nig"]
 [ext_resource type="Script" uid="uid://dlta7uajlqo1k" path="res://scenes/npc/ennemy/skelleton/skelleton.gd" id="2_p8l3g"]
-[ext_resource type="Script" uid="uid://ck57yu62phkan" path="res://scenes/_npc/behaviors/archer_behavior.gd" id="3_d35in"]
+[ext_resource type="Script" uid="uid://ck57yu62phkan" path="res://scenes/_npc/behaviors/skirmisher_behavior.gd" id="3_d35in"]
 [ext_resource type="Texture2D" uid="uid://3xfsybuijm2e" path="res://assets/characters/paysan_cutel.png" id="4_y0oo4"]
 
 [sub_resource type="Resource" id="Resource_mo88q"]

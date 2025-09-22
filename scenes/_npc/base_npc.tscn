@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b2odxanbtxty4" path="res://scenes/_damageable/damageable.tscn" id="1_rcddc"]
 [ext_resource type="Script" uid="uid://dbmrhnfb7wqqh" path="res://scenes/_npc/base_npc.gd" id="2_flwcu"]
-[ext_resource type="Script" uid="uid://ck57yu62phkan" path="res://scenes/_npc/behaviors/archer_behavior.gd" id="3_gbn1b"]
+[ext_resource type="Script" uid="uid://ck57yu62phkan" path="res://scenes/_npc/behaviors/skirmisher_behavior.gd" id="3_gbn1b"]
 [ext_resource type="Texture2D" uid="uid://dpnrd0bglhp4g" path="res://assets/characters/shadow.png" id="3_muicc"]
 [ext_resource type="Script" uid="uid://f4kldhtjhj0h" path="res://scenes/_npc/components/perception_component.gd" id="4_qeoa2"]
 [ext_resource type="PackedScene" uid="uid://dyypj64ygk60y" path="res://scenes/_npc/components/targeting.tscn" id="5_5urbc"]

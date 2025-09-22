@@ -1,0 +1,85 @@
+[gd_scene load_steps=12 format=3 uid="uid://cmmqbvxky0xdg"]
+
+[ext_resource type="PackedScene" uid="uid://blec2pyy0f08v" path="res://scenes/ability/base_ability.tscn" id="1_p6hdj"]
+[ext_resource type="Script" uid="uid://cc6byfqep0bgv" path="res://scenes/ability/common/thunderstrike.gd" id="2_2ea0f"]
+[ext_resource type="Texture2D" uid="uid://c0jrbau77objc" path="res://assets/spells/thunderstrike.png" id="3_2ea0f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aljr6"]
+atlas = ExtResource("3_2ea0f")
+region = Rect2(0, 0, 128, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktqew"]
+atlas = ExtResource("3_2ea0f")
+region = Rect2(128, 0, 128, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kts1q"]
+atlas = ExtResource("3_2ea0f")
+region = Rect2(256, 0, 128, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pu0uf"]
+atlas = ExtResource("3_2ea0f")
+region = Rect2(384, 0, 128, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vs08m"]
+atlas = ExtResource("3_2ea0f")
+region = Rect2(512, 0, 128, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tvbh"]
+atlas = ExtResource("3_2ea0f")
+region = Rect2(640, 0, 128, 180)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_38w0e"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_aljr6")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_ktqew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kts1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pu0uf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vs08m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8tvbh")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"repeat",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2ea0f"]
+radius = 115.039
+
+[node name="Thunderstrike" instance=ExtResource("1_p6hdj")]
+script = ExtResource("2_2ea0f")
+aoe_radius_tiles = 1.0
+abilityName = "thunderstrike"
+windup_time = 2.0
+tags = Array[int]([0])
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(13, -65)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_38w0e")
+animation = &"repeat"
+frame = 6
+frame_progress = 1.0
+
+[node name="AreaOfEffect" parent="." index="4"]
+monitoring = false
+
+[node name="CollisionShape2D" parent="AreaOfEffect" index="0"]
+shape = SubResource("CircleShape2D_2ea0f")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

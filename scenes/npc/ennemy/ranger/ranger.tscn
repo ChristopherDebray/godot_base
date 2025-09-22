@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://d0nr0i6p0hq3d"]
 
-[ext_resource type="PackedScene" uid="uid://dbvgcyxkunrkl" path="res://scenes/_npc/base_npc.tscn" id="1_yyc55"]
+[ext_resource type="PackedScene" uid="uid://bx54vyeawn6f3" path="res://scenes/_npc/base_npc.tscn" id="1_yyc55"]
 [ext_resource type="Script" uid="uid://dlta7uajlqo1k" path="res://scenes/npc/ennemy/skelleton/skelleton.gd" id="2_e6n5t"]
-[ext_resource type="Script" uid="uid://ck57yu62phkan" path="res://scenes/_npc/behaviors/archer_behavior.gd" id="3_g3qqa"]
+[ext_resource type="Script" uid="uid://ck57yu62phkan" path="res://scenes/_npc/behaviors/skirmisher_behavior.gd" id="3_g3qqa"]
 [ext_resource type="Texture2D" uid="uid://calu7oq5i7iyy" path="res://assets/characters/ranger_cute.png" id="4_wa21h"]
 
 [sub_resource type="Resource" id="Resource_mo88q"]
