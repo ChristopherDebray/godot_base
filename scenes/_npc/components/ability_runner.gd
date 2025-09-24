@@ -142,7 +142,7 @@ func _do_launch_effect() -> void:
 		AbilityData.ABILITY_KIND.AOE:
 			SignalManager.use_ability.emit(current_ability, _saved_target_pos, _saved_origin, owner_npc.targeting.current_ability_target_type, owner_npc)
 		AbilityData.ABILITY_KIND.SELF:
-			SignalManager.use_ability.emit(current_ability, owner_npc.global_position, owner_npc.global_position, AbilityManager.TARGET_TYPE.SELF, owner_npc)
+			SignalManager.use_ability.emit(current_ability, owner_npc.global_position, owner_npc.global_position, owner_npc.targeting.current_ability_target_type, owner_npc)
 		_:
 			pass
 

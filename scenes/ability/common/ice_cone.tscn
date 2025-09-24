@@ -1,0 +1,66 @@
+[gd_scene load_steps=11 format=3 uid="uid://b8j8snx0evnuy"]
+
+[ext_resource type="PackedScene" uid="uid://blec2pyy0f08v" path="res://scenes/ability/base_ability.tscn" id="1_i2e3l"]
+[ext_resource type="Script" uid="uid://dyvaf8amblqmg" path="res://scenes/ability/common/ice_cone.gd" id="2_i2e3l"]
+[ext_resource type="Texture2D" uid="uid://b0oxo5kca4jrs" path="res://assets/spells/cone_ice.png" id="3_i2e3l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e131r"]
+atlas = ExtResource("3_i2e3l")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yyvx5"]
+atlas = ExtResource("3_i2e3l")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_guc1d"]
+atlas = ExtResource("3_i2e3l")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uflyh"]
+atlas = ExtResource("3_i2e3l")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kuajt"]
+atlas = ExtResource("3_i2e3l")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wvrn6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e131r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yyvx5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_guc1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uflyh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kuajt")
+}],
+"loop": false,
+"name": &"default",
+"speed": 14.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i2e3l"]
+size = Vector2(136, 45)
+
+[node name="IceCone" instance=ExtResource("1_i2e3l")]
+script = ExtResource("2_i2e3l")
+aoe_radius_tiles = 1.0
+abilityName = "ice cone"
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_wvrn6")
+
+[node name="CollisionShape2D" parent="AreaOfEffect" index="0"]
+position = Vector2(-10, 0.5)
+shape = SubResource("RectangleShape2D_i2e3l")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SpawnLoadoutData" load_steps=5 format=3 uid="uid://oumd63n6lbek"]
+
+[ext_resource type="Script" uid="uid://tu0myuap7yo4" path="res://data/spawner/spawn_entry/spawn_entry_data.gd" id="1_4liub"]
+[ext_resource type="Resource" uid="uid://dqby3rqshbkqi" path="res://data/spawner/spawn_entry/farmer/farmer_max.tres" id="2_7x25u"]
+[ext_resource type="Script" uid="uid://bmyl4f4pt2d3p" path="res://data/spawner/spawn_loadout/spawn_loadout_data.gd" id="2_chvjc"]
+[ext_resource type="Resource" uid="uid://o03ug8cojbv6" path="res://data/spawner/spawn_entry/skelleton/skelleton_low.tres" id="3_ql5uv"]
+
+[resource]
+script = ExtResource("2_chvjc")
+entries = Array[ExtResource("1_4liub")]([ExtResource("2_7x25u"), ExtResource("3_ql5uv")])
+metadata/_custom_type_script = "uid://bmyl4f4pt2d3p"

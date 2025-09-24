@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SpawnEntryData" load_steps=3 format=3 uid="uid://d0111n61ks7ty"]
+
+[ext_resource type="PackedScene" uid="uid://cm5nim8ogpayf" path="res://scenes/npc/ennemy/skelleton/skelleton.tscn" id="1_dmgya"]
+[ext_resource type="Script" uid="uid://tu0myuap7yo4" path="res://data/spawner/spawn_entry/spawn_entry_data.gd" id="1_oq0hg"]
+
+[resource]
+script = ExtResource("1_oq0hg")
+npc = ExtResource("1_dmgya")
+cost = 3
+weight = 0.5
+metadata/_custom_type_script = "uid://tu0myuap7yo4"

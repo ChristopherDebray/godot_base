@@ -7,7 +7,8 @@ enum EFFECTS {
 	SHOCK,
 	SLOW,
 	CHARM,
-	NONE
+	NONE,
+	HASTE
 }
 
 enum EFFECT_VALUE_TYPE {

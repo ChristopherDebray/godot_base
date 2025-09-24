@@ -1,11 +1,10 @@
-[gd_resource type="Resource" script_class="AbilityLoadout" load_steps=5 format=3 uid="uid://csygjcjp88d8y"]
+[gd_resource type="Resource" script_class="AbilityLoadout" load_steps=4 format=3 uid="uid://csygjcjp88d8y"]
 
 [ext_resource type="Script" uid="uid://n52hp84chjuo" path="res://scenes/_npc/ability_entry.gd" id="1_55qxw"]
 [ext_resource type="Resource" uid="uid://crj5v6kirb0yx" path="res://data/abilities/common/arrow_entry.tres" id="2_sibqg"]
 [ext_resource type="Script" uid="uid://bsupc6votg0kx" path="res://scenes/_npc/ability_loadout.gd" id="2_xi363"]
-[ext_resource type="Resource" uid="uid://xnxh8278s0r3" path="res://data/abilities/enemy/explosion_entry.tres" id="3_elq6n"]
 
 [resource]
 script = ExtResource("2_xi363")
-entries = Array[ExtResource("1_55qxw")]([ExtResource("2_sibqg"), ExtResource("3_elq6n")])
+entries = Array[ExtResource("1_55qxw")]([ExtResource("2_sibqg")])
 metadata/_custom_type_script = "uid://bsupc6votg0kx"

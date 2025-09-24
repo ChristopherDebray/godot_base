@@ -36,8 +36,10 @@ func _on_use_ability(data: AbilityData, target: Vector2, origin: Vector2, target
 	var target_world := CastService._coerce_target_world(sender, target, instance.range)
 	var ctx
 	if is_instance_of(sender, Player):
+		sender = sender as Player
 		ctx = AimContext.from_mouse(sender, instance)
 	else:
+		sender = sender as BaseNpc
 		ctx = AimContext.from_node(sender, instance, target_world)
 	
 	if is_instance_of(instance, ProjectileAbility):
@@ -45,7 +47,13 @@ func _on_use_ability(data: AbilityData, target: Vector2, origin: Vector2, target
 	elif is_instance_of(instance, AoeInstantAbility):
 		ctx.los_clamped_point = CastService._compute_aoe_spawn_with_los(sender, ctx, instance._get_aoe_radius())
 		instance.init(data, ctx)
+	elif is_instance_of(instance, SelfAbility):
+		instance.init(data, ctx)
 	
-	get_tree().current_scene.get_node("YsortLayer/Abilities").add_child(instance)
+	if is_instance_of(instance, SelfAbility):
+		sender.add_child(instance)
+		sender.apply_effect(data.self_effect)
+	else:
+		get_tree().current_scene.get_node("YsortLayer/Abilities").add_child(instance)
 	
 	return instance

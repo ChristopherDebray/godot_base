@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://8muainttdlro"]
+[gd_scene load_steps=17 format=3 uid="uid://8muainttdlro"]
 
 [ext_resource type="PackedScene" uid="uid://bx54vyeawn6f3" path="res://scenes/_npc/base_npc.tscn" id="1_02nig"]
 [ext_resource type="Script" uid="uid://dlta7uajlqo1k" path="res://scenes/npc/ennemy/skelleton/skelleton.gd" id="2_p8l3g"]
 [ext_resource type="Script" uid="uid://ck57yu62phkan" path="res://scenes/_npc/behaviors/skirmisher_behavior.gd" id="3_d35in"]
+[ext_resource type="Resource" uid="uid://csygjcjp88d8y" path="res://scenes/npc/ennemy/skelleton/skelleton_ability_loadout.tres" id="4_jnr4m"]
 [ext_resource type="Texture2D" uid="uid://3xfsybuijm2e" path="res://assets/characters/paysan_cutel.png" id="4_y0oo4"]
 
 [sub_resource type="Resource" id="Resource_mo88q"]
@@ -80,10 +81,11 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Skelleton" instance=ExtResource("1_02nig")]
+[node name="Farmer" instance=ExtResource("1_02nig")]
 y_sort_enabled = false
 script = ExtResource("2_p8l3g")
 behavior = SubResource("Resource_mo88q")
+ability_loadout = ExtResource("4_jnr4m")
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(0, 3)

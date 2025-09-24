@@ -19,6 +19,7 @@ enum ABILITY_TAG { AOE, PROJECTILE, BUFF, DEBUFF, INSTANT, FINISHER, PIERCE }
 @export var main_element: SpellsManager.ELEMENTS
 ## Optional, dot, slow, etc
 @export var effect: EffectData
+@export var self_effect: EffectData
 @export var description: String
 @export var tags: Array[ABILITY_TAG] = []
 

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="SpellRessource" load_steps=4 format=3 uid="uid://cp8i23db3xp4l"]
+
+[ext_resource type="Resource" uid="uid://yd8ixi5k4xp6" path="res://data/spells/effect_ressources/freeze.tres" id="1_1dds1"]
+[ext_resource type="PackedScene" uid="uid://b8j8snx0evnuy" path="res://scenes/ability/common/ice_cone.tscn" id="2_5ar8s"]
+[ext_resource type="Script" uid="uid://cslt7nnwgts0o" path="res://data/spells/spell_ressources/spell_ressource.gd" id="3_lsi0u"]
+
+[resource]
+script = ExtResource("3_lsi0u")
+elements = Array[int]([0, 0])
+name = "ice cone"
+cooldown = 5.0
+magnitude = 1.0
+range = 400.0
+faction = 0
+kind = 1
+scene = ExtResource("2_5ar8s")
+damage = 0.0
+aoe_damage = 5.0
+main_element = 0
+effect = ExtResource("1_1dds1")
+description = ""
+tags = Array[int]([0, 3])
+is_channeled = false
+channel_tick_rate = 0.5
+max_channel_duration = 3.0
+metadata/_custom_type_script = "uid://cslt7nnwgts0o"

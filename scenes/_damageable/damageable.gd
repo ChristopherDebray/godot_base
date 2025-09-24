@@ -85,7 +85,7 @@ func apply_damage(amount: float) -> void:
 		on_death()
 
 func apply_effect(effect: EffectData) -> void:
-	if effect.name_enum in immunity_effects:
+	if not effect or effect.name_enum in immunity_effects:
 		return
 	
 	# Reset duration if same effect already exists

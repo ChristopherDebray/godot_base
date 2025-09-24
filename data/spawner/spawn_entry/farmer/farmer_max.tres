@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SpawnEntryData" load_steps=3 format=3 uid="uid://dqby3rqshbkqi"]
+
+[ext_resource type="PackedScene" uid="uid://8muainttdlro" path="res://scenes/npc/ennemy/paysan/paysan.tscn" id="1_qr2u4"]
+[ext_resource type="Script" uid="uid://tu0myuap7yo4" path="res://data/spawner/spawn_entry/spawn_entry_data.gd" id="1_vljc7"]
+
+[resource]
+script = ExtResource("1_vljc7")
+scene = ExtResource("1_qr2u4")
+cost = 1
+weight = 1.0
+metadata/_custom_type_script = "uid://tu0myuap7yo4"
