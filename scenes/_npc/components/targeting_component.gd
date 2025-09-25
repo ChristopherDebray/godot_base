@@ -287,8 +287,6 @@ func _on_field_view_body_exited(body: Node) -> void:
 
 func charm(state: bool = true) -> void:
 	# Switch targeting filter depending on initial aggro side
-	npc._charm = state
-
 	if state:
 		# While charmed, invert who we consider as "valid targets"
 		if initial_aggro_group == "player":

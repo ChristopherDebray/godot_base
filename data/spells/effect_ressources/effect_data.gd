@@ -28,6 +28,9 @@ func apply_tick(target: Damageable) -> Dictionary:
 			if name == "charm":
 				target.targeting.charm()
 				result.applied["charm"] = 1
+			if name == "root":
+				target.root()
+				result.applied["root"] = 1
 		EffectsManager.EFFECT_TYPE.BUFF, EffectsManager.EFFECT_TYPE.DEBUFF:
 			var applied := handle_characteristic_modification(
 				target,

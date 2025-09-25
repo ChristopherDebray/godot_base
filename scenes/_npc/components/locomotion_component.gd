@@ -23,10 +23,14 @@ func setup(owner: BaseNpc, nav_agent: NavigationAgent2D) -> void:
 	initial_position = global_position
 	npc_nav_agent.velocity_computed.connect(_on_npc_nav_agent_velocity_computed)
 
-func _update_navigation() -> void:
-	if not can_move:
+func set_can_move(state: bool):
+	if (false == state):
 		npc.velocity = Vector2.ZERO
 		npc_nav_agent.set_velocity(Vector2.ZERO)
+	can_move = state
+	
+func _update_navigation() -> void:
+	if not can_move:
 		return
 
 	var next_vel := Vector2.ZERO

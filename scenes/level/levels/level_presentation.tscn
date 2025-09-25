@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bm3vsdux3ux7u" path="res://scenes/level/level_base.tscn" id="1_aqmni"]
 [ext_resource type="PackedScene" uid="uid://b0qkm4gmitvnk" path="res://scenes/_spawner/Spawner.tscn" id="2_c73jo"]
-[ext_resource type="PackedScene" uid="uid://8muainttdlro" path="res://scenes/npc/ennemy/paysan/paysan.tscn" id="2_u3xpm"]
+[ext_resource type="PackedScene" uid="uid://8muainttdlro" path="res://scenes/npc/ennemy/farmer/farmer.tscn" id="2_u3xpm"]
 [ext_resource type="PackedScene" uid="uid://bdspjl60idm42" path="res://scenes/npc/ennemy/warrior/warrior.tscn" id="3_qd1px"]
 [ext_resource type="PackedScene" uid="uid://cm5nim8ogpayf" path="res://scenes/npc/ennemy/skelleton/skelleton.tscn" id="3_u3xpm"]
 [ext_resource type="Texture2D" uid="uid://3h5sncvmoxdk" path="res://assets/wilderness/tree_round.png" id="4_qd1px"]

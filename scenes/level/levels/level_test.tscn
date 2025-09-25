@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=4 uid="uid://cx67ymxqoecu0"]
+[gd_scene load_steps=10 format=4 uid="uid://cx67ymxqoecu0"]
 
 [ext_resource type="PackedScene" uid="uid://bm3vsdux3ux7u" path="res://scenes/level/level_base.tscn" id="1_1btmw"]
 [ext_resource type="Texture2D" uid="uid://3h5sncvmoxdk" path="res://assets/wilderness/tree_round.png" id="2_uonu5"]
+[ext_resource type="PackedScene" uid="uid://uwrkmmeipcf3" path="res://scenes/npc/ennemy/sarbacanier/sarbacanier.tscn" id="3_3r7qr"]
 [ext_resource type="Texture2D" uid="uid://dh0sf6oievhy8" path="res://assets/wilderness/bush.png" id="3_i43yl"]
 [ext_resource type="PackedScene" uid="uid://bmensnrge14wo" path="res://scenes/npc/ennemy/kamikaze/kamikaze.tscn" id="3_uonu5"]
 [ext_resource type="PackedScene" uid="uid://b0qkm4gmitvnk" path="res://scenes/_spawner/Spawner.tscn" id="4_2uvmr"]
@@ -44,8 +45,8 @@ position = Vector2(464, 258)
 [node name="SpawnPoints#Marker2D4" type="Marker2D" parent="YsortLayer/SpawnPoints" index="3"]
 position = Vector2(1066, 360)
 
-[node name="Kamikaze" parent="YsortLayer/Npcs" index="0" instance=ExtResource("3_uonu5")]
-position = Vector2(105, 172)
+[node name="Sarbacanier" parent="YsortLayer/Npcs" index="0" instance=ExtResource("3_3r7qr")]
+position = Vector2(40, 59)
 
 [node name="Spawner" parent="YsortLayer" index="4" node_paths=PackedStringArray("player", "spawn_points_container") instance=ExtResource("4_2uvmr")]
 enemy_scene = ExtResource("3_uonu5")
@@ -85,20 +86,6 @@ position = Vector2(916, 322)
 texture = ExtResource("2_uonu5")
 
 [node name="Abilities" type="Node2D" parent="YsortLayer" index="6"]
-
-[node name="Path" type="Node2D" parent="Paths" index="0"]
-
-[node name="Marker2D" type="Marker2D" parent="Paths/Path" index="0"]
-position = Vector2(1163, 261)
-
-[node name="Marker2D2" type="Marker2D" parent="Paths/Path" index="1"]
-position = Vector2(1159, 74)
-
-[node name="Marker2D3" type="Marker2D" parent="Paths/Path" index="2"]
-position = Vector2(822, 66)
-
-[node name="Marker2D4" type="Marker2D" parent="Paths/Path" index="3"]
-position = Vector2(828, 251)
 
 [node name="WaveSpawner" parent="." index="8"]
 spawn_loadout = ExtResource("8_ys6lw")

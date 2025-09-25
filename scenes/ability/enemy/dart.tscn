@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://igdhcajowkae"]
+
+[ext_resource type="PackedScene" uid="uid://blec2pyy0f08v" path="res://scenes/ability/base_ability.tscn" id="1_sodpi"]
+[ext_resource type="Script" uid="uid://cvcgoymbqbcgb" path="res://scenes/ability/enemy/dart.gd" id="2_cdv85"]
+[ext_resource type="Texture2D" uid="uid://db4ylfs7ssbwm" path="res://assets/spells/dard.png" id="2_r1ni0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdv85"]
+atlas = ExtResource("2_r1ni0")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1y7qq"]
+atlas = ExtResource("2_r1ni0")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cvo0m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdv85")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"hit",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1y7qq")
+}],
+"loop": false,
+"name": &"repeat",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sodpi"]
+size = Vector2(20, 2)
+
+[node name="Dart" instance=ExtResource("1_sodpi")]
+script = ExtResource("2_cdv85")
+SPEED = 400.0
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_cvo0m")
+animation = &"repeat"
+autoplay = "repeat"
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_sodpi")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2odxanbtxty4"]
+[gd_scene load_steps=3 format=3 uid="uid://b2odxanbtxty4"]
 
 [ext_resource type="Script" uid="uid://cdoqf6w0fcfew" path="res://scenes/_damageable/damageable.gd" id="1_25i3q"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_25i3q"]
 
 [node name="Damagable" type="CharacterBody2D"]
 process_mode = 1
@@ -16,6 +18,7 @@ color = Color(1, 0.435294, 0.431373, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 [node name="StatusFx" type="AnimatedSprite2D" parent="."]
-visible = false
+position = Vector2(12, -7)
+sprite_frames = SubResource("SpriteFrames_25i3q")
 
 [node name="RayCastAbility" type="RayCast2D" parent="."]

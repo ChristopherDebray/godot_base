@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="AbilityData" load_steps=2 format=3 uid="uid://cif5gkrwfkmmf"]
+[gd_resource type="Resource" script_class="AbilityData" load_steps=3 format=3 uid="uid://cif5gkrwfkmmf"]
 
+[ext_resource type="PackedScene" uid="uid://b1s7jie5aug5h" path="res://scenes/ability/common/slash.tscn" id="1_7055t"]
 [ext_resource type="Script" uid="uid://dn3xcfj4pt4op" path="res://data/abilities/ability_data.gd" id="2_q2puk"]
 
 [resource]
@@ -10,6 +11,7 @@ magnitude = 1.0
 range = 50.0
 faction = 1
 kind = 0
+scene = ExtResource("1_7055t")
 damage = 5.0
 aoe_damage = 0.0
 main_element = 4

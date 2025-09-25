@@ -10,7 +10,6 @@ func init(ability_data: AbilityData, ctx: AimContext) -> void:
 
 func setup_on_ready() -> void:
 	super._ready()
-	rotation = _dir_of_travel.angle()
 
 func _physics_process(delta: float) -> void:
 	if _has_hit:

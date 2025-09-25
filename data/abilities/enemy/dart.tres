@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="AbilityData" load_steps=4 format=3 uid="uid://dm6a01yu48fao"]
+
+[ext_resource type="PackedScene" uid="uid://igdhcajowkae" path="res://scenes/ability/enemy/dart.tscn" id="1_dfw4e"]
+[ext_resource type="Resource" uid="uid://bx1xn18dnsew4" path="res://data/spells/effect_ressources/poison.tres" id="1_kwja7"]
+[ext_resource type="Script" uid="uid://dn3xcfj4pt4op" path="res://data/abilities/ability_data.gd" id="2_kwja7"]
+
+[resource]
+script = ExtResource("2_kwja7")
+name = "dart"
+cooldown = 2.0
+magnitude = 1.0
+range = 400.0
+faction = 0
+kind = 0
+scene = ExtResource("1_dfw4e")
+damage = 3.0
+aoe_damage = 0.0
+main_element = 2
+effect = ExtResource("1_kwja7")
+description = "Poisonned dart"
+tags = Array[int]([1, 3])
+is_channeled = false
+channel_tick_rate = 0.5
+max_channel_duration = 3.0
+metadata/_custom_type_script = "uid://dn3xcfj4pt4op"

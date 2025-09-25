@@ -18,8 +18,6 @@ enum FACTION { PLAYER, ENEMY, NEUTRAL }
 var current_target: Damageable
 
 var active_effects: Array[Dictionary] = []
-var _frozen := false
-var _charm := false
 var is_alive := true
 
 func _process(delta: float) -> void:
@@ -69,9 +67,15 @@ func _unapply_effect(entry: Dictionary) -> void:
 					modify_defense(-v)
 				_:
 					pass
+
 	# Cancel control effects
-	if entry.has("applied_mods") and entry["applied_mods"].has("freeze"):
-		freeze(false) # unfreeze
+	if entry.has("applied_mods"):
+		if entry["applied_mods"].has("freeze"):
+			freeze(false)
+		if entry["applied_mods"].has("root"):
+			root(false)
+		if entry["applied_mods"].has("charm"):
+			charm(false)
 
 func apply_elemental_damage(spellResource: AbilityData, amount: float) -> void:
 	if spellResource.main_element in immunity_elements:
@@ -83,6 +87,9 @@ func apply_damage(amount: float) -> void:
 	health -= amount
 	if health <= 0:
 		on_death()
+	if is_instance_of(self, Player):
+		GameManager.modify_current_health(-amount)
+		SignalManager.resource_value_change.emit(amount, GameManager.RESOURCE_TYPE.LIFE)
 
 func apply_effect(effect: EffectData) -> void:
 	if not effect or effect.name_enum in immunity_effects:
@@ -137,10 +144,17 @@ func update_fx_visual():
 	status_fx.visible = false
 
 func freeze(state: bool = true) -> void:
-	_frozen = state
+	set_physics_process(!state)
+	locomotion_freeze(!state)
+
+func root(state: bool = true) -> void:
+	locomotion_freeze(!state)
 
 func charm(state: bool = true) -> void:
-	_charm = state
+	pass
+
+func locomotion_freeze(state: bool = true):
+	pass
 
 func modify_speed(amount: float):
 	speed += amount
@@ -153,3 +167,6 @@ func modify_defense(amount: float):
 func raycast_ability_to(to_position: Vector2):
 	ray_cast_ability.target_position = ray_cast_ability.to_local(to_position)
 	ray_cast_ability.force_raycast_update()
+
+func on_hit():
+	pass

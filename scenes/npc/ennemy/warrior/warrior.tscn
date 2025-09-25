@@ -86,10 +86,16 @@ y_sort_enabled = false
 script = ExtResource("2_uescc")
 behavior = SubResource("Resource_l1ud8")
 ability_loadout = ExtResource("4_l1ud8")
+health = 20.0
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_qur4j")
+
+[node name="StatusFx" parent="." index="2"]
+visible = false
+position = Vector2(0, 0)
+sprite_frames = null
 
 [node name="AnimatedSprite2D" parent="SpriteContainer" index="1"]
 sprite_frames = SubResource("SpriteFrames_tki78")

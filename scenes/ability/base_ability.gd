@@ -56,6 +56,7 @@ func _on_hitbox_body_entered(body):
 func on_ability_hit(body):
 	if body is Damageable:
 		apply_damage_and_effect(body, damage)
+		body.on_hit()
 
 		# Notify enemies in a generic way (no player ref needed)
 		if body is BaseNpc:

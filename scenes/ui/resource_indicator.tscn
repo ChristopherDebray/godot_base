@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://d264e4u15uply"]
+
+[ext_resource type="Script" uid="uid://syep1hi6bxvp" path="res://scenes/ui/resource_indicator.gd" id="1_u2dvq"]
+
+[node name="ResourceIndicator" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u2dvq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 343.0
+offset_bottom = 15.0
+color = Color(0.739789, 2.00946e-06, 5.77569e-07, 1)

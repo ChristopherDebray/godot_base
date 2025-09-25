@@ -6,10 +6,10 @@
 script = ExtResource("2_1rkys")
 name = "root"
 name_enum = 4
-value = 100.0
-value_type = 1
-type = 1
-characteristic = "speed"
+value = 0.0
+value_type = 0
+type = 0
+characteristic = ""
 duration = 5.0
 tick_rate = 0.0
 metadata/_custom_type_script = "uid://ckos26rb4qfvx"

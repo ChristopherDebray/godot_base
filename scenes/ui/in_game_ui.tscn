@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqnnqulkpfar1"]
+[gd_scene load_steps=5 format=3 uid="uid://dqnnqulkpfar1"]
 
-[ext_resource type="PackedScene" uid="uid://blvvh7m353g4l" path="res://scenes/ui/spell_cooldown_indicator.tscn" id="1_uyty4"]
+[ext_resource type="PackedScene" uid="uid://d264e4u15uply" path="res://scenes/ui/resource_indicator.tscn" id="1_qvqbd"]
+[ext_resource type="PackedScene" uid="uid://blvvh7m353g4l" path="res://scenes/ui/ability_cooldown_indicator.tscn" id="1_uyty4"]
 [ext_resource type="Texture2D" uid="uid://3b4qv17tokqm" path="res://assets/spells/firebolt_icon.png" id="2_4db6k"]
 [ext_resource type="Texture2D" uid="uid://uufldva48nc8" path="res://assets/spells/Thunderstrike_icon.png" id="3_eeonk"]
 
@@ -27,6 +28,9 @@ theme_override_constants/margin_bottom = 60
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 8
+
+[node name="ResourceIndicator" parent="MarginContainer/MarginContainer" instance=ExtResource("1_qvqbd")]
+layout_mode = 2
 
 [node name="AbilityCooldownIndicator" parent="MarginContainer/MarginContainer" instance=ExtResource("1_uyty4")]
 layout_mode = 2

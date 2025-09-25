@@ -21,6 +21,7 @@ var input_to_element = {
 
 func _ready() -> void:
 	await get_tree().process_frame
+	GameManager.set_player_health(health)
 
 func _physics_process(_delta: float) -> void:
 	get_movement_input()

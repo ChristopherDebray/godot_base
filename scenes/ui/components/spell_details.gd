@@ -5,9 +5,9 @@ class_name SpellDetails
 @onready var name_label: Label = $VBoxContainer/HBoxContainer/NameLabel
 @onready var stats_label: Label = $VBoxContainer/StatsLabel
 
-var spell_data: SpellData
+var spell_data: AbilityData
 
-func setup(spell: SpellData):
+func setup(spell: AbilityData):
 	spell_data = spell
 	name_label.text = spell.name
 	

@@ -1,0 +1,98 @@
+[gd_scene load_steps=16 format=3 uid="uid://uwrkmmeipcf3"]
+
+[ext_resource type="PackedScene" uid="uid://bx54vyeawn6f3" path="res://scenes/_npc/base_npc.tscn" id="1_dq66m"]
+[ext_resource type="Resource" uid="uid://cq2k38f1rj2q6" path="res://scenes/npc/ennemy/sarbacanier/sarbacanier_ability_loadout.tres" id="2_5f7x7"]
+[ext_resource type="Script" uid="uid://ck57yu62phkan" path="res://scenes/_npc/behaviors/skirmisher_behavior.gd" id="2_psqty"]
+[ext_resource type="Texture2D" uid="uid://c4wrylsxa8e3f" path="res://assets/characters/sarbacanier.png" id="2_tya13"]
+
+[sub_resource type="Resource" id="Resource_g8fa1"]
+script = ExtResource("2_psqty")
+preferred_range = 250.0
+stop_range = 150.0
+strafe_bias = 0.6
+jitter = 0.25
+metadata/_custom_type_script = "uid://ck57yu62phkan"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_psqty"]
+size = Vector2(24, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5f7x7"]
+atlas = ExtResource("2_tya13")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_psqty"]
+atlas = ExtResource("2_tya13")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8fa1"]
+atlas = ExtResource("2_tya13")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66gdf"]
+atlas = ExtResource("2_tya13")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpa7h"]
+atlas = ExtResource("2_tya13")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbbgo"]
+atlas = ExtResource("2_tya13")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t83c5"]
+atlas = ExtResource("2_tya13")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2h6xw"]
+atlas = ExtResource("2_tya13")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p0ti8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5f7x7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_psqty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g8fa1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66gdf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpa7h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbbgo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t83c5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2h6xw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Sarbacanier" instance=ExtResource("1_dq66m")]
+behavior = SubResource("Resource_g8fa1")
+ability_loadout = ExtResource("2_5f7x7")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_psqty")
+
+[node name="StatusFx" parent="." index="2"]
+visible = false
+position = Vector2(0, 0)
+sprite_frames = null
+
+[node name="AnimatedSprite2D" parent="SpriteContainer" index="1"]
+scale = Vector2(1.1, 1.1)
+sprite_frames = SubResource("SpriteFrames_p0ti8")

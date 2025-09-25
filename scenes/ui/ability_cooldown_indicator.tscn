@@ -1,14 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://blvvh7m353g4l"]
 
-[ext_resource type="Script" uid="uid://dcdr4stl5wkq5" path="res://scenes/ui/spell_cooldown_indicator.gd" id="1_dojd6"]
-[ext_resource type="Texture2D" uid="uid://b4s7bcympbvx1" path="res://assets/spells/cadre_spell.png" id="2_xygbl"]
+[ext_resource type="Script" uid="uid://dcdr4stl5wkq5" path="res://scenes/ui/ability_cooldown_indicator.gd" id="1_2q2wc"]
+[ext_resource type="Texture2D" uid="uid://b4s7bcympbvx1" path="res://assets/spells/cadre_spell.png" id="2_ssc2s"]
 
 [node name="SpellCooldownIndicator" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-script = ExtResource("1_dojd6")
+script = ExtResource("1_2q2wc")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
@@ -21,7 +21,7 @@ theme_override_constants/margin_bottom = 6
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer"]
 layout_mode = 2
-texture = ExtResource("2_xygbl")
+texture = ExtResource("2_ssc2s")
 expand_mode = 2
 
 [node name="Icon" type="TextureRect" parent="MarginContainer"]
