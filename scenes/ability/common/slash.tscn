@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://b1s7jie5aug5h"]
+
+[ext_resource type="PackedScene" uid="uid://blec2pyy0f08v" path="res://scenes/ability/base_ability.tscn" id="1_gi4ig"]
+[ext_resource type="Script" uid="uid://7q8vqqog7r4t" path="res://scenes/ability/common/slash.gd" id="2_gi4ig"]
+[ext_resource type="Texture2D" uid="uid://b70lu8o15wqdt" path="res://assets/spells/slash.png" id="3_gi4ig"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pi6m"]
+atlas = ExtResource("3_gi4ig")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_788w3"]
+atlas = ExtResource("3_gi4ig")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4n2x"]
+atlas = ExtResource("3_gi4ig")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o2yhj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8pi6m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_788w3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4n2x")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 14.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o653d"]
+radius = 9.0
+height = 26.0
+
+[node name="Pierce" instance=ExtResource("1_gi4ig")]
+script = ExtResource("2_gi4ig")
+SPEED = 400.0
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(1.25, 1.25)
+sprite_frames = SubResource("SpriteFrames_o2yhj")
+frame = 1
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(-1, 0)
+rotation = 3.14159
+shape = SubResource("CapsuleShape2D_o653d")

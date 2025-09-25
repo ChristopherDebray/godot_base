@@ -75,6 +75,15 @@ func _ready() -> void:
 		_last_facing_sign = -1
 	_facing_smoothed = float(_last_facing_sign)
 	call_deferred("late_setup")
+	
+	if animated_sprite_2d.material is ShaderMaterial:
+		var mat := (animated_sprite_2d.material as ShaderMaterial)
+		if !mat.resource_local_to_scene:
+			mat = mat.duplicate() # deep copy is OK ici
+			mat.resource_local_to_scene = true
+			animated_sprite_2d.material = mat
+	else:
+		push_error("AnimatedSprite2D must have a ShaderMaterial assigned.")
 
 func setup():
 	set_physics_process(false)
@@ -332,4 +341,12 @@ func locomotion_freeze(state: bool = true):
 	locomotion.can_move = state
 
 func on_hit():
-	animated_sprite_2d.set_instance_shader_parameter('mix_amount', 1)
+	animated_sprite_2d.material.set_shader_parameter('mix_amount', 1)
+	
+	var tween := create_tween()
+	tween.tween_property(
+		animated_sprite_2d.material, 
+		"shader_parameter/mix_amount", 
+		0.0,
+		0.25 # duration
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)

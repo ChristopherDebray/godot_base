@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="AbilityData" load_steps=3 format=3 uid="uid://dc1g41nhmqvqe"]
+
+[ext_resource type="Script" uid="uid://dn3xcfj4pt4op" path="res://data/abilities/ability_data.gd" id="1_1o6qh"]
+[ext_resource type="PackedScene" uid="uid://c1d8u7i5dtu2w" path="res://scenes/ability/common/pierce.tscn" id="1_1707i"]
+
+[resource]
+script = ExtResource("1_1o6qh")
+name = "pierce"
+cooldown = 2.0
+magnitude = 1.0
+range = 100.0
+faction = 0
+kind = 0
+scene = ExtResource("1_1707i")
+damage = 5.0
+aoe_damage = 0.0
+main_element = 4
+description = ""
+tags = Array[int]([6])
+is_channeled = false
+channel_tick_rate = 0.5
+max_channel_duration = 3.0
+metadata/_custom_type_script = "uid://dn3xcfj4pt4op"
