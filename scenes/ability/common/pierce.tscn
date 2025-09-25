@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://c1d8u7i5dtu2w"]
+
+[ext_resource type="PackedScene" uid="uid://blec2pyy0f08v" path="res://scenes/ability/base_ability.tscn" id="1_li30g"]
+[ext_resource type="Texture2D" uid="uid://hx74cjxbx7wd" path="res://assets/spells/pierce.png" id="2_o653d"]
+[ext_resource type="Script" uid="uid://bkxeawhcwj7ev" path="res://scenes/ability/common/pierce.gd" id="2_qn2sk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qn2sk"]
+atlas = ExtResource("2_o653d")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqbf8"]
+atlas = ExtResource("2_o653d")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o2yhj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qn2sk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mqbf8")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o653d"]
+radius = 7.0
+height = 50.0
+
+[node name="Pierce" instance=ExtResource("1_li30g")]
+script = ExtResource("2_qn2sk")
+SPEED = 400.0
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(1.25, 1.25)
+sprite_frames = SubResource("SpriteFrames_o2yhj")
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_o653d")

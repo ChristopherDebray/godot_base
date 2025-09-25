@@ -24,7 +24,7 @@ func _ready():
 
 func _on_use_ability(data: AbilityData, target: Vector2, origin: Vector2, target_type: TARGET_TYPE, sender: Damageable = null):
 	if data == null or data.scene == null:
-		push_error("AbilityData invalid or missing scene: %s" % (data and data.id))
+		push_error("AbilityData invalid or missing scene: %s" % (data))
 		return null
 	
 	var instance = data.scene.instantiate() as BaseAbility

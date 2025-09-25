@@ -1,0 +1,95 @@
+[gd_scene load_steps=17 format=3 uid="uid://8muainttdlro"]
+
+[ext_resource type="PackedScene" uid="uid://bx54vyeawn6f3" path="res://scenes/_npc/base_npc.tscn" id="1_oq5jf"]
+[ext_resource type="Script" uid="uid://dlta7uajlqo1k" path="res://scenes/npc/ennemy/skelleton/skelleton.gd" id="2_574le"]
+[ext_resource type="Script" uid="uid://b6xjnpa1omirn" path="res://scenes/_npc/behaviors/kamikaze_behavior.gd" id="3_oq5jf"]
+[ext_resource type="Resource" uid="uid://c6qyepg4xv1n" path="res://scenes/npc/ennemy/farmer/farmer_ability_loadout.tres" id="4_oq5jf"]
+[ext_resource type="Texture2D" uid="uid://bp7e13qh7ihl8" path="res://assets/characters/farmer.png" id="5_axnqw"]
+
+[sub_resource type="Resource" id="Resource_574le"]
+script = ExtResource("3_oq5jf")
+preferred_range = 30.0
+stop_range = 20.0
+strafe_bias = 0.0
+jitter = 0.25
+metadata/_custom_type_script = "uid://b6xjnpa1omirn"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qur4j"]
+size = Vector2(22, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6d6u"]
+atlas = ExtResource("5_axnqw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6g26i"]
+atlas = ExtResource("5_axnqw")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pk67m"]
+atlas = ExtResource("5_axnqw")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gt0f"]
+atlas = ExtResource("5_axnqw")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbgcg"]
+atlas = ExtResource("5_axnqw")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xawcr"]
+atlas = ExtResource("5_axnqw")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hglac"]
+atlas = ExtResource("5_axnqw")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3gds"]
+atlas = ExtResource("5_axnqw")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tki78"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y6d6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6g26i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pk67m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gt0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbgcg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xawcr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hglac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3gds")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Farmer" instance=ExtResource("1_oq5jf")]
+y_sort_enabled = false
+script = ExtResource("2_574le")
+behavior = SubResource("Resource_574le")
+ability_loadout = ExtResource("4_oq5jf")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_qur4j")
+
+[node name="AnimatedSprite2D" parent="SpriteContainer" index="1"]
+sprite_frames = SubResource("SpriteFrames_tki78")

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SpellRessource" load_steps=4 format=3 uid="uid://cskk5gga4ssdl"]
 
 [ext_resource type="PackedScene" uid="uid://2ewejell8oks" path="res://scenes/spell_book/spell_scenes/firebolt.tscn" id="1_10ohq"]
-[ext_resource type="Resource" uid="uid://owvmr2cmn7mv" path="res://data/spells/effect_ressources/charm.tres" id="1_10qkg"]
+[ext_resource type="Resource" uid="uid://yd8ixi5k4xp6" path="res://data/spells/effect_ressources/freeze.tres" id="1_10qkg"]
 [ext_resource type="Script" uid="uid://cslt7nnwgts0o" path="res://data/spells/spell_ressources/spell_ressource.gd" id="2_ojw01"]
 
 [resource]

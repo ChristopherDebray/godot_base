@@ -65,8 +65,6 @@ var roaming_target_position: Vector2
 var roam_delay: float = 2.0
 var _roam_timer: float = 0.0
 
-var can_move: bool = true
-
 func _ready() -> void:
 	ability_runner.setup(self)
 	setup()
@@ -329,3 +327,9 @@ func _pulse_red(duration: float = 2.0) -> void:
 	tw.set_loops(ceil(duration / 0.5))
 	tw.tween_property(animated_sprite_2d, "modulate", Color(1,0.3,0.3), 0.25).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	tw.tween_property(animated_sprite_2d, "modulate", Color(1,1,1), 0.25).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
+func locomotion_freeze(state: bool = true):
+	locomotion.can_move = state
+
+func on_hit():
+	animated_sprite_2d.set_instance_shader_parameter('mix_amount', 1)

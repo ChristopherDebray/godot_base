@@ -6,17 +6,17 @@
 [resource]
 script = ExtResource("1_hi5st")
 name = "arrow"
-cooldown = 1.0
+cooldown = 2.0
 magnitude = 1.0
 range = 160.0
 faction = 1
 kind = 0
 scene = ExtResource("1_3qiok")
-damage = 10.0
+damage = 5.0
 aoe_damage = 0.0
 main_element = 4
 description = ""
-tags = Array[int]([])
+tags = Array[int]([1])
 is_channeled = false
 channel_tick_rate = 0.5
 max_channel_duration = 3.0
