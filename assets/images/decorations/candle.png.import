@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cb0ka54fj86gc"
-path="res://.godot/imported/pillar.png-a394cf81fde6509b5670cde2e87f7e0f.ctex"
+uid="uid://b54xckovqucg6"
+path="res://.godot/imported/candle.png-cf0a358aefa4550e7a5ea7f59e28aa52.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/structure/pillar.png"
-dest_files=["res://.godot/imported/pillar.png-a394cf81fde6509b5670cde2e87f7e0f.ctex"]
+source_file="res://assets/images/decorations/candle.png"
+dest_files=["res://.godot/imported/candle.png-cf0a358aefa4550e7a5ea7f59e28aa52.ctex"]
 
 [params]
 
