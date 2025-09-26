@@ -12,9 +12,9 @@ func setup(spell: AbilityData):
 	name_label.text = spell.name
 	
 	# Add element icons
-	for elem in spell.elements:
-		var icon = UiManager.get_element_icon_texture_rect(elem)
-		elements_container.add_child(icon)
+	#for elem in spell.elements:
+		#var icon = UiManager.get_element_icon_texture_rect(elem)
+		#elements_container.add_child(icon)
 	
 	# Set stats text
 	var effect = spell.effect.name if spell.effect else "None"

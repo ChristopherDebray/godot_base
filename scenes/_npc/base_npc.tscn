@@ -40,7 +40,10 @@ use_global_cooldown = true
 metadata/_edit_vertical_guides_ = [-15.0, 15.0]
 metadata/_edit_horizontal_guides_ = [30.0]
 
-[node name="SpriteContainer" type="Node2D" parent="." index="3"]
+[node name="Muzzle" type="Node2D" parent="." index="3"]
+position = Vector2(18, 0)
+
+[node name="SpriteContainer" type="Node2D" parent="." index="4"]
 
 [node name="Shadow" type="Sprite2D" parent="SpriteContainer" index="0"]
 y_sort_enabled = true
@@ -63,24 +66,22 @@ rotation = -1.5708
 scale = Vector2(17.3874, 18.4783)
 polygon = PackedVector2Array(0, 0, -15, 30, 15, 30)
 
-[node name="AbilityTimer" type="Timer" parent="." index="4"]
+[node name="AbilityTimer" type="Timer" parent="." index="5"]
 one_shot = true
 
-[node name="NavAgent" type="NavigationAgent2D" parent="." index="5"]
+[node name="NavAgent" type="NavigationAgent2D" parent="." index="6"]
 avoidance_enabled = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="." index="6"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="." index="7"]
 
-[node name="Detection" type="Node2D" parent="." index="7"]
+[node name="Detection" type="Node2D" parent="." index="8"]
 rotation = -1.5708
 
 [node name="RayCast2D" type="RayCast2D" parent="Detection" index="0"]
 collision_mask = 5
 
-[node name="Muzzle" type="Marker2D" parent="." index="8"]
-position = Vector2(18, 0)
-
 [node name="Targeting" parent="." index="9" instance=ExtResource("5_5urbc")]
+auto_aggro_on_spawn = false
 fov_poll_interval = 0.22
 
 [node name="Locomotion" parent="." index="10" instance=ExtResource("6_gbn1b")]

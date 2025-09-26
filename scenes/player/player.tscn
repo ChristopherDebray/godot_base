@@ -116,28 +116,31 @@ collision_layer = 4
 collision_mask = 133
 script = ExtResource("1_1nli5")
 faction = 0
-health = 100.0
-speed = 115.0
+health = 50.0
+speed = 120.0
 
 [node name="Shadow" type="Sprite2D" parent="." index="1"]
 y_sort_enabled = true
 position = Vector2(11, 14)
 texture = ExtResource("3_0owmy")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+[node name="Muzzle" type="Node2D" parent="." index="2"]
+position = Vector2(27, 3)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="3"]
 position = Vector2(10, 0)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
 
-[node name="CollisionShape2D" parent="." index="3"]
+[node name="CollisionShape2D" parent="." index="4"]
 position = Vector2(10, 4.5)
 shape = SubResource("RectangleShape2D_75vfm")
 
-[node name="CameraPlayer" type="Camera2D" parent="." index="5"]
+[node name="CameraPlayer" type="Camera2D" parent="." index="6"]
 limit_left = 0
 limit_top = 0
 limit_smoothed = true
 
-[node name="PointLight2D" type="PointLight2D" parent="." index="6"]
+[node name="PointLight2D" type="PointLight2D" parent="." index="7"]
 visible = false
 scale = Vector2(1.67188, 1.90558)
 color = Color(0.560955, 0.560955, 0.560955, 0.478431)
@@ -149,25 +152,25 @@ shadow_filter_smooth = 5.0
 texture = ExtResource("3_72mr7")
 height = 30.0
 
-[node name="FirstElement" type="AnimatedSprite2D" parent="." index="7"]
+[node name="FirstElement" type="AnimatedSprite2D" parent="." index="8"]
 visible = false
 position = Vector2(-10, -32)
 scale = Vector2(1.4, 1.4)
 sprite_frames = SubResource("SpriteFrames_wegus")
 
-[node name="SecondElement" type="AnimatedSprite2D" parent="." index="8"]
+[node name="SecondElement" type="AnimatedSprite2D" parent="." index="9"]
 visible = false
 position = Vector2(10, -32)
 scale = Vector2(1.4, 1.4)
 sprite_frames = SubResource("SpriteFrames_wegus")
 
-[node name="TimerFirstElement" type="Timer" parent="." index="9"]
+[node name="TimerFirstElement" type="Timer" parent="." index="10"]
 wait_time = 3.0
 one_shot = true
 
-[node name="TimerSecondElement" type="Timer" parent="." index="10"]
+[node name="TimerSecondElement" type="Timer" parent="." index="11"]
 wait_time = 3.0
 one_shot = true
 
-[node name="SpellBook" parent="." index="11" instance=ExtResource("5_p47bc")]
-position = Vector2(24, 0)
+[node name="SpellBook" parent="." index="12" instance=ExtResource("5_p47bc")]
+position = Vector2(27, 0)

@@ -86,7 +86,6 @@ y_sort_enabled = false
 script = ExtResource("2_uescc")
 behavior = SubResource("Resource_l1ud8")
 ability_loadout = ExtResource("4_l1ud8")
-health = 20.0
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(0, 3)

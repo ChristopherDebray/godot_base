@@ -1,12 +1,21 @@
-[gd_scene load_steps=15 format=3 uid="uid://cm5nim8ogpayf"]
+[gd_scene load_steps=17 format=3 uid="uid://cm5nim8ogpayf"]
 
 [ext_resource type="PackedScene" uid="uid://bx54vyeawn6f3" path="res://scenes/_npc/base_npc.tscn" id="1_xgvfd"]
 [ext_resource type="Texture2D" uid="uid://iknyhqq2qtj4" path="res://assets/characters/skelleton_cute.png" id="2_qur4j"]
 [ext_resource type="Script" uid="uid://dlta7uajlqo1k" path="res://scenes/npc/ennemy/skelleton/skelleton.gd" id="2_tt02g"]
+[ext_resource type="Script" uid="uid://ck57yu62phkan" path="res://scenes/_npc/behaviors/skirmisher_behavior.gd" id="3_l6olp"]
 [ext_resource type="Resource" uid="uid://csygjcjp88d8y" path="res://scenes/npc/ennemy/skelleton/skelleton_ability_loadout.tres" id="4_l6olp"]
 
+[sub_resource type="Resource" id="Resource_qfjon"]
+script = ExtResource("3_l6olp")
+preferred_range = 300.0
+stop_range = 200.0
+strafe_bias = 0.6
+jitter = 0.25
+metadata/_custom_type_script = "uid://ck57yu62phkan"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qur4j"]
-size = Vector2(22, 26)
+size = Vector2(22, 23)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tt02g"]
 atlas = ExtResource("2_qur4j")
@@ -75,10 +84,11 @@ animations = [{
 [node name="Skelleton" instance=ExtResource("1_xgvfd")]
 y_sort_enabled = false
 script = ExtResource("2_tt02g")
+behavior = SubResource("Resource_qfjon")
 ability_loadout = ExtResource("4_l6olp")
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(0, 3)
+position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_qur4j")
 
 [node name="AnimatedSprite2D" parent="SpriteContainer" index="1"]

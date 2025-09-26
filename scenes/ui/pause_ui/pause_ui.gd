@@ -1,4 +1,5 @@
 extends Control
 
 func _ready():
-	UiManager.pause_ui = self
+	pass
+	#UiManager.pause_ui = self

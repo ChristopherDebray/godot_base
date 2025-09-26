@@ -12,14 +12,13 @@ extends Damageable
 @onready var ray_cast_2d: RayCast2D = $Detection/RayCast2D
 @onready var field_view: Area2D = $SpriteContainer/FieldView
 @onready var ability_timer: Timer = $AbilityTimer
-@onready var muzzle: Marker2D = $Muzzle
+@onready var muzzle: Node2D = $Muzzle
 
 @onready var targeting: TargetingComponent = $Targeting
 @onready var locomotion: LocomotionComponent = $Locomotion
 
 @onready var ability_runner: AbilityRunner = $AbilityRunnerComponent
 @onready var cooldowns: CooldownBank = $CooldownBankComponent
-
 
 ## FOV rotation speed (deg/sec)
 @export var turn_speed_deg: float = 3000.0

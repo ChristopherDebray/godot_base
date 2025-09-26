@@ -6,7 +6,7 @@ var _dir_of_travel: Vector2 = Vector2.ZERO
 
 func init(ability_data: AbilityData, ctx: AimContext) -> void:
 	_dir_of_travel = ctx.desired_dir
-	start_from(ctx.sender_pos, range)
+	start_from(ctx.muzzle_pos, range)
 
 func setup_on_ready() -> void:
 	super._ready()

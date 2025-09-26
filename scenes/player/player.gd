@@ -9,6 +9,7 @@ class_name Player
 @onready var timer_second_element: Timer = $TimerSecondElement
 @onready var spell_book: Node2D = $SpellBook
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var muzzle: Node2D = $Muzzle
 
 var run_anim_name := "default" 
 var idle_frame_index := 1
@@ -18,6 +19,9 @@ var input_to_element = {
 	"y_2_action": SpellsManager.ELEMENTS.FIRE,
 	"b_3_action": SpellsManager.ELEMENTS.WIND
 }
+
+var muzzle_initial_position: float = 27
+const MUZZLE_INVERTION_POS: float = -10
 
 func _ready() -> void:
 	await get_tree().process_frame
@@ -36,8 +40,10 @@ func _update_facing() -> void:
 
 	if aim_dir.x < -0.05:
 		animated_sprite_2d.flip_h = true
+		muzzle.position.x = MUZZLE_INVERTION_POS
 	elif aim_dir.x > 0.05:
 		animated_sprite_2d.flip_h = false
+		muzzle.position.x = muzzle_initial_position
 
 func _update_anim() -> void:
 	# seuil pour éviter de “jouer/arrêter” quand la vitesse est quasi nulle
@@ -61,7 +67,7 @@ func get_movement_input() -> void:
 
 func detect_action_inputs() -> void:
 	detect_interaction_inputs();
-	#detect_input_item_handler()
+	#detect_input_item_handler()d
 
 func detect_interaction_inputs() -> void:
 	for input_name in input_to_element.keys():

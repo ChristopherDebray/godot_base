@@ -1,22 +1,36 @@
-[gd_scene load_steps=7 format=3 uid="uid://buqh2nnxfy1tc"]
+[gd_scene load_steps=9 format=3 uid="uid://buqh2nnxfy1tc"]
 
 [ext_resource type="PackedScene" uid="uid://blec2pyy0f08v" path="res://scenes/ability/base_ability.tscn" id="1_4kavl"]
 [ext_resource type="Script" uid="uid://hgs5np03ld2g" path="res://scenes/ability/common/dash.gd" id="2_hdsbg"]
-[ext_resource type="Texture2D" uid="uid://c0jrbau77objc" path="res://assets/spells/thunderstrike.png" id="3_s7sod"]
+[ext_resource type="Texture2D" uid="uid://b6arqqgumof7w" path="res://assets/spells/charge.png" id="3_s7sod"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_siusc"]
 atlas = ExtResource("3_s7sod")
-region = Rect2(384, 0, 128, 180)
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3y21"]
+atlas = ExtResource("3_s7sod")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k42jh"]
+atlas = ExtResource("3_s7sod")
+region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w3y21"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_siusc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3y21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k42jh")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hdsbg"]
@@ -29,8 +43,10 @@ abilityName = "dash"
 aoe_enabled = false
 
 [node name="AnimatedSprite2D" parent="." index="0"]
-position = Vector2(8, -41)
+position = Vector2(0, 2)
+scale = Vector2(1.6, 1.6)
 sprite_frames = SubResource("SpriteFrames_w3y21")
+autoplay = "default"
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource("CircleShape2D_hdsbg")

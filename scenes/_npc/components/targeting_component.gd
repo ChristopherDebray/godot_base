@@ -94,7 +94,6 @@ func _try_auto_target_on_spawn() -> void:
 
 	# Optional: add to candidates so future polls see it immediately
 	_candidates.append(candidate)
-
 	# If LOS is clear, hard-set target; otherwise start searching toward last known pos
 	if _has_line_of_sight(candidate):
 		_set_target(candidate)
@@ -191,6 +190,7 @@ func _score_candidate(candidate: Damageable) -> float:
 func _has_line_of_sight(to: Node2D) -> bool:
 	if to == null: return false
 	npc_ray_cast_2d.target_position = npc_ray_cast_2d.to_local(to.global_position)
+	npc_field_view.look_at(to.global_position)
 	npc_ray_cast_2d.force_raycast_update()
 	if not npc_ray_cast_2d.is_colliding():
 		return false
