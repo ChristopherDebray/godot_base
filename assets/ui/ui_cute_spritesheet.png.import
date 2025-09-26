@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4s7bcympbvx1"
-path="res://.godot/imported/cadre_spell.png-a381fce3223d9090dbf90c72ab261462.ctex"
+uid="uid://c0ngxdyrhwgd6"
+path="res://.godot/imported/ui_cute_spritesheet.png-653be9d6e2e1f345bce4a99073969b36.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/spells/cadre_spell.png"
-dest_files=["res://.godot/imported/cadre_spell.png-a381fce3223d9090dbf90c72ab261462.ctex"]
+source_file="res://assets/ui/ui_cute_spritesheet.png"
+dest_files=["res://.godot/imported/ui_cute_spritesheet.png-653be9d6e2e1f345bce4a99073969b36.ctex"]
 
 [params]
 

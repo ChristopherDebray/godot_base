@@ -59,6 +59,14 @@ abilityName = "ice cone"
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_wvrn6")
 
+[node name="Hitbox" parent="." index="3"]
+collision_layer = 129
+collision_mask = 153
+
+[node name="AreaOfEffect" parent="." index="4"]
+collision_layer = 129
+collision_mask = 153
+
 [node name="CollisionShape2D" parent="AreaOfEffect" index="0"]
 position = Vector2(-10, 0.5)
 shape = SubResource("RectangleShape2D_i2e3l")

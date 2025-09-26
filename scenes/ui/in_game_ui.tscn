@@ -1,9 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqnnqulkpfar1"]
+[gd_scene load_steps=3 format=3 uid="uid://dqnnqulkpfar1"]
 
+[ext_resource type="Script" uid="uid://bsyx6ku3mx8yg" path="res://scenes/ui/in_game_ui.gd" id="1_3nhwc"]
 [ext_resource type="PackedScene" uid="uid://d264e4u15uply" path="res://scenes/ui/resource_indicator.tscn" id="1_qvqbd"]
-[ext_resource type="PackedScene" uid="uid://blvvh7m353g4l" path="res://scenes/ui/ability_cooldown_indicator.tscn" id="1_uyty4"]
-[ext_resource type="Texture2D" uid="uid://3b4qv17tokqm" path="res://assets/spells/firebolt_icon.png" id="2_4db6k"]
-[ext_resource type="Texture2D" uid="uid://uufldva48nc8" path="res://assets/spells/Thunderstrike_icon.png" id="3_eeonk"]
 
 [node name="InGameUi" type="Control"]
 layout_mode = 3
@@ -12,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_3nhwc")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -28,23 +27,17 @@ theme_override_constants/margin_bottom = 60
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 8
+theme_override_constants/margin_bottom = 60
 
-[node name="ResourceIndicator" parent="MarginContainer/MarginContainer" instance=ExtResource("1_qvqbd")]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 100
 
-[node name="AbilityCooldownIndicator" parent="MarginContainer/MarginContainer" instance=ExtResource("1_uyty4")]
+[node name="ResourceIndicator" parent="MarginContainer/MarginContainer/HBoxContainer" instance=ExtResource("1_qvqbd")]
 layout_mode = 2
-size_flags_vertical = 4
-spell_name = "firebolt"
-icon = ExtResource("2_4db6k")
 
 [node name="CooldownIndicators" type="HBoxContainer" parent="MarginContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_constants/separation = 60
-
-[node name="AbilityCooldownIndicator" parent="MarginContainer/MarginContainer/CooldownIndicators" instance=ExtResource("1_uyty4")]
-layout_mode = 2
-spell_name = "lightning"
-icon = ExtResource("3_eeonk")

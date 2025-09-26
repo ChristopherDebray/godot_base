@@ -7,8 +7,8 @@ class_name SpellCooldownIndicator
 var remaining_time: float = 0.0
 var max_cooldown: float = 1.0
 
-@onready var overlay: ColorRect = $MarginContainer/CooldownOverlay
-@onready var icon_node: TextureRect = $MarginContainer/Icon
+@onready var overlay: ColorRect = $TextureRect/CooldownOverlay
+@onready var icon_node: TextureRect = $TextureRect/Icon
 
 func _ready():
 	icon_node.texture = icon
@@ -38,5 +38,3 @@ func update_ui(time_left: float):
 	overlay.visible = true
 	var full_height = icon_node.size.y
 	overlay.size.y = full_height * ratio
-
-	overlay.color = Color(0, 0, 0, 0.6)

@@ -1,7 +1,12 @@
-[gd_resource type="Resource" script_class="SpellRessource" load_steps=3 format=3 uid="uid://b10osj5qrvq17"]
+[gd_resource type="Resource" script_class="SpellRessource" load_steps=5 format=3 uid="uid://b10osj5qrvq17"]
 
+[ext_resource type="Texture2D" uid="uid://dlkv8g35iidv" path="res://assets/spells/wind_shield.png" id="1_2k4ny"]
 [ext_resource type="PackedScene" uid="uid://bfe6md0m2hv08" path="res://scenes/ability/common/wind_shield.tscn" id="2_2k4ny"]
 [ext_resource type="Script" uid="uid://cslt7nnwgts0o" path="res://data/spells/spell_ressources/spell_ressource.gd" id="3_oprtj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64gdo"]
+atlas = ExtResource("1_2k4ny")
+region = Rect2(136, 8, 112, 112)
 
 [resource]
 script = ExtResource("3_oprtj")
@@ -17,7 +22,8 @@ damage = 0.0
 aoe_damage = 10.0
 main_element = 3
 description = ""
-tags = Array[int]([0])
+tags = Array[int]([0, 8])
+icon = SubResource("AtlasTexture_64gdo")
 is_channeled = false
 channel_tick_rate = 0.5
 max_channel_duration = 3.0

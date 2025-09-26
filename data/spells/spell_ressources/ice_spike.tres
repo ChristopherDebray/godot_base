@@ -1,7 +1,12 @@
-[gd_resource type="Resource" script_class="SpellRessource" load_steps=3 format=3 uid="uid://cenbuwidbjqla"]
+[gd_resource type="Resource" script_class="SpellRessource" load_steps=5 format=3 uid="uid://cenbuwidbjqla"]
 
 [ext_resource type="PackedScene" uid="uid://cd3nrgw013liu" path="res://scenes/ability/common/ice_spike.tscn" id="1_gl4gu"]
+[ext_resource type="Texture2D" uid="uid://cs3n173a8pi62" path="res://assets/spells/ice_pike.png" id="1_oio35"]
 [ext_resource type="Script" uid="uid://cslt7nnwgts0o" path="res://data/spells/spell_ressources/spell_ressource.gd" id="2_oio35"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1ts8"]
+atlas = ExtResource("1_oio35")
+region = Rect2(520, 24, 112, 72)
 
 [resource]
 script = ExtResource("2_oio35")
@@ -18,6 +23,7 @@ aoe_damage = 0.0
 main_element = 0
 description = "An ice spike"
 tags = Array[int]([6, 1])
+icon = SubResource("AtlasTexture_h1ts8")
 is_channeled = false
 channel_tick_rate = 0.5
 max_channel_duration = 3.0

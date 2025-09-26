@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d264e4u15uply"]
+[gd_scene load_steps=3 format=3 uid="uid://d264e4u15uply"]
 
 [ext_resource type="Script" uid="uid://syep1hi6bxvp" path="res://scenes/ui/resource_indicator.gd" id="1_u2dvq"]
+[ext_resource type="Texture2D" uid="uid://c0ngxdyrhwgd6" path="res://assets/ui/ui_cute_spritesheet.png" id="2_pqt1c"]
 
 [node name="ResourceIndicator" type="Control"]
 layout_mode = 3
@@ -13,6 +14,33 @@ script = ExtResource("1_u2dvq")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_right = 343.0
-offset_bottom = 15.0
+offset_left = 88.0
+offset_top = 92.0
+offset_right = 168.0
+offset_bottom = 179.0
+rotation = 3.14159
 color = Color(0.739789, 2.00946e-06, 5.77569e-07, 1)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+texture = ExtResource("2_pqt1c")
+region_rect = Rect2(0, 184, 80, 72)
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 90.0
+offset_bottom = 102.0
+texture = ExtResource("2_pqt1c")
+region_rect = Rect2(88, 184, 64, 72)
+
+[node name="NinePatchRect3" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 10.0
+offset_right = 81.0
+offset_bottom = 84.0
+texture = ExtResource("2_pqt1c")
+region_rect = Rect2(160, 184, 64, 64)

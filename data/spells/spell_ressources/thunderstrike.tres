@@ -1,8 +1,13 @@
-[gd_resource type="Resource" script_class="SpellRessource" load_steps=4 format=3 uid="uid://bnn4njvt30wml"]
+[gd_resource type="Resource" script_class="SpellRessource" load_steps=6 format=3 uid="uid://bnn4njvt30wml"]
 
 [ext_resource type="Resource" uid="uid://b16585gw65apn" path="res://data/spells/effect_ressources/shock.tres" id="1_008yo"]
+[ext_resource type="Texture2D" uid="uid://c0jrbau77objc" path="res://assets/spells/thunderstrike.png" id="2_7gbph"]
 [ext_resource type="PackedScene" uid="uid://cmmqbvxky0xdg" path="res://scenes/ability/common/thunderstrike.tscn" id="2_008yo"]
 [ext_resource type="Script" uid="uid://cslt7nnwgts0o" path="res://data/spells/spell_ressources/spell_ressource.gd" id="3_008yo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgprd"]
+atlas = ExtResource("2_7gbph")
+region = Rect2(376, 64, 128, 128)
 
 [resource]
 script = ExtResource("3_008yo")
@@ -20,6 +25,7 @@ main_element = 1
 effect = ExtResource("1_008yo")
 description = ""
 tags = Array[int]([])
+icon = SubResource("AtlasTexture_wgprd")
 is_channeled = false
 channel_tick_rate = 0.5
 max_channel_duration = 3.0
