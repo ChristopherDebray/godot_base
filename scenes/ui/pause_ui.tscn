@@ -83,6 +83,8 @@ text = "All"
 
 [node name="SoundAll" type="HSlider" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Options/MarginContainer/VBoxContainer4/VBoxContainer"]
 layout_mode = 2
+max_value = 1.0
+step = 0.001
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Options/MarginContainer/VBoxContainer4"]
 layout_mode = 2
@@ -94,6 +96,8 @@ text = "Music"
 
 [node name="SoundFx" type="HSlider" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Options/MarginContainer/VBoxContainer4/VBoxContainer2"]
 layout_mode = 2
+max_value = 1.0
+step = 0.001
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Options/MarginContainer/VBoxContainer4"]
 layout_mode = 2
@@ -105,6 +109,8 @@ text = "FX"
 
 [node name="SoundMusic" type="HSlider" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Options/MarginContainer/VBoxContainer4/VBoxContainer3"]
 layout_mode = 2
+max_value = 1.0
+step = 0.001
 
 [node name="Spells" type="TabBar" parent="MarginContainer/TextureRect/MarginContainer/TabContainer"]
 visible = false

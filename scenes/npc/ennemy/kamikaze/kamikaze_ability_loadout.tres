@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://n52hp84chjuo" path="res://scenes/_npc/ability_entry.gd" id="1_1asw5"]
 [ext_resource type="Script" uid="uid://bsupc6votg0kx" path="res://scenes/_npc/ability_loadout.gd" id="2_fifrt"]
-[ext_resource type="Resource" uid="uid://dr65r6jdil8aq" path="res://data/abilities/common/dash_entry.tres" id="2_u41pg"]
+[ext_resource type="Resource" uid="uid://xnxh8278s0r3" path="res://data/abilities/enemy/explosion_entry.tres" id="2_u41pg"]
 
 [resource]
 script = ExtResource("2_fifrt")

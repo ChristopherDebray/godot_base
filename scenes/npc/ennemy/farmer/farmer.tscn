@@ -1,7 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://8muainttdlro"]
+[gd_scene load_steps=16 format=3 uid="uid://b6j88espg78qf"]
 
 [ext_resource type="PackedScene" uid="uid://bx54vyeawn6f3" path="res://scenes/_npc/base_npc.tscn" id="1_oq5jf"]
-[ext_resource type="Script" uid="uid://dlta7uajlqo1k" path="res://scenes/npc/ennemy/skelleton/skelleton.gd" id="2_574le"]
 [ext_resource type="Script" uid="uid://b6xjnpa1omirn" path="res://scenes/_npc/behaviors/kamikaze_behavior.gd" id="3_oq5jf"]
 [ext_resource type="Resource" uid="uid://c6qyepg4xv1n" path="res://scenes/npc/ennemy/farmer/farmer_ability_loadout.tres" id="4_oq5jf"]
 [ext_resource type="Texture2D" uid="uid://bp7e13qh7ihl8" path="res://assets/characters/farmer.png" id="5_axnqw"]
@@ -83,7 +82,6 @@ animations = [{
 
 [node name="Farmer" instance=ExtResource("1_oq5jf")]
 y_sort_enabled = false
-script = ExtResource("2_574le")
 behavior = SubResource("Resource_574le")
 ability_loadout = ExtResource("4_oq5jf")
 
