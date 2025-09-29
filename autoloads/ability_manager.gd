@@ -41,20 +41,10 @@ func _on_use_ability(data: AbilityData, target: Vector2, origin: Vector2, target
 		var npc := sender as BaseNpc
 		var target_world = CastService._coerce_target_world(sender, target, instance.range)
 		ctx = AimContext.from_node(npc, instance, target_world)
-		if is_instance_of(instance, DashAbility):
-			var dir := target
-			if dir.length() < 0.001:
-				dir = Vector2.RIGHT
-				if npc.animated_sprite_2d.flip_h:
-					dir = Vector2.LEFT
-			ctx = AimContext.new()
-			ctx.desired_dir = dir.normalized()
 
 	instance.init(data, ctx)
 
-	if is_instance_of(instance, SelfAbility):
-		sender.add_child(instance)
-	elif is_instance_of(instance, DashAbility):
+	if is_instance_of(instance, SelfAbility) or is_instance_of(instance, DashAbility):
 		sender.add_child(instance)
 	else:
 		get_tree().current_scene.get_node("YsortLayer/Abilities").add_child(instance)

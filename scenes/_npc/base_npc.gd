@@ -161,7 +161,10 @@ func perform_ability(delta: float) -> void:
 	if _ability_target and is_instance_valid(_ability_target):
 		target_pos = _ability_target.global_position
 	var origin := muzzle.global_position
+	var self_positioned_ability_kind = [AbilityData.ABILITY_KIND.SELF, AbilityData.ABILITY_KIND.MOVEMENT]
 	var dir := origin.direction_to(target_pos)
+	if self_positioned_ability_kind.has(entry.ability.kind):
+		origin = animated_sprite_2d.global_position
 	
 	var started := ability_runner.start(entry, target_pos, origin, dir)
 	if started:

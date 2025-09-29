@@ -34,7 +34,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wtxm7"]
-radius = 19.0
+radius = 21.0238
 
 [node name="Charge" instance=ExtResource("1_cuwpm")]
 script = ExtResource("2_wtxm7")
@@ -44,6 +44,8 @@ stop_on_collision = true
 keep_facing = true
 
 [node name="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(2, 2)
+scale = Vector2(1.0625, 1.0625)
 sprite_frames = SubResource("SpriteFrames_hl7dd")
 autoplay = "default"
 
