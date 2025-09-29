@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1nav7nxc3g1u"]
+
+[ext_resource type="PackedScene" uid="uid://blec2pyy0f08v" path="res://scenes/ability/base_ability.tscn" id="1_ftgka"]
+[ext_resource type="Script" uid="uid://dryumohvttn7l" path="res://scenes/_ability/dash_ability.gd" id="2_ftgka"]
+
+[node name="MovementAbility" instance=ExtResource("1_ftgka")]
+script = ExtResource("2_ftgka")
+dash_speed = 1000.0
+dash_distance = 200.0
+stop_on_collision = true
+keep_facing = true

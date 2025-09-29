@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Mage_test"
-run/main_scene="uid://cx67ymxqoecu0"
+run/main_scene="uid://b7exrgfspotf3"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
@@ -128,6 +128,7 @@ pause={
 2d_physics/layer_1="walls"
 2d_navigation/layer_1="nav_base_enemy"
 2d_physics/layer_2="bullet"
+2d_navigation/layer_2="nav_flying_enemy"
 2d_physics/layer_3="player"
 2d_physics/layer_4="npc"
 2d_physics/layer_8="holes"

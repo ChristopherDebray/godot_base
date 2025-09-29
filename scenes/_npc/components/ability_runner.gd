@@ -60,7 +60,7 @@ func start(entry: AbilityEntry, target_pos: Vector2, origin: Vector2, dir: Vecto
 	_channel_tick_accum = 0.0
 
 	if entry.lock_movement_during_cast:
-		owner_npc.locomotion.can_move = false
+		owner_npc.locomotion.set_can_move(false)
 
 	# optionnal animation
 	if current_entry.animation_name != "":
@@ -123,7 +123,7 @@ func _launch_now_or_channel() -> void:
 
 	# Start ICD at end if asked (most cases)
 	if current_entry != null and owner_npc.cooldowns != null:
-		if current_entry.start_icd_on != AbilityEntry.ICD_ON.END:
+		if current_entry.start_icd_on == AbilityEntry.ICD_ON.END:
 			owner_npc.cooldowns.start(current_ability, _cooldown_for(current_entry))
 
 	# Channeling or recovery
@@ -133,26 +133,13 @@ func _launch_now_or_channel() -> void:
 	else:
 		_begin_recovery_or_finish()
 
-func _do_launch_effect() -> void:
-	_clear_telegraph()
-
-	match current_ability.kind:
-		AbilityData.ABILITY_KIND.PROJECTILE:
-			SignalManager.use_ability.emit(current_ability, _saved_dir, _saved_origin, owner_npc.targeting.current_ability_target_type, owner_npc)
-		AbilityData.ABILITY_KIND.AOE:
-			SignalManager.use_ability.emit(current_ability, _saved_target_pos, _saved_origin, owner_npc.targeting.current_ability_target_type, owner_npc)
-		AbilityData.ABILITY_KIND.SELF:
-			SignalManager.use_ability.emit(current_ability, owner_npc.global_position, owner_npc.global_position, owner_npc.targeting.current_ability_target_type, owner_npc)
-		_:
-			pass
-
 func _on_channel_tick() -> void:
 	if state != ABILITY_RUNNER_STATE.CHANNELING:
 		return
 	_channel_tick_accum += current_ability.channel_tick_rate
 	# Apply effect tick (ex: dps, slow, etc.)
 	SignalManager.use_ability.emit(current_ability, _saved_target_pos, _saved_origin, owner_npc.targeting.current_ability_target_type, owner_npc)
-	# Fin du channel ?
+
 	if _channel_tick_accum + 0.001 >= current_ability.max_channel_duration:
 		_channel_timer.stop()
 		_begin_recovery_or_finish()
@@ -170,7 +157,7 @@ func _on_recovery_timeout() -> void:
 func _cleanup_and_finish(interrupted: bool) -> void:
 	# Restaure mouvement si locké
 	if current_ability and current_entry.lock_movement_during_cast:
-		owner_npc.locomotion.can_move = true
+		owner_npc.locomotion.set_can_move(true)
 
 	_clear_telegraph()
 	_cast_timer.stop()
@@ -186,3 +173,14 @@ func _cleanup_and_finish(interrupted: bool) -> void:
 		emit_signal("ability_interrupted", finished_ability)
 	else:
 		emit_signal("ability_finished", finished_ability)
+
+func _do_launch_effect() -> void:
+	_clear_telegraph()
+
+	match current_ability.kind:
+		AbilityData.ABILITY_KIND.PROJECTILE, AbilityData.ABILITY_KIND.SELF, AbilityData.ABILITY_KIND.MOVEMENT:
+			SignalManager.use_ability.emit(current_ability, _saved_dir, _saved_origin, owner_npc.targeting.current_ability_target_type, owner_npc)
+		AbilityData.ABILITY_KIND.AOE:
+			SignalManager.use_ability.emit(current_ability, _saved_target_pos, _saved_origin, owner_npc.targeting.current_ability_target_type, owner_npc)
+		_:
+			pass

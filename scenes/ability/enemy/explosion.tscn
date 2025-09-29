@@ -122,7 +122,9 @@ radius = 69.0072
 
 [node name="Explosion" instance=ExtResource("1_hdjcs")]
 script = ExtResource("2_mjgu3")
+aoe_radius_tiles = 1.0
 abilityName = "explosion"
+must_delay_ability = true
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 scale = Vector2(1.8, 1.8)

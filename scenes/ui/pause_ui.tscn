@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://uk7n8q5lt0l1"]
+[gd_scene load_steps=6 format=3 uid="uid://uk7n8q5lt0l1"]
 
 [ext_resource type="Script" uid="uid://b8flwhrvvk72w" path="res://scenes/ui/pause_ui.gd" id="1_xt3ok"]
 [ext_resource type="Texture2D" uid="uid://b4rvoo21nr8kj" path="res://assets/sprite_sheets/elements_icons.png" id="2_ghgjp"]
 [ext_resource type="Texture2D" uid="uid://d2650u4m7e5ww" path="res://assets/ui/book_menu.png" id="3_yrwkb"]
 [ext_resource type="Theme" uid="uid://d3jium3bs8gi" path="res://assets/theme/theme_mage.tres" id="4_8dn2d"]
+[ext_resource type="PackedScene" uid="uid://ciebuvudieu20" path="res://scenes/ui/pause_ui/components/audio_input.tscn" id="5_lauhp"]
 
 [node name="PauseUi" type="Control"]
 process_mode = 3
@@ -79,12 +80,11 @@ layout_mode = 2
 [node name="Label" type="Label" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Options/MarginContainer/VBoxContainer4/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "All"
+text = "Master"
 
-[node name="SoundAll" type="HSlider" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Options/MarginContainer/VBoxContainer4/VBoxContainer"]
+[node name="AudioInputMaster" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Options/MarginContainer/VBoxContainer4/VBoxContainer" instance=ExtResource("5_lauhp")]
 layout_mode = 2
-max_value = 1.0
-step = 0.001
+audio_bus_name = "Master"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Options/MarginContainer/VBoxContainer4"]
 layout_mode = 2
@@ -94,10 +94,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Music"
 
-[node name="SoundFx" type="HSlider" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Options/MarginContainer/VBoxContainer4/VBoxContainer2"]
+[node name="AudioInputMusic" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Options/MarginContainer/VBoxContainer4/VBoxContainer2" instance=ExtResource("5_lauhp")]
 layout_mode = 2
-max_value = 1.0
-step = 0.001
+audio_bus_name = "Music"
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Options/MarginContainer/VBoxContainer4"]
 layout_mode = 2
@@ -107,10 +106,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "FX"
 
-[node name="SoundMusic" type="HSlider" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Options/MarginContainer/VBoxContainer4/VBoxContainer3"]
+[node name="AudioInputSfx" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Options/MarginContainer/VBoxContainer4/VBoxContainer3" instance=ExtResource("5_lauhp")]
 layout_mode = 2
-max_value = 1.0
-step = 0.001
+audio_bus_name = "Sfx"
 
 [node name="Spells" type="TabBar" parent="MarginContainer/TextureRect/MarginContainer/TabContainer"]
 visible = false

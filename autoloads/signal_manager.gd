@@ -12,3 +12,5 @@ signal ability_started(ability: AbilityData)
 signal ability_launched(ability: AbilityData)
 signal ability_interrupted(ability: AbilityData)
 signal ability_finished(ability: AbilityData)
+
+signal forced_motion_finished(interrupted: bool)

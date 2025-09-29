@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="AbilityData" load_steps=3 format=3 uid="uid://b456su748nq84"]
+
+[ext_resource type="PackedScene" uid="uid://baeyf4drbc8w4" path="res://scenes/ability/common/charge.tscn" id="1_1tb5f"]
+[ext_resource type="Script" uid="uid://dn3xcfj4pt4op" path="res://data/abilities/ability_data.gd" id="1_c43rm"]
+
+[resource]
+script = ExtResource("1_c43rm")
+name = "charge"
+cooldown = 5.0
+magnitude = 1.0
+range = 250.0
+faction = 0
+kind = 7
+scene = ExtResource("1_1tb5f")
+damage = 10.0
+aoe_damage = 0.0
+main_element = 4
+description = ""
+tags = Array[int]([])
+is_channeled = false
+channel_tick_rate = 0.5
+max_channel_duration = 3.0
+metadata/_custom_type_script = "uid://dn3xcfj4pt4op"

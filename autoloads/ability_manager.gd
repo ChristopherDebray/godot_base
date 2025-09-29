@@ -33,27 +33,36 @@ func _on_use_ability(data: AbilityData, target: Vector2, origin: Vector2, target
 	instance.configure_masks(COLLISION_MASKS_GROUPS[target_type])
 	instance.init_ability_resource(data)
 	
-	var target_world := CastService._coerce_target_world(sender, target, instance.range)
 	var ctx
 	if is_instance_of(sender, Player):
 		sender = sender as Player
 		ctx = AimContext.from_mouse(sender, instance)
 	else:
-		sender = sender as BaseNpc
-		ctx = AimContext.from_node(sender, instance, target_world)
-	
-	if is_instance_of(instance, ProjectileAbility):
-		instance.init(data, ctx)
-	elif is_instance_of(instance, AoeInstantAbility):
-		ctx.los_clamped_point = CastService._compute_aoe_spawn_with_los(sender, ctx, instance._get_aoe_radius())
-		instance.init(data, ctx)
-	elif is_instance_of(instance, SelfAbility):
-		instance.init(data, ctx)
-	
+		var npc := sender as BaseNpc
+		var target_world = CastService._coerce_target_world(sender, target, instance.range)
+		ctx = AimContext.from_node(npc, instance, target_world)
+		if is_instance_of(instance, DashAbility):
+			var dir := target
+			if dir.length() < 0.001:
+				dir = Vector2.RIGHT
+				if npc.animated_sprite_2d.flip_h:
+					dir = Vector2.LEFT
+			ctx = AimContext.new()
+			ctx.desired_dir = dir.normalized()
+
+	instance.init(data, ctx)
+
 	if is_instance_of(instance, SelfAbility):
 		sender.add_child(instance)
-		sender.apply_effect(data.self_effect)
+	elif is_instance_of(instance, DashAbility):
+		sender.add_child(instance)
 	else:
 		get_tree().current_scene.get_node("YsortLayer/Abilities").add_child(instance)
-	
+
+	instance.start_from(origin, data.range)
+	instance.begin_cast_flow()
+
+	if is_instance_of(instance, SelfAbility) and data.self_effect:
+		sender.apply_effect(data.self_effect)
+
 	return instance

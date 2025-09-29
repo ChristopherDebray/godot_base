@@ -128,6 +128,7 @@ texture = ExtResource("3_0owmy")
 position = Vector2(27, 3)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="3"]
+y_sort_enabled = true
 position = Vector2(10, 0)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
 
