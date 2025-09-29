@@ -90,6 +90,7 @@ func apply_damage(amount: float) -> void:
 	if is_instance_of(self, Player):
 		GameManager.modify_current_health(-amount)
 		SignalManager.resource_value_change.emit(amount, GameManager.RESOURCE_TYPE.LIFE)
+	on_hit()
 
 func apply_effect(effect: EffectData) -> void:
 	if not effect or effect.name_enum in immunity_effects:
@@ -98,6 +99,8 @@ func apply_effect(effect: EffectData) -> void:
 	# Reset duration if same effect already exists
 	for entry in active_effects:
 		if entry["effect"].name == effect.name:
+			_unapply_effect(entry)
+			entry["effect"] = effect
 			entry["remaining_time"] = effect.duration
 			entry["accum"] = 0.0
 			entry.erase("applied_mods")
@@ -168,5 +171,6 @@ func raycast_ability_to(to_position: Vector2):
 	ray_cast_ability.target_position = ray_cast_ability.to_local(to_position)
 	ray_cast_ability.force_raycast_update()
 
+## @abstract
 func on_hit():
 	pass

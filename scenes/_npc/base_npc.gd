@@ -43,6 +43,8 @@ var _facing_smoothed: float = 1.0              # smoothed signed direction in [-
 var _last_flip_time: float = -10.0             # last time we flipped
 var _last_facing_sign: int = 1
 
+var _hit_tween: Tween = null
+
 enum STATE {
 	IDLE,
 	RETURNING,
@@ -353,3 +355,20 @@ func on_hit():
 		0.0,
 		0.25 # duration
 	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
+func pulse_tint(tint: Color = Color(1,0,0), up_time: float = 0.08, down_time: float = 0.18) -> void:
+	var mat := animated_sprite_2d.material as ShaderMaterial
+	if mat == null:
+		return
+	if _hit_tween and _hit_tween.is_valid():
+		_hit_tween.kill()
+
+	mat.set_shader_parameter("tint_color", tint)
+	mat.set_shader_parameter("mix_amount", 0.0)
+
+	_hit_tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	_hit_tween.tween_property(mat, "shader_parameter/mix_amount", 1.0, up_time)
+	_hit_tween.tween_property(mat, "shader_parameter/mix_amount", 0.0, down_time)
+	_hit_tween.tween_callback(func():
+		mat.set_shader_parameter("tint_color", Color(1,1,1,1)) # optional reset
+	)

@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=4 uid="uid://b7exrgfspotf3"]
+[gd_scene load_steps=8 format=4 uid="uid://b7exrgfspotf3"]
 
 [ext_resource type="PackedScene" uid="uid://bm3vsdux3ux7u" path="res://scenes/level/level_base.tscn" id="1_1btmw"]
 [ext_resource type="PackedScene" uid="uid://3r744noguafd" path="res://scenes/_trap/bear_trap.tscn" id="3_2heyh"]
 [ext_resource type="PackedScene" uid="uid://bwukvouewubjm" path="res://scenes/_interactives/zone_interactive.tscn" id="3_2uvmr"]
 [ext_resource type="PackedScene" uid="uid://dtke8li202cx6" path="res://scenes/_trap/ability_trap_launcher.tscn" id="4_2uvmr"]
 [ext_resource type="Resource" uid="uid://db5ebmuutowh" path="res://data/abilities/common/arrow.tres" id="5_8kgbu"]
+[ext_resource type="PackedScene" uid="uid://cm5nim8ogpayf" path="res://scenes/npc/ennemy/skelleton/skelleton.tscn" id="6_uonu5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2heyh"]
 size = Vector2(274, 78)
@@ -41,5 +42,8 @@ ability = ExtResource("5_8kgbu")
 state = 0
 
 [node name="Npcs" type="Node2D" parent="YsortLayer" index="7"]
+
+[node name="Skelleton" parent="YsortLayer/Npcs" index="0" instance=ExtResource("6_uonu5")]
+position = Vector2(132, 236)
 
 [editable path="YsortLayer/Traps/ZoneInteractive"]

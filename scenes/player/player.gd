@@ -138,6 +138,17 @@ func _on_timer_second_element_timeout() -> void:
 		_remove_element(1)
 		_update_elements_display()
 
+func on_hit():
+	animated_sprite_2d.material.set_shader_parameter('mix_amount', 1)
+	
+	var tween := create_tween()
+	tween.tween_property(
+		animated_sprite_2d.material, 
+		"shader_parameter/mix_amount", 
+		0.0,
+		0.25 # duration
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
 #func detect_input_item_handler():
 	#if Input.is_action_just_pressed("use_item"):
 		#item_handler.use_item(get_aim_direction())

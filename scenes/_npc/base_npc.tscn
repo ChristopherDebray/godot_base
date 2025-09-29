@@ -21,7 +21,7 @@ metadata/_custom_type_script = "uid://ck57yu62phkan"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_frhad"]
 shader = ExtResource("5_7u3u1")
-shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/tint_color = Color(1, 1, 1, 1)
 shader_parameter/mix_amount = 0.0
 
 [node name="BaseNpc" groups=["enemy"] instance=ExtResource("1_rcddc")]
