@@ -37,42 +37,65 @@ func set_can_move(state: bool):
 	can_move = state
 	
 func _update_navigation() -> void:
+	# Forced motion (dash, knockback, etc.)
 	if _forced_active:
 		_tick_forced_move(npc.get_physics_process_delta_time())
 		return
+
+	# Movement lock
 	if not can_move:
 		return
 
-	var next_vel := Vector2.ZERO
+	var next_velocity := Vector2.ZERO
 	var delta_time := npc.get_physics_process_delta_time()
 
 	if npc.behavior and npc.state == npc.STATE.ATTACKING:
-		# 1) goal with behavior
-		var goal := npc.behavior.compute_target(npc)
-		npc_nav_agent.target_position = goal
+		# 1) Ask behavior for a navigation goal.
+		#    For Skirmisher: this returns an anchor on the ring (not the raw target).
+		var navigation_goal := npc.behavior.compute_target(npc)
+		npc_nav_agent.target_position = navigation_goal
 
-		# 2) pathfinding
-		if npc_nav_agent.is_navigation_finished():
-			# near goal = no path_vel or low
-			var path_vel := Vector2.ZERO
-			var steer := npc.behavior.steering(npc, delta_time, path_vel)
-			next_vel = (path_vel + steer).limit_length(npc.speed)
+		# 2) Compute path velocity, but disable it if we are already inside the ring band.
+		var path_velocity := Vector2.ZERO
+		var distance_to_target := INF
+		var has_valid_target := false
+
+		if npc._ability_target and is_instance_valid(npc._ability_target):
+			distance_to_target = npc.global_position.distance_to(npc._ability_target.global_position)
+			has_valid_target = true
+
+		var is_in_band := false
+		if has_valid_target:
+			is_in_band = (distance_to_target >= npc.behavior.stop_range) and (distance_to_target <= npc.behavior.preferred_range)
+
+		if npc_nav_agent.is_navigation_finished() or is_in_band:
+			# near goal OR already within desired band → no path driving
+			path_velocity = Vector2.ZERO
 		else:
 			var next_path_position := npc_nav_agent.get_next_path_position()
-			var path_vel := npc.global_position.direction_to(next_path_position) * npc.speed
-			var steer := npc.behavior.steering(npc, delta_time, path_vel)
-			next_vel = (path_vel + steer).limit_length(npc.speed)
+			var direction_to_next := npc.global_position.direction_to(next_path_position)
+			path_velocity = direction_to_next * npc.speed
+
+		# 3) Local steering from behavior (strafe, back-off)
+		var steering_velocity := npc.behavior.steering(npc, delta_time, path_velocity)
+
+		# 4) Compose and clamp once
+		next_velocity = (path_velocity + steering_velocity).limit_length(npc.speed)
+
 	else:
-		# Not in fight = nav agent only
+		# Not in combat: pure path to current nav target
 		if npc_nav_agent.is_navigation_finished():
 			return
-		var next_path_position: Vector2 = npc_nav_agent.get_next_path_position()
-		next_vel = npc.global_position.direction_to(next_path_position) * npc.speed
 
+		var next_path_position_non_combat := npc_nav_agent.get_next_path_position()
+		var direction_to_next_non_combat := npc.global_position.direction_to(next_path_position_non_combat)
+		next_velocity = (direction_to_next_non_combat * npc.speed)
+
+	# Apply velocity via NavigationAgent2D when avoidddddddddddddddddddance is on, otherwise directly
 	if npc_nav_agent.avoidance_enabled:
-		npc_nav_agent.set_velocity(next_vel)
+		npc_nav_agent.set_velocity(next_velocity)
 	else:
-		npc.velocity = next_vel
+		npc.velocity = next_velocity
 		npc.move_and_slide()
 
 func set_nav_to_position(nav_position: Vector2) -> void:

@@ -1,24 +1,29 @@
 class_name KamikazeBehavior
 extends NpcBehavior
 
-func compute_desired_velocity(enemy: BaseNpc, delta: float) -> Vector2:
-	var target = enemy._ability_target
-	if target == null:
-		return Vector2.ZERO
+# Kamikaze wants to collide: push stop ranges very low.
+@export var impact_distance: float = 6.0
 
-	var to_target = target.global_position - enemy.global_position
-	var dist = to_target.length()
-	var dir = to_target.normalized()
+func _init() -> void:
+	preferred_range = 20.0
+	stop_range = 0.0
+	strafe_bias = 0.0
+	jitter = 0.0
 
-	# kiting
-	var move := Vector2.ZERO
-	if dist > preferred_range:
-		move += dir # approaches
-	else:
-		return Vector2(0, 0)
+func compute_nav_goal(npc: BaseNpc) -> Vector2:
+	# Goal is the target itself
+	return compute_target(npc)
 
-	# strafe side
-	var perp := Vector2(-dir.y, dir.x)
-	move += perp
+func path_weight(npc: BaseNpc, dist_to_target: float) -> float:
+	# Always follow path hard (no kiting)
+	return 1.0
 
-	return move.normalized() * enemy.speed
+func desired_distances() -> Dictionary:
+	return {
+		"target_desired_distance": impact_distance,
+		"path_desired_distance": impact_distance
+	}
+
+func steering(npc: BaseNpc, delta: float, path_velocity: Vector2) -> Vector2:
+	# No local steering; pure pathing
+	return Vector2.ZERO
