@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://djos0nbdo2j3y"]
+
+[ext_resource type="PackedScene" uid="uid://bfx4qtk0q1bss" path="res://scenes/_actionned/base_actionned.tscn" id="1_535hd"]
+[ext_resource type="Script" uid="uid://dd2efqbic0qy2" path="res://scenes/_trap/interactive_trap.gd" id="2_yh7hx"]
+
+[node name="InteractiveTrap" instance=ExtResource("1_535hd")]
+script = ExtResource("2_yh7hx")

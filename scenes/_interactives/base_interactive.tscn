@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://c71hgjo21iwjq"]
+
+[ext_resource type="Script" uid="uid://chm0k85vn6i3" path="res://scenes/_interactives/base_interactive.gd" id="1_6qvcr"]
+
+[node name="BaseInteractive" type="Node2D"]
+script = ExtResource("1_6qvcr")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

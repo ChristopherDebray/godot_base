@@ -1,10 +1,18 @@
-[gd_scene load_steps=4 format=4 uid="uid://b7exrgfspotf3"]
+[gd_scene load_steps=7 format=4 uid="uid://b7exrgfspotf3"]
 
 [ext_resource type="PackedScene" uid="uid://bm3vsdux3ux7u" path="res://scenes/level/level_base.tscn" id="1_1btmw"]
-[ext_resource type="PackedScene" uid="uid://c2blc706rvq55" path="res://scenes/npc/ennemy/warrior/warrior.tscn" id="2_5l38v"]
 [ext_resource type="PackedScene" uid="uid://3r744noguafd" path="res://scenes/_trap/bear_trap.tscn" id="3_2heyh"]
+[ext_resource type="PackedScene" uid="uid://bwukvouewubjm" path="res://scenes/_interactives/zone_interactive.tscn" id="3_2uvmr"]
+[ext_resource type="PackedScene" uid="uid://dtke8li202cx6" path="res://scenes/_trap/ability_trap_launcher.tscn" id="4_2uvmr"]
+[ext_resource type="Resource" uid="uid://db5ebmuutowh" path="res://data/abilities/common/arrow.tres" id="5_8kgbu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2heyh"]
+size = Vector2(274, 78)
 
 [node name="LevelTest" instance=ExtResource("1_1btmw")]
+
+[node name="NavigationRegion2D" parent="." index="3"]
+visible = false
 
 [node name="walls" parent="YsortLayer" index="0"]
 tile_map_data = PackedByteArray("AAADAAEAAQACAAAAAAAEAAEAAQACAAAAAAAFAAEAAQACAAAAAAACAAEAAQARAAAAAAAGAAEAAQASAAAAAAAKAAQAAQASAAAAAAAIAAQAAQARAAAAAAAJAAQAAQACAAAAAAA=")
@@ -15,20 +23,23 @@ tile_map_data = PackedByteArray("AAANAAwAAQAGAAAAAAANAA0AAQAGAAAAAAANAAsAAQAEAAA
 [node name="Player" parent="YsortLayer/Players" index="0"]
 position = Vector2(462, 222)
 
-[node name="Npcs" parent="YsortLayer" index="5"]
-y_sort_enabled = true
-
-[node name="Polygon2D" type="Polygon2D" parent="YsortLayer/Npcs" index="0"]
-polygon = PackedVector2Array(156, 109, 421, 108, 420, 90, 155, 91)
-
-[node name="Polygon2D2" type="Polygon2D" parent="YsortLayer/Npcs" index="1"]
-polygon = PackedVector2Array(304, 255, 303, 322, 289, 322, 289, 327, 307, 326, 307, 255)
-
-[node name="Polygon2D3" type="Polygon2D" parent="YsortLayer/Npcs" index="2"]
-polygon = PackedVector2Array(539, 286, 677, 286, 677, 301, 539, 301)
-
-[node name="Warrior" parent="YsortLayer/Npcs" index="3" instance=ExtResource("2_5l38v")]
-position = Vector2(214, 456)
-
 [node name="BaseSelfActivatingTrap" parent="YsortLayer/Traps" index="0" instance=ExtResource("3_2heyh")]
 position = Vector2(515, 222)
+
+[node name="ZoneInteractive" parent="YsortLayer/Traps" index="1" node_paths=PackedStringArray("actionneds") instance=ExtResource("3_2uvmr")]
+position = Vector2(477, 445)
+actionneds = [NodePath("../AbilityTrapLauncher")]
+
+[node name="CollisionShape2D" parent="YsortLayer/Traps/ZoneInteractive/Area2D" index="0"]
+position = Vector2(0, -29)
+shape = SubResource("RectangleShape2D_2heyh")
+
+[node name="AbilityTrapLauncher" parent="YsortLayer/Traps" index="2" instance=ExtResource("4_2uvmr")]
+position = Vector2(327, 380)
+rotation = -0.621893
+ability = ExtResource("5_8kgbu")
+state = 0
+
+[node name="Npcs" type="Node2D" parent="YsortLayer" index="7"]
+
+[editable path="YsortLayer/Traps/ZoneInteractive"]

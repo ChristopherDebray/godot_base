@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtke8li202cx6"]
+
+[ext_resource type="PackedScene" uid="uid://djos0nbdo2j3y" path="res://scenes/_trap/interactive_trap.tscn" id="1_edqi7"]
+[ext_resource type="Script" uid="uid://boluqjkhn2bhb" path="res://scenes/_trap/ability_trap_launcher.gd" id="2_710n2"]
+[ext_resource type="Texture2D" uid="uid://dpnrd0bglhp4g" path="res://assets/characters/shadow.png" id="3_psua4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_043pj"]
+atlas = ExtResource("3_psua4")
+region = Rect2(0, 0, 40, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0hq86"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_043pj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AbilityTrapLauncher" instance=ExtResource("1_edqi7")]
+script = ExtResource("2_710n2")
+ability = null
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_0hq86")
+
+[node name="Timer" type="Timer" parent="." index="1"]
+
+[node name="Muzzle" type="Node2D" parent="." index="2"]
+position = Vector2(31, 0)

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwukvouewubjm"]
+
+[ext_resource type="PackedScene" uid="uid://c71hgjo21iwjq" path="res://scenes/_interactives/base_interactive.tscn" id="1_s5k1y"]
+[ext_resource type="Script" uid="uid://c10swcbd73uob" path="res://scenes/_interactives/zone_interactive.gd" id="2_ljjvh"]
+
+[node name="ZoneInteractive" instance=ExtResource("1_s5k1y")]
+script = ExtResource("2_ljjvh")
+
+[node name="Area2D" parent="." index="0"]
+collision_layer = 0
+collision_mask = 4
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

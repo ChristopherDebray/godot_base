@@ -3,5 +3,5 @@
 [ext_resource type="PackedScene" uid="uid://uygicjasgilo" path="res://scenes/_trap/base_self_activating_trap.tscn" id="1_vgbpk"]
 [ext_resource type="Resource" uid="uid://b51e6i3ah7wwi" path="res://data/traps/bear_trap.tres" id="2_20m3r"]
 
-[node name="BaseSelfActivatingTrap" instance=ExtResource("1_vgbpk")]
+[node name="BearTra" instance=ExtResource("1_vgbpk")]
 data = ExtResource("2_20m3r")

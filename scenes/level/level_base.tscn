@@ -166,6 +166,12 @@ sources/1 = SubResource("TileSetAtlasSource_ruaqi")
 [sub_resource type="TileSet" id="TileSet_r5tr5"]
 tile_size = Vector2i(64, 64)
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_mbvtx"]
+vertices = PackedVector2Array(38.9062, 1133.06, 342, 359.109, 504, 336, 712, 336, 2962.57, 1138.92, 504, 251, 342, 220, 457.992, 142.859, 712, 251, 2949.41, 40.9531, 453.102, 54.8672, 122.898, 144.133, 269.523, 220, 254, 364, 36.0938, 37.0391, 118.008, 56.1406, 268.523, 287, 254, 287)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 2, 1, 6, 7), PackedInt32Array(3, 8, 9, 4), PackedInt32Array(7, 10, 9, 8, 5), PackedInt32Array(11, 7, 6, 12), PackedInt32Array(13, 1, 0), PackedInt32Array(13, 0, 14, 11), PackedInt32Array(14, 9, 10, 15), PackedInt32Array(12, 16, 17, 11), PackedInt32Array(14, 15, 11), PackedInt32Array(13, 11, 17)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(1, 2, 2984, 6, 2998, 1174, 4, 1168)])
+agent_radius = 35.0
+
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_e7uta"]
 polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 
@@ -356,12 +362,6 @@ physics_layer_0/collision_layer = 128
 physics_layer_0/collision_mask = 128
 sources/1 = SubResource("TileSetAtlasSource_7cdbm")
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_mbvtx"]
-vertices = PackedVector2Array(38.9062, 1133.06, 342, 359.109, 504, 336, 712, 336, 2962.57, 1138.92, 504, 251, 342, 220, 457.992, 142.859, 712, 251, 2949.41, 40.9531, 453.102, 54.8672, 122.898, 144.133, 269.523, 220, 254, 364, 36.0938, 37.0391, 118.008, 56.1406, 268.523, 287, 254, 287)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 2, 1, 6, 7), PackedInt32Array(3, 8, 9, 4), PackedInt32Array(7, 10, 9, 8, 5), PackedInt32Array(11, 7, 6, 12), PackedInt32Array(13, 1, 0), PackedInt32Array(13, 0, 14, 11), PackedInt32Array(14, 9, 10, 15), PackedInt32Array(12, 16, 17, 11), PackedInt32Array(14, 15, 11), PackedInt32Array(13, 11, 17)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(1, 2, 2984, 6, 2998, 1174, 4, 1168)])
-agent_radius = 35.0
-
 [node name="LevelBase" type="Node2D"]
 script = ExtResource("1_r5tr5")
 
@@ -390,6 +390,9 @@ tile_set = SubResource("TileSet_7u22m")
 [node name="floorDecoration" type="TileMapLayer" parent="FloorTiles"]
 tile_set = SubResource("TileSet_r5tr5")
 
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_mbvtx")
+
 [node name="YsortLayer" type="Node2D" parent="."]
 y_sort_enabled = true
 
@@ -411,9 +414,6 @@ process_mode = 0
 
 [node name="SpawnPoints" type="Node2D" parent="YsortLayer"]
 y_sort_enabled = true
-
-[node name="Npcs" type="NavigationRegion2D" parent="YsortLayer"]
-navigation_polygon = SubResource("NavigationPolygon_mbvtx")
 
 [node name="Objects" type="Node2D" parent="YsortLayer"]
 y_sort_enabled = true

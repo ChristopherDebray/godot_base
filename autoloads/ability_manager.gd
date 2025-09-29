@@ -37,10 +37,12 @@ func _on_use_ability(data: AbilityData, target: Vector2, origin: Vector2, target
 	if is_instance_of(sender, Player):
 		sender = sender as Player
 		ctx = AimContext.from_mouse(sender, instance)
-	else:
-		var npc := sender as BaseNpc
+	elif is_instance_of(sender, BaseNpc):
+		sender = sender as BaseNpc
 		var target_world = CastService._coerce_target_world(sender, target, instance.range)
-		ctx = AimContext.from_node(npc, instance, target_world)
+		ctx = AimContext.from_npc(sender, instance, target_world)
+	else:
+		ctx = AimContext.from_context(instance, target, origin)
 
 	instance.init(data, ctx)
 

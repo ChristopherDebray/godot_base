@@ -27,6 +27,7 @@ height = 22.0
 script = ExtResource("2_sxjem")
 SPEED = 400.0
 abilityName = "arrow"
+aoe_enabled = false
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_vl6u5")

@@ -24,7 +24,7 @@ static func from_mouse(player: Player, instance: BaseAbility) -> AimContext:
 		ctx.desired_point = Vector2.ZERO
 	return ctx
 
-static func from_node(node: BaseNpc, instance: BaseAbility, target: Vector2) -> AimContext:
+static func from_npc(node: BaseNpc, instance: BaseAbility, target: Vector2) -> AimContext:
 	var ctx := AimContext.new()
 	if node != null:
 		ctx.sender_pos = node.global_position
@@ -36,5 +36,19 @@ static func from_node(node: BaseNpc, instance: BaseAbility, target: Vector2) -> 
 			instance.range
 		)
 		ctx.desired_dir = ctx.sender_pos.direction_to(ctx.clamp_point)
+	
+	return ctx
+
+static func from_context(instance: BaseAbility, ctx_target: Vector2, ctx_origin: Vector2) -> AimContext:
+	var ctx := AimContext.new()
+	ctx.sender_pos = ctx_origin
+	ctx.muzzle_pos = ctx_origin
+	ctx.desired_point = ctx_target
+	ctx.clamp_point = CastService.clamp_to_range(
+		ctx.sender_pos,
+		ctx.desired_point,
+		instance.range
+	)
+	ctx.desired_dir = ctx.sender_pos.direction_to(ctx.clamp_point)
 	
 	return ctx
