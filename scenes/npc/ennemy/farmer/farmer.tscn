@@ -84,6 +84,7 @@ animations = [{
 y_sort_enabled = false
 behavior = SubResource("Resource_574le")
 ability_loadout = ExtResource("4_oq5jf")
+health = 30.0
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(0, 3)

@@ -418,6 +418,8 @@ navigation_polygon = SubResource("NavigationPolygon_mbvtx")
 [node name="Objects" type="Node2D" parent="YsortLayer"]
 y_sort_enabled = true
 
+[node name="Traps" type="Node2D" parent="YsortLayer"]
+
 [node name="Lights" type="Node2D" parent="."]
 
 [node name="Paths" type="Node2D" parent="."]

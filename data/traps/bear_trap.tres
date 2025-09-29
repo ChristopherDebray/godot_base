@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TrapData" load_steps=3 format=3 uid="uid://b51e6i3ah7wwi"]
+
+[ext_resource type="Script" uid="uid://celsmm0wab7ug" path="res://data/traps/trap_data.gd" id="1_saw34"]
+[ext_resource type="Resource" uid="uid://hpb4x7lrm2mu" path="res://data/spells/effect_ressources/slow.tres" id="1_yubbc"]
+
+[resource]
+script = ExtResource("1_saw34")
+damage = 10.0
+aoe_damage = 0.0
+main_element = 4
+magnitude = 1.0
+effect = ExtResource("1_yubbc")
+faction = 1
+metadata/_custom_type_script = "uid://celsmm0wab7ug"

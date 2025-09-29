@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=4 uid="uid://b7exrgfspotf3"]
+[gd_scene load_steps=4 format=4 uid="uid://b7exrgfspotf3"]
 
 [ext_resource type="PackedScene" uid="uid://bm3vsdux3ux7u" path="res://scenes/level/level_base.tscn" id="1_1btmw"]
 [ext_resource type="PackedScene" uid="uid://c2blc706rvq55" path="res://scenes/npc/ennemy/warrior/warrior.tscn" id="2_5l38v"]
+[ext_resource type="PackedScene" uid="uid://3r744noguafd" path="res://scenes/_trap/bear_trap.tscn" id="3_2heyh"]
 
 [node name="LevelTest" instance=ExtResource("1_1btmw")]
 
@@ -28,3 +29,6 @@ polygon = PackedVector2Array(539, 286, 677, 286, 677, 301, 539, 301)
 
 [node name="Warrior" parent="YsortLayer/Npcs" index="3" instance=ExtResource("2_5l38v")]
 position = Vector2(214, 456)
+
+[node name="BaseSelfActivatingTrap" parent="YsortLayer/Traps" index="0" instance=ExtResource("3_2heyh")]
+position = Vector2(515, 222)

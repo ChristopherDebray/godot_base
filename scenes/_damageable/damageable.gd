@@ -77,8 +77,8 @@ func _unapply_effect(entry: Dictionary) -> void:
 		if entry["applied_mods"].has("charm"):
 			charm(false)
 
-func apply_elemental_damage(spellResource: AbilityData, amount: float) -> void:
-	if spellResource.main_element in immunity_elements:
+func apply_elemental_damage(damagerResource: Damager, amount: float) -> void:
+	if damagerResource.main_element in immunity_elements:
 		return
 	
 	apply_damage(amount)

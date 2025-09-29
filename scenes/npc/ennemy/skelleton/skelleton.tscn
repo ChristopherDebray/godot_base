@@ -73,6 +73,7 @@ animations = [{
 [node name="Skelleton" instance=ExtResource("1_xgvfd")]
 y_sort_enabled = false
 behavior = null
+health = 30.0
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(0, 4.5)

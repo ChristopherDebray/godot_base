@@ -83,6 +83,7 @@ animations = [{
 [node name="Sarbacanier" instance=ExtResource("1_dq66m")]
 behavior = SubResource("Resource_g8fa1")
 ability_loadout = ExtResource("2_5f7x7")
+health = 30.0
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(0, 6)

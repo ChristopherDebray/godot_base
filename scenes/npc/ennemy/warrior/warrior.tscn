@@ -83,6 +83,7 @@ animations = [{
 [node name="Warrior" instance=ExtResource("1_vbb0u")]
 behavior = SubResource("Resource_aq5cm")
 ability_loadout = ExtResource("2_mthdl")
+health = 50.0
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(-1.5, 5.5)
