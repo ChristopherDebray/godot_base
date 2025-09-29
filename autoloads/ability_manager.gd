@@ -44,14 +44,17 @@ func _on_use_ability(data: AbilityData, target: Vector2, origin: Vector2, target
 	else:
 		ctx = AimContext.from_context(instance, target, origin)
 
+	if is_instance_of(instance, AoeInstantAbility):
+		ctx.los_clamped_point = CastService._compute_aoe_spawn_with_los(sender, ctx, instance._get_aoe_radius())
+
 	instance.init(data, ctx)
 
 	if is_instance_of(instance, SelfAbility) or is_instance_of(instance, DashAbility):
+		instance.start_from(origin, data.range)
 		sender.add_child(instance)
 	else:
 		get_tree().current_scene.get_node("YsortLayer/Abilities").add_child(instance)
 
-	instance.start_from(origin, data.range)
 	instance.begin_cast_flow()
 
 	if is_instance_of(instance, SelfAbility) and data.self_effect:
