@@ -25,6 +25,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -19.0
+offset_right = 80.0
+offset_bottom = 71.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 42
@@ -51,9 +55,10 @@ theme_override_constants/margin_bottom = 140
 layout_mode = 2
 theme_override_constants/outline_size = 4
 tab_alignment = 1
-current_tab = 0
+current_tab = 1
 
 [node name="Options" type="TabBar" parent="MarginContainer/TextureRect/MarginContainer/TabContainer"]
+visible = false
 layout_mode = 2
 tab_alignment = 1
 metadata/_tab_index = 0
@@ -111,7 +116,6 @@ layout_mode = 2
 audio_bus_name = "Sfx"
 
 [node name="Spells" type="TabBar" parent="MarginContainer/TextureRect/MarginContainer/TabContainer"]
-visible = false
 layout_mode = 2
 tab_alignment = 1
 metadata/_tab_index = 1
@@ -123,10 +127,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 30
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
 
 [node name="VScrollBar" type="ScrollContainer" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Spells/MarginContainer"]
 layout_mode = 2
@@ -134,7 +138,7 @@ layout_mode = 2
 [node name="AbilityList" type="VBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Spells/MarginContainer/VScrollBar"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 35
+theme_override_constants/separation = 160
 
 [node name="Save" type="TabBar" parent="MarginContainer/TextureRect/MarginContainer/TabContainer"]
 visible = false

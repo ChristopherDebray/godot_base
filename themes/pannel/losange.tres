@@ -1,0 +1,13 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://go2ujy7kfchy"]
+
+[ext_resource type="Texture2D" uid="uid://66vhb0frjxfp" path="res://assets/ui/losange.png" id="1_uef5r"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_swh1k"]
+texture = ExtResource("1_uef5r")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[resource]
+Panel/styles/panel = SubResource("StyleBoxTexture_swh1k")

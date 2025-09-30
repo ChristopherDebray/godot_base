@@ -161,11 +161,9 @@ func locomotion_freeze(state: bool = true):
 
 func modify_speed(amount: float):
 	speed += amount
-	print("Speed modified by ", amount, " -> new speed: ", speed)
 
 func modify_defense(amount: float):
 	defense += amount
-	print("Defense modified by ", amount, " -> new defense: ", defense)
 
 func raycast_ability_to(to_position: Vector2):
 	ray_cast_ability.target_position = ray_cast_ability.to_local(to_position)

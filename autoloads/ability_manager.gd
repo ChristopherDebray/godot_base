@@ -6,6 +6,17 @@ extends Node
 # - ALL:    collide/target both
 enum TARGET_TYPE { ENEMY, PLAYER, ALL, SELF }
 
+const ELEMENT_INDICATOR := preload("res://scenes/ui/components/element_indicator.tscn")
+const ELEMENTS_ICONS := preload("res://assets/sprite_sheets/elements_icons.png")
+const ELEMENT_ICONS_MAPPING := [
+	0,
+	1,
+	2,
+	3
+]
+
+var _element_icon_cache: Dictionary = {}
+const ICON_CELL_SIZE: Vector2i = Vector2i(15, 16)
 const COLLISION_MASKS = {
 	'TILES': 1,
 	'PLAYER': 3,
@@ -61,3 +72,23 @@ func _on_use_ability(data: AbilityData, target: Vector2, origin: Vector2, target
 		sender.apply_effect(data.self_effect)
 
 	return instance
+
+func _get_element_icon_indicator(element_id: int) -> Control:
+	var element_indicator = make_element_indicator(element_id)
+	
+	return element_indicator
+
+func make_element_indicator(element_id: int) -> Control:
+	var indicator := ELEMENT_INDICATOR.instantiate()
+	indicator.icon_texture = get_icon(element_id)
+	return indicator
+
+func get_icon(element_id: int) -> Texture2D:
+	if _element_icon_cache.has(element_id):
+		return _element_icon_cache[element_id]
+	var column = ELEMENT_ICONS_MAPPING[element_id]
+	var at := AtlasTexture.new()
+	at.atlas = ELEMENTS_ICONS
+	at.region = Rect2(Vector2(column * ICON_CELL_SIZE.x, 0), ICON_CELL_SIZE)
+	_element_icon_cache[element_id] = at
+	return at

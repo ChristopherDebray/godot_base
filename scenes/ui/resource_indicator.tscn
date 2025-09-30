@@ -14,9 +14,9 @@ script = ExtResource("1_u2dvq")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 88.0
+offset_left = 93.0
 offset_top = 92.0
-offset_right = 168.0
+offset_right = 178.0
 offset_bottom = 179.0
 rotation = 3.14159
 color = Color(0.739789, 2.00946e-06, 5.77569e-07, 1)
@@ -26,12 +26,12 @@ layout_mode = 0
 offset_right = 100.0
 offset_bottom = 100.0
 texture = ExtResource("2_pqt1c")
-region_rect = Rect2(0, 184, 80, 72)
+region_rect = Rect2(0, 184, 75, 72)
 
 [node name="NinePatchRect2" type="NinePatchRect" parent="."]
 layout_mode = 0
 offset_left = 2.0
-offset_right = 90.0
+offset_right = 94.0
 offset_bottom = 102.0
 texture = ExtResource("2_pqt1c")
 region_rect = Rect2(88, 184, 64, 72)
@@ -40,7 +40,7 @@ region_rect = Rect2(88, 184, 64, 72)
 layout_mode = 0
 offset_left = 15.0
 offset_top = 10.0
-offset_right = 81.0
+offset_right = 87.0
 offset_bottom = 84.0
 texture = ExtResource("2_pqt1c")
 region_rect = Rect2(160, 184, 64, 64)

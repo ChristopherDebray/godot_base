@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcful6hgot04a"]
+
+[ext_resource type="PackedScene" uid="uid://bwukvouewubjm" path="res://scenes/_interactives/zone_interactive.tscn" id="1_03r45"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mcrno"]
+size = Vector2(34, 34)
+
+[node name="PressurePlate" instance=ExtResource("1_03r45")]
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("RectangleShape2D_mcrno")

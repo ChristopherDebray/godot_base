@@ -3,8 +3,11 @@ extends Damageable
 class_name Player
 
 #@onready var item_handler: Node2D = $ItemHandler
-@onready var first_element: AnimatedSprite2D = $FirstElement
-@onready var second_element: AnimatedSprite2D = $SecondElement
+@onready var first_element: Sprite2D = $FirstElement
+@onready var second_element: Sprite2D = $SecondElement
+@onready var first_element_icon: Sprite2D = $FirstElement/Sprite2D
+@onready var second_element_icon: Sprite2D = $SecondElement/Sprite2D
+
 @onready var timer_first_element: Timer = $TimerFirstElement
 @onready var timer_second_element: Timer = $TimerSecondElement
 @onready var spell_book: Node2D = $SpellBook
@@ -98,12 +101,12 @@ func _remove_element(index: int) -> void:
 
 func _update_elements_display() -> void:
 	if active_elements.size() >= 1:
-		first_element.frame = active_elements[0]
+		first_element_icon.texture = AbilityManager.get_icon(active_elements[0])
 		first_element.show()
 		timer_first_element.start()
 
 	if active_elements.size() == 2:
-		second_element.frame = active_elements[1]
+		second_element_icon.texture = AbilityManager.get_icon(active_elements[1])
 		second_element.show()
 		timer_second_element.start()
 	else:

@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://djos0nbdo2j3y" path="res://scenes/_trap/interactive_trap.tscn" id="1_edqi7"]
 [ext_resource type="Script" uid="uid://boluqjkhn2bhb" path="res://scenes/_trap/ability_trap_launcher.gd" id="2_710n2"]
-[ext_resource type="Texture2D" uid="uid://dpnrd0bglhp4g" path="res://assets/characters/shadow.png" id="3_psua4"]
+[ext_resource type="Texture2D" uid="uid://3p84op27yx4u" path="res://assets/traps/crossbow_floor.png" id="3_psua4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_043pj"]
 atlas = ExtResource("3_psua4")
-region = Rect2(0, 0, 40, 20)
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0hq86"]
 animations = [{
@@ -24,6 +24,7 @@ script = ExtResource("2_710n2")
 ability = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
+rotation = -1.57079
 sprite_frames = SubResource("SpriteFrames_0hq86")
 
 [node name="Timer" type="Timer" parent="." index="1"]
