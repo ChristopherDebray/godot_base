@@ -1,3 +1,4 @@
+class_name BaseSelfActivatingTrap
 extends Node2D
 
 @onready var area_2d: Area2D = $Area2D

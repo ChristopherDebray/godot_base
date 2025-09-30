@@ -1,0 +1,47 @@
+[gd_scene load_steps=10 format=3 uid="uid://vahj7qsuj14n"]
+
+[ext_resource type="PackedScene" uid="uid://uygicjasgilo" path="res://scenes/_trap/base_self_activating_trap.tscn" id="1_438lo"]
+[ext_resource type="Texture2D" uid="uid://bf2bm1rihl05x" path="res://assets/traps/trap_nature.png" id="2_dr445"]
+[ext_resource type="Script" uid="uid://bssc3k7led1og" path="res://scenes/_trap/rootrap.gd" id="2_uo8jp"]
+[ext_resource type="Script" uid="uid://celsmm0wab7ug" path="res://data/traps/trap_data.gd" id="3_dldru"]
+[ext_resource type="Resource" uid="uid://hpb4x7lrm2mu" path="res://data/spells/effect_ressources/slow.tres" id="3_nuc0c"]
+
+[sub_resource type="Resource" id="Resource_r3saf"]
+script = ExtResource("3_dldru")
+damage = 5.0
+aoe_damage = 0.0
+main_element = 2
+magnitude = 1.0
+effect = ExtResource("3_nuc0c")
+faction = 0
+metadata/_custom_type_script = "uid://celsmm0wab7ug"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uo8jp"]
+atlas = ExtResource("2_dr445")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dldru"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uo8jp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nuc0c"]
+radius = 12.0
+
+[node name="RootTrap" instance=ExtResource("1_438lo")]
+script = ExtResource("2_uo8jp")
+data = SubResource("Resource_r3saf")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(2, 7)
+sprite_frames = SubResource("SpriteFrames_dldru")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_nuc0c")

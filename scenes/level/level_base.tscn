@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=4 uid="uid://bm3vsdux3ux7u"]
+[gd_scene load_steps=54 format=4 uid="uid://bm3vsdux3ux7u"]
 
 [ext_resource type="Script" uid="uid://c8266ajpu6m6j" path="res://scenes/level/level_base.gd" id="1_r5tr5"]
 [ext_resource type="PackedScene" uid="uid://dqnnqulkpfar1" path="res://scenes/ui/in_game_ui.tscn" id="1_rgbux"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://uk7n8q5lt0l1" path="res://scenes/ui/pause_ui.tscn" id="6_ppe2f"]
 [ext_resource type="Texture2D" uid="uid://cqeuc0vu24o8o" path="res://assets/tiles/cute_wall_nature.png" id="8_ruaqi"]
 [ext_resource type="Texture2D" uid="uid://bbdo4rqlbwf38" path="res://assets/tiles/cute_wall_stone.png" id="9_y8l3a"]
+[ext_resource type="Texture2D" uid="uid://bcqgxu6h7fgpy" path="res://assets/tiles/empty_tiles.png" id="10_g531s"]
 [ext_resource type="Texture2D" uid="uid://q4tq0jlqagxq" path="res://assets/tiles/cute_wall_sm.png" id="10_r5tr5"]
 [ext_resource type="PackedScene" uid="uid://ccy1pcv744h38" path="res://scenes/_spawner/wave_spawner.tscn" id="15_g531s"]
 
@@ -167,10 +168,10 @@ sources/1 = SubResource("TileSetAtlasSource_ruaqi")
 tile_size = Vector2i(64, 64)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_mbvtx"]
-vertices = PackedVector2Array(38.9062, 1133.06, 342, 359.109, 504, 336, 712, 336, 2962.57, 1138.92, 504, 251, 342, 220, 457.992, 142.859, 712, 251, 2949.41, 40.9531, 453.102, 54.8672, 122.898, 144.133, 269.523, 220, 254, 364, 36.0938, 37.0391, 118.008, 56.1406, 268.523, 287, 254, 287)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 2, 1, 6, 7), PackedInt32Array(3, 8, 9, 4), PackedInt32Array(7, 10, 9, 8, 5), PackedInt32Array(11, 7, 6, 12), PackedInt32Array(13, 1, 0), PackedInt32Array(13, 0, 14, 11), PackedInt32Array(14, 9, 10, 15), PackedInt32Array(12, 16, 17, 11), PackedInt32Array(14, 15, 11), PackedInt32Array(13, 11, 17)])
+vertices = PackedVector2Array(496, 142.281, 538, 142, 647, 142, 647, 187, 892, 386.281, 934, 386, 1043, 386, 1043, 431, 695, 252, 1075, 354, 934, 354, 892, 353, 700.812, 330, 680, 276.703, 679.383, 252, 2969.17, 20.9766, 2982.81, 1158.96, 1096.81, 574, 1076, 520.703, 1091, 496, 1088, 431, 1088, 399, 1091, 464, 692, 187, 692, 155, 695, 220, 1075.38, 496, 496, 109, 538, 110, 752, 353, 689.547, 363.789, 752, 400, 736, 400, 514, 330.109, 514, 363.109, 495, 363, 495, 332.141, 910, 574.109, 910, 607.109, 891, 607, 891, 576.141, 679, 155, 679, 110, 356, 109, 356, 156, 340, 156, 16.0312, 17.0234, 1075, 399, 679, 220, 679, 217, 342, 251, 356, 251, 356, 330, 341, 330, 1075, 464, 1075, 461, 738, 495, 752, 495, 752, 574, 737, 574, 386.68, 187, 387.672, 140.273, 647, 217, 388, 219, 782.68, 431, 783.672, 384.273, 1043, 461, 784, 463, 647, 329.109, 1043, 573.109, 388, 331.133, 784, 575.133, 680.781, 330, 1076.78, 574, 1085.55, 607.789, 1060.54, 606, 18.9609, 1153.02, 737, 607, 340, 187, 738, 463, 736, 431, 342, 219, 341, 363, 664.539, 362)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 9, 10, 11, 12, 13, 14), PackedInt32Array(15, 16, 17, 18, 19), PackedInt32Array(20, 21, 15, 22), PackedInt32Array(23, 24, 15, 9, 25), PackedInt32Array(18, 26, 19), PackedInt32Array(1, 0, 27, 28), PackedInt32Array(5, 4, 11, 10), PackedInt32Array(12, 11, 29), PackedInt32Array(30, 12, 29, 31, 32), PackedInt32Array(33, 34, 35, 36), PackedInt32Array(37, 38, 39, 40), PackedInt32Array(24, 41, 42, 15), PackedInt32Array(43, 44, 45, 46), PackedInt32Array(21, 47, 9, 15), PackedInt32Array(25, 48, 49, 23), PackedInt32Array(50, 51, 52, 53), PackedInt32Array(22, 54, 55, 20), PackedInt32Array(56, 57, 58, 59), PackedInt32Array(60, 61, 0, 3, 62, 33, 36, 63), PackedInt32Array(64, 65, 4, 7, 66, 37, 40, 67), PackedInt32Array(62, 68, 33), PackedInt32Array(66, 69, 37), PackedInt32Array(36, 70, 63), PackedInt32Array(40, 71, 67), PackedInt32Array(12, 72, 13), PackedInt32Array(17, 73, 18), PackedInt32Array(74, 17, 16), PackedInt32Array(75, 74, 16, 76, 38), PackedInt32Array(39, 38, 76, 77), PackedInt32Array(15, 19, 22), PackedInt32Array(7, 20, 55, 66), PackedInt32Array(46, 15, 42, 28, 27), PackedInt32Array(46, 27, 43), PackedInt32Array(76, 46, 45, 78), PackedInt32Array(64, 67, 79, 80), PackedInt32Array(9, 8, 25), PackedInt32Array(3, 23, 49, 62), PackedInt32Array(60, 63, 81, 78), PackedInt32Array(76, 78, 81, 50, 53), PackedInt32Array(76, 53, 82), PackedInt32Array(59, 77, 76, 82, 35, 34), PackedInt32Array(80, 79, 56, 59, 34, 83, 30), PackedInt32Array(80, 30, 32)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(1, 2, 2984, 6, 2998, 1174, 4, 1168)])
-agent_radius = 35.0
+agent_radius = 15.0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_e7uta"]
 polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
@@ -296,12 +297,32 @@ texture_region_size = Vector2i(64, 64)
 20:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_qt375")
 20:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6.06459, 13.9952, 5.26662, 14.2199, 5.78315, -32, -5.59809, -32)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y8l3a"]
+texture = ExtResource("5_5vprl")
+texture_region_size = Vector2i(64, 64)
+34:0/0 = 0
+35:0/0 = 0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kjht4"]
+polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mbvtx"]
+texture = ExtResource("10_g531s")
+texture_region_size = Vector2i(64, 64)
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+7:0/0 = 0
+7:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_kjht4")
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
 [sub_resource type="TileSet" id="TileSet_mbvtx"]
 tile_size = Vector2i(64, 64)
 occlusion_layer_0/light_mask = 3
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_r5tr5")
 sources/1 = SubResource("TileSetAtlasSource_g531s")
+sources/2 = SubResource("TileSetAtlasSource_y8l3a")
+sources/4 = SubResource("TileSetAtlasSource_mbvtx")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7cdbm"]
 texture = ExtResource("10_r5tr5")

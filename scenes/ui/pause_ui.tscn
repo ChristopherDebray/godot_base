@@ -98,6 +98,7 @@ VScrollBar/styles/scroll = SubResource("StyleBoxFlat_i86gu")
 
 [node name="PauseUi" type="Control"]
 process_mode = 3
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -145,10 +146,9 @@ layout_mode = 2
 theme = SubResource("Theme_nw1ig")
 theme_override_constants/outline_size = 0
 tab_alignment = 1
-current_tab = 1
+current_tab = 0
 
 [node name="Options" type="TabBar" parent="MarginContainer/TextureRect/MarginContainer/TabContainer"]
-visible = false
 layout_mode = 2
 tab_alignment = 1
 metadata/_tab_index = 0
@@ -206,6 +206,7 @@ layout_mode = 2
 audio_bus_name = "Sfx"
 
 [node name="Spells" type="TabBar" parent="MarginContainer/TextureRect/MarginContainer/TabContainer"]
+visible = false
 layout_mode = 2
 tab_alignment = 1
 metadata/_tab_index = 1
