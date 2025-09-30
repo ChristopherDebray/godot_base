@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://12l8yp2vydls"]
+
+[ext_resource type="FontFile" uid="uid://dh81dil6hlbln" path="res://assets/fonts/Poco.ttf" id="1_ac6we"]
+
+[resource]
+font = ExtResource("1_ac6we")
+font_size = 18
+font_color = Color(0.827451, 0.572549, 0.180392, 1)

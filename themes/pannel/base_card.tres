@@ -17,7 +17,7 @@ expand_margin_bottom = 6.0
 [resource]
 default_font = ExtResource("1_lkt7y")
 Label/colors/font_color = Color(0.0470588, 0.0431373, 0.0980392, 1)
-Label/font_sizes/font_size = 40
+Label/font_sizes/font_size = 25
 Label/fonts/font = ExtResource("1_lkt7y")
 Panel/styles/panel = SubResource("StyleBoxTexture_ssc2s")
 RichTextLabel/colors/default_color = Color(0.654902, 0.498039, 0.298039, 1)

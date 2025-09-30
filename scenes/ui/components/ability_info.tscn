@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b87eptd7uhyss"]
+[gd_scene load_steps=4 format=3 uid="uid://b87eptd7uhyss"]
 
 [ext_resource type="Script" uid="uid://b7bjylxx31xqa" path="res://scenes/ui/components/ability_info.gd" id="1_88wjo"]
 [ext_resource type="Theme" uid="uid://0sn2vinpcent" path="res://themes/pannel/base_card.tres" id="2_q8s8i"]
+[ext_resource type="LabelSettings" uid="uid://12l8yp2vydls" path="res://themes/font_styles/poco_orange_14.tres" id="3_q8s8i"]
 
 [node name="AbilityInfo" type="Control"]
 layout_mode = 3
@@ -14,7 +15,7 @@ pivot_offset = Vector2(-5, -3)
 script = ExtResource("1_88wjo")
 
 [node name="Panel" type="Panel" parent="."]
-custom_minimum_size = Vector2(420, 120)
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 0
 offset_left = 5.0
 offset_top = 3.0
@@ -23,35 +24,23 @@ offset_bottom = 123.0
 pivot_offset = Vector2(-5, -3)
 theme = ExtResource("2_q8s8i")
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel"]
-layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_right = 356.0
-grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 2
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 147.0
+offset_bottom = 140.0
 theme_override_constants/separation = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_constants/separation = 20
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="Panel" type="Panel" parent="Panel/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 theme = ExtResource("2_q8s8i")
 
-[node name="overlay" type="ColorRect" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Panel"]
+[node name="overlay" type="ColorRect" parent="Panel/VBoxContainer/HBoxContainer/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -61,7 +50,7 @@ grow_vertical = 2
 pivot_offset = Vector2(29, 23)
 color = Color(0.0470588, 0.0431373, 0.0980392, 1)
 
-[node name="Icon" type="TextureRect" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Panel"]
+[node name="Icon" type="TextureRect" parent="Panel/VBoxContainer/HBoxContainer/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -70,25 +59,42 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 2
 
-[node name="Elements" type="HBoxContainer" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="Elements" type="HBoxContainer" parent="Panel/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 theme_override_constants/separation = 25
 
-[node name="VSeparator" type="VSeparator" parent="Panel/MarginContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer"]
+[node name="Tags" type="Label" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 0
+text = "teraze - base - ùa grpisse - beamzrlk"
+label_settings = ExtResource("3_q8s8i")
+autowrap_mode = 3
 
-[node name="AbilityName" type="Label" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="VSeparator" type="VSeparator" parent="Panel"]
+layout_mode = 2
+offset_left = 146.0
+offset_top = 10.0
+offset_right = 150.0
+offset_bottom = 110.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel"]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+offset_left = 156.0
+offset_top = 10.0
+offset_right = 416.0
+offset_bottom = 44.0
+pivot_offset = Vector2(34, 24)
+size_flags_vertical = 0
+
+[node name="AbilityName" type="Label" parent="Panel/VBoxContainer2"]
 layout_mode = 2
 text = "Lightning"
 justification_flags = 131
 uppercase = true
 
-[node name="Description" type="RichTextLabel" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="Description" type="RichTextLabel" parent="Panel/VBoxContainer2"]
 layout_mode = 2
-text = "A fireball"
 fit_content = true
