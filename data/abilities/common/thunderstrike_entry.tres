@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="AbilityEntry" load_steps=3 format=3 uid="uid://cmfushuyq4rr0"]
+
+[ext_resource type="Script" uid="uid://n52hp84chjuo" path="res://scenes/_npc/ability_entry.gd" id="1_66jar"]
+[ext_resource type="Resource" uid="uid://bnn4njvt30wml" path="res://data/spells/spell_ressources/thunderstrike.tres" id="1_mhgg8"]
+
+[resource]
+script = ExtResource("1_66jar")
+ability = ExtResource("1_mhgg8")
+weight = 1.0
+min_range = 0.0
+max_range = 9999.0
+requires_los = true
+cooldown_override = -1.0
+cast_time = 2.0
+recovery_time = 0.0
+lock_movement_during_cast = false
+interruptible = true
+start_icd_on = 1
+animation_name = ""
+metadata/_custom_type_script = "uid://n52hp84chjuo"

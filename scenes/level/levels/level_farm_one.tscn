@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=4 uid="uid://bkk4wmxq1vgrh"]
+[gd_scene load_steps=5 format=4 uid="uid://bkk4wmxq1vgrh"]
 
 [ext_resource type="PackedScene" uid="uid://bm3vsdux3ux7u" path="res://scenes/level/level_base.tscn" id="1_rqvhc"]
 [ext_resource type="PackedScene" uid="uid://3r744noguafd" path="res://scenes/_trap/bear_trap.tscn" id="2_bum28"]
 [ext_resource type="PackedScene" uid="uid://vahj7qsuj14n" path="res://scenes/_trap/rootrap.tscn" id="3_37lw5"]
+[ext_resource type="PackedScene" uid="uid://cagymaym8i5gt" path="res://scenes/objects/barrel_explosive.tscn" id="4_7r34g"]
 
 [node name="LevelFarm_one" instance=ExtResource("1_rqvhc")]
 
@@ -71,7 +72,7 @@ position = Vector2(437, 264)
 position = Vector2(599, 218)
 
 [node name="RootTrap3" parent="YsortLayer/Traps" index="8" instance=ExtResource("3_37lw5")]
-position = Vector2(541, 309)
+position = Vector2(535, 285)
 
 [node name="RootTrap4" parent="YsortLayer/Traps" index="9" instance=ExtResource("3_37lw5")]
 position = Vector2(333, 226)
@@ -83,13 +84,13 @@ position = Vector2(705, 349)
 position = Vector2(771, 332)
 
 [node name="RootTrap7" parent="YsortLayer/Traps" index="12" instance=ExtResource("3_37lw5")]
-position = Vector2(974, 430)
+position = Vector2(963, 414)
 
 [node name="RootTrap8" parent="YsortLayer/Traps" index="13" instance=ExtResource("3_37lw5")]
-position = Vector2(867, 547)
+position = Vector2(873, 542)
 
 [node name="RootTrap9" parent="YsortLayer/Traps" index="14" instance=ExtResource("3_37lw5")]
-position = Vector2(781, 427)
+position = Vector2(795, 467)
 
 [node name="RootTrap10" parent="YsortLayer/Traps" index="15" instance=ExtResource("3_37lw5")]
 position = Vector2(346, 532)
@@ -102,6 +103,10 @@ position = Vector2(881, 108)
 
 [node name="RootTrap13" parent="YsortLayer/Traps" index="18" instance=ExtResource("3_37lw5")]
 position = Vector2(1135, 155)
+
+[node name="BarrelExplosive" parent="YsortLayer/Traps" index="19" instance=ExtResource("4_7r34g")]
+position = Vector2(290, 285)
+barrel_type = 2
 
 [node name="InGameUi" parent="CanvasLayer" index="0"]
 offset_left = -11.0

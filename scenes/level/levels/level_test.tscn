@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=4 uid="uid://b7exrgfspotf3"]
+[gd_scene load_steps=7 format=4 uid="uid://b7exrgfspotf3"]
 
 [ext_resource type="PackedScene" uid="uid://bm3vsdux3ux7u" path="res://scenes/level/level_base.tscn" id="1_1btmw"]
 [ext_resource type="PackedScene" uid="uid://3r744noguafd" path="res://scenes/_trap/bear_trap.tscn" id="3_2heyh"]
 [ext_resource type="PackedScene" uid="uid://dtke8li202cx6" path="res://scenes/_trap/ability_trap_launcher.tscn" id="4_2uvmr"]
 [ext_resource type="Resource" uid="uid://db5ebmuutowh" path="res://data/abilities/common/arrow.tres" id="5_8kgbu"]
 [ext_resource type="PackedScene" uid="uid://dcful6hgot04a" path="res://scenes/_interactives/pressure_plate.tscn" id="5_uonu5"]
+[ext_resource type="PackedScene" uid="uid://bmensnrge14wo" path="res://scenes/npc/ennemy/kamikaze/kamikaze.tscn" id="6_uonu5"]
 
 [node name="LevelTest" instance=ExtResource("1_1btmw")]
 
@@ -33,4 +34,5 @@ state = 0
 position = Vector2(417, 278)
 actionneds = [NodePath("../AbilityTrapLauncher")]
 
-[node name="Npcs" type="Node2D" parent="YsortLayer" index="7"]
+[node name="Kamikaze" parent="YsortLayer/Npcs" index="0" instance=ExtResource("6_uonu5")]
+position = Vector2(134, 267)

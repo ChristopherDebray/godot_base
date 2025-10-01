@@ -432,6 +432,7 @@ y_sort_enabled = true
 process_mode = 0
 
 [node name="Abilities" type="Node2D" parent="YsortLayer"]
+y_sort_enabled = true
 
 [node name="SpawnPoints" type="Node2D" parent="YsortLayer"]
 y_sort_enabled = true
@@ -440,6 +441,10 @@ y_sort_enabled = true
 y_sort_enabled = true
 
 [node name="Traps" type="Node2D" parent="YsortLayer"]
+y_sort_enabled = true
+
+[node name="Npcs" type="Node2D" parent="YsortLayer"]
+y_sort_enabled = true
 
 [node name="Lights" type="Node2D" parent="."]
 

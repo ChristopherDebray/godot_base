@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://cagymaym8i5gt"]
+
+[ext_resource type="PackedScene" uid="uid://b2odxanbtxty4" path="res://scenes/_damageable/damageable.tscn" id="1_7eh8r"]
+[ext_resource type="Texture2D" uid="uid://dciictf4m40f0" path="res://assets/objects/barrel_explosive.png" id="2_2j76o"]
+[ext_resource type="Script" uid="uid://b6bxkxlyviphe" path="res://scenes/objects/barrel_explosive.gd" id="2_tstt3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tstt3"]
+radius = 9.0
+height = 36.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tstt3"]
+atlas = ExtResource("2_2j76o")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4yxs"]
+atlas = ExtResource("2_2j76o")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4htbe"]
+atlas = ExtResource("2_2j76o")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p4yxs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tstt3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4yxs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4htbe")
+}],
+"loop": false,
+"name": &"barrel_type",
+"speed": 5.0
+}]
+
+[node name="BarrelExplosive" instance=ExtResource("1_7eh8r")]
+collision_layer = 1
+collision_mask = 13
+script = ExtResource("2_tstt3")
+barrel_type = 0
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 8)
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_tstt3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4"]
+sprite_frames = SubResource("SpriteFrames_p4yxs")
+animation = &"barrel_type"
