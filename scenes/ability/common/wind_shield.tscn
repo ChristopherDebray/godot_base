@@ -57,7 +57,7 @@ radius = 78.0064
 script = ExtResource("2_rl1wh")
 aoe_radius_tiles = 1.0
 
-[node name="AnimatedSprite2D" parent="." index="0"]
+[node name="AnimatedSprite2D" parent="." index="2"]
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_wvrn6")
 frame = 1

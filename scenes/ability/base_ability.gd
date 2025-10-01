@@ -2,6 +2,15 @@ extends Node2D
 
 class_name BaseAbility
 
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var lifetime_timer: Timer = $LifetimeTimer
+@onready var delay_timer: Timer = $DelayTimer
+@onready var hitbox: Area2D = $Hitbox
+@onready var area_of_effect: Area2D = $AreaOfEffect
+@onready var area_of_effect_collision_shape: CollisionShape2D = $AreaOfEffect/CollisionShape2D
+@onready var loop_particles: CPUParticles2D = $LoopParticles
+@onready var impact_particles: CPUParticles2D = $ImpactParticles
+
 @export var abilityName: String
 @export var aoe_enabled: bool = true
 @export var must_delay_ability: bool = false
@@ -28,13 +37,6 @@ var _pending_masks: Array
 
 var _origin: Vector2 = Vector2.ZERO
 var _max_range_sq: float = 0.0
-
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var lifetime_timer: Timer = $LifetimeTimer
-@onready var delay_timer: Timer = $DelayTimer
-@onready var hitbox: Area2D = $Hitbox
-@onready var area_of_effect: Area2D = $AreaOfEffect
-@onready var area_of_effect_collision_shape: CollisionShape2D = $AreaOfEffect/CollisionShape2D
 
 func configure_masks(masks: Array) -> void:
 	_pending_masks = masks

@@ -3,6 +3,7 @@ extends ProjectileAbility
 func _ready():
 	setup_on_ready()
 	animated_sprite_2d.play('repeat')
+	loop_particles.emitting = true
 
 func on_hit():
 	animated_sprite_2d.play('hit')

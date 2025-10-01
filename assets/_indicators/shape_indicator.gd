@@ -1,4 +1,3 @@
-# TelegraphPolygon.gd
 extends Node2D
 class_name TelegraphPolygon
 

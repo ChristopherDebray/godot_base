@@ -13,6 +13,7 @@ class_name Player
 @onready var spell_book: Node2D = $SpellBook
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var muzzle: Node2D = $Muzzle
+@onready var camera_player: Camera2D = $CameraPlayer
 
 var run_anim_name := "default" 
 var idle_frame_index := 1
@@ -29,6 +30,7 @@ const MUZZLE_INVERTION_POS: float = -10
 func _ready() -> void:
 	await get_tree().process_frame
 	GameManager.set_player_health(health)
+	GameManager.player = self
 
 func _physics_process(_delta: float) -> void:
 	get_movement_input()

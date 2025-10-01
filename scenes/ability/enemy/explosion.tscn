@@ -127,11 +127,11 @@ abilityName = "explosion"
 must_delay_ability = true
 tags = Array[int]([0])
 
-[node name="AnimatedSprite2D" parent="." index="0"]
+[node name="AnimatedSprite2D" parent="." index="2"]
 scale = Vector2(1.8, 1.8)
 sprite_frames = SubResource("SpriteFrames_7rxqy")
 
-[node name="AreaOfEffect" parent="." index="4"]
+[node name="AreaOfEffect" parent="." index="6"]
 monitoring = false
 
 [node name="CollisionShape2D" parent="AreaOfEffect" index="0"]

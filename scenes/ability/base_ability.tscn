@@ -7,6 +7,14 @@ process_mode = 1
 y_sort_enabled = true
 script = ExtResource("1_2mqch")
 
+[node name="LoopParticles" type="CPUParticles2D" parent="."]
+y_sort_enabled = true
+emitting = false
+
+[node name="ImpactParticles" type="CPUParticles2D" parent="."]
+y_sort_enabled = true
+emitting = false
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
 

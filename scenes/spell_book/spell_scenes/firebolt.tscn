@@ -1,8 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://2ewejell8oks"]
+[gd_scene load_steps=16 format=3 uid="uid://2ewejell8oks"]
 
 [ext_resource type="PackedScene" uid="uid://blec2pyy0f08v" path="res://scenes/ability/base_ability.tscn" id="1_oewwp"]
 [ext_resource type="Script" uid="uid://q7jvubseryg7" path="res://scenes/spell_book/spell_scenes/firebolt.gd" id="2_hysv0"]
 [ext_resource type="Texture2D" uid="uid://c53oglprnqbva" path="res://assets/spells/Firebolt SpriteSheet.png" id="2_kq6xw"]
+
+[sub_resource type="Gradient" id="Gradient_hysv0"]
+offsets = PackedFloat32Array(0, 0.512315, 1)
+colors = PackedColorArray(0.909804, 0.756863, 0.439216, 1, 0.854902, 0.52549, 0.243137, 1, 0.811765, 0.341176, 0.235294, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hysv0"]
 atlas = ExtResource("2_kq6xw")
@@ -89,11 +93,28 @@ script = ExtResource("2_hysv0")
 SPEED = 400.0
 abilityName = "firebolt"
 
-[node name="AnimatedSprite2D" parent="." index="0"]
+[node name="LoopParticles" parent="." index="0"]
+position = Vector2(1, 6)
+rotation = 1.57079
+emitting = true
+lifetime = 0.5
+speed_scale = 0.5
+explosiveness = 0.2
+randomness = 0.5
+lifetime_randomness = 0.25
+local_coords = true
+emission_shape = 2
+emission_sphere_radius = 10.0
+damping_max = 30.0
+scale_amount_min = 3.0
+scale_amount_max = 6.0
+color_ramp = SubResource("Gradient_hysv0")
+
+[node name="AnimatedSprite2D" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_oewwp")
 animation = &"repeat"
 
-[node name="LifetimeTimer" parent="." index="1"]
+[node name="LifetimeTimer" parent="." index="3"]
 wait_time = 2.0
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
