@@ -1,8 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://cd3nrgw013liu"]
+[gd_scene load_steps=18 format=3 uid="uid://cd3nrgw013liu"]
 
 [ext_resource type="PackedScene" uid="uid://blec2pyy0f08v" path="res://scenes/ability/base_ability.tscn" id="1_hedjp"]
 [ext_resource type="Script" uid="uid://87xnahpolnn" path="res://scenes/ability/common/ice_spike.gd" id="2_dva8q"]
 [ext_resource type="Texture2D" uid="uid://cs3n173a8pi62" path="res://assets/spells/ice_pike.png" id="2_dwla7"]
+
+[sub_resource type="Curve" id="Curve_dwla7"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 38.2023), 0.0, 0.0, 0, 0, Vector2(1, -6.74158), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dva8q"]
 atlas = ExtResource("2_dwla7")
@@ -113,7 +118,22 @@ aoe_enabled = false
 duration = 5.0
 tags = Array[int]([1, 6])
 
-[node name="AnimatedSprite2D" parent="." index="0"]
+[node name="LoopParticles" parent="." index="0"]
+emitting = true
+amount = 20
+lifetime = 0.2
+emission_shape = 1
+emission_sphere_radius = 100.0
+gravity = Vector2(0, 0)
+radial_accel_min = -150.0
+radial_accel_curve = SubResource("Curve_dwla7")
+angle_min = -30.0
+angle_max = 90.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+color = Color(0.644102, 1, 0.996885, 1)
+
+[node name="AnimatedSprite2D" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_faqg2")
 animation = &"start"
 

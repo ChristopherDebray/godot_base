@@ -7,6 +7,7 @@ func _ready():
 
 func on_hit():
 	animated_sprite_2d.play('hit')
+	AnimationManager.vanish_particules(loop_particles)
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite_2d.animation == "hit":

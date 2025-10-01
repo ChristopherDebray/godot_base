@@ -14,11 +14,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 func _on_animated_sprite_2d_frame_changed() -> void:
 	if animated_sprite_2d.frame >= 3 && !is_aoe_activated():
 		impact_particles.emitting = true
-		var tween := create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-		# 2) Stop spawning new particles, then fade out what's on screen
-		tween.tween_callback(func (): impact_particles.emitting = false)
-		# Fade the whole node so existing particles also fade
-		tween.tween_property(impact_particles, "modulate:a", 0.0, 0.3)
+		AnimationManager.vanish_particules(impact_particles)
 		activate_aoe()
 		GameManager.shake_camera(10)
 
