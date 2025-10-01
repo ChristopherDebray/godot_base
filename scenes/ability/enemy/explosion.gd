@@ -1,6 +1,7 @@
 extends AoeInstantAbility
 
 func _ready():
+	super._ready()
 	animated_sprite_2d.play('default')
 
 func _on_animated_sprite_2d_animation_finished() -> void:
@@ -9,4 +10,6 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 
 func _on_animated_sprite_2d_frame_changed() -> void:
 	if animated_sprite_2d.frame >= 3 && !is_aoe_activated():
+		if sender:
+			sender.queue_free()
 		activate_aoe()

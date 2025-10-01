@@ -19,6 +19,7 @@ var aoe_damage: float
 var effect: EffectData
 var range: float = 30.0
 var target_type: AbilityManager.TARGET_TYPE
+var aoe_triggered := 0
 
 var sender: Node
 var _has_hit: bool = false
@@ -82,6 +83,8 @@ func _on_area_of_effect_body_entered(body: Node2D) -> void:
 	on_aoe_hit()
 
 func on_aoe_hit():
+	if aoe_triggered > 0:
+		return
 	for receiver in area_of_effect.get_overlapping_bodies():
 		if receiver is Damageable:
 			apply_damage_and_effect(receiver, aoe_damage)
@@ -93,6 +96,7 @@ func on_aoe_hit():
 				else:
 					instigator = self
 				enemy.targeting.on_alert_from(instigator)
+	aoe_triggered = aoe_triggered + 1
 
 func activate_aoe():
 	area_of_effect.monitoring = true

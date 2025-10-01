@@ -6,6 +6,7 @@ class_name AoeInstantAbility
 var telegraph
 
 func _ready():
+	super._ready()
 	set_telegraph()
 	begin_cast_flow()
 

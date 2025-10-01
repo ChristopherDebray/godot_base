@@ -12,6 +12,7 @@ func _ready() -> void:
 		cooldown_indicator.spell_name = ability_name
 		cooldown_indicator.icon = ability_data.icon
 		if ability_data.is_base_ability():
+			cooldown_indicator.rotation = 45
 			base_ability_indicator.add_child(cooldown_indicator)
 		else:
 			cooldown_indicators.add_child(cooldown_indicator)

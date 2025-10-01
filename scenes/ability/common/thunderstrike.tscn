@@ -64,6 +64,7 @@ radius = 115.039
 script = ExtResource("2_2ea0f")
 aoe_radius_tiles = 1.0
 abilityName = "thunderstrike"
+must_delay_ability = true
 windup_time = 2.0
 tags = Array[int]([0])
 

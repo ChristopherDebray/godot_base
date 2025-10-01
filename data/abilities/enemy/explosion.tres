@@ -19,5 +19,5 @@ damage = 0.0
 aoe_damage = 25.0
 main_element = 1
 magnitude = 1.0
-faction = 0
+faction = 2
 metadata/_custom_type_script = "uid://dn3xcfj4pt4op"

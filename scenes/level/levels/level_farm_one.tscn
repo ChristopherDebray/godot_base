@@ -107,6 +107,7 @@ position = Vector2(1135, 155)
 [node name="BarrelExplosive" parent="YsortLayer/Traps" index="19" instance=ExtResource("4_7r34g")]
 position = Vector2(290, 285)
 barrel_type = 2
+immunity_effects = Array[int]([0, 2, 5, 3, 7, 0])
 
 [node name="InGameUi" parent="CanvasLayer" index="0"]
 offset_left = -11.0
