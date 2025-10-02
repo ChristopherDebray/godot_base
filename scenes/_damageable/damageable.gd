@@ -14,6 +14,7 @@ enum FACTION { PLAYER, ENEMY, NEUTRAL }
 
 @onready var status_fx: AnimatedSprite2D = $StatusFx
 @onready var ray_cast_ability: RayCast2D = $RayCastAbility
+@onready var cpu_particles_2d: CPUParticles2D = $CPUParticles2D
 
 var current_target: Damageable
 
@@ -77,11 +78,12 @@ func _unapply_effect(entry: Dictionary) -> void:
 		if entry["applied_mods"].has("charm"):
 			charm(false)
 
-func apply_elemental_damage(damagerResource: Damager, amount: float) -> void:
+func apply_elemental_damage(damagerResource: Damager, amount: float) -> bool:
 	if damagerResource.main_element in immunity_elements:
-		return
+		return false
 	
 	apply_damage(amount)
+	return true
 
 func apply_damage(amount: float) -> void:
 	health -= amount
@@ -172,3 +174,8 @@ func raycast_ability_to(to_position: Vector2):
 ## @abstract
 func on_hit():
 	pass
+
+func knock_back_particules(source_position: Vector2):
+	cpu_particles_2d.emitting = true
+	var ang = get_angle_to(source_position)
+	cpu_particles_2d.rotation = ang + PI

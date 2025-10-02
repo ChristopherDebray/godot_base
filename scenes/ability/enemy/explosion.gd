@@ -12,4 +12,5 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 	if animated_sprite_2d.frame >= 3 && !is_aoe_activated():
 		if sender:
 			sender.queue_free()
+		impact_particles.emitting = true
 		activate_aoe()

@@ -71,7 +71,6 @@ one_shot = true
 
 [node name="NavAgent" type="NavigationAgent2D" parent="." index="6"]
 avoidance_enabled = true
-debug_enabled = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="." index="7"]
 

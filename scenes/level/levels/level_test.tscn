@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dtke8li202cx6" path="res://scenes/_trap/ability_trap_launcher.tscn" id="4_2uvmr"]
 [ext_resource type="Resource" uid="uid://db5ebmuutowh" path="res://data/abilities/common/arrow.tres" id="5_8kgbu"]
 [ext_resource type="PackedScene" uid="uid://dcful6hgot04a" path="res://scenes/_interactives/pressure_plate.tscn" id="5_uonu5"]
-[ext_resource type="PackedScene" uid="uid://bmensnrge14wo" path="res://scenes/npc/ennemy/kamikaze/kamikaze.tscn" id="6_uonu5"]
+[ext_resource type="PackedScene" uid="uid://bmensnrge14wo" path="res://scenes/npc/ennemy/kamikaze/kamikaze.tscn" id="7_i43yl"]
 
 [node name="LevelTest" instance=ExtResource("1_1btmw")]
 
@@ -34,5 +34,5 @@ state = 0
 position = Vector2(417, 278)
 actionneds = [NodePath("../AbilityTrapLauncher")]
 
-[node name="Kamikaze" parent="YsortLayer/Npcs" index="0" instance=ExtResource("6_uonu5")]
-position = Vector2(134, 267)
+[node name="Kamikaze" parent="YsortLayer/Npcs" index="0" instance=ExtResource("7_i43yl")]
+position = Vector2(90, 205)

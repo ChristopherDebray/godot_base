@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmgmuckt747un"]
+[gd_scene load_steps=8 format=3 uid="uid://bmgmuckt747un"]
 
 [ext_resource type="PackedScene" uid="uid://blec2pyy0f08v" path="res://scenes/ability/base_ability.tscn" id="1_n1ytv"]
 [ext_resource type="Script" uid="uid://bjw6kfsop2vd0" path="res://scenes/ability/common/arrow.gd" id="2_sxjem"]
+[ext_resource type="Texture2D" uid="uid://cix5ixt8trrd1" path="res://assets/effects/Line1.png" id="3_6jyfm"]
 [ext_resource type="Texture2D" uid="uid://da4ehgp7k5ijc" path="res://assets/spells/arrow.png" id="3_y2mxl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6jyfm"]
@@ -25,16 +26,30 @@ height = 22.0
 
 [node name="Arrow" instance=ExtResource("1_n1ytv")]
 script = ExtResource("2_sxjem")
-SPEED = 400.0
+SPEED = 500.0
 abilityName = "arrow"
 aoe_enabled = false
 
-[node name="AnimatedSprite2D" parent="." index="0"]
+[node name="LoopParticles" parent="." index="0"]
+position = Vector2(-1, 0)
+rotation = 1.57079
+emitting = true
+amount = 3
+texture = ExtResource("3_6jyfm")
+lifetime = 0.5
+speed_scale = 1.3
+randomness = 0.17
+local_coords = true
+emission_shape = 1
+emission_sphere_radius = 4.0
+gravity = Vector2(0, 700)
+
+[node name="AnimatedSprite2D" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_vl6u5")
 animation = &"repeat"
 frame_progress = 0.889914
 
-[node name="Hitbox" parent="." index="3"]
+[node name="Hitbox" parent="." index="5"]
 collision_mask = 21
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
@@ -42,5 +57,5 @@ position = Vector2(1, 0)
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_y2mxl")
 
-[node name="AreaOfEffect" parent="." index="4"]
+[node name="AreaOfEffect" parent="." index="6"]
 collision_mask = 21

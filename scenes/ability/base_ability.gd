@@ -107,7 +107,10 @@ func is_aoe_activated() -> bool:
 	return area_of_effect.monitoring
 
 func apply_damage_and_effect(target: Damageable, damageValue):
-	target.apply_elemental_damage(ability_resource, damageValue)
+	var has_been_hit = target.apply_elemental_damage(ability_resource, damageValue)
+	if sender and has_been_hit:
+		target.knock_back_particules(sender.global_position)
+
 	if !effect:
 		return
 	target.apply_effect(effect)
