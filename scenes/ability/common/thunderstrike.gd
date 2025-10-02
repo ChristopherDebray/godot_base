@@ -3,6 +3,7 @@ extends AoeInstantAbility
 var _dir_of_travel: Vector2 = Vector2.ZERO
 
 const SPEED: float = 400.0
+const LIGHTNING_STRIKE = preload("res://assets/sounds/effects/lightning_strike.mp3")
 
 func _ready() -> void:
 	super._ready()
@@ -19,6 +20,7 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		GameManager.shake_camera(10)
 
 func _start_impact_phase():
+	SoundManager.play_tag_at("spell_cast", LIGHTNING_STRIKE, global_position, -4.0)
 	super._start_impact_phase()
 	animated_sprite_2d.frame = 0
 	animated_sprite_2d.play('repeat')

@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://3r744noguafd"]
+[gd_scene load_steps=10 format=3 uid="uid://3r744noguafd"]
 
 [ext_resource type="PackedScene" uid="uid://uygicjasgilo" path="res://scenes/_trap/base_self_activating_trap.tscn" id="1_vgbpk"]
-[ext_resource type="Resource" uid="uid://b51e6i3ah7wwi" path="res://data/traps/bear_trap.tres" id="2_20m3r"]
+[ext_resource type="Script" uid="uid://blohjhwqnpb17" path="res://scenes/_trap/bear_trap.gd" id="2_20m3r"]
 [ext_resource type="Texture2D" uid="uid://dlhu0s3a8d00u" path="res://assets/traps/bear_trap.png" id="3_20m3r"]
+[ext_resource type="Resource" uid="uid://b51e6i3ah7wwi" path="res://data/traps/bear_trap.tres" id="3_vcih6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vcih6"]
 atlas = ExtResource("3_20m3r")
@@ -41,7 +42,8 @@ animations = [{
 }]
 
 [node name="BearTrap" instance=ExtResource("1_vgbpk")]
-data = ExtResource("2_20m3r")
+script = ExtResource("2_20m3r")
+data = ExtResource("3_vcih6")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_6kebq")

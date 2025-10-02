@@ -14,6 +14,7 @@ emitting = false
 [node name="ImpactParticles" type="CPUParticles2D" parent="."]
 y_sort_enabled = true
 emitting = false
+one_shot = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true

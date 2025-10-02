@@ -1,8 +1,11 @@
 extends AoeInstantAbility
 
+const EXPLOSION = preload("res://assets/sounds/effects/explosion.mp3")
+
 func _ready():
 	super._ready()
 	animated_sprite_2d.play('default')
+	SoundManager.play_tag_at("spell_cast", EXPLOSION, global_position, -4.0)
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite_2d.animation == "default":

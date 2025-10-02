@@ -1,8 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://b8j8snx0evnuy"]
+[gd_scene load_steps=15 format=3 uid="uid://b8j8snx0evnuy"]
 
 [ext_resource type="PackedScene" uid="uid://blec2pyy0f08v" path="res://scenes/ability/base_ability.tscn" id="1_i2e3l"]
 [ext_resource type="Script" uid="uid://dyvaf8amblqmg" path="res://scenes/ability/common/ice_cone.gd" id="2_i2e3l"]
+[ext_resource type="Texture2D" uid="uid://b74dtnapacn6s" path="res://assets/effects/spotlight.png" id="3_e131r"]
 [ext_resource type="Texture2D" uid="uid://b0oxo5kca4jrs" path="res://assets/spells/cone_ice.png" id="3_i2e3l"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yyvx5"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_e131r"]
+_data = [Vector2(0, 0.977528), 0.0, 0.0, 0, 0, Vector2(0.965065, 0.370787), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_i2e3l"]
 offsets = PackedFloat32Array(0, 0.507389, 0.793103, 1)
@@ -60,13 +68,16 @@ aoe_radius_tiles = 1.0
 abilityName = "ice cone"
 
 [node name="LoopParticles" parent="." index="0"]
-position = Vector2(-47, 2)
+material = SubResource("CanvasItemMaterial_yyvx5")
+position = Vector2(-63, 6)
 rotation = -1.9178
 emitting = true
+amount = 3
+texture = ExtResource("3_e131r")
 speed_scale = 2.5
 local_coords = true
 emission_shape = 1
-emission_sphere_radius = 10.0
+emission_sphere_radius = 5.0
 gravity = Vector2(0, 250)
 angular_velocity_min = -40.0
 angular_velocity_max = 40.0
@@ -74,8 +85,9 @@ orbit_velocity_min = -0.1
 orbit_velocity_max = 0.1
 radial_accel_min = 100.0
 radial_accel_max = 100.0
-scale_amount_min = 6.0
-scale_amount_max = 9.0
+scale_amount_min = 0.08
+scale_amount_max = 0.1
+scale_amount_curve = SubResource("Curve_e131r")
 color_ramp = SubResource("Gradient_i2e3l")
 
 [node name="AnimatedSprite2D" parent="." index="2"]

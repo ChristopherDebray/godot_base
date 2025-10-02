@@ -19,7 +19,7 @@ strafe_bias = 0.6
 jitter = 0.25
 metadata/_custom_type_script = "uid://ck57yu62phkan"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_frhad"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7u3u1"]
 shader = ExtResource("5_7u3u1")
 shader_parameter/tint_color = Color(1, 1, 1, 1)
 shader_parameter/mix_amount = 0.0
@@ -53,7 +53,7 @@ texture = ExtResource("3_muicc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteContainer" index="1"]
 y_sort_enabled = true
-material = SubResource("ShaderMaterial_frhad")
+material = SubResource("ShaderMaterial_7u3u1")
 
 [node name="FieldView" type="Area2D" parent="SpriteContainer" index="2"]
 collision_layer = 0

@@ -1,7 +1,10 @@
 extends AoeInstantAbility
 
+const WIND_GUST = preload("res://assets/sounds/effects/wind_gust.mp3")
+
 func _ready() -> void:
 	animated_sprite_2d.play('default')
+	SoundManager.play_tag_at("spell_cast", WIND_GUST, global_position, 20.0)
 	loop_particles.emitting = true
 	var tween := create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 
