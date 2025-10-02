@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bx54vyeawn6f3"]
+[gd_scene load_steps=14 format=3 uid="uid://bx54vyeawn6f3"]
 
 [ext_resource type="PackedScene" uid="uid://b2odxanbtxty4" path="res://scenes/_damageable/damageable.tscn" id="1_rcddc"]
 [ext_resource type="Script" uid="uid://dbmrhnfb7wqqh" path="res://scenes/_npc/base_npc.gd" id="2_flwcu"]
@@ -23,6 +23,10 @@ metadata/_custom_type_script = "uid://ck57yu62phkan"
 shader = ExtResource("5_7u3u1")
 shader_parameter/tint_color = Color(1, 1, 1, 1)
 shader_parameter/mix_amount = 0.0
+
+[sub_resource type="Gradient" id="Gradient_7u3u1"]
+offsets = PackedFloat32Array(0, 0.778325, 1)
+colors = PackedColorArray(1, 1, 1, 0.458824, 0.831373, 0.831373, 0.831373, 0.14902, 1, 1, 1, 0)
 
 [node name="BaseNpc" groups=["enemy"] instance=ExtResource("1_rcddc")]
 collision_mask = 137
@@ -91,6 +95,21 @@ visible = false
 
 [node name="CooldownBankComponent" parent="." index="12" instance=ExtResource("9_7u3u1")]
 visible = false
+
+[node name="MovementParticles" type="CPUParticles2D" parent="." index="15"]
+position = Vector2(-9, 17)
+rotation = 1.57079
+emitting = false
+amount = 4
+lifetime = 0.3
+explosiveness = 0.5
+local_coords = true
+emission_shape = 1
+emission_sphere_radius = 10.0
+gravity = Vector2(0, 400)
+scale_amount_min = 3.0
+scale_amount_max = 6.0
+color_ramp = SubResource("Gradient_7u3u1")
 
 [connection signal="body_entered" from="SpriteContainer/FieldView" to="." method="_on_field_view_body_entered"]
 [connection signal="body_exited" from="SpriteContainer/FieldView" to="." method="_on_field_view_body_exited"]

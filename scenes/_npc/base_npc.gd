@@ -16,6 +16,7 @@ extends Damageable
 
 @onready var targeting: TargetingComponent = $Targeting
 @onready var locomotion: LocomotionComponent = $Locomotion
+@onready var movement_particles: CPUParticles2D = $MovementParticles
 
 @onready var ability_runner: AbilityRunner = $AbilityRunnerComponent
 @onready var cooldowns: CooldownBank = $CooldownBankComponent
@@ -34,6 +35,7 @@ extends Damageable
 @export var idle_frame_index := 0
 @export var ability_loadout: AbilityLoadout
 @export var use_global_cooldown: bool = true
+@onready var collision_polygon_2d: CollisionPolygon2D = $SpriteContainer/FieldView/CollisionPolygon2D
 
 var facing_follow_speed: float = 8.0   # how fast the sprite reacts (higher = snappier)
 var facing_deadzone: float = 0.2       # hysteresis around 0 to avoid jitter
@@ -310,8 +312,12 @@ func _update_sprite_facing(delta: float) -> void:
 	
 	if _facing_smoothed > facing_deadzone:
 		sign_now = 1
+		movement_particles.position.x = -(collision_polygon_2d.scale.x) * abs(global_scale.x)
+		movement_particles.rotation = -90
 	elif _facing_smoothed < -facing_deadzone:
 		sign_now = -1
+		movement_particles.position.x = (collision_polygon_2d.scale.x) * abs(global_scale.x)
+		movement_particles.rotation = 90
 	else:
 		# inside deadzone → keep previous sign
 		sign_now = _last_facing_sign
@@ -330,9 +336,11 @@ func _update_sprite_anim() -> void:
 	if moving:
 		if animated_sprite_2d.animation != walk_anim_name or not animated_sprite_2d.is_playing():
 			animated_sprite_2d.play(walk_anim_name)
+			movement_particles.emitting = true
 	else:
 		if animated_sprite_2d.is_playing():
 			animated_sprite_2d.stop()
+			movement_particles.emitting = false
 		animated_sprite_2d.frame = idle_frame_index
 
 func _pulse_red(duration: float = 2.0) -> void:

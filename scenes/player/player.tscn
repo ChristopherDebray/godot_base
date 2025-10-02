@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://fvur3m50uam0"]
+[gd_scene load_steps=21 format=3 uid="uid://fvur3m50uam0"]
 
 [ext_resource type="Script" uid="uid://btp5wm141txgi" path="res://scenes/player/player.gd" id="1_1nli5"]
 [ext_resource type="PackedScene" uid="uid://b2odxanbtxty4" path="res://scenes/_damageable/damageable.tscn" id="1_75vfm"]
@@ -81,6 +81,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75vfm"]
 size = Vector2(22, 23)
 
+[sub_resource type="Gradient" id="Gradient_qek5x"]
+offsets = PackedFloat32Array(0, 0.778325, 1)
+colors = PackedColorArray(1, 1, 1, 0.458824, 0.831373, 0.831373, 0.831373, 0.14902, 1, 1, 1, 0)
+
 [node name="Player" groups=["player"] instance=ExtResource("1_75vfm")]
 collision_layer = 4
 collision_mask = 133
@@ -148,3 +152,18 @@ one_shot = true
 
 [node name="SpellBook" parent="." index="12" instance=ExtResource("5_p47bc")]
 position = Vector2(27, 0)
+
+[node name="MovementParticles" type="CPUParticles2D" parent="." index="15"]
+position = Vector2(-9, 17)
+rotation = 1.57079
+emitting = false
+amount = 4
+lifetime = 0.3
+explosiveness = 0.5
+local_coords = true
+emission_shape = 1
+emission_sphere_radius = 10.0
+gravity = Vector2(0, 400)
+scale_amount_min = 3.0
+scale_amount_max = 6.0
+color_ramp = SubResource("Gradient_qek5x")

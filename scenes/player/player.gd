@@ -14,6 +14,7 @@ class_name Player
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var muzzle: Node2D = $Muzzle
 @onready var camera_player: Camera2D = $CameraPlayer
+@onready var movement_particles: CPUParticles2D = $MovementParticles
 
 var run_anim_name := "default" 
 var idle_frame_index := 1
@@ -46,9 +47,14 @@ func _update_facing() -> void:
 	if aim_dir.x < -0.05:
 		animated_sprite_2d.flip_h = true
 		muzzle.position.x = MUZZLE_INVERTION_POS
+		movement_particles.position.x = muzzle_initial_position
+		movement_particles.rotation = -90
 	elif aim_dir.x > 0.05:
 		animated_sprite_2d.flip_h = false
 		muzzle.position.x = muzzle_initial_position
+		movement_particles.position.x = MUZZLE_INVERTION_POS
+		movement_particles.rotation = 90
+		
 
 func _update_anim() -> void:
 	# seuil pour éviter de “jouer/arrêter” quand la vitesse est quasi nulle
@@ -58,9 +64,11 @@ func _update_anim() -> void:
 	if moving:
 		if animated_sprite_2d.animation != run_anim_name or !animated_sprite_2d.is_playing():
 			animated_sprite_2d.play(run_anim_name)
+			movement_particles.emitting = true
 	else:
 		if animated_sprite_2d.is_playing():
 			animated_sprite_2d.stop()
+			movement_particles.emitting = false
 		animated_sprite_2d.frame = idle_frame_index
 
 func get_movement_input() -> void:
