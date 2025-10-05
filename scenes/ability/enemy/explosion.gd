@@ -16,4 +16,5 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		if sender:
 			sender.queue_free()
 		impact_particles.emitting = true
+		GameManager.shake_camera(5)
 		activate_aoe()

@@ -121,9 +121,8 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dwla7"]
 height = 96.0
 
-[sub_resource type="Animation" id="Animation_dva8q"]
-resource_name = "hit"
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_w4uic"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -134,7 +133,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [-43.46]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -146,7 +145,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [218.88]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -158,7 +157,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [432.99]
+"values": [88.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -170,7 +169,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [288.66]
+"values": [0.0]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -257,8 +256,9 @@ tracks/10/keys = {
 "values": [Vector2(-21, -1)]
 }
 
-[sub_resource type="Animation" id="Animation_w4uic"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_dva8q"]
+resource_name = "hit"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -269,7 +269,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [-43.46]
+"values": [0.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -281,7 +281,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [218.88]
+"values": [0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -293,7 +293,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [88.0]
+"values": [432.99]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -305,7 +305,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [288.66]
 }
 tracks/4/type = "value"
 tracks/4/imported = false

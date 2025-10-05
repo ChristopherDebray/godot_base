@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqktoj1jad1jy"]
+
+[ext_resource type="Script" uid="uid://wy787phpbffl" path="res://scenes/fx/level/base_weather.gd" id="1_ssaub"]
+
+[node name="BaseWeather" type="Node2D"]
+script = ExtResource("1_ssaub")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+offset_right = 1151.0
+offset_bottom = 662.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

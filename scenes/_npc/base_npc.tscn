@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bx54vyeawn6f3"]
+[gd_scene load_steps=15 format=3 uid="uid://bx54vyeawn6f3"]
 
 [ext_resource type="PackedScene" uid="uid://b2odxanbtxty4" path="res://scenes/_damageable/damageable.tscn" id="1_rcddc"]
 [ext_resource type="Script" uid="uid://dbmrhnfb7wqqh" path="res://scenes/_npc/base_npc.gd" id="2_flwcu"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://d0ln4bfkemrnx" path="res://scenes/_npc/components/locomotion.tscn" id="6_gbn1b"]
 [ext_resource type="PackedScene" uid="uid://dwo0l3vgwptw5" path="res://scenes/_npc/components/ability_runner_component.tscn" id="8_no8tt"]
 [ext_resource type="PackedScene" uid="uid://e7rggvn4fe4c" path="res://scenes/_npc/components/cooldown_bank_component.tscn" id="9_7u3u1"]
+[ext_resource type="PackedScene" uid="uid://bmreeolqdl7h0" path="res://scenes/_npc/components/ability_picker_component.tscn" id="11_frhad"]
 
 [sub_resource type="Resource" id="Resource_fgb20"]
 script = ExtResource("3_gbn1b")
@@ -84,11 +85,11 @@ rotation = -1.5708
 [node name="RayCast2D" type="RayCast2D" parent="Detection" index="0"]
 collision_mask = 5
 
-[node name="Targeting" parent="." index="9" instance=ExtResource("5_5urbc")]
+[node name="TargetingComponent" parent="." index="9" instance=ExtResource("5_5urbc")]
 auto_aggro_on_spawn = false
 fov_poll_interval = 0.22
 
-[node name="Locomotion" parent="." index="10" instance=ExtResource("6_gbn1b")]
+[node name="LocomotionComponent" parent="." index="10" instance=ExtResource("6_gbn1b")]
 
 [node name="AbilityRunnerComponent" parent="." index="11" instance=ExtResource("8_no8tt")]
 visible = false
@@ -96,12 +97,16 @@ visible = false
 [node name="CooldownBankComponent" parent="." index="12" instance=ExtResource("9_7u3u1")]
 visible = false
 
-[node name="MovementParticles" type="CPUParticles2D" parent="." index="15"]
+[node name="AbilityPickerComponent" parent="." index="13" instance=ExtResource("11_frhad")]
+visible = false
+
+[node name="MovementParticles" type="CPUParticles2D" parent="." index="16"]
 position = Vector2(-9, 17)
 rotation = 1.57079
 emitting = false
-amount = 4
+amount = 2
 lifetime = 0.3
+speed_scale = 0.75
 explosiveness = 0.5
 local_coords = true
 emission_shape = 1

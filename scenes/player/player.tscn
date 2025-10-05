@@ -112,6 +112,7 @@ position = Vector2(10, 4.5)
 shape = SubResource("RectangleShape2D_75vfm")
 
 [node name="CameraPlayer" type="Camera2D" parent="." index="6"]
+zoom = Vector2(1.2, 1.2)
 limit_left = 0
 limit_top = 0
 limit_smoothed = true
@@ -157,8 +158,9 @@ position = Vector2(27, 0)
 position = Vector2(-9, 17)
 rotation = 1.57079
 emitting = false
-amount = 4
+amount = 2
 lifetime = 0.3
+speed_scale = 0.75
 explosiveness = 0.5
 local_coords = true
 emission_shape = 1

@@ -15,6 +15,8 @@ static func _compute_aoe_spawn_with_los(
 	ctx: AimContext,
 	aoe_radius_px: float,
 ) -> Vector2:
+	if not sender:
+		return ctx.desired_point
 	sender.raycast_ability_to(ctx.clamp_point)
 	var ray := sender.ray_cast_ability
 

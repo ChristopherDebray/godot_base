@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=4 uid="uid://b7exrgfspotf3"]
+[gd_scene load_steps=5 format=4 uid="uid://b7exrgfspotf3"]
 
 [ext_resource type="PackedScene" uid="uid://bm3vsdux3ux7u" path="res://scenes/level/level_base.tscn" id="1_1btmw"]
 [ext_resource type="PackedScene" uid="uid://3r744noguafd" path="res://scenes/_trap/bear_trap.tscn" id="3_2heyh"]
+[ext_resource type="PackedScene" uid="uid://bmensnrge14wo" path="res://scenes/npc/ennemy/kamikaze/kamikaze.tscn" id="4_2uvmr"]
 [ext_resource type="PackedScene" uid="uid://cm5nim8ogpayf" path="res://scenes/npc/ennemy/skelleton/skelleton.tscn" id="6_uonu5"]
 
 [node name="LevelTest" instance=ExtResource("1_1btmw")]
@@ -50,3 +51,6 @@ position = Vector2(409, 637)
 
 [node name="Skelleton10" parent="YsortLayer/Npcs" index="9" instance=ExtResource("6_uonu5")]
 position = Vector2(375, 573)
+
+[node name="Kamikaze" parent="YsortLayer/Npcs" index="10" instance=ExtResource("4_2uvmr")]
+position = Vector2(97, 255)

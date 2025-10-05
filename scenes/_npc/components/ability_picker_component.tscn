@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmreeolqdl7h0"]
+
+[ext_resource type="Script" uid="uid://msngeqjeaydp" path="res://scenes/_npc/components/ability_picker.gd" id="1_8l0tb"]
+
+[node name="AbilityPickerComponent" type="Node2D"]
+script = ExtResource("1_8l0tb")

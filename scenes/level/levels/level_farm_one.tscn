@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://bkk4wmxq1vgrh"]
+[gd_scene load_steps=6 format=4 uid="uid://bkk4wmxq1vgrh"]
 
 [ext_resource type="PackedScene" uid="uid://bm3vsdux3ux7u" path="res://scenes/level/level_base.tscn" id="1_rqvhc"]
 [ext_resource type="PackedScene" uid="uid://3r744noguafd" path="res://scenes/_trap/bear_trap.tscn" id="2_bum28"]
 [ext_resource type="PackedScene" uid="uid://vahj7qsuj14n" path="res://scenes/_trap/rootrap.tscn" id="3_37lw5"]
 [ext_resource type="PackedScene" uid="uid://cagymaym8i5gt" path="res://scenes/objects/barrel_explosive.tscn" id="4_7r34g"]
+[ext_resource type="PackedScene" uid="uid://c2oxxygjqwrlg" path="res://scenes/fx/level/rain_weather.tscn" id="5_xx2on"]
 
 [node name="LevelFarm_one" instance=ExtResource("1_rqvhc")]
 
@@ -106,7 +107,10 @@ position = Vector2(1135, 155)
 
 [node name="BarrelExplosive" parent="YsortLayer/Traps" index="19" instance=ExtResource("4_7r34g")]
 position = Vector2(290, 285)
-barrel_type = 2
+immunity_effects = Array[int]([0, 2, 5, 3, 7, 0])
+
+[node name="BarrelExplosive2" parent="YsortLayer/Traps" index="20" instance=ExtResource("4_7r34g")]
+position = Vector2(624, 446)
 immunity_effects = Array[int]([0, 2, 5, 3, 7, 0])
 
 [node name="InGameUi" parent="CanvasLayer" index="0"]
@@ -114,3 +118,7 @@ offset_left = -11.0
 offset_top = -9.0
 offset_right = -11.0
 offset_bottom = -9.0
+
+[node name="RainWeather" parent="." index="9" instance=ExtResource("5_xx2on")]
+position = Vector2(489, -6)
+base_tint = Color(0.254902, 0.372549, 0.705882, 0.466667)

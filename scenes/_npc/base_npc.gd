@@ -14,10 +14,11 @@ extends Damageable
 @onready var ability_timer: Timer = $AbilityTimer
 @onready var muzzle: Node2D = $Muzzle
 
-@onready var targeting: TargetingComponent = $Targeting
-@onready var locomotion: LocomotionComponent = $Locomotion
+@onready var targeting: TargetingComponent = $TargetingComponent
+@onready var locomotion: LocomotionComponent = $LocomotionComponent
 @onready var movement_particles: CPUParticles2D = $MovementParticles
 
+@onready var ability_picker: AbilityPicker = $AbilityPickerComponent
 @onready var ability_runner: AbilityRunner = $AbilityRunnerComponent
 @onready var cooldowns: CooldownBank = $CooldownBankComponent
 
@@ -73,10 +74,17 @@ func _ready() -> void:
 	setup()
 	locomotion.setup(self, nav_agent)
 	targeting.setup(self, field_view, ray_cast_2d)
+	
 	_last_facing_sign = 1
 	if animated_sprite_2d.flip_h:
 		_last_facing_sign = -1
 	_facing_smoothed = float(_last_facing_sign)
+	
+	# Picker setup (pass NPC RNG if you already created one)
+	var npc_rng := RandomNumberGenerator.new()
+	npc_rng.seed = int(get_instance_id()) % 2147483647
+	ability_picker.setup(self, targeting, cooldowns, npc_rng)
+	
 	call_deferred("late_setup")
 	
 	if animated_sprite_2d.material is ShaderMaterial:
@@ -104,6 +112,7 @@ func late_setup():
 func _physics_process(delta: float) -> void:
 	targeting._handle_targeting_poll(delta)
 	targeting._handle_detection_and_state(delta)
+	ability_picker.rebuild_if_needed()
 	_update_action_by_state(delta)
 	locomotion._update_navigation()
 	_update_sprite_facing(delta)
@@ -156,7 +165,7 @@ func perform_ability(delta: float) -> void:
 	if not _can_use_abilities():
 		return
 
-	var entry := select_ability()
+	var entry := ability_picker.pick_entry()
 	if entry == null:
 		return
 
@@ -178,55 +187,6 @@ func _cooldown_for(entry: AbilityEntry) -> float:
 	if entry.cooldown_override > 0.0:
 		return entry.cooldown_override
 	return entry.ability.cooldown
-
-func select_ability() -> AbilityEntry:
-	if _ability_target == null or not is_instance_valid(_ability_target):
-		return null
-
-	var target_pos := _ability_target.global_position
-	var dist := global_position.distance_to(target_pos)
-
-	# 1) filter on ICD, range, LoS
-	var ability_candidates: Array[AbilityEntry] = []
-	for entry in ability_loadout.entries:
-		if entry.ability == null:
-			continue
-		if not cooldowns.can_use(entry.ability):
-			continue
-		if dist < entry.min_range or dist > entry.max_range:
-			continue
-		if entry.requires_los and not targeting._has_line_of_sight(_ability_target):
-			continue
-		ability_candidates.append(entry)
-
-	if ability_candidates.is_empty():
-		return null
-
-	# 2) weighting : base weight * context adjustement
-	var weighted: Array = [] #qs [entry, cumulative]
-	var total_weight := 0.0
-	for entry in ability_candidates:
-		var weight = max(0.001, entry.weight)
-		# Bonus if in "perfect" / mid range
-		var mid := (entry.min_range + entry.max_range) * 0.5
-		var range_fit = 1.0 - min(1.0, abs(dist - mid) / max(1.0, entry.max_range - entry.min_range))
-		weight += range_fit * 0.5
-
-		# Penality if capacity was used recently (avoids spamming
-		var remaining := cooldowns.remaining(entry.ability)
-		if remaining == 0.0:
-			# on peut utiliser le time-since-last-start si tu le stockes, sinon légère pénalité nulle
-			pass
-
-		total_weight += weight
-		weighted.append({"entry": entry, "cum": total_weight})
-
-	# 3) random weighting
-	var roll := randf() * total_weight
-	for item in weighted:
-		if roll <= item["cum"]:
-			return item["entry"]
-	return weighted.back()["entry"]
 
 func _can_use_abilities() -> bool:
 	if not ability_timer.is_stopped():

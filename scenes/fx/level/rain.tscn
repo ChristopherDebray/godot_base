@@ -1,0 +1,57 @@
+[gd_scene load_steps=11 format=3 uid="uid://byvr1s6aq6m1f"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_diunn"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_ek6m2"]
+_limits = [0.0, 0.3, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.42328, 0.3), 0.0, 0.0, 0, 0, Vector2(0.645503, 0.3), 0.0, 0.0, 0, 0, Vector2(0.994709, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_lkkio"]
+curve = SubResource("Curve_ek6m2")
+
+[sub_resource type="Gradient" id="Gradient_diunn"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ula0p"]
+gradient = SubResource("Gradient_diunn")
+
+[sub_resource type="Curve" id="Curve_diunn"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_ula0p"]
+_limits = [0.0, 30.0, 0.0, 1.0]
+_data = [Vector2(0, 13.1461), 0.0, 0.0, 0, 0, Vector2(0.121693, 24.2697), 0.0, 0.0, 0, 0, Vector2(0.301587, 29.3258), 0.0, 0.0, 0, 0, Vector2(1, 30), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_y5ugi"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_ek6m2"]
+curve_x = SubResource("Curve_diunn")
+curve_y = SubResource("Curve_ula0p")
+curve_z = SubResource("Curve_y5ugi")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_diunn"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(500, 200, 1)
+gravity = Vector3(0, 3000, 0)
+scale_min = 0.2
+scale_over_velocity_curve = SubResource("CurveXYZTexture_ek6m2")
+color_initial_ramp = SubResource("GradientTexture1D_ula0p")
+alpha_curve = SubResource("CurveTexture_lkkio")
+
+[node name="Rain" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_diunn")
+amount = 100
+lifetime = 0.5
+preprocess = 0.5
+process_material = SubResource("ParticleProcessMaterial_diunn")

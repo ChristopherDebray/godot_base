@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2oxxygjqwrlg"]
+
+[ext_resource type="PackedScene" uid="uid://dqktoj1jad1jy" path="res://scenes/fx/level/base_weather.tscn" id="1_88pnk"]
+[ext_resource type="Texture2D" uid="uid://cix5ixt8trrd1" path="res://assets/effects/Line1.png" id="2_4vdch"]
+[ext_resource type="Script" uid="uid://bbi6y4t3cssda" path="res://scenes/fx/level/rain_weather.gd" id="2_b7sou"]
+
+[sub_resource type="Gradient" id="Gradient_88pnk"]
+offsets = PackedFloat32Array(0, 0.55665, 1)
+colors = PackedColorArray(0.560784, 0.588235, 0.619608, 0.827451, 1, 1, 1, 0.635294, 1, 1, 1, 0)
+
+[node name="RainWeather" instance=ExtResource("1_88pnk")]
+script = ExtResource("2_b7sou")
+screen_margin = Vector2(128, 128)
+density_per_px2 = 0.0001
+base_tint = Color(0.1, 0.12, 0.18, 0.18)
+
+[node name="CPUParticles2D" parent="." index="0"]
+amount = 100
+texture = ExtResource("2_4vdch")
+lifetime = 0.5
+preprocess = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(500, 1)
+gravity = Vector2(0, 4500)
+scale_amount_max = 2.0
+color_initial_ramp = SubResource("Gradient_88pnk")
+
+[node name="ColorRect" parent="CanvasLayer" index="0"]
+offset_right = 1153.0
+offset_bottom = 648.0
