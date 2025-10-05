@@ -2,5 +2,7 @@ class_name WeatherEntry
 extends Resource
 
 @export var id: String
-@export var weight: float = 1.0
-@export var weight_rule: WeightRule = null
+@export var scene: PackedScene
+@export var compatible_biomes: Array[EnvironmentManager.BIOME] = [EnvironmentManager.BIOME.PLAINS, EnvironmentManager.BIOME.FOREST]
+@export var compatible_env: Array[EnvironmentManager.ENVIRONMENT_TAG] = [EnvironmentManager.ENVIRONMENT_TAG.OVERWORLD, EnvironmentManager.ENVIRONMENT_TAG.OUTDOOR]
+@export var base_weight: float = 5.0

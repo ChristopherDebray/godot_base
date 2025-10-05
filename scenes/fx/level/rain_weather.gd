@@ -32,21 +32,23 @@ func _on_disabled() -> void:
 	cpu_particles_2d.emitting = false
 	if audio_stream_player_2d.playing:
 		audio_stream_player_2d.stop()
+	queue_free()
 
 func _update_emission_rect() -> void:
-	var vp := get_viewport_rect().size
-	var half := vp * 0.5 + screen_margin
+	var viewport := get_viewport_rect().size
+	var half := viewport * 0.5 + screen_margin
 	cpu_particles_2d.emission_shape = CPUParticles2D.EMISSION_SHAPE_RECTANGLE
 	cpu_particles_2d.emission_rect_extents = half
 
 func _update_amount() -> void:
-	var vp := get_viewport_rect().size
-	var area := vp.x * vp.y
+	var viewport := get_viewport_rect().size
+	var area := viewport.x * viewport.y
 	var target := int(area * density_per_px2 * _intensity)
 	cpu_particles_2d.amount = clamp(target, 300, 4000)
 
 func _update_overlay() -> void:
-	var c := base_tint
-	c.a = base_tint.a * _intensity
-	color_rect.color = c
+	var color := base_tint
+	color.a = base_tint.a * _intensity
+	color_rect.color = color
 	color_rect.show()
+	

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://scr8j2p856l"]
+
+[ext_resource type="Script" uid="uid://bbclaqg0c3qvn" path="res://scenes/world/weather_controller.gd" id="1_bohi0"]
+[ext_resource type="PackedScene" uid="uid://c8faps146r8ml" path="res://scenes/world/weather_picker_component.tscn" id="2_dclkx"]
+
+[node name="WeatherControllerComponent" type="Node2D"]
+script = ExtResource("1_bohi0")
+
+[node name="WeatherPickerComponent" parent="." instance=ExtResource("2_dclkx")]
+
+[node name="PickTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="PickTimer" to="." method="_on_pick_timer_timeout"]

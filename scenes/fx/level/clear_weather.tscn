@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ce5gdxy20dfyu"]
+
+[ext_resource type="PackedScene" uid="uid://dqktoj1jad1jy" path="res://scenes/fx/level/base_weather.tscn" id="1_4h2g6"]
+
+[node name="Clear" instance=ExtResource("1_4h2g6")]
+
+[node name="CPUParticles2D" parent="." index="0"]
+emitting = false

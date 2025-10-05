@@ -54,3 +54,6 @@ position = Vector2(375, 573)
 
 [node name="Kamikaze" parent="YsortLayer/Npcs" index="10" instance=ExtResource("4_2uvmr")]
 position = Vector2(97, 255)
+
+[node name="WeatherControllerComponent" parent="." index="9"]
+min_state_duration_sec = 10.0

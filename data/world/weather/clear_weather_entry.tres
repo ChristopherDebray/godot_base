@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeatherEntry" load_steps=3 format=3 uid="uid://88o88q1dy8r8"]
+
+[ext_resource type="PackedScene" uid="uid://ce5gdxy20dfyu" path="res://scenes/fx/level/clear_weather.tscn" id="1_0mqwa"]
+[ext_resource type="Script" uid="uid://d0sahiiuw2qqv" path="res://data/world/weather_entry.gd" id="2_0fll3"]
+
+[resource]
+script = ExtResource("2_0fll3")
+id = "clear"
+scene = ExtResource("1_0mqwa")
+compatible_biomes = Array[int]([0, 2])
+compatible_env = Array[int]([0, 3])
+base_weight = 5.0
+metadata/_custom_type_script = "uid://d0sahiiuw2qqv"

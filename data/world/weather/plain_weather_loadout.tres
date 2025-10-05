@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeatherLoadout" load_steps=5 format=3 uid="uid://c72sp3v8ul5vb"]
+
+[ext_resource type="Script" uid="uid://d0sahiiuw2qqv" path="res://data/world/weather_entry.gd" id="1_52jm6"]
+[ext_resource type="Resource" uid="uid://88o88q1dy8r8" path="res://data/world/weather/clear_weather_entry.tres" id="2_ddflh"]
+[ext_resource type="Resource" uid="uid://cfyaqaq0y377s" path="res://data/world/weather/rain_weather_entry.tres" id="3_psiiq"]
+[ext_resource type="Script" uid="uid://c26pqiyhm8tik" path="res://data/world/weather_loadout.gd" id="4_bt03i"]
+
+[resource]
+script = ExtResource("4_bt03i")
+entries = Array[ExtResource("1_52jm6")]([ExtResource("2_ddflh"), ExtResource("3_psiiq")])
+metadata/_custom_type_script = "uid://c26pqiyhm8tik"

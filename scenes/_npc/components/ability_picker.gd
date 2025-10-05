@@ -50,11 +50,6 @@ func set_rules(weight_rules: Array) -> void:
 	rules = weight_rules.duplicate()
 	_mark_dirty()
 
-func _process(delta: float) -> void:
-	# If you add this node as a child component and enable processing,
-	# it can auto-rebuild on schedule. Otherwise call rebuild_if_needed() from NPC.
-	rebuild_if_needed()
-
 func rebuild_if_needed() -> void:
 	if not _should_rebuild():
 		return
