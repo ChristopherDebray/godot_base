@@ -22,5 +22,7 @@ func shake_camera(intensity: float):
 	tween.tween_method(shake_camera_animation, intensity, 1, .5)
 
 func shake_camera_animation(intensity: float):
+	if !player:
+		return
 	var camera_offset = camera_shake_noise.get_noise_1d(Time.get_ticks_msec()) * intensity
 	player.camera_player.offset = Vector2(camera_offset, camera_offset)

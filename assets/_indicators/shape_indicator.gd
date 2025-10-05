@@ -28,7 +28,6 @@ func _ready() -> void:
 	outline_line.closed = true
 	outline_line.antialiased = true
 	add_child(outline_line)
-
 	_rebuild_from_shape()
 
 func _rebuild_from_shape() -> void:
