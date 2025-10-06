@@ -19,6 +19,8 @@ func compute_target(npc: BaseNpc) -> Vector2:
 	return target_node.global_position + direction_from_target * ring_radius
 
 func steering(npc: BaseNpc, delta: float, path_velocity: Vector2) -> Vector2:
+	if path_velocity.length() < 0.001:
+		return Vector2.ZERO
 	var target_node := npc._ability_target
 	if target_node == null or not is_instance_valid(target_node):
 		return Vector2.ZERO

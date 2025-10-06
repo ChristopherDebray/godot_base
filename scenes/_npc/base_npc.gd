@@ -145,8 +145,9 @@ func process_idle() -> void:
 	pass
 
 func process_attacking(delta: float) -> void:
-	if _ability_target and is_instance_valid(_ability_target):
-		locomotion.set_nav_to_position(_ability_target.global_position)
+	pass
+	#if _ability_target and is_instance_valid(_ability_target):
+		#locomotion.set_nav_to_position(_ability_target.global_position)
 
 func process_searching(delta: float) -> void:
 	if not nav_agent.is_navigation_finished():

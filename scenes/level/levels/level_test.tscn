@@ -1,14 +1,17 @@
-[gd_scene load_steps=5 format=4 uid="uid://b7exrgfspotf3"]
+[gd_scene load_steps=6 format=4 uid="uid://b7exrgfspotf3"]
 
 [ext_resource type="PackedScene" uid="uid://bm3vsdux3ux7u" path="res://scenes/level/level_base.tscn" id="1_1btmw"]
 [ext_resource type="PackedScene" uid="uid://3r744noguafd" path="res://scenes/_trap/bear_trap.tscn" id="3_2heyh"]
 [ext_resource type="PackedScene" uid="uid://bmensnrge14wo" path="res://scenes/npc/ennemy/kamikaze/kamikaze.tscn" id="4_2uvmr"]
 [ext_resource type="PackedScene" uid="uid://cm5nim8ogpayf" path="res://scenes/npc/ennemy/skelleton/skelleton.tscn" id="6_uonu5"]
 
-[node name="LevelTest" instance=ExtResource("1_1btmw")]
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_mbvtx"]
+vertices = PackedVector2Array(2969.17, 20.9766, 2982.81, 1158.96, 18.9609, 1153.02, 16.0312, 17.0234)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(1, 2, 2984, 6, 2998, 1174, 4, 1168)])
+agent_radius = 15.0
 
-[node name="NavigationRegion2D" parent="." index="3"]
-visible = false
+[node name="LevelTest" instance=ExtResource("1_1btmw")]
 
 [node name="walls" parent="YsortLayer" index="0"]
 tile_map_data = PackedByteArray("AAADAAEAAQACAAAAAAAEAAEAAQACAAAAAAAFAAEAAQACAAAAAAACAAEAAQARAAAAAAAGAAEAAQASAAAAAAAKAAQAAQASAAAAAAAIAAQAAQARAAAAAAAJAAQAAQACAAAAAAA=")
@@ -54,6 +57,9 @@ position = Vector2(375, 573)
 
 [node name="Kamikaze" parent="YsortLayer/Npcs" index="10" instance=ExtResource("4_2uvmr")]
 position = Vector2(97, 255)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." index="4"]
+navigation_polygon = SubResource("NavigationPolygon_mbvtx")
 
 [node name="WeatherControllerComponent" parent="." index="9"]
 min_state_duration_sec = 10.0

@@ -86,7 +86,8 @@ func _spawn_with_telegraph(index: int, pt: Node2D) -> void:
 		tele.queue_free()
 
 func _do_spawn(index: int, pt: Node2D) -> void:
-	var enemy := _scenes[index].instantiate()
+	var enemy := _scenes[index].instantiate() as BaseNpc
+	enemy.initial_state = BaseNpc.STATE.ATTACKING
 	enemy.global_position = pt.global_position
 	get_tree().current_scene.add_child(enemy)
 

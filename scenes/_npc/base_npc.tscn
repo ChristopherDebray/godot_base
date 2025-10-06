@@ -66,9 +66,9 @@ collision_mask = 4
 script = ExtResource("4_qeoa2")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SpriteContainer/FieldView" index="0"]
-position = Vector2(2.00001, -1.19209e-07)
+position = Vector2(7.01194, -0.000220982)
 rotation = -1.5708
-scale = Vector2(17.3874, 18.4783)
+scale = Vector2(35.7597, 25.2574)
 polygon = PackedVector2Array(0, 0, -15, 30, 15, 30)
 
 [node name="AbilityTimer" type="Timer" parent="." index="5"]
@@ -76,6 +76,7 @@ one_shot = true
 
 [node name="NavAgent" type="NavigationAgent2D" parent="." index="6"]
 avoidance_enabled = true
+debug_enabled = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="." index="7"]
 
@@ -86,7 +87,6 @@ rotation = -1.5708
 collision_mask = 5
 
 [node name="TargetingComponent" parent="." index="9" instance=ExtResource("5_5urbc")]
-auto_aggro_on_spawn = false
 fov_poll_interval = 0.22
 
 [node name="LocomotionComponent" parent="." index="10" instance=ExtResource("6_gbn1b")]
