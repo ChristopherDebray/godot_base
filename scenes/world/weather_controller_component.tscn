@@ -5,6 +5,11 @@
 
 [node name="WeatherControllerComponent" type="Node2D"]
 script = ExtResource("1_bohi0")
+rules = null
+min_state_duration_sec = null
+pick_interval_sec = null
+initial_biome = null
+random_intensity_range = null
 
 [node name="WeatherPickerComponent" parent="." instance=ExtResource("2_dclkx")]
 

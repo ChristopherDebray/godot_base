@@ -10,9 +10,9 @@ var loadout: WeatherLoadout
 var rules: Array[WeightRule] = []  # [WeatherBiomeRule, WeatherTimeOfDayRule, WeatherPersistenceRule...]
 
 # State/context
-var biome: String = "plains"
+var biome: EnvironmentManager.BIOME = EnvironmentManager.BIOME.PLAINS
 var hour: int = 12
-var current_weather_id: String = ""
+var current_weather_id: EnvironmentManager.WEATHER_TYPE = EnvironmentManager.WEATHER_TYPE.CLEAR
 var time_in_state: float = 0.0
 
 var _last_rebuild_time: float = -1.0
@@ -26,7 +26,7 @@ func setup(loadout_in: WeatherLoadout, rules_in: Array) -> void:
 	rng.randomize()
 	_dirty = true
 
-func set_context(new_biome: String, new_hour: int, current_id: String, seconds_in_state: float) -> void:
+func set_context(new_biome: EnvironmentManager.BIOME, new_hour: int, current_id: EnvironmentManager.WEATHER_TYPE, seconds_in_state: float) -> void:
 	biome = new_biome
 	hour = new_hour
 	current_weather_id = current_id

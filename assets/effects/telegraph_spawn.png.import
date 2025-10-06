@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgt4jpv0c7c1r"
-path="res://.godot/imported/survivor1_gun.png-1df403188d68f8eee5c51e7a1f890041.ctex"
+uid="uid://cv0s1pedf6lnk"
+path="res://.godot/imported/telegraph_spawn.png-4d918f19cef672d35356c6b1f098112e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/caracters/survivor1_gun.png"
-dest_files=["res://.godot/imported/survivor1_gun.png-1df403188d68f8eee5c51e7a1f890041.ctex"]
+source_file="res://assets/effects/telegraph_spawn.png"
+dest_files=["res://.godot/imported/telegraph_spawn.png-4d918f19cef672d35356c6b1f098112e.ctex"]
 
 [params]
 

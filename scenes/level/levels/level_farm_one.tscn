@@ -1,10 +1,30 @@
-[gd_scene load_steps=6 format=4 uid="uid://bkk4wmxq1vgrh"]
+[gd_scene load_steps=9 format=4 uid="uid://bkk4wmxq1vgrh"]
 
 [ext_resource type="PackedScene" uid="uid://bm3vsdux3ux7u" path="res://scenes/level/level_base.tscn" id="1_rqvhc"]
 [ext_resource type="PackedScene" uid="uid://3r744noguafd" path="res://scenes/_trap/bear_trap.tscn" id="2_bum28"]
 [ext_resource type="PackedScene" uid="uid://vahj7qsuj14n" path="res://scenes/_trap/rootrap.tscn" id="3_37lw5"]
 [ext_resource type="PackedScene" uid="uid://cagymaym8i5gt" path="res://scenes/objects/barrel_explosive.tscn" id="4_7r34g"]
-[ext_resource type="PackedScene" uid="uid://c2oxxygjqwrlg" path="res://scenes/fx/level/rain_weather.tscn" id="5_xx2on"]
+[ext_resource type="Resource" uid="uid://oumd63n6lbek" path="res://data/spawner/spawn_loadout/field/field_easy.tres" id="5_xx4or"]
+[ext_resource type="Script" uid="uid://dgvv11qubnjij" path="res://data/spawner/spawn_rule/span_rule.gd" id="6_a8hj6"]
+[ext_resource type="Script" uid="uid://chblfneg6d1om" path="res://data/spawner/spawn_rule/spawn_biome_rule.gd" id="7_hadoo"]
+
+[sub_resource type="Resource" id="Resource_1sian"]
+script = ExtResource("7_hadoo")
+biome_factors = {
+0: {
+"farmer": 1,
+"kamikaze": 0.75,
+"skeleton": 1.0,
+"warrior": 0.0
+},
+1: {
+"farmer": 0,
+"kamikaze": 0.75,
+"skeleton": 0.5,
+"warrior": 1.5
+}
+}
+metadata/_custom_type_script = "uid://chblfneg6d1om"
 
 [node name="LevelFarm_one" instance=ExtResource("1_rqvhc")]
 
@@ -119,6 +139,20 @@ offset_top = -9.0
 offset_right = -11.0
 offset_bottom = -9.0
 
-[node name="RainWeather" parent="." index="9" instance=ExtResource("5_xx2on")]
-position = Vector2(489, -6)
-base_tint = Color(0.254902, 0.372549, 0.705882, 0.466667)
+[node name="WaveSpawner" parent="." index="8" node_paths=PackedStringArray("player")]
+spawn_loadout = ExtResource("5_xx4or")
+spawn_points = Array[NodePath]([NodePath("../Marker2D"), NodePath("../Marker2D2"), NodePath("../Marker2D3")])
+player = NodePath("../YsortLayer/Players/Player")
+rules = Array[ExtResource("6_a8hj6")]([SubResource("Resource_1sian")])
+
+[node name="Marker2D" type="Marker2D" parent="." index="10"]
+position = Vector2(156, 207)
+scale = Vector2(4.31852, 3.1587)
+
+[node name="Marker2D2" type="Marker2D" parent="." index="11"]
+position = Vector2(305, 83)
+scale = Vector2(4.31852, 3.1587)
+
+[node name="Marker2D3" type="Marker2D" parent="." index="12"]
+position = Vector2(266, 428)
+scale = Vector2(4.31852, 3.1587)

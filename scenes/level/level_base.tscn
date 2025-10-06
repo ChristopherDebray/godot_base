@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=4 uid="uid://bm3vsdux3ux7u"]
+[gd_scene load_steps=60 format=4 uid="uid://bm3vsdux3ux7u"]
 
 [ext_resource type="Script" uid="uid://c8266ajpu6m6j" path="res://scenes/level/level_base.gd" id="1_r5tr5"]
 [ext_resource type="PackedScene" uid="uid://dqnnqulkpfar1" path="res://scenes/ui/in_game_ui.tscn" id="1_rgbux"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://q4tq0jlqagxq" path="res://assets/tiles/cute_wall_sm.png" id="10_r5tr5"]
 [ext_resource type="PackedScene" uid="uid://ccy1pcv744h38" path="res://scenes/_spawner/wave_spawner.tscn" id="15_g531s"]
 [ext_resource type="PackedScene" uid="uid://scr8j2p856l" path="res://scenes/world/weather_controller_component.tscn" id="16_7cdbm"]
+[ext_resource type="PackedScene" uid="uid://ld78nlkqrkks" path="res://data/spawner/spawn_telegraph/spawn_telegraph.tscn" id="16_pq2ld"]
 [ext_resource type="Script" uid="uid://dqp50xxn0jycr" path="res://data/ai/weight_rule.gd" id="17_aagx2"]
 [ext_resource type="Resource" uid="uid://c72sp3v8ul5vb" path="res://data/world/weather/plain_weather_loadout.tres" id="17_pq2ld"]
 [ext_resource type="Script" uid="uid://b6x8kdm1owpdm" path="res://data/world/weather_biome_rule.gd" id="18_pq2ld"]
@@ -390,22 +391,22 @@ sources/1 = SubResource("TileSetAtlasSource_7cdbm")
 [sub_resource type="Resource" id="Resource_0ou4s"]
 script = ExtResource("18_pq2ld")
 biome_factors = {
-"desert": {
-"clear": 1.2,
-"dust": 1.5,
-"rain": 0.0,
-"wind": 1.3
+0: {
+0: 1.0,
+1: 1.0,
+2: 1.2,
+3: 0.8
 },
-"forest": {
-"clear": 0.8,
-"fog": 1.4,
-"rain": 1.3
+1: {
+0: 1.2,
+1: 0.0,
+2: 1.3,
+4: 1.5
 },
-"plains": {
-"clear": 1.0,
-"fog": 0.8,
-"rain": 1.0,
-"wind": 1.2
+2: {
+0: 0.8,
+1: 1.3,
+3: 1.4
 }
 }
 metadata/_custom_type_script = "uid://b6x8kdm1owpdm"
@@ -484,6 +485,7 @@ y_sort_enabled = true
 [node name="PauseUi" parent="CanvasLayer" instance=ExtResource("6_ppe2f")]
 
 [node name="WaveSpawner" parent="." instance=ExtResource("15_g531s")]
+telegraph_scene = ExtResource("16_pq2ld")
 
 [node name="WeatherControllerComponent" parent="." instance=ExtResource("16_7cdbm")]
 loadout = ExtResource("17_pq2ld")

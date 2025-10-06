@@ -1,11 +1,34 @@
-[gd_resource type="Resource" script_class="SpawnEntryData" load_steps=3 format=3 uid="uid://d0111n61ks7ty"]
+[gd_resource type="Resource" script_class="SpawnEntryData" load_steps=5 format=3 uid="uid://d0111n61ks7ty"]
 
 [ext_resource type="PackedScene" uid="uid://cm5nim8ogpayf" path="res://scenes/npc/ennemy/skelleton/skelleton.tscn" id="1_dmgya"]
 [ext_resource type="Script" uid="uid://tu0myuap7yo4" path="res://data/spawner/spawn_entry/spawn_entry_data.gd" id="1_oq0hg"]
+[ext_resource type="Script" uid="uid://chblfneg6d1om" path="res://data/spawner/spawn_rule/spawn_biome_rule.gd" id="2_dmgya"]
+
+[sub_resource type="Resource" id="Resource_1ywcp"]
+script = ExtResource("2_dmgya")
+biome_factors = {
+0: {
+"kamikaze": 0.75,
+"skeleton": 1.0,
+"warrior": 0.0
+},
+1: {
+"kamikaze": 0.75,
+"skeleton": 0.5,
+"warrior": 1.5
+}
+}
+metadata/_custom_type_script = "uid://chblfneg6d1om"
 
 [resource]
 script = ExtResource("1_oq0hg")
-npc = ExtResource("1_dmgya")
+scene = ExtResource("1_dmgya")
 cost = 3
 weight = 0.5
+base_weight = 5.0
+tags = Array[String]([])
+compatible_biomes = Array[int]([0, 1, 2])
+min_wave = 1
+max_wave = 9999
+weight_rule = SubResource("Resource_1ywcp")
 metadata/_custom_type_script = "uid://tu0myuap7yo4"

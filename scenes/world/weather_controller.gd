@@ -6,23 +6,23 @@ class_name WeatherController
 @export var rules: Array[WeightRule] = [] # e.g. [WeatherBiomeRule, WeatherTimeOfDayRule, WeatherPersistenceRule]
 @export var min_state_duration_sec: float = 60.0
 @export var pick_interval_sec: float = 10.0
-@export var initial_biome: String = "plains"
+@export var initial_biome: EnvironmentManager.BIOME = EnvironmentManager.BIOME.PLAINS
 @export var random_intensity_range: Vector2 = Vector2(0.8, 1.3)
 
 @onready var picker: WeatherPicker = $WeatherPickerComponent
 @onready var pick_timer: Timer = $PickTimer
 
 var current_weather: BaseWeather = null
-var current_weather_id: String = ""
+var current_weather_id: EnvironmentManager.WEATHER_TYPE = EnvironmentManager.WEATHER_TYPE.CLEAR
 var time_in_state: float = 0.0
-var biome: String = ""
+var biome: EnvironmentManager.BIOME = EnvironmentManager.BIOME.PLAINS
 var hour: int = 12
 
 var target_camera: Camera2D = null
 
-func setup(camera: Camera2D, initial_hour: int = 12, initial_biome_in: String = "") -> void:
+func setup(camera: Camera2D, initial_hour: int = 12, initial_biome_in: EnvironmentManager.BIOME = EnvironmentManager.BIOME.PLAINS) -> void:
 	target_camera = camera
-	if initial_biome_in != "":
+	if initial_biome_in != EnvironmentManager.BIOME.PLAINS:
 		biome = initial_biome_in
 	else:
 		biome = initial_biome
@@ -101,7 +101,7 @@ func _randomize_intensity() -> void:
 	current_weather.set_intensity(r)
 
 # Optional public API
-func set_biome(new_biome: String) -> void:
+func set_biome(new_biome: EnvironmentManager.BIOME) -> void:
 	biome = new_biome
 	picker.set_context(biome, hour, current_weather_id, time_in_state)
 

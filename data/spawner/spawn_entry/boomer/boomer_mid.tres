@@ -5,7 +5,12 @@
 
 [resource]
 script = ExtResource("1_u6en3")
-npc = ExtResource("1_dq1i1")
+scene = ExtResource("1_dq1i1")
 cost = 5
 weight = 0.5
+base_weight = 5.0
+tags = Array[String]([])
+compatible_biomes = Array[int]([0, 1])
+min_wave = 1
+max_wave = 9999
 metadata/_custom_type_script = "uid://tu0myuap7yo4"
