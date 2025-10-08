@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="VTabSpec" load_steps=3 format=3 uid="uid://b1nn1k08g2xsb"]
+
+[ext_resource type="Script" uid="uid://ki01jrt2wrmh" path="res://data/ui/v_tab_spec.gd" id="1_8jehu"]
+[ext_resource type="PackedScene" uid="uid://bikmmi6yx8ja" path="res://scenes/ui/components/sound_form.tscn" id="1_400b0"]
+
+[resource]
+script = ExtResource("1_8jehu")
+label = "Sound"
+scene = ExtResource("1_400b0")
+metadata/_custom_type_script = "uid://ki01jrt2wrmh"

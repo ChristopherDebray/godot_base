@@ -1,0 +1,91 @@
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://bc3sb5ac818y0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lauhp"]
+bg_color = Color(0.788235, 0.611765, 0.388235, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.654902, 0.498039, 0.298039, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1wi1b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ibklw"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nw1ig"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lauhp"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mbdly"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i86gu"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mbdly"]
+bg_color = Color(0.0470588, 0.0431373, 0.0980392, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 2.0
+expand_margin_top = 4.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nw1ig"]
+bg_color = Color(0.293742, 0.281746, 0.460443, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 2.0
+expand_margin_top = 4.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i86gu"]
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.654902, 0.498039, 0.298039, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[resource]
+HSlider/styles/slider = SubResource("StyleBoxFlat_lauhp")
+Label/colors/font_color = Color(0.0470588, 0.0431373, 0.0980392, 1)
+Label/font_sizes/font_size = 33
+TabContainer/colors/font_hovered_color = Color(0.827451, 0.572549, 0.180392, 1)
+TabContainer/colors/font_outline_color = Color(0.827451, 0.572549, 0.180392, 1)
+TabContainer/colors/font_selected_color = Color(0.827451, 0.572549, 0.180392, 1)
+TabContainer/colors/font_unselected_color = Color(0.0470588, 0.0431373, 0.0980392, 1)
+TabContainer/font_sizes/font_size = 55
+TabContainer/styles/panel = SubResource("StyleBoxEmpty_1wi1b")
+TabContainer/styles/tab_disabled = SubResource("StyleBoxEmpty_ibklw")
+TabContainer/styles/tab_focus = SubResource("StyleBoxEmpty_nw1ig")
+TabContainer/styles/tab_hovered = SubResource("StyleBoxEmpty_lauhp")
+TabContainer/styles/tab_selected = SubResource("StyleBoxEmpty_mbdly")
+TabContainer/styles/tab_unselected = SubResource("StyleBoxEmpty_i86gu")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_mbdly")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_nw1ig")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_i86gu")

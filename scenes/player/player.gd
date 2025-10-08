@@ -79,8 +79,8 @@ func get_movement_input() -> void:
 	velocity = nv.normalized() * speed
 
 func detect_action_inputs() -> void:
-	detect_interaction_inputs();
-	#detect_input_item_handler()d
+	detect_interaction_inputs()
+	#detect_input_item_handler()
 
 func detect_interaction_inputs() -> void:
 	for input_name in input_to_element.keys():

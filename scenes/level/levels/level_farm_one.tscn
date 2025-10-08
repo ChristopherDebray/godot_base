@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=4 uid="uid://c31dggb7xc8yy"]
+[gd_scene load_steps=6 format=4 uid="uid://c31dggb7xc8yy"]
 
 [ext_resource type="PackedScene" uid="uid://bm3vsdux3ux7u" path="res://scenes/level/level_base.tscn" id="1_rqvhc"]
 [ext_resource type="PackedScene" uid="uid://3r744noguafd" path="res://scenes/_trap/bear_trap.tscn" id="2_bum28"]
 [ext_resource type="PackedScene" uid="uid://vahj7qsuj14n" path="res://scenes/_trap/rootrap.tscn" id="3_37lw5"]
+[ext_resource type="Resource" uid="uid://oumd63n6lbek" path="res://data/spawner/spawn_loadout/field/field_easy.tres" id="4_7r34g"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_mbvtx"]
 vertices = PackedVector2Array(1214.02, 742.898, 1212.98, 18.6172, 2969.17, 20.9766, 2982.81, 1158.96, 18.9609, 1153.02, 17.9062, 750.688, 905, 152, 905, 197, 889, 197, 477.906, 186, 472.109, 87.4688, 799, 416, 628.242, 294.5, 733, 276, 850, 276, 916, 416, 889, 228.602, 956, 230.406, 850, 240, 501.727, 451.867, 469.891, 467.781, 410, 452, 410, 416, 255, 474, 293, 452, 470.828, 549, 450, 549, 916, 452, 1147.31, 702.023, 757.969, 626, 759.953, 598.133, 799, 452, 1160.67, 74.9297, 956, 198.773, 255, 440, 293, 416, 713, 530.227, 713, 626, 545.211, 583, 536.711, 549, 17.7969, 703.938, 450, 583, 627.75, 265, 733, 240, 442.781, 88.5469, 443.773, 154, 418.727, 154, 16.1719, 70.0625, 538, 265, 538, 297.508, 367, 299, 367, 263, 434.727, 186, 502.828, 549, 937, 197.758, 937, 152, 744.594, 595.93, 742.531, 529.773, 207, 474, 207, 440, 250, 263, 250, 299)
@@ -13,6 +14,7 @@ agent_radius = 15.0
 [node name="LevelFarmOne" instance=ExtResource("1_rqvhc")]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." index="0"]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_mbvtx")
 
 [node name="NavigationRegion2D#Polygon2D2" type="Polygon2D" parent="NavigationRegion2D" index="0"]
@@ -194,3 +196,38 @@ position = Vector2(832, 74)
 
 [node name="BearTrap3" parent="YsortLayer/Traps" index="25" instance=ExtResource("2_bum28")]
 position = Vector2(1077, 676)
+
+[node name="WaveSpawner" parent="." index="8" node_paths=PackedStringArray("player")]
+spawn_loadout = ExtResource("4_7r34g")
+spawn_points = Array[NodePath]([NodePath("../SpawnPoints/Marker2D"), NodePath("../SpawnPoints/Marker2D2"), NodePath("../SpawnPoints/Marker2D3"), NodePath("../SpawnPoints/Marker2D4"), NodePath("../SpawnPoints/Marker2D5"), NodePath("../SpawnPoints/Marker2D6"), NodePath("../SpawnPoints/Marker2D7"), NodePath("../SpawnPoints/Marker2D8"), NodePath("../SpawnPoints/Marker2D9")])
+player = NodePath("../YsortLayer/Players/Player")
+min_distance_from_player = 50.0
+
+[node name="SpawnPoints" type="Node2D" parent="." index="10"]
+
+[node name="Marker2D" type="Marker2D" parent="SpawnPoints" index="0"]
+position = Vector2(95, 144)
+
+[node name="Marker2D2" type="Marker2D" parent="SpawnPoints" index="1"]
+position = Vector2(111, 393)
+
+[node name="Marker2D3" type="Marker2D" parent="SpawnPoints" index="2"]
+position = Vector2(491, 216)
+
+[node name="Marker2D4" type="Marker2D" parent="SpawnPoints" index="3"]
+position = Vector2(357, 553)
+
+[node name="Marker2D5" type="Marker2D" parent="SpawnPoints" index="4"]
+position = Vector2(788, 136)
+
+[node name="Marker2D6" type="Marker2D" parent="SpawnPoints" index="5"]
+position = Vector2(652, 508)
+
+[node name="Marker2D7" type="Marker2D" parent="SpawnPoints" index="6"]
+position = Vector2(1022, 192)
+
+[node name="Marker2D8" type="Marker2D" parent="SpawnPoints" index="7"]
+position = Vector2(934, 512)
+
+[node name="Marker2D9" type="Marker2D" parent="SpawnPoints" index="8"]
+position = Vector2(394, 372)

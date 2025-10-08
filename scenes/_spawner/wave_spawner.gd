@@ -34,6 +34,7 @@ var _spawning: bool = false
 
 var budget: int
 var spawns := 0
+var remaining := 0
 var safety := 1000
 
 func _ready() -> void:
@@ -42,6 +43,7 @@ func _ready() -> void:
 	_build_sorted_cache()
 	timer.wait_time = spawn_interval
 	budget = max(0, WaveManager.budget_base)
+	SignalManager.died.connect(_on_enemy_died)
 
 func set_spawn_loadout(table: SpawnLoadoutData) -> void:
 	# Call this if you swap themes at runtime.
@@ -94,6 +96,7 @@ func _do_spawn(index: int, pt: Node2D) -> void:
 	_last_spawn_id = StringName(_ids[index])
 	budget -= _costs[index]
 	spawns += 1
+	remaining += 1
 
 # ---------- build cache (weights from context) ----------
 
@@ -310,6 +313,23 @@ func _pick_spawn_point(player: Node2D) -> Node2D:
 			return pt
 	# As a fallback return any point
 	return _points[_rng.randi_range(0, _points.size() - 1)]
+
+func _on_enemy_died(damageable: Damageable):
+	if not is_instance_of(damageable, BaseNpc):
+		return
+	
+	remaining -= 1
+	if budget >= 10:
+		return
+	
+	if remaining != 0:
+		return
+	
+	_level_ended()
+
+func _level_ended():
+	WaveManager.budget_base += 10
+	GameManager.load_level('level_farm_two')
 
 func _on_timer_timeout() -> void:
 	spawn()

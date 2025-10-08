@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://dg6qwtuqr76dv"]
+
+[ext_resource type="Texture2D" uid="uid://ba7vr4yqwe078" path="res://assets/ui/parchment_ui.png" id="1_68wp7"]
+[ext_resource type="Script" uid="uid://wtv7jni57uby" path="res://scenes/ui/components/parchment_button.gd" id="2_e2mal"]
+
+[node name="ParchmentButton" type="TextureButton"]
+custom_minimum_size = Vector2(367, 173)
+offset_right = 367.0
+offset_bottom = 173.0
+texture_normal = ExtResource("1_68wp7")
+stretch_mode = 0
+script = ExtResource("2_e2mal")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = -27.5
+offset_right = 47.0
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.0470588, 0.0431373, 0.0980392, 1)
+theme_override_font_sizes/font_size = 40
+text = "Start"

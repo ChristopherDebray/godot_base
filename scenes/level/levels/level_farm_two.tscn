@@ -193,6 +193,7 @@ position = Vector2(624, 446)
 immunity_effects = Array[int]([0, 2, 5, 3, 7, 0])
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." index="4"]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_mbvtx")
 
 [node name="Polygon2D2" type="Polygon2D" parent="NavigationRegion2D" index="0"]

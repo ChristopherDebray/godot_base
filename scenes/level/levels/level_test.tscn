@@ -59,6 +59,7 @@ position = Vector2(375, 573)
 position = Vector2(97, 255)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." index="4"]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_mbvtx")
 
 [node name="WeatherControllerComponent" parent="." index="9"]

@@ -7,6 +7,7 @@
 
 [sub_resource type="Resource" id="Resource_574le"]
 script = ExtResource("3_oq5jf")
+impact_distance = 6.0
 preferred_range = 30.0
 stop_range = 20.0
 strafe_bias = 0.0
@@ -84,7 +85,7 @@ animations = [{
 y_sort_enabled = false
 behavior = SubResource("Resource_574le")
 ability_loadout = ExtResource("4_oq5jf")
-health = 30.0
+health = 20.0
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(0, 3)

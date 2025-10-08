@@ -1,104 +1,19 @@
-[gd_scene load_steps=17 format=3 uid="uid://uk7n8q5lt0l1"]
+[gd_scene load_steps=12 format=3 uid="uid://uk7n8q5lt0l1"]
 
 [ext_resource type="Script" uid="uid://b8flwhrvvk72w" path="res://scenes/ui/pause_ui.gd" id="1_xt3ok"]
 [ext_resource type="Texture2D" uid="uid://b4rvoo21nr8kj" path="res://assets/sprite_sheets/elements_icons.png" id="2_ghgjp"]
 [ext_resource type="Texture2D" uid="uid://d2650u4m7e5ww" path="res://assets/ui/book_menu.png" id="3_yrwkb"]
 [ext_resource type="Theme" uid="uid://d3jium3bs8gi" path="res://assets/theme/theme_mage.tres" id="4_8dn2d"]
-[ext_resource type="PackedScene" uid="uid://ciebuvudieu20" path="res://scenes/ui/pause_ui/components/audio_input.tscn" id="5_lauhp"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lauhp"]
-bg_color = Color(0.788235, 0.611765, 0.388235, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.654902, 0.498039, 0.298039, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-expand_margin_left = 4.0
-expand_margin_top = 4.0
-expand_margin_right = 4.0
-expand_margin_bottom = 4.0
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1wi1b"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ibklw"]
-content_margin_left = 20.0
-content_margin_right = 20.0
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nw1ig"]
-content_margin_left = 20.0
-content_margin_right = 20.0
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lauhp"]
-content_margin_left = 20.0
-content_margin_right = 20.0
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mbdly"]
-content_margin_left = 20.0
-content_margin_right = 20.0
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i86gu"]
-content_margin_left = 20.0
-content_margin_right = 20.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mbdly"]
-bg_color = Color(0.0470588, 0.0431373, 0.0980392, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-expand_margin_left = 2.0
-expand_margin_top = 4.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nw1ig"]
-bg_color = Color(0.293742, 0.281746, 0.460443, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-expand_margin_left = 2.0
-expand_margin_top = 4.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i86gu"]
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.654902, 0.498039, 0.298039, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="Theme" id="Theme_nw1ig"]
-HSlider/styles/slider = SubResource("StyleBoxFlat_lauhp")
-Label/colors/font_color = Color(0.0470588, 0.0431373, 0.0980392, 1)
-Label/font_sizes/font_size = 33
-TabContainer/colors/font_hovered_color = Color(0.827451, 0.572549, 0.180392, 1)
-TabContainer/colors/font_outline_color = Color(0.827451, 0.572549, 0.180392, 1)
-TabContainer/colors/font_selected_color = Color(0.827451, 0.572549, 0.180392, 1)
-TabContainer/colors/font_unselected_color = Color(0.0470588, 0.0431373, 0.0980392, 1)
-TabContainer/font_sizes/font_size = 55
-TabContainer/styles/panel = SubResource("StyleBoxEmpty_1wi1b")
-TabContainer/styles/tab_disabled = SubResource("StyleBoxEmpty_ibklw")
-TabContainer/styles/tab_focus = SubResource("StyleBoxEmpty_nw1ig")
-TabContainer/styles/tab_hovered = SubResource("StyleBoxEmpty_lauhp")
-TabContainer/styles/tab_selected = SubResource("StyleBoxEmpty_mbdly")
-TabContainer/styles/tab_unselected = SubResource("StyleBoxEmpty_i86gu")
-VScrollBar/styles/grabber = SubResource("StyleBoxFlat_mbdly")
-VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_nw1ig")
-VScrollBar/styles/scroll = SubResource("StyleBoxFlat_i86gu")
+[ext_resource type="Theme" uid="uid://bc3sb5ac818y0" path="res://themes/input_themes.tres" id="5_mbdly"]
+[ext_resource type="PackedScene" uid="uid://bdprvl4rjxovj" path="res://scenes/ui/components/vertical_tabs.tscn" id="7_i86gu"]
+[ext_resource type="Resource" uid="uid://cmh5jxspeuxaa" path="res://data/ui/display_options.tres" id="8_ibklw"]
+[ext_resource type="Script" uid="uid://ki01jrt2wrmh" path="res://data/ui/v_tab_spec.gd" id="8_nw1ig"]
+[ext_resource type="Resource" uid="uid://b1nn1k08g2xsb" path="res://data/ui/sound_options.tres" id="9_ibklw"]
+[ext_resource type="Texture2D" uid="uid://dai8hqbfguyf4" path="res://assets/characters/CUTE_BIG_mage.png" id="10_1wi1b"]
+[ext_resource type="Theme" uid="uid://0sn2vinpcent" path="res://themes/pannel/base_card.tres" id="10_xo6fl"]
 
 [node name="PauseUi" type="Control"]
 process_mode = 3
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -143,12 +58,13 @@ theme_override_constants/margin_bottom = 140
 
 [node name="TabContainer" type="TabContainer" parent="MarginContainer/TextureRect/MarginContainer"]
 layout_mode = 2
-theme = SubResource("Theme_nw1ig")
+theme = ExtResource("5_mbdly")
 theme_override_constants/outline_size = 0
 tab_alignment = 1
-current_tab = 0
+current_tab = 1
 
 [node name="Options" type="TabBar" parent="MarginContainer/TextureRect/MarginContainer/TabContainer"]
+visible = false
 layout_mode = 2
 tab_alignment = 1
 metadata/_tab_index = 0
@@ -165,48 +81,19 @@ theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 140
 theme_override_constants/margin_bottom = 30
 
-[node name="VBoxContainer4" type="VBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Options/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 40
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Options/MarginContainer/VBoxContainer4"]
+[node name="Control" type="Control" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Options/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Options/MarginContainer/VBoxContainer4/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Master"
-
-[node name="AudioInputMaster" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Options/MarginContainer/VBoxContainer4/VBoxContainer" instance=ExtResource("5_lauhp")]
-layout_mode = 2
-audio_bus_name = "Master"
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Options/MarginContainer/VBoxContainer4"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Options/MarginContainer/VBoxContainer4/VBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Music"
-
-[node name="AudioInputMusic" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Options/MarginContainer/VBoxContainer4/VBoxContainer2" instance=ExtResource("5_lauhp")]
-layout_mode = 2
-audio_bus_name = "Music"
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Options/MarginContainer/VBoxContainer4"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Options/MarginContainer/VBoxContainer4/VBoxContainer3"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "FX"
-
-[node name="AudioInputSfx" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Options/MarginContainer/VBoxContainer4/VBoxContainer3" instance=ExtResource("5_lauhp")]
-layout_mode = 2
-audio_bus_name = "Sfx"
+[node name="VerticalTabs" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Options/MarginContainer/Control" instance=ExtResource("7_i86gu")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+tabs = Array[ExtResource("8_nw1ig")]([ExtResource("9_ibklw"), ExtResource("8_ibklw")])
 
 [node name="Spells" type="TabBar" parent="MarginContainer/TextureRect/MarginContainer/TabContainer"]
-visible = false
 layout_mode = 2
 tab_alignment = 1
 metadata/_tab_index = 1
@@ -218,15 +105,78 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 25
+theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 25
-theme_override_constants/margin_right = 25
+theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 25
 
-[node name="VScrollBar" type="ScrollContainer" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Spells/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Spells/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("4_8dn2d")
+theme_override_constants/separation = 50
+
+[node name="Panel" type="Panel" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Spells/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(420, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme = ExtResource("10_xo6fl")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Spells/MarginContainer/HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Spells/MarginContainer/HBoxContainer/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Panel" type="Panel" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Spells/MarginContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Spells/MarginContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -68.0
+offset_right = 68.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_1wi1b")
+stretch_mode = 2
+
+[node name="ElementsContainer" type="HBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Spells/MarginContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Spells/MarginContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "J'aime bien manger des chars"
+
+[node name="VScrollBar" type="ScrollContainer" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Spells/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(450, 0)
 layout_mode = 2
 
-[node name="AbilityList" type="VBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Spells/MarginContainer/VScrollBar"]
+[node name="AbilityList" type="VBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Spells/MarginContainer/HBoxContainer/VScrollBar"]
+custom_minimum_size = Vector2(420, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 160

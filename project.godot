@@ -11,9 +11,11 @@ config_version=5
 [application]
 
 config/name="Triarcana"
-run/main_scene="uid://b7exrgfspotf3"
+run/main_scene="uid://byy2l4mkhng7g"
 config/features=PackedStringArray("4.4", "Mobile")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.0470588, 0.0431373, 0.0980392, 1)
+boot_splash/image="uid://cds4eghaotr3i"
+config/icon="uid://cf1s4xwm8jj5v"
 
 [audio]
 
@@ -34,6 +36,10 @@ WaveManager="*res://autoloads/wave_manager.gd"
 AnimationManager="*res://autoloads/animation_manager.gd"
 FxManager="*res://autoloads/fx_manager.gd"
 EnvironmentManager="*res://autoloads/environment_manager.gd"
+
+[display]
+
+mouse_cursor/custom_image="uid://ddw75gqj777c3"
 
 [file_customization]
 

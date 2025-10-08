@@ -1,0 +1,97 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6mjjuuju0lkr"]
+
+[ext_resource type="Script" uid="uid://dkonwu07x0mpt" path="res://scenes/ui/components/display_form.gd" id="1_15uff"]
+[ext_resource type="Theme" uid="uid://d3jium3bs8gi" path="res://assets/theme/theme_mage.tres" id="1_sf8jw"]
+[ext_resource type="Theme" uid="uid://bc3sb5ac818y0" path="res://themes/input_themes.tres" id="3_415ok"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_415ok"]
+
+[node name="DisplayForm" type="VBoxContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(250, 0)
+offset_right = 390.0
+offset_bottom = 233.0
+theme = ExtResource("1_sf8jw")
+theme_override_constants/separation = 30
+script = ExtResource("1_15uff")
+
+[node name="Display" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme = ExtResource("3_415ok")
+
+[node name="Label" type="Label" parent="Display"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Display"
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Display"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="CheckBox" type="CheckBox" parent="Display/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/check_v_offset = 5
+button_pressed = true
+button_group = SubResource("ButtonGroup_415ok")
+text = "Windowed"
+
+[node name="CheckBox2" type="CheckBox" parent="Display/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/check_v_offset = 5
+button_group = SubResource("ButtonGroup_415ok")
+text = "Fullscreen"
+
+[node name="CheckBox3" type="CheckBox" parent="Display/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/check_v_offset = 5
+button_group = SubResource("ButtonGroup_415ok")
+text = "Excl Fullscreen"
+
+[node name="InterfaceScale" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme = ExtResource("3_415ok")
+alignment = 1
+
+[node name="Label" type="Label" parent="InterfaceScale"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Interface scale"
+
+[node name="OptionButton" type="OptionButton" parent="InterfaceScale"]
+layout_mode = 2
+size_flags_vertical = 4
+selected = 2
+item_count = 5
+popup/item_0/text = "Smaller (66%)"
+popup/item_0/id = 0
+popup/item_1/text = "Small (80%)"
+popup/item_1/id = 1
+popup/item_2/text = "Medium (100%)"
+popup/item_2/id = 2
+popup/item_3/text = "Large (133%)"
+popup/item_3/id = 3
+popup/item_4/text = "Larger (200%)"
+popup/item_4/id = 4
+
+[node name="Vsync" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme = ExtResource("3_415ok")
+alignment = 1
+
+[node name="Label" type="Label" parent="Vsync"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "VSync"
+
+[node name="OptionButton" type="OptionButton" parent="Vsync"]
+layout_mode = 2
+size_flags_vertical = 4
+selected = 2
+item_count = 3
+popup/item_0/text = "Disabled"
+popup/item_0/id = 0
+popup/item_1/text = "Adaptative"
+popup/item_1/id = 1
+popup/item_2/text = "Enabled"
+popup/item_2/id = 2

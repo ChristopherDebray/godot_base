@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="VTabSpec" load_steps=3 format=3 uid="uid://cmh5jxspeuxaa"]
+
+[ext_resource type="PackedScene" uid="uid://b6mjjuuju0lkr" path="res://scenes/ui/components/display_form.tscn" id="1_6xl5v"]
+[ext_resource type="Script" uid="uid://ki01jrt2wrmh" path="res://data/ui/v_tab_spec.gd" id="1_waog5"]
+
+[resource]
+script = ExtResource("1_waog5")
+label = "Display"
+scene = ExtResource("1_6xl5v")
+metadata/_custom_type_script = "uid://ki01jrt2wrmh"
