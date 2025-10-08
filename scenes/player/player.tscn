@@ -93,19 +93,20 @@ faction = 0
 health = 50.0
 speed = 120.0
 
-[node name="Shadow" type="Sprite2D" parent="." index="1"]
-y_sort_enabled = true
-position = Vector2(11, 14)
-texture = ExtResource("3_0owmy")
-
-[node name="Muzzle" type="Node2D" parent="." index="2"]
+[node name="Muzzle" type="Node2D" parent="." index="1"]
 position = Vector2(27, 3)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="3"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_5gtgg")
 position = Vector2(10, 0)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
+
+[node name="Shadow" type="Sprite2D" parent="." index="3"]
+y_sort_enabled = true
+position = Vector2(11, -1)
+texture = ExtResource("3_0owmy")
+offset = Vector2(0, 15)
 
 [node name="CollisionShape2D" parent="." index="4"]
 position = Vector2(10, 4.5)

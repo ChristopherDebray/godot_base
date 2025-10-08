@@ -6,6 +6,8 @@ extends Control
 @export var sheet: Texture2D
 @export var cell_size: Vector2i = Vector2i(32, 32)
 
+const KEY_INDICATOR = preload("res://scenes/ui/components/key_indicator.tscn")
+
 var _cache: Dictionary = {}
 
 const ABILITY_INFO = preload("res://scenes/ui/components/ability_info.tscn")
@@ -28,11 +30,18 @@ func _physics_process(delta: float) -> void:
 			show()
 
 func _update_elements_display() -> void:
+	var element_indicator = VBoxContainer.new()
+	elements_container.add_child(element_indicator)
+	
+	var key_indicator = KEY_INDICATOR.instantiate()
+	key_indicator.action_name = 'x_1_action'
+	element_indicator.add_child(key_indicator)
+	
 	var bg := TextureRect.new()
 	bg.texture = preload("res://assets/ui/losange.png")
 	bg.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	elements_container.add_child(bg)
+	element_indicator.add_child(bg)
 
 	var icon := TextureRect.new()
 	icon.texture = AbilityManager.get_icon(SpellsManager.ELEMENTS.FIRE)

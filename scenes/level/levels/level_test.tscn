@@ -1,9 +1,7 @@
-[gd_scene load_steps=6 format=4 uid="uid://b7exrgfspotf3"]
+[gd_scene load_steps=4 format=4 uid="uid://b7exrgfspotf3"]
 
 [ext_resource type="PackedScene" uid="uid://bm3vsdux3ux7u" path="res://scenes/level/level_base.tscn" id="1_1btmw"]
 [ext_resource type="PackedScene" uid="uid://3r744noguafd" path="res://scenes/_trap/bear_trap.tscn" id="3_2heyh"]
-[ext_resource type="PackedScene" uid="uid://bmensnrge14wo" path="res://scenes/npc/ennemy/kamikaze/kamikaze.tscn" id="4_2uvmr"]
-[ext_resource type="PackedScene" uid="uid://cm5nim8ogpayf" path="res://scenes/npc/ennemy/skelleton/skelleton.tscn" id="6_uonu5"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_mbvtx"]
 vertices = PackedVector2Array(2969.17, 20.9766, 2982.81, 1158.96, 18.9609, 1153.02, 16.0312, 17.0234)
@@ -14,49 +12,25 @@ agent_radius = 15.0
 [node name="LevelTest" instance=ExtResource("1_1btmw")]
 
 [node name="walls" parent="YsortLayer" index="0"]
-tile_map_data = PackedByteArray("AAADAAEAAQACAAAAAAAEAAEAAQACAAAAAAAFAAEAAQACAAAAAAACAAEAAQARAAAAAAAGAAEAAQASAAAAAAAKAAQAAQASAAAAAAAIAAQAAQARAAAAAAAJAAQAAQACAAAAAAA=")
-
-[node name="wallsSm" parent="YsortLayer" index="1"]
-tile_map_data = PackedByteArray("AAANAAwAAQAGAAAAAAANAA0AAQAGAAAAAAANAAsAAQAEAAAAAAANAA4AAQACAAAAAAA=")
+tile_map_data = PackedByteArray("AAAEAAYAAQALAAAAAAAFAAYAAQACAAAAAAAGAAYAAQACAAAAAAAHAAYAAQACAAAAAAAIAAYAAQASAAAAAAAFAAIAAQACAAAAAAAGAAIAAQACAAAAAAAHAAIAAQACAAAAAAAIAAIAAQASAAAAAAAEAAIAAQABAAAAAAAOAAIAAQADAAAAAAAOAAMAAQAUAAAAAAAOAAUAAQATAAAAAAAEAAMAAQAUAAAAAAAEAAUAAQATAAAAAAAOAAYAAQAMAAAAAAAKAAYAAQARAAAAAAALAAYAAQACAAAAAAAMAAYAAQACAAAAAAANAAYAAQACAAAAAAAKAAIAAQARAAAAAAALAAIAAQACAAAAAAAMAAIAAQACAAAAAAANAAIAAQACAAAAAAA=")
 
 [node name="Player" parent="YsortLayer/Players" index="0"]
 position = Vector2(462, 222)
 
 [node name="BaseSelfActivatingTrap" parent="YsortLayer/Traps" index="0" instance=ExtResource("3_2heyh")]
-position = Vector2(515, 222)
+position = Vector2(755, 92)
 
-[node name="Skelleton" parent="YsortLayer/Npcs" index="0" instance=ExtResource("6_uonu5")]
-position = Vector2(436, 594)
+[node name="BaseSelfActivatingTrap2" parent="YsortLayer/Traps" index="1" instance=ExtResource("3_2heyh")]
+position = Vector2(294, 87)
 
-[node name="Skelleton2" parent="YsortLayer/Npcs" index="1" instance=ExtResource("6_uonu5")]
-position = Vector2(503, 568)
+[node name="BaseSelfActivatingTrap3" parent="YsortLayer/Traps" index="2" instance=ExtResource("3_2heyh")]
+position = Vector2(199, 485)
 
-[node name="Skelleton3" parent="YsortLayer/Npcs" index="2" instance=ExtResource("6_uonu5")]
-position = Vector2(532, 644)
+[node name="BaseSelfActivatingTrap4" parent="YsortLayer/Traps" index="3" instance=ExtResource("3_2heyh")]
+position = Vector2(1018, 257)
 
-[node name="Skelleton4" parent="YsortLayer/Npcs" index="3" instance=ExtResource("6_uonu5")]
-position = Vector2(459, 659)
-
-[node name="Skelleton5" parent="YsortLayer/Npcs" index="4" instance=ExtResource("6_uonu5")]
-position = Vector2(522, 679)
-
-[node name="Skelleton6" parent="YsortLayer/Npcs" index="5" instance=ExtResource("6_uonu5")]
-position = Vector2(490, 619)
-
-[node name="Skelleton7" parent="YsortLayer/Npcs" index="6" instance=ExtResource("6_uonu5")]
-position = Vector2(448, 547)
-
-[node name="Skelleton8" parent="YsortLayer/Npcs" index="7" instance=ExtResource("6_uonu5")]
-position = Vector2(401, 699)
-
-[node name="Skelleton9" parent="YsortLayer/Npcs" index="8" instance=ExtResource("6_uonu5")]
-position = Vector2(409, 637)
-
-[node name="Skelleton10" parent="YsortLayer/Npcs" index="9" instance=ExtResource("6_uonu5")]
-position = Vector2(375, 573)
-
-[node name="Kamikaze" parent="YsortLayer/Npcs" index="10" instance=ExtResource("4_2uvmr")]
-position = Vector2(97, 255)
+[node name="BaseSelfActivatingTrap5" parent="YsortLayer/Traps" index="4" instance=ExtResource("3_2heyh")]
+position = Vector2(757, 453)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." index="4"]
 visible = false
