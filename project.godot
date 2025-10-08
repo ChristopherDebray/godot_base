@@ -36,6 +36,7 @@ WaveManager="*res://autoloads/wave_manager.gd"
 AnimationManager="*res://autoloads/animation_manager.gd"
 FxManager="*res://autoloads/fx_manager.gd"
 EnvironmentManager="*res://autoloads/environment_manager.gd"
+InputSchemeManager="*res://autoloads/input_scheme_manager.gd"
 
 [display]
 
