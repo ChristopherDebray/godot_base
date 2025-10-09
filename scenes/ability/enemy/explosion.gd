@@ -1,6 +1,6 @@
 extends AoeInstantAbility
 
-const EXPLOSION = preload("res://assets/sounds/effects/explosion.mp3")
+const EXPLOSION = preload("res://assets/sounds/effects/explosion.ogg")
 
 func _ready():
 	super._ready()

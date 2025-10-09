@@ -1,6 +1,6 @@
 extends ProjectileAbility
 
-const FIREBALL_WHOOSH = preload("res://assets/sounds/effects/fireball_whoosh.mp3")
+const FIREBALL_WHOOSH = preload("res://assets/sounds/effects/fireball_whoosh.ogg")
 
 func _ready():
 	setup_on_ready()

@@ -1,6 +1,6 @@
 extends AoeInstantAbility
 
-const WIND_GUST = preload("res://assets/sounds/effects/wind_gust.mp3")
+const WIND_GUST = preload("res://assets/sounds/effects/wind_gust.ogg")
 
 func _ready() -> void:
 	animated_sprite_2d.play('default')

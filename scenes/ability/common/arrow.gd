@@ -1,6 +1,6 @@
 extends ProjectileAbility
 
-const ARROW_SWISH = preload("res://assets/sounds/effects/arrow-swish.mp3")
+const ARROW_SWISH = preload("res://assets/sounds/effects/arrow-swish.ogg")
 
 func _ready():
 	setup_on_ready()

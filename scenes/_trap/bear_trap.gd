@@ -1,6 +1,6 @@
 extends BaseSelfActivatingTrap
 
-const BEAR_TRAP = preload("res://assets/sounds/effects/bear_trap.mp3")
+const BEAR_TRAP = preload("res://assets/sounds/effects/bear_trap.ogg")
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	super._on_area_2d_body_entered(body)

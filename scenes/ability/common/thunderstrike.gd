@@ -3,7 +3,7 @@ extends AoeInstantAbility
 var _dir_of_travel: Vector2 = Vector2.ZERO
 
 const SPEED: float = 400.0
-const LIGHTNING_STRIKE = preload("res://assets/sounds/effects/lightning_strike.mp3")
+const LIGHTNING_STRIKE = preload("res://assets/sounds/effects/lightning_strike.ogg")
 
 func _ready() -> void:
 	super._ready()

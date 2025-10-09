@@ -1,6 +1,6 @@
 extends ProjectileAbility
 
-const SLASH = preload("res://assets/sounds/effects/slash.mp3")
+const SLASH = preload("res://assets/sounds/effects/slash.ogg")
 
 func _ready():
 	setup_on_ready()

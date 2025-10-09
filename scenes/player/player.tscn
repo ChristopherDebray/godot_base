@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://btp5wm141txgi" path="res://scenes/player/player.gd" id="1_1nli5"]
 [ext_resource type="PackedScene" uid="uid://b2odxanbtxty4" path="res://scenes/_damageable/damageable.tscn" id="1_75vfm"]
 [ext_resource type="Texture2D" uid="uid://dpnrd0bglhp4g" path="res://assets/characters/shadow.png" id="3_0owmy"]
-[ext_resource type="Texture2D" uid="uid://erkh2j4ujetw" path="res://assets/images/lights/2d_light.webp" id="3_72mr7"]
+[ext_resource type="Texture2D" uid="uid://erkh2j4ujetw" path="res://assets/lights/2d_light.webp" id="3_72mr7"]
 [ext_resource type="Texture2D" uid="uid://0rnesjayccpu" path="res://assets/characters/mage_cute.png" id="3_75vfm"]
 [ext_resource type="Shader" uid="uid://bmcagqwon2bx" path="res://shaders/blink.gdshader" id="4_qek5x"]
 [ext_resource type="PackedScene" uid="uid://cpt6fg5knswto" path="res://scenes/spell_book/spell_book.tscn" id="5_p47bc"]

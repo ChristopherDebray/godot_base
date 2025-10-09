@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b54xckovqucg6"
-path="res://.godot/imported/candle.png-cf0a358aefa4550e7a5ea7f59e28aa52.ctex"
+uid="uid://baotqadbxredg"
+path="res://.godot/imported/lightcone.png-1c83ab181bf7069cb1a6b99ee8bfb333.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/decorations/candle.png"
-dest_files=["res://.godot/imported/candle.png-cf0a358aefa4550e7a5ea7f59e28aa52.ctex"]
+source_file="res://assets/lights/lightcone.png"
+dest_files=["res://.godot/imported/lightcone.png-1c83ab181bf7069cb1a6b99ee8bfb333.ctex"]
 
 [params]
 

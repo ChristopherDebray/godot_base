@@ -1,6 +1,6 @@
 extends ProjectileAbility
 
-const ICE_FORMATION = preload("res://assets/sounds/effects/ice_formation.mp3")
+const ICE_FORMATION = preload("res://assets/sounds/effects/ice_formation.ogg")
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 

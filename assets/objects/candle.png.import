@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvx2i200wwho3"
-path="res://.godot/imported/floor.png-4626f2de78139a9bcc1fd3d80252126c.ctex"
+uid="uid://b54xckovqucg6"
+path="res://.godot/imported/candle.png-2933ae21e37f1d87c7534fe4bf4f952c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprite_sheets/floor.png"
-dest_files=["res://.godot/imported/floor.png-4626f2de78139a9bcc1fd3d80252126c.ctex"]
+source_file="res://assets/objects/candle.png"
+dest_files=["res://.godot/imported/candle.png-2933ae21e37f1d87c7534fe4bf4f952c.ctex"]
 
 [params]
 

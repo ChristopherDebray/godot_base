@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://q4tq0jlqagxq" path="res://assets/tiles/cute_wall_sm.png" id="10_r5tr5"]
 [ext_resource type="PackedScene" uid="uid://ccy1pcv744h38" path="res://scenes/_spawner/wave_spawner.tscn" id="15_g531s"]
 [ext_resource type="PackedScene" uid="uid://scr8j2p856l" path="res://scenes/world/weather_controller_component.tscn" id="16_7cdbm"]
-[ext_resource type="PackedScene" uid="uid://ld78nlkqrkks" path="res://data/spawner/spawn_telegraph/spawn_telegraph.tscn" id="16_pq2ld"]
+[ext_resource type="PackedScene" uid="uid://ld78nlkqrkks" path="res://scenes/_spawner/spawn_telegraph/spawn_telegraph.tscn" id="16_pq2ld"]
 [ext_resource type="Script" uid="uid://dqp50xxn0jycr" path="res://data/ai/weight_rule.gd" id="17_aagx2"]
 [ext_resource type="Resource" uid="uid://c72sp3v8ul5vb" path="res://data/world/weather/plain_weather_loadout.tres" id="17_pq2ld"]
 [ext_resource type="Script" uid="uid://b6x8kdm1owpdm" path="res://data/world/weather_biome_rule.gd" id="18_pq2ld"]
