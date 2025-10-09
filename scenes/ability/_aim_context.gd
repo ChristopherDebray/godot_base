@@ -12,7 +12,7 @@ static func from_mouse(player: Player, instance: BaseAbility) -> AimContext:
 	if player != null:
 		ctx.sender_pos = player.global_position
 		ctx.muzzle_pos = player.muzzle.global_position
-		ctx.desired_point = player.get_global_mouse_position() # monde
+		ctx.desired_point = player.get_aim_world_position()
 		ctx.clamp_point = CastService.clamp_to_range(
 			ctx.sender_pos,
 			ctx.desired_point,

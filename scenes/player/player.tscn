@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://fvur3m50uam0"]
+[gd_scene load_steps=22 format=3 uid="uid://fvur3m50uam0"]
 
 [ext_resource type="Script" uid="uid://btp5wm141txgi" path="res://scenes/player/player.gd" id="1_1nli5"]
 [ext_resource type="PackedScene" uid="uid://b2odxanbtxty4" path="res://scenes/_damageable/damageable.tscn" id="1_75vfm"]
@@ -8,6 +8,7 @@
 [ext_resource type="Shader" uid="uid://bmcagqwon2bx" path="res://shaders/blink.gdshader" id="4_qek5x"]
 [ext_resource type="PackedScene" uid="uid://cpt6fg5knswto" path="res://scenes/spell_book/spell_book.tscn" id="5_p47bc"]
 [ext_resource type="Texture2D" uid="uid://66vhb0frjxfp" path="res://assets/ui/losange.png" id="9_5gtgg"]
+[ext_resource type="PackedScene" uid="uid://diovyp4waxmdp" path="res://scenes/player/components/aim/aim_component.tscn" id="9_h17s1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5gtgg"]
 shader = ExtResource("4_qek5x")
@@ -170,3 +171,5 @@ gravity = Vector2(0, 400)
 scale_amount_min = 3.0
 scale_amount_max = 6.0
 color_ramp = SubResource("Gradient_qek5x")
+
+[node name="AimComponent" parent="." index="16" instance=ExtResource("9_h17s1")]

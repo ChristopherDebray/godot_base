@@ -16,22 +16,26 @@ class_name Player
 @onready var camera_player: Camera2D = $CameraPlayer
 @onready var movement_particles: CPUParticles2D = $MovementParticles
 
+@onready var aim_component: Node2D = $AimComponent
+
 var run_anim_name := "default" 
 var idle_frame_index := 1
-var active_elements: Array[int] = []
+var active_elements: Array[SpellsManager.ELEMENTS] = []
 var input_to_element = {
 	"x_1_action": SpellsManager.ELEMENTS.WATER,
 	"y_2_action": SpellsManager.ELEMENTS.FIRE,
 	"b_3_action": SpellsManager.ELEMENTS.WIND
 }
-
 var muzzle_initial_position: float = 27
+var facing_direction: Vector2 = Vector2.RIGHT
+
 const MUZZLE_INVERTION_POS: float = -10
 
 func _ready() -> void:
 	await get_tree().process_frame
 	GameManager.set_player_health(health)
 	GameManager.player = self
+	spell_book.setup(self)
 
 func _physics_process(_delta: float) -> void:
 	get_movement_input()
@@ -49,11 +53,13 @@ func _update_facing() -> void:
 		muzzle.position.x = MUZZLE_INVERTION_POS
 		movement_particles.position.x = muzzle_initial_position
 		movement_particles.rotation = -90
+		facing_direction = Vector2.LEFT
 	elif aim_dir.x > 0.05:
 		animated_sprite_2d.flip_h = false
 		muzzle.position.x = muzzle_initial_position
 		movement_particles.position.x = MUZZLE_INVERTION_POS
 		movement_particles.rotation = 90
+		facing_direction = Vector2.RIGHT
 		
 
 func _update_anim() -> void:
@@ -124,13 +130,7 @@ func _update_elements_display() -> void:
 		timer_second_element.stop()
 
 func get_aim_direction() -> Vector2:
-	if Input.get_connected_joypads().size():
-		var stick_direction: Vector2 = Vector2.RIGHT
-		stick_direction.x = Input.get_action_strength("aim_right") - Input.get_action_strength("aim_left")
-		stick_direction.y = Input.get_action_strength("aim_down") - Input.get_action_strength("aim_up")
-		return Vector2.ZERO.direction_to(stick_direction)
-	
-	return global_position.direction_to(get_global_mouse_position())
+	return global_position.direction_to(get_aim_world_position())
 
 func use_spell() -> void:
 	if active_elements.size() < 2:
@@ -140,6 +140,9 @@ func use_spell() -> void:
 	spell_book.use_spell(active_elements, get_aim_direction())
 	_remove_element(1)
 	_remove_element(0)
+
+func get_aim_world_position() -> Vector2:
+	return aim_component.get_aim_world_position()
 
 func _on_timer_first_element_timeout() -> void:
 	if active_elements.size() > 0:

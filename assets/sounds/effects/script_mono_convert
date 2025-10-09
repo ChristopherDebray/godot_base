@@ -1,0 +1,2 @@
+ffmpeg -v error -y -i "bear_trap.mp3" -c:a libvorbis -qscale:a 4 "bear_trap.ogg" && echo "OK direct"
+

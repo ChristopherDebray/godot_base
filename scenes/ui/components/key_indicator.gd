@@ -28,7 +28,6 @@ const LABEL_OFFSET_Y := {
 
 const FRAME_SIZE := 64
 
-# Cache des AtlasTexture par scheme/state
 var _frames: Dictionary = {}
 var _state = KEY_STATE.UP
 
@@ -42,7 +41,7 @@ func _ready() -> void:
 		set_process_unhandled_input(true)
 
 func _build_frames_cache() -> void:
-	# Build once; réutilisé par toutes les instances de ce Node
+	# Build once used by all instances of this node
 	_frames.clear()
 	_frames[InputSchemeManager.SCHEME.KEYBOARD] = {
 		KEY_STATE.UP: _atlas(KBD, 0),
@@ -52,7 +51,6 @@ func _build_frames_cache() -> void:
 		KEY_STATE.UP: _atlas(XBD, 0),
 		KEY_STATE.DOWN: _atlas(XBD, 1)
 	}
-	# Optionnel: PLAYSTATION, SWITCH si tu as des sheets
 
 func _atlas(sheet: Texture2D, frame_index: int) -> AtlasTexture:
 	var at := AtlasTexture.new()
@@ -66,13 +64,11 @@ func _on_scheme_changed(_s: int) -> void:
 func _refresh_visual() -> void:
 	var scheme := InputSchemeManager.current_scheme
 
-	# 1) Texture de fond selon scheme + état
 	if _frames.has(scheme):
 		texture = _frames[scheme][_state]
 	else:
 		texture = _frames[InputSchemeManager.SCHEME.KEYBOARD][_state]
 
-	# 2) Contenu du label et couleur
 	if action_name == "":
 		label.text = ""
 		return
@@ -85,7 +81,6 @@ func _refresh_visual() -> void:
 		label.text = _gamepad_label_for_button(btn)
 		self.self_modulate = _color_for_gamepad_button(btn)
 
-	# 3) Offset visuel
 	label.position.y = LABEL_OFFSET_Y[_state]
 
 func _keyboard_label_for_action() -> String:
@@ -114,7 +109,6 @@ func _color_for_gamepad_button(b: int) -> Color:
 		return XBOX_COLORS[b]
 	return Color.WHITE
 
-# Anime l’état sur vraie pression / relâchement de l’action
 func _unhandled_input(event: InputEvent) -> void:
 	if action_name == "" or is_auto_animated:
 		return

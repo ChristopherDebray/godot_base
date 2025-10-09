@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://diovyp4waxmdp"]
+
+[ext_resource type="Script" uid="uid://jc7e5wcfmvbv" path="res://scenes/player/components/aim/aim.gd" id="1_o72po"]
+[ext_resource type="Texture2D" uid="uid://ddw75gqj777c3" path="res://assets/ui/cross.png" id="2_dvja5"]
+
+[node name="AimComponent" type="Node2D" groups=["target_marker"]]
+visible = false
+script = ExtResource("1_o72po")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_dvja5")

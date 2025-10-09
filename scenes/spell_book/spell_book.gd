@@ -3,12 +3,13 @@ extends Node2D
 
 var spells: Dictionary = {}
 var _cooldowns := {}
+var _player: Player
 
 func _ready() -> void:
 	register_abilities()
 
-func _physics_process(_delta: float) -> void:
-	pass
+func setup(player: Player) -> void:
+	_player = player
 
 func get_ability_from_elements(elements: Array[SpellsManager.ELEMENTS]) -> AbilityData:
 	if elements.is_empty():
