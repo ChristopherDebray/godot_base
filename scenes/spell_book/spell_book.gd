@@ -15,11 +15,11 @@ func get_ability_from_elements(elements: Array[SpellsManager.ELEMENTS]) -> Abili
 		return null
 
 	var combo_key = _combo_key(elements)
-	var spell_name = SpellsManager.SPELLS_ELEMENTS.get(combo_key)
+	var spell_name = SpellsManager.current_profession_loadout.elements.get(combo_key)
 
 	if not spell_name:
 		return null
-	var spell = SpellsManager.SPELLS.get(spell_name)
+	var spell = SpellsManager.current_profession_loadout.spells[spell_name]
 	
 	return spell as AbilityData
 
@@ -58,7 +58,7 @@ func _register_cooldown(abilityName: String, cooldown: float) -> void:
 
 func get_remaining_cooldown(combo: Array[SpellsManager.ELEMENTS]) -> float:
 	var key = _combo_key(combo)
-	var spellKey = SpellsManager.SPELLS_ELEMENTS[key]
+	var spellKey = SpellsManager.current_profession_loadout.elements[key]
 	
 	if not _cooldowns.has(spellKey):
 		return 0.0
@@ -70,6 +70,5 @@ func _combo_key(arr: Array[SpellsManager.ELEMENTS]) -> String:
 	return ",".join(PackedStringArray(sorted.map(func(x): return str(x))))
 
 func register_abilities():
-	for key in SpellsManager.SPELLS.keys():
-		spells[key] = SpellsManager.SPELLS[key]
-		var data = SpellsManager.SPELLS[key]
+	for key in SpellsManager.current_profession_loadout.spells.keys():
+		spells[key] = SpellsManager.current_profession_loadout.spells[key]

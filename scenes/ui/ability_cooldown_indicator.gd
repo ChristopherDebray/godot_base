@@ -15,7 +15,7 @@ func _ready():
 	update_ui(0)
 
 func _process(_delta):
-	var spell = SpellsManager.SPELLS.get(spell_name)
+	var spell = SpellsManager.current_profession_loadout.spells.get(spell_name)
 	if spell == null:
 		return
 

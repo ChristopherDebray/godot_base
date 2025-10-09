@@ -23,12 +23,12 @@ buses/default_bus_layout="res://themes/default_bus_layout.tres"
 
 [autoload]
 
+SpellsManager="*res://autoloads/spells_manager.gd"
 GameManager="*res://autoloads/game_manager.gd"
 DataManager="*res://autoloads/data_manager.gd"
 SignalManager="*res://autoloads/signal_manager.gd"
 SoundManager="*res://autoloads/sound_manager.gd"
 SpellCooldownManager="*res://autoloads/spell_cooldown_manager.gd"
-SpellsManager="*res://autoloads/spells_manager.gd"
 EffectsManager="*res://autoloads/effects_manager.gd"
 AbilityManager="*res://autoloads/ability_manager.gd"
 TargetManager="*res://autoloads/target_manager.gd"

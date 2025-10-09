@@ -9,7 +9,7 @@ func _combo_key(arr: Array[SpellsManager.ELEMENTS]) -> String:
 
 func can_cast(key: Array) -> bool:
 	var combo_key = _combo_key(key)
-	var spellKey = SpellsManager.SPELLS_ELEMENTS.get(combo_key)
+	var spellKey = SpellsManager.current_profession_loadout.elements.get(combo_key)
 	if not spellKey:
 		return false
 	
