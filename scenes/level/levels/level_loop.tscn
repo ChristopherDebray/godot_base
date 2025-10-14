@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://rq336kna7o7n"]
+
+[ext_resource type="PackedScene" uid="uid://bm3vsdux3ux7u" path="res://scenes/level/level_base.tscn" id="1_csjwo"]
+[ext_resource type="Resource" uid="uid://oumd63n6lbek" path="res://data/spawner/spawn_loadout/field/field_easy.tres" id="2_arkjd"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_arkjd"]
+vertices = PackedVector2Array(1139.03, 17.9375, 1140.97, 633, 13, 633, 13, 12.0469)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(3, 2, 1149, 8, 1151, 643, 3, 643)])
+
+[node name="LevelLoop" instance=ExtResource("1_csjwo")]
+
+[node name="SpawnPoints" type="Node2D" parent="." index="3"]
+
+[node name="Marker2D" type="Marker2D" parent="SpawnPoints" index="0"]
+position = Vector2(212, 182)
+
+[node name="Marker2D2" type="Marker2D" parent="SpawnPoints" index="1"]
+position = Vector2(792, 109)
+
+[node name="Marker2D3" type="Marker2D" parent="SpawnPoints" index="2"]
+position = Vector2(832, 361)
+
+[node name="Marker2D4" type="Marker2D" parent="SpawnPoints" index="3"]
+position = Vector2(217, 420)
+
+[node name="Marker2D5" type="Marker2D" parent="SpawnPoints" index="4"]
+position = Vector2(568, 385)
+
+[node name="Marker2D6" type="Marker2D" parent="SpawnPoints" index="5"]
+position = Vector2(488, 137)
+
+[node name="Player" parent="YsortLayer/Players" index="0"]
+position = Vector2(512, 210)
+
+[node name="WaveSpawner" parent="." index="8" node_paths=PackedStringArray("player")]
+spawn_loadout = ExtResource("2_arkjd")
+spawn_points = Array[NodePath]([NodePath("../SpawnPoints/Marker2D"), NodePath("../SpawnPoints/Marker2D2"), NodePath("../SpawnPoints/Marker2D3"), NodePath("../SpawnPoints/Marker2D4"), NodePath("../SpawnPoints/Marker2D5"), NodePath("../SpawnPoints/Marker2D6")])
+player = NodePath("../YsortLayer/Players/Player")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." index="10"]
+navigation_polygon = SubResource("NavigationPolygon_arkjd")

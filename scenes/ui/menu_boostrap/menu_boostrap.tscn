@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1dkh8dyrgr0g"]
+
+[ext_resource type="Script" uid="uid://b66xyr3m5v2u5" path="res://scenes/ui/menu_boostrap/menu_boostrap.gd" id="1_agsve"]
+
+[node name="MenuBoostrap" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_agsve")

@@ -6,10 +6,10 @@
 
 [node name="SoundForm" type="VBoxContainer"]
 process_mode = 3
-custom_minimum_size = Vector2(250, 0)
+custom_minimum_size = Vector2(390, 0)
 offset_left = 140.0
 offset_top = 30.0
-offset_right = 732.0
+offset_right = 530.0
 offset_bottom = 287.0
 theme = ExtResource("1_pgwnq")
 theme_override_constants/separation = 40

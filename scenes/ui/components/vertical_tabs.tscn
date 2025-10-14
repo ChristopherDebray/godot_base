@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://bdprvl4rjxovj"]
+[gd_scene load_steps=3 format=3 uid="uid://bdprvl4rjxovj"]
 
 [ext_resource type="Script" uid="uid://0ev1kfk1wqjj" path="res://scenes/ui/components/vertical_tabs.gd" id="1_hnn8x"]
+
+[sub_resource type="Theme" id="Theme_smcsi"]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_disabled_color = Color(1, 1, 1, 1)
+Button/colors/font_focus_color = Color(0.827451, 0.572549, 0.180392, 1)
+Button/colors/font_hover_color = Color(0.827451, 0.572549, 0.180392, 1)
+Button/colors/font_hover_pressed_color = Color(0.827451, 0.572549, 0.180392, 1)
+Button/colors/font_pressed_color = Color(0.827451, 0.572549, 0.180392, 1)
 
 [node name="VerticalTabs" type="HBoxContainer"]
 anchors_preset = 15
@@ -8,5 +16,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_smcsi")
 theme_override_constants/separation = 200
 script = ExtResource("1_hnn8x")

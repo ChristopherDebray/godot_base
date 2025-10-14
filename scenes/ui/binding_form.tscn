@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvkpwlsg548o"]
+
+[ext_resource type="Script" uid="uid://c4rhjn8q8rowu" path="res://scenes/ui/binding_form.gd" id="1_743ut"]
+
+[node name="BindingForm" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_743ut")
+
+[node name="VScrollBar" type="VScrollBar" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="ResetDefaultsButton" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Reset"
+
+[node name="RowsContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

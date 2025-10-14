@@ -3,7 +3,7 @@ extends NinePatchRect
 @onready var label: Label = $Label
 @onready var timer: Timer = $Timer
 
-@export var action_name: String = "x_1_action"
+@export var action_name: String = "element_1"
 @export var is_auto_animated: bool = true
 
 enum KEY_STATE {

@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://dumqbwnk31t22"]
+
+[ext_resource type="Script" uid="uid://y483tae8vlrn" path="res://scenes/ui/components/rebind_row.gd" id="1_qm8uu"]
+
+[node name="RebindRow" type="HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qm8uu")
+
+[node name="ActionLabel" type="Label" parent="."]
+layout_mode = 2
+
+[node name="BindingLabel" type="Label" parent="."]
+layout_mode = 2
+
+[node name="RebindButton" type="Button" parent="."]
+layout_mode = 2
+text = "Rebind"
+
+[node name="ClearButton" type="Button" parent="."]
+layout_mode = 2
+text = "Clear"
+
+[connection signal="pressed" from="RebindButton" to="." method="_on_rebind_button_pressed"]

@@ -90,5 +90,8 @@ health = 15.0
 position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_qur4j")
 
+[node name="Shadow" parent="SpriteContainer" index="0"]
+position = Vector2(0, 12)
+
 [node name="AnimatedSprite2D" parent="SpriteContainer" index="1"]
 sprite_frames = SubResource("SpriteFrames_tki78")

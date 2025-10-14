@@ -1,16 +1,18 @@
 extends Control
 
+signal on_menu_toggle(state: bool)
+
 @onready var ability_list: VBoxContainer = $MarginContainer/TextureRect/MarginContainer/TabContainer/Spells/MarginContainer/HBoxContainer/VScrollBar/AbilityList
 @onready var elements_container: HBoxContainer = $MarginContainer/TextureRect/MarginContainer/TabContainer/Spells/MarginContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/ElementsContainer
+@onready var menu_boostrap: Control = $MenuBoostrap
 
 @export var sheet: Texture2D
 @export var cell_size: Vector2i = Vector2i(32, 32)
 
 const KEY_INDICATOR = preload("res://scenes/ui/components/key_indicator.tscn")
+const ABILITY_INFO = preload("res://scenes/ui/components/ability_info.tscn")
 
 var _cache: Dictionary = {}
-
-const ABILITY_INFO = preload("res://scenes/ui/components/ability_info.tscn")
 
 func _ready() -> void:
 	var ability_datas = SpellsManager.current_profession_loadout.spells.values()
@@ -26,26 +28,20 @@ func _physics_process(delta: float) -> void:
 		get_tree().paused = !is_paused
 		if is_paused:
 			hide()
+			on_menu_toggle.emit(false)
+			MenuManager.pop()
 		else:
 			show()
+			menu_boostrap._on_open_menu()
+			on_menu_toggle.emit(true)
+			MenuManager.push(self)
 
 func _update_elements_display() -> void:
 	var element_indicator = VBoxContainer.new()
 	elements_container.add_child(element_indicator)
+	element_indicator.alignment = element_indicator.ALIGNMENT_CENTER
 	
 	var key_indicator = KEY_INDICATOR.instantiate()
-	key_indicator.action_name = 'x_1_action'
+	key_indicator.action_name = 'element_1'
 	element_indicator.add_child(key_indicator)
-	
-	var bg := TextureRect.new()
-	bg.texture = preload("res://assets/ui/losange.png")
-	bg.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	element_indicator.add_child(bg)
-
-	var icon := TextureRect.new()
-	icon.texture = AbilityManager.get_icon(SpellsManager.ELEMENTS.FIRE)
-	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	icon.set_anchors_preset(Control.PRESET_CENTER)
-	icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	bg.add_child(icon)
+	element_indicator.add_child(AbilityManager._get_element_icon_indicator(SpellsManager.ELEMENTS.FIRE))

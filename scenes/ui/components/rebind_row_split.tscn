@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://do42ljna1re3i"]
+
+[ext_resource type="Script" uid="uid://dmnh46ubi1s4p" path="res://scenes/ui/components/rebind_row_split.gd" id="1_wss1j"]
+
+[node name="RebindRowSplit" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wss1j")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="KeyboardContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GamepadContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

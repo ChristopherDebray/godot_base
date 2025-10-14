@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://uk7n8q5lt0l1"]
+[gd_scene load_steps=14 format=3 uid="uid://uk7n8q5lt0l1"]
 
 [ext_resource type="Script" uid="uid://b8flwhrvvk72w" path="res://scenes/ui/pause_ui.gd" id="1_xt3ok"]
 [ext_resource type="Texture2D" uid="uid://b4rvoo21nr8kj" path="res://assets/sprite_sheets/elements_icons.png" id="2_ghgjp"]
@@ -10,7 +10,9 @@
 [ext_resource type="Script" uid="uid://ki01jrt2wrmh" path="res://data/ui/v_tab_spec.gd" id="8_nw1ig"]
 [ext_resource type="Resource" uid="uid://b1nn1k08g2xsb" path="res://data/ui/sound_options.tres" id="9_ibklw"]
 [ext_resource type="Texture2D" uid="uid://dai8hqbfguyf4" path="res://assets/characters/CUTE_BIG_mage.png" id="10_1wi1b"]
+[ext_resource type="Theme" uid="uid://cpsjjhw8rasnw" path="res://themes/button/vertical_tabs.tres" id="10_2o4wk"]
 [ext_resource type="Theme" uid="uid://0sn2vinpcent" path="res://themes/pannel/base_card.tres" id="10_xo6fl"]
+[ext_resource type="PackedScene" uid="uid://b1dkh8dyrgr0g" path="res://scenes/ui/menu_boostrap/menu_boostrap.tscn" id="12_nv6fo"]
 
 [node name="PauseUi" type="Control"]
 process_mode = 3
@@ -62,7 +64,7 @@ layout_mode = 2
 theme = ExtResource("5_mbdly")
 theme_override_constants/outline_size = 0
 tab_alignment = 1
-current_tab = 1
+current_tab = 2
 
 [node name="Options" type="TabBar" parent="MarginContainer/TextureRect/MarginContainer/TabContainer"]
 visible = false
@@ -93,8 +95,10 @@ anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
 tabs = Array[ExtResource("8_nw1ig")]([ExtResource("9_ibklw"), ExtResource("8_ibklw")])
+_tab_labels_theme = ExtResource("10_2o4wk")
 
 [node name="Spells" type="TabBar" parent="MarginContainer/TextureRect/MarginContainer/TabContainer"]
+visible = false
 layout_mode = 2
 tab_alignment = 1
 metadata/_tab_index = 1
@@ -176,6 +180,7 @@ text = "J'aime bien manger des chars"
 [node name="VScrollBar" type="ScrollContainer" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Spells/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(450, 0)
 layout_mode = 2
+focus_mode = 2
 
 [node name="AbilityList" type="VBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/TabContainer/Spells/MarginContainer/HBoxContainer/VScrollBar"]
 custom_minimum_size = Vector2(420, 0)
@@ -183,8 +188,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 160
 
-[node name="Save" type="TabBar" parent="MarginContainer/TextureRect/MarginContainer/TabContainer"]
-visible = false
+[node name="Controls" type="TabBar" parent="MarginContainer/TextureRect/MarginContainer/TabContainer"]
 layout_mode = 2
 tab_alignment = 1
 metadata/_tab_index = 2
+
+[node name="MenuBoostrap" parent="." instance=ExtResource("12_nv6fo")]
+initial_focus = NodePath("../MarginContainer/TextureRect/MarginContainer/TabContainer/Options")

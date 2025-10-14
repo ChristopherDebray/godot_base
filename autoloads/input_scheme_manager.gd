@@ -2,9 +2,9 @@ extends Node
 
 enum SCHEME { KEYBOARD, XBOX, PLAYSTATION }
 const INPUT_ACTIONS = [
-	"x_1_action",
-	"y_2_action",
-	"b_3_action",
+	"element_1",
+	"element_2",
+	"element_3",
 ]
 signal scheme_changed(scheme: SCHEME)
 

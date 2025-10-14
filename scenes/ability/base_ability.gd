@@ -17,6 +17,11 @@ class_name BaseAbility
 @export var windup_time: float = 0
 @export var duration: float = 2.0
 @export var tags: Array[AbilityData.ABILITY_TAG] = []
+@export var base_size: float = 1.0
+@export var base_projectile_count: int = 1
+@export var base_piercing: int = 0
+@export var base_chain_count: int = 0
+@export var base_damage: float = 10.0
 
 # Canalisation (optionnal)
 @export var is_channeled: bool = false
@@ -148,6 +153,15 @@ func _start_impact_phase() -> void:
 		lifetime_timer.start(duration)
 	else:
 		on_ability_timeout()
+
+func apply_modifiers(stats: ModifierStats) -> Dictionary:
+	return {
+		"damage": stats.apply_to_damage(base_damage),
+		"size": stats.apply_to_size(base_size),
+		"projectile_count": base_projectile_count + stats.get_bonus_projectiles(),
+		"piercing": base_piercing + stats.get_bonus_piercing(),
+		"chain_count": base_chain_count + stats.get_bonus_chains(),
+	}
 
 ## @abstract
 func on_hit():

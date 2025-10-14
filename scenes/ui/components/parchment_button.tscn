@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dg6qwtuqr76dv"]
+[gd_scene load_steps=4 format=3 uid="uid://dg6qwtuqr76dv"]
 
 [ext_resource type="Texture2D" uid="uid://ba7vr4yqwe078" path="res://assets/ui/parchment_ui.png" id="1_68wp7"]
+[ext_resource type="Texture2D" uid="uid://okdbbfki5y4y" path="res://assets/ui/parchment_ui2.png" id="2_1mvr7"]
 [ext_resource type="Script" uid="uid://wtv7jni57uby" path="res://scenes/ui/components/parchment_button.gd" id="2_e2mal"]
 
 [node name="ParchmentButton" type="TextureButton"]
@@ -8,6 +9,9 @@ custom_minimum_size = Vector2(367, 173)
 offset_right = 367.0
 offset_bottom = 173.0
 texture_normal = ExtResource("1_68wp7")
+texture_pressed = ExtResource("2_1mvr7")
+texture_hover = ExtResource("2_1mvr7")
+texture_focused = ExtResource("2_1mvr7")
 stretch_mode = 0
 script = ExtResource("2_e2mal")
 

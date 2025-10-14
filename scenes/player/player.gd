@@ -22,9 +22,9 @@ var run_anim_name := "default"
 var idle_frame_index := 1
 var active_elements: Array[SpellsManager.ELEMENTS] = []
 var input_to_element = {
-	"x_1_action": SpellsManager.ELEMENTS.WATER,
-	"y_2_action": SpellsManager.ELEMENTS.FIRE,
-	"b_3_action": SpellsManager.ELEMENTS.WIND
+	"element_1": SpellsManager.ELEMENTS.WATER,
+	"element_2": SpellsManager.ELEMENTS.FIRE,
+	"element_3": SpellsManager.ELEMENTS.WIND
 }
 var muzzle_initial_position: float = 27
 var facing_direction: Vector2 = Vector2.RIGHT

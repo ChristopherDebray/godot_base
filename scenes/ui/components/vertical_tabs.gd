@@ -1,12 +1,12 @@
 extends HBoxContainer
 
 @export var tabs: Array[VTabSpec] = []
+@export var _tab_labels_theme: Theme = null
+@export var _content_theme: Theme = null
 
 var _tab_buttons_box: VBoxContainer
 var _content_panel: PanelContainer
 var _content_holder: Node                # pure Node holder (works for Control or Node2D)
-var _tab_labels_theme: Theme = null
-var _content_theme: Theme = null
 
 var _current_index: int = -1
 var _instanced_nodes: Array[Node] = []
