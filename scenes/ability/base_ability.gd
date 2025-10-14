@@ -43,6 +43,47 @@ var _pending_masks: Array
 var _origin: Vector2 = Vector2.ZERO
 var _max_range_sq: float = 0.0
 
+# Stats finales après modifiers
+var final_damage: float
+var final_size: float
+var final_projectile_count: int
+var final_piercing: int
+var final_chain_count: int
+
+# Piercing/Chain tracking
+var _piercing_hits_left: int = 0
+var _chain_bounces_left: int = 0
+var _hit_targets: Array[Node] = []
+
+func init(data: AbilityData, ctx: AimContext) -> void:
+	# Appliquer les modifiers si le sender a un RelicInventory
+	if sender and sender.has_node("RelicInventory"):
+		var inventory: RelicInventory = sender.get_node("RelicInventory")
+		var weather = GameManager.weather_system.current_weather if GameManager.weather_system else ""
+		var stats = inventory.get_modifiers_for_ability(data, weather)
+		_apply_modifier_stats(stats)
+	else:
+		# Pas de reliques = utiliser les valeurs de base
+		final_damage = base_damage
+		final_size = base_size
+		final_projectile_count = base_projectile_count
+		final_piercing = base_piercing
+		final_chain_count = base_chain_count
+	
+	# Initialiser les compteurs
+	_piercing_hits_left = final_piercing
+	_chain_bounces_left = final_chain_count
+	
+	# Appliquer la taille
+	scale = Vector2.ONE * final_size
+
+func _apply_modifier_stats(stats: ModifierStats) -> void:
+	final_damage = stats.apply_to_damage(base_damage)
+	final_size = stats.apply_to_size(base_size)
+	final_projectile_count = base_projectile_count + stats.get_bonus_projectiles()
+	final_piercing = base_piercing + stats.get_bonus_piercing()
+	final_chain_count = base_chain_count + stats.get_bonus_chains()
+
 func configure_masks(masks: Array) -> void:
 	_pending_masks = masks
 
@@ -62,8 +103,11 @@ func _on_hitbox_body_entered(body):
 		on_ability_hit(body)
 
 func on_ability_hit(body):
+	if body in _hit_targets:
+		return
+	
 	if body is Damageable:
-		apply_damage_and_effect(body, damage)
+		apply_damage_and_effect(body, final_damage)
 
 		# Notify enemies in a generic way (no player ref needed)
 		if body is BaseNpc:
@@ -76,6 +120,19 @@ func on_ability_hit(body):
 				instigator = self
 			enemy.targeting.on_alert_from(instigator)
 
+	if _piercing_hits_left > 0:
+		_piercing_hits_left -= 1
+		on_pierce_hit(body)
+		return
+	
+	# No more pierce = check chain
+	if _chain_bounces_left > 0:
+		_try_chain_to_next_target(body)
+	else:
+		# Nothing = destroy
+		_has_hit = true
+		on_last_hit(body)
+	
 	if (not tags.has(AbilityData.ABILITY_TAG.PIERCE)):
 		_has_hit = true
 		on_hit()
@@ -85,6 +142,72 @@ func on_ability_hit(body):
 		_has_hit = true
 		on_hit()
 		return
+
+## @abstract ovveride for visuals or other effects
+func on_pierce_hit(body: Node) -> void:
+	pass
+
+## Called on last hit (no more piercing / chain)
+func on_last_hit(body: Node) -> void:
+	on_hit()
+
+func _try_chain_to_next_target(from_body: Node) -> void:
+	"""Trouve la prochaine cible pour chain"""
+	var nearest_target: Node = null
+	var nearest_dist := INF
+	var search_radius := 300.0  # À ajuster
+	
+	# Chercher dans les bodies à portée
+	var space_state = get_world_2d().direct_space_state
+	var query = PhysicsShapeQueryParameters2D.new()
+	var circle = CircleShape2D.new()
+	circle.radius = search_radius
+	query.shape = circle
+	query.transform = Transform2D(0, from_body.global_position)
+	query.collision_mask = hitbox.collision_mask
+	
+	var results = space_state.intersect_shape(query)
+	
+	for result in results:
+		var target = result.collider
+		if target in _hit_targets or target == from_body:
+			continue
+		if not (target is Damageable):
+			continue
+		
+		var dist = global_position.distance_to(target.global_position)
+		if dist < nearest_dist:
+			nearest_dist = dist
+			nearest_target = target
+	
+	if nearest_target:
+		_chain_bounces_left -= 1
+		_chain_to_target(nearest_target)
+	else:
+		# Pas de cible = fin
+		on_last_hit(from_body)
+
+func _chain_to_target(target: Node) -> void:
+	"""Redirige le projectile vers la nouvelle cible"""
+	# Pour un projectile : changer la direction
+	if self is ProjectileAbility:
+		var dir = (target.global_position - global_position).normalized()
+		_dir_of_travel = dir * _dir_of_travel.length()
+		#global_position += SPEED * delta * _dir_of_travel
+		# Effet visuel de chain
+		_spawn_chain_effect(target.global_position)
+	
+	elif self is AoeInstantAbility:
+		var new_ability = duplicate()
+		new_ability.global_position = target.global_position
+		new_ability._chain_bounces_left = _chain_bounces_left
+		new_ability._hit_targets = _hit_targets.duplicate()
+		get_parent().add_child(new_ability)
+		queue_free()
+
+## @abstract visual effect of chain, implement with Line2D + particules
+func _spawn_chain_effect(target_pos: Vector2) -> void:
+	pass
 
 func _on_area_of_effect_body_entered(body: Node2D) -> void:
 	on_aoe_hit()

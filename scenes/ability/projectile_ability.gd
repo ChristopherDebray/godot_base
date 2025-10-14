@@ -13,8 +13,6 @@ func setup_on_ready() -> void:
 	rotation = _dir_of_travel.angle()
 
 func _physics_process(delta: float) -> void:
-	if _has_hit:
-		return
 	global_position += SPEED * delta * _dir_of_travel
 	if has_exceeded_range(global_position):
 		on_ability_timeout()

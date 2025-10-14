@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://blec2pyy0f08v" path="res://scenes/ability/base_ability.tscn" id="1_7iq0p"]
 [ext_resource type="Script" uid="uid://cmhr5kywdkg28" path="res://scenes/spell_book/spell_scenes/lightning.gd" id="2_bp2nl"]
-[ext_resource type="Texture2D" uid="uid://c32hu64fcwqu3" path="res://assets/spells/Thunderstrike w blur.png" id="2_kbevb"]
+[ext_resource type="Texture2D" uid="uid://bd113kxbmsn5l" path="res://assets/spells/Lightning.png" id="2_kbevb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bp2nl"]
 atlas = ExtResource("2_kbevb")

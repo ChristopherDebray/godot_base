@@ -13,9 +13,10 @@ func add_modifier(mod: BaseModifier, stacks: int, rarity_mult: float) -> void:
 	if mod.is_multiplicative:
 		var current = _mult_bonuses.get(mod.type, 1.0)
 		_mult_bonuses[mod.type] = current + (final_value - 1.0)
-	else:
-		var current = _flat_bonuses.get(mod.type, 0.0)
-		_flat_bonuses[mod.type] = current + final_value
+		return
+	
+	var current = _flat_bonuses.get(mod.type, 0.0)
+	_flat_bonuses[mod.type] = current + final_value
 
 func get_flat(type: BaseModifier.ModifierType) -> float:
 	return _flat_bonuses.get(type, 0.0)
@@ -39,3 +40,25 @@ func get_bonus_piercing() -> int:
 
 func get_bonus_chains() -> int:
 	return int(get_flat(BaseModifier.ModifierType.CHAIN_COUNT))
+
+func apply_to_cooldown(base_cooldown: float) -> float:
+	return base_cooldown * get_multiplier(BaseModifier.ModifierType.COOLDOWN_MULTIPLIER)
+
+# Passive stats (pour Damageable)
+func apply_to_max_health(base_health: float) -> float:
+	var hp = base_health + get_flat(BaseModifier.ModifierType.MAX_HEALTH_FLAT)
+	hp *= get_multiplier(BaseModifier.ModifierType.MAX_HEALTH_MULTIPLIER)
+	return hp
+
+func apply_to_movement_speed(base_speed: float) -> float:
+	return base_speed * get_multiplier(BaseModifier.ModifierType.MOVEMENT_SPEED_MULTIPLIER)
+
+func get_health_regen() -> float:
+	return get_flat(BaseModifier.ModifierType.HEALTH_REGEN_FLAT)
+
+func get_damage_reduction() -> float:
+	return get_flat(BaseModifier.ModifierType.DAMAGE_REDUCTION_FLAT) + \
+		   get_multiplier(BaseModifier.ModifierType.DAMAGE_REDUCTION_PERCENT)
+
+func get_thorns_damage() -> float:
+	return get_flat(BaseModifier.ModifierType.THORNS_DAMAGE_FLAT)

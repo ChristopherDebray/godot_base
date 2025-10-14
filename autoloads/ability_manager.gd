@@ -41,6 +41,8 @@ func _on_use_ability(data: AbilityData, target: Vector2, origin: Vector2, target
 	var instance = data.scene.instantiate() as BaseAbility
 	instance.sender = sender
 	instance.target_type = target_type
+	
+	# Mask configuration to indicate which element can be damaged by the ability
 	if AbilityData.ABILITY_FACTION.ALL == data.faction or TARGET_TYPE.ALL == target_type:
 		instance.configure_masks(COLLISION_MASKS_GROUPS[TARGET_TYPE.ALL])
 	else:
@@ -63,6 +65,11 @@ func _on_use_ability(data: AbilityData, target: Vector2, origin: Vector2, target
 
 	instance.init(data, ctx)
 
+	# Spawn multi-projectiles if needed
+	if instance.final_projectile_count > 1 and instance is ProjectileAbility:
+		_spawn_multi_projectiles(instance, data, ctx, sender)
+		return instance
+	
 	if is_instance_of(instance, SelfAbility) or is_instance_of(instance, DashAbility):
 		instance.start_from(origin, data.range)
 		sender.add_child(instance)
@@ -75,6 +82,32 @@ func _on_use_ability(data: AbilityData, target: Vector2, origin: Vector2, target
 		sender.apply_effect(data.self_effect)
 
 	return instance
+
+## Spawn multiple projectiles in an arc
+func _spawn_multi_projectiles(base_instance: BaseAbility, data: AbilityData, ctx: AimContext, sender: Damageable) -> void:
+	var count = base_instance.final_projectile_count
+	var spread_angle = 15.0  # Degrés entre chaque projectile
+	var total_spread = spread_angle * (count - 1)
+	var start_angle = -total_spread / 2.0
+	
+	for i in count:
+		var instance = data.scene.instantiate() as BaseAbility
+		instance.sender = sender
+		instance.target_type = base_instance.target_type
+		instance.configure_masks(base_instance.hitbox.collision_mask)
+		instance.init_ability_resource(data)
+		
+		# Same context with a slight angle change
+		var angle_offset = start_angle + (i * spread_angle)
+		var rotated_ctx = ctx.duplicate()
+		rotated_ctx.direction = ctx.direction.rotated(deg_to_rad(angle_offset))
+		
+		instance.init(data, rotated_ctx)
+		get_tree().current_scene.get_node("YsortLayer/Abilities").add_child(instance)
+		instance.begin_cast_flow()
+	
+	# Destroy the base instance (we have spawned the "reel" projectiles)
+	base_instance.queue_free()
 
 func _get_element_icon_indicator(element_id: int) -> Control:
 	var element_indicator = make_element_indicator(element_id)
