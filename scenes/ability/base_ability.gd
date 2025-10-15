@@ -191,9 +191,9 @@ func _chain_to_target(target: Node) -> void:
 	"""Redirige le projectile vers la nouvelle cible"""
 	# Pour un projectile : changer la direction
 	if self is ProjectileAbility:
+		var projectile := self as ProjectileAbility  # ← Cast explicite
 		var dir = (target.global_position - global_position).normalized()
-		_dir_of_travel = dir * _dir_of_travel.length()
-		#global_position += SPEED * delta * _dir_of_travel
+		projectile._dir_of_travel = dir
 		# Effet visuel de chain
 		_spawn_chain_effect(target.global_position)
 	

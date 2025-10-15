@@ -94,7 +94,7 @@ func _spawn_multi_projectiles(base_instance: BaseAbility, data: AbilityData, ctx
 		var instance = data.scene.instantiate() as BaseAbility
 		instance.sender = sender
 		instance.target_type = base_instance.target_type
-		instance.configure_masks(base_instance.hitbox.collision_mask)
+		instance._pending_mask = base_instance.hitbox.colision_mask
 		instance.init_ability_resource(data)
 		
 		# Same context with a slight angle change
