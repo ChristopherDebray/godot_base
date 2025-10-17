@@ -1,5 +1,6 @@
 class_name AimContext
 extends Node2D
+
 var sender_pos: Vector2
 var muzzle_pos: Vector2
 var desired_point: Vector2 = Vector2.ZERO

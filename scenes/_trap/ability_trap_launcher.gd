@@ -10,6 +10,8 @@ var ability_origin: Vector2
 var ability_target_type := AbilityManager.TARGET_TYPE.ENEMY
 
 func _ready():
+	## TODO move based of mouse_position ?
+	# Carreful with the gamepad !
 	ability_target = muzzle.global_position + global_position.direction_to(muzzle.global_position)
 	ability_origin = muzzle.global_position
 

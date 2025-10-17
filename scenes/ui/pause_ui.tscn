@@ -28,6 +28,15 @@ script = ExtResource("1_xt3ok")
 sheet = ExtResource("2_ghgjp")
 cell_size = Vector2i(12, 12)
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0470588, 0.0431373, 0.0980392, 0.835294)
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -64,7 +73,7 @@ layout_mode = 2
 theme = ExtResource("5_mbdly")
 theme_override_constants/outline_size = 0
 tab_alignment = 1
-current_tab = 2
+current_tab = 1
 
 [node name="Options" type="TabBar" parent="MarginContainer/TextureRect/MarginContainer/TabContainer"]
 visible = false
@@ -98,7 +107,6 @@ tabs = Array[ExtResource("8_nw1ig")]([ExtResource("9_ibklw"), ExtResource("8_ibk
 _tab_labels_theme = ExtResource("10_2o4wk")
 
 [node name="Spells" type="TabBar" parent="MarginContainer/TextureRect/MarginContainer/TabContainer"]
-visible = false
 layout_mode = 2
 tab_alignment = 1
 metadata/_tab_index = 1
@@ -189,6 +197,7 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 160
 
 [node name="Controls" type="TabBar" parent="MarginContainer/TextureRect/MarginContainer/TabContainer"]
+visible = false
 layout_mode = 2
 tab_alignment = 1
 metadata/_tab_index = 2

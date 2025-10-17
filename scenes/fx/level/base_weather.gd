@@ -9,6 +9,7 @@ class_name BaseWeather
 @export var environment_ability: AbilityData
 @export var ability_cooldown: float = 10
 @export var player: Player = null
+@export var weather_type: EnvironmentManager.WEATHER_TYPE
 
 var target_camera: Camera2D = null
 var _enabled: bool = false

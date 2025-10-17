@@ -114,6 +114,8 @@ func play_tag_at(tag_name: String, stream: AudioStream, world_position: Vector2,
 # -------- Internals --------
 
 func _config_and_play(player: AudioStreamPlayer2D, stream: AudioStream, pos: Vector2, volume_db: float, cfg: TagConfig, tag_name: String) -> void:
+	player.set_meta("tag_name", tag_name)
+	player.set_meta("tag_priority", cfg.priority)  # Bonus
 	player.stop()
 	player.global_position = pos
 	player.stream = stream
@@ -124,7 +126,11 @@ func _config_and_play(player: AudioStreamPlayer2D, stream: AudioStream, pos: Vec
 	# Track active per tag
 	_tag_active_count[tag_name] = int(_tag_active_count.get(tag_name, 0)) + 1
 	player.finished.connect(func():
-		_tag_active_count[tag_name] = max(0, int(_tag_active_count.get(tag_name, 1)) - 1), Object.CONNECT_ONE_SHOT)
+		_tag_active_count[tag_name] = max(0, int(_tag_active_count.get(tag_name, 1)) - 1)
+		# Nettoyer les metas pour le prochain usage
+		player.remove_meta("tag_name")
+		player.remove_meta("tag_priority")
+		, Object.CONNECT_ONE_SHOT)
 
 func _get_free_world_player() -> AudioStreamPlayer2D:
 	for p in _world_pool:
@@ -156,10 +162,25 @@ func _try_steal_world_voice(min_priority: int, listener_pos: Vector2) -> AudioSt
 	for p in _world_pool:
 		if not p.playing:
 			continue
-		var tag = p.get_meta("tag_name")
-		var tag_cfg: TagConfig = _tag_configs.get(String(tag), null)
-		if tag_cfg == null:
+		
+		if not p.has_meta("tag_name"):
+			# Player jamais utilisé ou pas configuré correctement
+			# On peut le voler sans souci (pas de priorité)
+			var dist2 := listener_pos.distance_squared_to(p.global_position)
+			if dist2 > best_score:
+				best_score = dist2
+				candidate = p
 			continue
+
+		var tag = p.get_meta("tag_name")
+		var tag_cfg: TagConfig = _tag_configs.get(tag, null)
+		if tag_cfg == null:
+			var dist2 := listener_pos.distance_squared_to(p.global_position)
+			if dist2 > best_score:
+				best_score = dist2
+				candidate = p
+			continue
+		# Ne voler que les sons de priorité inférieure ou égale
 		if tag_cfg.priority > min_priority:
 			continue
 		# Score = distance to listener

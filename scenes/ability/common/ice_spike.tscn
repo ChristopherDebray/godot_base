@@ -401,6 +401,7 @@ _data = {
 [node name="IceSpike" instance=ExtResource("1_hedjp")]
 script = ExtResource("2_dva8q")
 SPEED = 1600.0
+abilityName = "ice spike"
 
 [node name="LoopParticles" parent="." index="0"]
 material = SubResource("CanvasItemMaterial_w4uic")

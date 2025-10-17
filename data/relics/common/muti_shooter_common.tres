@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BaseRelic" load_steps=4 format=3 uid="uid://c2oe6n4pcbjcb"]
+
+[ext_resource type="Script" uid="uid://b3efadvh4iqpp" path="res://data/modifiers/base_modifier.gd" id="1_h6b2h"]
+[ext_resource type="Resource" uid="uid://ow46q8jbj2fw" path="res://data/modifiers/projectile_count.tres" id="2_njyr6"]
+[ext_resource type="Script" uid="uid://c7pt4vm2vyqkx" path="res://data/relics/base_relic.gd" id="3_ubhjy"]
+
+[resource]
+script = ExtResource("3_ubhjy")
+relic_id = &"1"
+display_name = "La communuuu"
+description = "Common
+"
+rarity = 0
+max_stacks = 5
+modifiers = Array[ExtResource("1_h6b2h")]([ExtResource("2_njyr6")])
+flavor_text = ""
+metadata/_custom_type_script = "uid://c7pt4vm2vyqkx"

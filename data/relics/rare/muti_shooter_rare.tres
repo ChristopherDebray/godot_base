@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="BaseRelic" load_steps=4 format=3 uid="uid://cadpe4df3hb2w"]
+
+[ext_resource type="Script" uid="uid://b3efadvh4iqpp" path="res://data/modifiers/base_modifier.gd" id="1_5y1qh"]
+[ext_resource type="Resource" uid="uid://ow46q8jbj2fw" path="res://data/modifiers/projectile_count.tres" id="2_mbfy5"]
+[ext_resource type="Script" uid="uid://c7pt4vm2vyqkx" path="res://data/relics/base_relic.gd" id="3_f4d14"]
+
+[resource]
+script = ExtResource("3_f4d14")
+relic_id = &"5"
+display_name = "rere multi"
+description = "Boom boom rare"
+rarity = 1
+max_stacks = 5
+modifiers = Array[ExtResource("1_5y1qh")]([ExtResource("2_mbfy5")])
+flavor_text = ""
+metadata/_custom_type_script = "uid://c7pt4vm2vyqkx"

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://xc8f45f50hdy"]
+
+[ext_resource type="Script" uid="uid://bga8f67kmtp26" path="res://scenes/components/relic_inventory/relic_inventory.gd" id="1_kxoy1"]
+
+[node name="RelicInventory" type="Node2D"]
+script = ExtResource("1_kxoy1")

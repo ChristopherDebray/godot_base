@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=4 uid="uid://bm3vsdux3ux7u"]
+[gd_scene load_steps=61 format=4 uid="uid://bm3vsdux3ux7u"]
 
 [ext_resource type="Script" uid="uid://c8266ajpu6m6j" path="res://scenes/level/level_base.gd" id="1_r5tr5"]
 [ext_resource type="PackedScene" uid="uid://dqnnqulkpfar1" path="res://scenes/ui/in_game_ui.tscn" id="1_rgbux"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bbdo4rqlbwf38" path="res://assets/tiles/cute_wall_stone.png" id="9_y8l3a"]
 [ext_resource type="Texture2D" uid="uid://bcqgxu6h7fgpy" path="res://assets/tiles/empty_tiles.png" id="10_g531s"]
 [ext_resource type="Texture2D" uid="uid://q4tq0jlqagxq" path="res://assets/tiles/cute_wall_sm.png" id="10_r5tr5"]
+[ext_resource type="PackedScene" uid="uid://dycnjjhqq523y" path="res://scenes/ui/relics/relic_selection_ui.tscn" id="15_0ou4s"]
 [ext_resource type="PackedScene" uid="uid://ccy1pcv744h38" path="res://scenes/_spawner/wave_spawner.tscn" id="15_g531s"]
 [ext_resource type="PackedScene" uid="uid://scr8j2p856l" path="res://scenes/world/weather_controller_component.tscn" id="16_7cdbm"]
 [ext_resource type="PackedScene" uid="uid://ld78nlkqrkks" path="res://scenes/_spawner/spawn_telegraph/spawn_telegraph.tscn" id="16_pq2ld"]
@@ -512,10 +513,13 @@ y_sort_enabled = true
 [node name="Paths" type="Node2D" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
 
 [node name="InGameUi" parent="CanvasLayer" instance=ExtResource("1_rgbux")]
 
 [node name="PauseUi" parent="CanvasLayer" instance=ExtResource("6_ppe2f")]
+
+[node name="RelicSelectionUi" parent="CanvasLayer" instance=ExtResource("15_0ou4s")]
 
 [node name="WaveSpawner" parent="." instance=ExtResource("15_g531s")]
 telegraph_scene = ExtResource("16_pq2ld")
@@ -523,3 +527,7 @@ telegraph_scene = ExtResource("16_pq2ld")
 [node name="WeatherControllerComponent" parent="." instance=ExtResource("16_7cdbm")]
 loadout = ExtResource("17_pq2ld")
 rules = Array[ExtResource("17_aagx2")]([SubResource("Resource_0ou4s")])
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true

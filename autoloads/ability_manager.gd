@@ -89,25 +89,30 @@ func _spawn_multi_projectiles(base_instance: BaseAbility, data: AbilityData, ctx
 	var spread_angle = 15.0  # Degrés entre chaque projectile
 	var total_spread = spread_angle * (count - 1)
 	var start_angle = -total_spread / 2.0
+	var original_direction = ctx.desired_dir
 	
 	for i in count:
 		var instance = data.scene.instantiate() as BaseAbility
-		instance.sender = sender
+		instance.sender = base_instance.sender
 		instance.target_type = base_instance.target_type
-		instance._pending_mask = base_instance.hitbox.colision_mask
+		instance.configure_masks(base_instance._pending_masks)
 		instance.init_ability_resource(data)
-		
-		# Same context with a slight angle change
+
 		var angle_offset = start_angle + (i * spread_angle)
-		var rotated_ctx = ctx.duplicate()
-		rotated_ctx.direction = ctx.direction.rotated(deg_to_rad(angle_offset))
 		
-		instance.init(data, rotated_ctx)
+		var new_ctx = AimContext.new()
+		new_ctx.muzzle_pos = ctx.muzzle_pos
+		new_ctx.sender_pos = ctx.sender_pos
+		new_ctx.desired_dir = original_direction.rotated(deg_to_rad(angle_offset))
+		new_ctx.clamp_point = ctx.clamp_point
+
+		instance.init(data, new_ctx)
+		instance.start_from(new_ctx.muzzle_pos, data.range)
+
 		get_tree().current_scene.get_node("YsortLayer/Abilities").add_child(instance)
 		instance.begin_cast_flow()
-	
 	# Destroy the base instance (we have spawned the "reel" projectiles)
-	base_instance.queue_free()
+	#base_instance.queue_free()
 
 func _get_element_icon_indicator(element_id: int) -> Control:
 	var element_indicator = make_element_indicator(element_id)

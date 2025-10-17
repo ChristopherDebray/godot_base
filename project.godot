@@ -24,6 +24,7 @@ buses/default_bus_layout="res://themes/default_bus_layout.tres"
 [autoload]
 
 SpellsManager="*res://autoloads/spells_manager.gd"
+RelicManager="*res://autoloads/relic_manager.gd"
 GameManager="*res://autoloads/game_manager.gd"
 DataManager="*res://autoloads/data_manager.gd"
 SignalManager="*res://autoloads/signal_manager.gd"

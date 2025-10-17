@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BaseModifier" load_steps=2 format=3 uid="uid://ow46q8jbj2fw"]
+
+[ext_resource type="Script" uid="uid://b3efadvh4iqpp" path="res://data/modifiers/base_modifier.gd" id="1_n13cn"]
+
+[resource]
+script = ExtResource("1_n13cn")
+type = 3
+value = 1.0
+tags_required = Array[int]([1])
+weather_condition = 0
+is_multiplicative = false
+trigger_interval = 5.0
+metadata/_custom_type_script = "uid://b3efadvh4iqpp"

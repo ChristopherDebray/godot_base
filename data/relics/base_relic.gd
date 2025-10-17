@@ -8,6 +8,13 @@ enum RARITY {
 	LEGENDARY
 }
 
+const RARITY_TEXT = {
+	RARITY.COMMON: 'Common',
+	RARITY.RARE: 'Rare',
+	RARITY.EPIC: 'Epic',
+	RARITY.LEGENDARY: 'Legendary',
+}
+
 const RARITY_MULTIPLIERS = {
 	RARITY.COMMON: 1.0,
 	RARITY.RARE: 1.25,
@@ -39,10 +46,10 @@ func remove(owner: Node, stacks: int) -> void:
 	if owner.has_method("remove_relic_modifiers"):
 		owner.remove_relic_modifiers(self, stacks)
 
-func get_modifiers_for_ability(ability: AbilityData, weather: String = "") -> Array[BaseModifier]:
+func get_modifiers_for_ability(ability: AbilityData) -> Array[BaseModifier]:
 	var result: Array[BaseModifier] = []
 	for mod in modifiers:
-		if mod.applies_to(ability.tags, weather):
+		if mod.applies_to(ability.tags):
 			result.append(mod)
 	return result
 

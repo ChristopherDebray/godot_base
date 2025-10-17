@@ -16,6 +16,7 @@ class_name Player
 @onready var camera_player: Camera2D = $CameraPlayer
 @onready var movement_particles: CPUParticles2D = $MovementParticles
 
+@onready var relic_inventory: RelicInventory = $RelicInventory
 @onready var aim_component: Node2D = $AimComponent
 
 var run_anim_name := "default" 
@@ -36,6 +37,8 @@ func _ready() -> void:
 	GameManager.set_player_health(health)
 	GameManager.player = self
 	spell_book.setup(self)
+	relic_inventory.setup(self)
+	RelicManager.restore_player_relics(self)
 
 func _physics_process(_delta: float) -> void:
 	get_movement_input()
@@ -140,6 +143,10 @@ func use_spell() -> void:
 	spell_book.use_spell(active_elements, get_aim_direction())
 	_remove_element(1)
 	_remove_element(0)
+
+func add_relic(relic: BaseRelic):
+	relic_inventory.add_relic(relic)
+	RelicManager.relics.push_front(relic)
 
 func get_aim_world_position() -> Vector2:
 	return aim_component.get_aim_world_position()

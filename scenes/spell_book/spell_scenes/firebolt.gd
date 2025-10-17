@@ -9,8 +9,8 @@ func _ready():
 	SoundManager.play_tag_at("arrow", FIREBALL_WHOOSH, global_position, -4.0)
 
 func on_hit():
-	animated_sprite_2d.play('hit')
 	AnimationManager.vanish_particules(loop_particles)
+	animated_sprite_2d.play('hit')
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite_2d.animation == "hit":

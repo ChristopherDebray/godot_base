@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://d264e4u15uply" path="res://scenes/ui/resource_indicator.tscn" id="1_qvqbd"]
 
 [node name="InGameUi" type="Control"]
+process_mode = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

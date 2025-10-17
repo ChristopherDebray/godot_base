@@ -8,10 +8,16 @@ var max_health: float
 var player: Player
 var camera_shake_noise: FastNoiseLite
 var used_controls := CONTROLS_TYPE.KEYBOARD
+var current_weather_type: EnvironmentManager.WEATHER_TYPE
 
 func _ready() -> void:
 	camera_shake_noise = FastNoiseLite.new()
+	RelicManager.on_add_relic.connect(_on_add_relic)
 	set_used_controls()
+
+func _on_add_relic(relic: BaseRelic):
+	get_tree().paused = false
+	load_level('level_farm_two')
 
 func modify_current_health(amount: float):
 	current_health = current_health + amount

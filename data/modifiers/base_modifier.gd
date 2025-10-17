@@ -31,21 +31,23 @@ enum ModifierType {
 @export var type: ModifierType
 @export var value: float = 1.0
 @export var tags_required: Array[AbilityData.ABILITY_TAG] = []
-@export var weather_condition: String = ""     # "rain", "storm", etc.
+@export var weather_condition: EnvironmentManager.WEATHER_TYPE
 @export var is_multiplicative: bool = true     # true = * value, false = + value
  
 # Pour ACTIVATE_ABILITY
 @export var ability_to_spawn: PackedScene = null
 @export var trigger_interval: float = 5.0
 
-func applies_to(ability_tags: Array[AbilityData.ABILITY_TAG], current_weather: String = "") -> bool:
+func applies_to(ability_tags: Array[AbilityData.ABILITY_TAG]) -> bool:
 	if tags_required.size() > 0:
 		for tag in tags_required:
 			if tag not in ability_tags:
 				return false
 	
-	# Vérifier la météo
-	if weather_condition != "" and weather_condition != current_weather:
+	if not weather_condition:
+		return true
+	
+	if weather_condition != GameManager.current_weather_type:
 		return false
 	
 	return true
@@ -54,7 +56,6 @@ func get_final_value(rarity_multiplier: float = 1.0) -> float:
 	return value * rarity_multiplier
 
 func is_passive_stat() -> bool:
-	"""Retourne true si c'est un stat passif (pas lié aux abilities)"""
 	return type >= ModifierType.MAX_HEALTH_FLAT and type < ModifierType.ACTIVATE_ABILITY
 
 func is_active_ability() -> bool:
@@ -96,7 +97,7 @@ func get_description() -> String:
 	
 	if tags_required.size() > 0:
 		desc += " (%s)" % " + ".join(tags_required)
-	if weather_condition != "":
+	if weather_condition:
 		desc += " [%s]" % weather_condition
 	
 	return desc

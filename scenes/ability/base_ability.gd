@@ -17,11 +17,6 @@ class_name BaseAbility
 @export var windup_time: float = 0
 @export var duration: float = 2.0
 @export var tags: Array[AbilityData.ABILITY_TAG] = []
-@export var base_size: float = 1.0
-@export var base_projectile_count: int = 1
-@export var base_piercing: int = 0
-@export var base_chain_count: int = 0
-@export var base_damage: float = 10.0
 
 # Canalisation (optionnal)
 @export var is_channeled: bool = false
@@ -56,33 +51,14 @@ var _chain_bounces_left: int = 0
 var _hit_targets: Array[Node] = []
 
 func init(data: AbilityData, ctx: AimContext) -> void:
-	# Appliquer les modifiers si le sender a un RelicInventory
-	if sender and sender.has_node("RelicInventory"):
-		var inventory: RelicInventory = sender.get_node("RelicInventory")
-		var weather = GameManager.weather_system.current_weather if GameManager.weather_system else ""
-		var stats = inventory.get_modifiers_for_ability(data, weather)
-		_apply_modifier_stats(stats)
-	else:
-		# Pas de reliques = utiliser les valeurs de base
-		final_damage = base_damage
-		final_size = base_size
-		final_projectile_count = base_projectile_count
-		final_piercing = base_piercing
-		final_chain_count = base_chain_count
-	
-	# Initialiser les compteurs
-	_piercing_hits_left = final_piercing
-	_chain_bounces_left = final_chain_count
-	
-	# Appliquer la taille
-	scale = Vector2.ONE * final_size
+	pass
 
-func _apply_modifier_stats(stats: ModifierStats) -> void:
-	final_damage = stats.apply_to_damage(base_damage)
-	final_size = stats.apply_to_size(base_size)
-	final_projectile_count = base_projectile_count + stats.get_bonus_projectiles()
-	final_piercing = base_piercing + stats.get_bonus_piercing()
-	final_chain_count = base_chain_count + stats.get_bonus_chains()
+func _apply_modifier_stats(data: AbilityData, stats: ModifierStats) -> void:
+	final_damage = stats.apply_to_damage(data.base_damage)
+	final_size = stats.apply_to_size(data.base_size)
+	final_projectile_count = data.base_projectile_count + stats.get_bonus_projectiles()
+	final_piercing = data.base_piercing + stats.get_bonus_piercing()
+	final_chain_count = data.base_chain_count + stats.get_bonus_chains()
 
 func configure_masks(masks: Array) -> void:
 	_pending_masks = masks
@@ -91,12 +67,32 @@ func _ready():
 	if _pending_masks:
 		set_hitboxes_targets(_pending_masks)
 
-func init_ability_resource(ability_data: AbilityData) -> void:
-	ability_resource = ability_data
-	damage = ability_data.damage
-	aoe_damage = ability_data.aoe_damage
-	effect = ability_data.effect
-	range = ability_data.range
+func init_ability_resource(data: AbilityData) -> void:
+	ability_resource = data
+	damage = data.damage
+	aoe_damage = data.aoe_damage
+	effect = data.effect
+	range = data.range
+	
+	# Appliquer les modifiers si le sender a un RelicInventory
+	if sender and sender.has_node("RelicInventory"):
+		var inventory: RelicInventory = sender.get_node("RelicInventory")
+		var stats = inventory.get_modifiers_for_ability(data)
+		_apply_modifier_stats(data, stats)
+	else:
+		# Pas de reliques = utiliser les valeurs de base
+		final_damage = data.base_damage
+		final_size = data.base_size
+		final_projectile_count = data.base_projectile_count
+		final_piercing = data.base_piercing
+		final_chain_count = data.base_chain_count
+	
+	# Initialiser les compteurs
+	_piercing_hits_left = final_piercing
+	_chain_bounces_left = final_chain_count
+	
+	# Appliquer la taille
+	scale = Vector2.ONE * final_size
 
 func _on_hitbox_body_entered(body):
 	if body != sender:
@@ -106,19 +102,22 @@ func on_ability_hit(body):
 	if body in _hit_targets:
 		return
 	
-	if body is Damageable:
-		apply_damage_and_effect(body, final_damage)
+	if not is_instance_of(body, Damageable):
+		on_last_hit(body)
+		return
 
-		# Notify enemies in a generic way (no player ref needed)
-		if body is BaseNpc:
-			var enemy := body as BaseNpc
-			# Prefer the true instigator; fallback to this ability node
-			var instigator: Node
-			if (sender != null):
-				instigator = sender
-			else:
-				instigator = self
-			enemy.targeting.on_alert_from(instigator)
+	apply_damage_and_effect(body, final_damage)
+
+	# Notify enemies in a generic way (no player ref needed)
+	if body is BaseNpc:
+		var enemy := body as BaseNpc
+		# Prefer the true instigator; fallback to this ability node
+		var instigator: Node
+		if (sender != null):
+			instigator = sender
+		else:
+			instigator = self
+		enemy.targeting.on_alert_from(instigator)
 
 	if _piercing_hits_left > 0:
 		_piercing_hits_left -= 1
@@ -128,20 +127,9 @@ func on_ability_hit(body):
 	# No more pierce = check chain
 	if _chain_bounces_left > 0:
 		_try_chain_to_next_target(body)
+		return
 	else:
-		# Nothing = destroy
-		_has_hit = true
 		on_last_hit(body)
-	
-	if (not tags.has(AbilityData.ABILITY_TAG.PIERCE)):
-		_has_hit = true
-		on_hit()
-		return
-	
-	if (is_instance_of(body, TileMapLayer)):
-		_has_hit = true
-		on_hit()
-		return
 
 ## @abstract ovveride for visuals or other effects
 func on_pierce_hit(body: Node) -> void:
@@ -150,9 +138,9 @@ func on_pierce_hit(body: Node) -> void:
 ## Called on last hit (no more piercing / chain)
 func on_last_hit(body: Node) -> void:
 	on_hit()
+	set_physics_process(false)
 
 func _try_chain_to_next_target(from_body: Node) -> void:
-	"""Trouve la prochaine cible pour chain"""
 	var nearest_target: Node = null
 	var nearest_dist := INF
 	var search_radius := 300.0  # À ajuster
@@ -277,14 +265,14 @@ func _start_impact_phase() -> void:
 	else:
 		on_ability_timeout()
 
-func apply_modifiers(stats: ModifierStats) -> Dictionary:
-	return {
-		"damage": stats.apply_to_damage(base_damage),
-		"size": stats.apply_to_size(base_size),
-		"projectile_count": base_projectile_count + stats.get_bonus_projectiles(),
-		"piercing": base_piercing + stats.get_bonus_piercing(),
-		"chain_count": base_chain_count + stats.get_bonus_chains(),
-	}
+#func apply_modifiers(stats: ModifierStats) -> Dictionary:
+	#return {
+		#"damage": stats.apply_to_damage(base_damage),
+		#"size": stats.apply_to_size(base_size),
+		#"projectile_count": base_projectile_count + stats.get_bonus_projectiles(),
+		#"piercing": base_piercing + stats.get_bonus_piercing(),
+		#"chain_count": base_chain_count + stats.get_bonus_chains(),
+	#}
 
 ## @abstract
 func on_hit():

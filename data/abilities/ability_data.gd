@@ -44,5 +44,11 @@ const ABILITY_TAG_LABELS: Dictionary = {
 @export var channel_tick_rate: float = 0.5 # tick effect during channel
 @export var max_channel_duration: float = 3.0
 
+@export var base_size: float = 1.0
+@export var base_projectile_count: int = 1
+@export var base_piercing: int = 0
+@export var base_chain_count: int = 0
+@export var base_damage: float = 10.0
+
 func is_base_ability() -> bool:
 	return tags.has(ABILITY_TAG.BASE_ABILITY)

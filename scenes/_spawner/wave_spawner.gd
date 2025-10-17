@@ -328,8 +328,8 @@ func _on_enemy_died(damageable: Damageable):
 	_level_ended()
 
 func _level_ended():
-	WaveManager.budget_base += 10
-	GameManager.load_level('level_farm_two')
+	WaveManager.on_wave_completed.emit()
+	#GameManager.load_level('level_farm_two')
 
 func _on_timer_timeout() -> void:
 	spawn()

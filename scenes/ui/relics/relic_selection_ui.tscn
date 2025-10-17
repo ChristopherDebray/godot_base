@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=3 uid="uid://dycnjjhqq523y"]
+
+[ext_resource type="Theme" uid="uid://d3jium3bs8gi" path="res://assets/theme/theme_mage.tres" id="1_3q6rp"]
+[ext_resource type="Script" uid="uid://bbti1u3ul01ly" path="res://scenes/ui/relics/relic_selection_ui.gd" id="1_ppep7"]
+[ext_resource type="Theme" uid="uid://0sn2vinpcent" path="res://themes/pannel/base_card.tres" id="4_61fu5"]
+[ext_resource type="Theme" uid="uid://bc3sb5ac818y0" path="res://themes/input_themes.tres" id="5_dt1lg"]
+
+[node name="RelicSelectionUi" type="Control"]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_3q6rp")
+script = ExtResource("1_ppep7")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0470588, 0.0431373, 0.0980392, 0.835294)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 20
+
+[node name="RelicsHolder" type="HBoxContainer" parent="MarginContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("4_61fu5")
+
+[node name="Label" type="Label" parent="MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -109.0
+offset_right = 109.0
+offset_bottom = 39.6
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("5_dt1lg")
+text = "CHOOSE A RELIC"

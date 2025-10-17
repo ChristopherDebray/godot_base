@@ -91,6 +91,7 @@ func _set_weather(entry: WeatherEntry) -> void:
 
 	_randomize_intensity()
 	current_weather.enable()
+	GameManager.current_weather_type = current_weather.weather_type
 
 func _randomize_intensity() -> void:
 	if current_weather == null:

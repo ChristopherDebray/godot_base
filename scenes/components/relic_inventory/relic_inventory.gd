@@ -4,7 +4,7 @@ extends Node
 signal relic_added(relic: BaseRelic, stacks: int)
 
 var stacks_by_id: Dictionary = {}  # {StringName: int}
-var relics_by_id: Dictionary = {}   # {StringName: BaseRelic}
+var relics_by_id: Dictionary = {}   # {StringName: m}
 var _owner: Damageable
 
 func setup(owner: Damageable):
@@ -36,7 +36,7 @@ func remove_relic(relic_id: StringName, stacks: int = 1) -> void:
 		relics_by_id[relic_id].remove(get_parent(), stacks)
 		stacks_by_id[relic_id] = new_stacks
 
-func get_modifiers_for_ability(ability: AbilityData, weather: String = "") -> ModifierStats:
+func get_modifiers_for_ability(ability: AbilityData) -> ModifierStats:
 	var stats = ModifierStats.new()
 	
 	for relic_id in relics_by_id:
@@ -45,7 +45,7 @@ func get_modifiers_for_ability(ability: AbilityData, weather: String = "") -> Mo
 		var rarity_mult = relic.get_rarity_multiplier()
 		
 		# Récupérer les modifiers applicables
-		var applicable_mods = relic.get_modifiers_for_ability(ability, weather)
+		var applicable_mods = relic.get_modifiers_for_ability(ability)
 		for mod in applicable_mods:
 			stats.add_modifier(mod, stacks, rarity_mult)
 	
