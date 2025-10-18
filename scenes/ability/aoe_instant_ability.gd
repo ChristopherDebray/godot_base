@@ -11,7 +11,7 @@ func _ready():
 	if ability_resource.faction != AbilityData.ABILITY_FACTION.PLAYER:
 		return
 	
-	if cast_time > 0:
+	if final_cast_time > 0:
 		set_telegraph()
 
 func set_telegraph() -> void:

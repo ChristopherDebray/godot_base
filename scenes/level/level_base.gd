@@ -14,6 +14,7 @@ func _ready() -> void:
 func _on_wave_completed():
 	timer.start()
 	timer.timeout.connect(func ():
+		print('ALLO')
 		MenuManager.push(relic_selection_ui)
 		relic_selection_ui.roll_relics()
 		relic_selection_ui.show()

@@ -38,7 +38,7 @@ var _origin: Vector2 = Vector2.ZERO
 var _max_range_sq: float = 0.0
 
 # Final stats after modifiers
-var cast_time: float = 0
+var final_cast_time: float
 var final_damage: float
 var final_size: float
 var final_speed: float
@@ -75,13 +75,13 @@ func init_ability_resource(data: AbilityData) -> void:
 	aoe_damage = data.aoe_damage
 	effect = data.effect
 	range = data.range
-	cast_time = data.cast_time
 	
 	# Appliquer les modifiers si le sender a un RelicInventory
 	if sender and sender.has_node("RelicInventory"):
 		var inventory: RelicInventory = sender.get_node("RelicInventory")
 		var stats = inventory.get_modifiers_for_ability(data)
 		_apply_modifier_stats(data, stats)
+		init_entry_resource(data)
 	else:
 		# Pas de reliques = utiliser les valeurs de base
 		final_damage = data.base_damage
@@ -90,6 +90,7 @@ func init_ability_resource(data: AbilityData) -> void:
 		final_piercing = data.base_piercing
 		final_chain_count = data.base_chain_count
 		final_speed = data.base_speed
+		init_entry_resource(data)
 	
 	# Initialiser les compteurs
 	_piercing_hits_left = final_piercing
@@ -97,6 +98,12 @@ func init_ability_resource(data: AbilityData) -> void:
 	
 	# Appliquer la taille
 	scale = Vector2.ONE * final_size
+
+func init_entry_resource(data: AbilityData):
+	if is_instance_of(sender, Player):
+		final_cast_time = 0
+	else:
+		final_cast_time = data.base_cast_time
 
 func _on_hitbox_body_entered(body):
 	if body != sender:
@@ -265,9 +272,9 @@ func has_exceeded_range(current_pos: Vector2) -> bool:
 	return (current_pos - _origin).length_squared() >= _max_range_sq
 
 func begin_cast_flow() -> void:
-	if cast_time > 0.0:
+	if final_cast_time > 0.0:
 		on_windup_start()
-		delay_timer.start(cast_time)
+		delay_timer.start(final_cast_time)
 	else:
 		_start_impact_phase()
 

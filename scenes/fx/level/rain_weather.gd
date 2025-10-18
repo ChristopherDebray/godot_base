@@ -8,7 +8,7 @@ const THUNDERSTRIKE = preload("res://data/spells/spell_ressources/thunderstrike.
 
 func _ready() -> void:
 	environment_ability = environment_ability_entry.ability
-	environment_ability.cast_time = environment_ability_entry.cast_time
+	environment_ability.base_cast_time = environment_ability_entry.cast_time
 	super._ready()
 	timer.wait_time = 6
 

@@ -106,11 +106,9 @@ func _pick_one_relic(p_common: float, p_rare: float, p_epic: float) -> BaseRelic
 	return pool.pick_random()
 
 func get_relic_by_id(relic_id: StringName) -> BaseRelic:
-	"""Récupère une relique par son ID"""
 	return _relics_by_id.get(relic_id, null)
 
 func get_all_relics() -> Array[BaseRelic]:
-	"""Retourne toutes les reliques disponibles"""
 	var all: Array[BaseRelic] = []
 	all.append_array(relics_common)
 	all.append_array(relics_rare)
@@ -119,7 +117,6 @@ func get_all_relics() -> Array[BaseRelic]:
 	return all
 
 func get_relics_by_rarity(rarity: BaseRelic.RARITY) -> Array[BaseRelic]:
-	"""Retourne toutes les reliques d'une rareté donnée"""
 	match rarity:
 		BaseRelic.RARITY.COMMON:
 			return relics_common
