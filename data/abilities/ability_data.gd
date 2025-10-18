@@ -51,5 +51,7 @@ const ABILITY_TAG_LABELS: Dictionary = {
 @export var base_damage: float = 10.0
 @export var base_speed: float = 400.0
 
+var cast_time: float= 0
+
 func is_base_ability() -> bool:
 	return tags.has(ABILITY_TAG.BASE_ABILITY)

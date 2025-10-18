@@ -14,7 +14,6 @@ class_name BaseAbility
 @export var abilityName: String
 @export var aoe_enabled: bool = true
 @export var must_delay_ability: bool = false
-@export var windup_time: float = 0
 @export var duration: float = 2.0
 @export var tags: Array[AbilityData.ABILITY_TAG] = []
 
@@ -38,7 +37,8 @@ var _pending_masks: Array
 var _origin: Vector2 = Vector2.ZERO
 var _max_range_sq: float = 0.0
 
-# Stats finales après modifiers
+# Final stats after modifiers
+var cast_time: float = 0
 var final_damage: float
 var final_size: float
 var final_speed: float
@@ -75,6 +75,7 @@ func init_ability_resource(data: AbilityData) -> void:
 	aoe_damage = data.aoe_damage
 	effect = data.effect
 	range = data.range
+	cast_time = data.cast_time
 	
 	# Appliquer les modifiers si le sender a un RelicInventory
 	if sender and sender.has_node("RelicInventory"):
@@ -264,9 +265,9 @@ func has_exceeded_range(current_pos: Vector2) -> bool:
 	return (current_pos - _origin).length_squared() >= _max_range_sq
 
 func begin_cast_flow() -> void:
-	if must_delay_ability and windup_time > 0.0:
+	if cast_time > 0.0:
 		on_windup_start()
-		delay_timer.start(windup_time)
+		delay_timer.start(cast_time)
 	else:
 		_start_impact_phase()
 

@@ -58,6 +58,7 @@ func start(entry: AbilityEntry, target_pos: Vector2, origin: Vector2, dir: Vecto
 	_saved_target_pos = target_pos
 	_saved_dir = dir
 	_channel_tick_accum = 0.0
+	current_ability.cast_time = current_entry.cast_time
 
 	if entry.lock_movement_during_cast:
 		owner_npc.locomotion.set_can_move(false)

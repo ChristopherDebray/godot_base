@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2oxxygjqwrlg"]
+[gd_scene load_steps=6 format=3 uid="uid://c2oxxygjqwrlg"]
 
 [ext_resource type="PackedScene" uid="uid://dqktoj1jad1jy" path="res://scenes/fx/level/base_weather.tscn" id="1_88pnk"]
 [ext_resource type="Texture2D" uid="uid://cix5ixt8trrd1" path="res://assets/effects/Line1.png" id="2_4vdch"]
 [ext_resource type="Script" uid="uid://bbi6y4t3cssda" path="res://scenes/fx/level/rain_weather.gd" id="2_b7sou"]
+[ext_resource type="Resource" uid="uid://cmfushuyq4rr0" path="res://data/abilities/common/thunderstrike_entry.tres" id="3_iqmbu"]
 
 [sub_resource type="Gradient" id="Gradient_88pnk"]
 offsets = PackedFloat32Array(0, 0.55665, 1)
@@ -13,6 +14,7 @@ script = ExtResource("2_b7sou")
 screen_margin = Vector2(128, 128)
 density_per_px2 = 0.0001
 base_tint = Color(0.1, 0.12, 0.18, 0.18)
+environment_ability_entry = ExtResource("3_iqmbu")
 weather_type = 1
 
 [node name="CPUParticles2D" parent="." index="0"]

@@ -7,8 +7,12 @@ var telegraph
 
 func _ready():
 	super._ready()
-	set_telegraph()
 	begin_cast_flow()
+	if ability_resource.faction != AbilityData.ABILITY_FACTION.PLAYER:
+		return
+	
+	if cast_time > 0:
+		set_telegraph()
 
 func set_telegraph() -> void:
 	telegraph = TelegraphPolygon.generate_telegraph(area_of_effect_collision_shape, self.target_type)

@@ -7,7 +7,8 @@ const THUNDERSTRIKE = preload("res://data/spells/spell_ressources/thunderstrike.
 @export var base_tint: Color = Color(0.10, 0.12, 0.18, 0.18)
 
 func _ready() -> void:
-	environment_ability = THUNDERSTRIKE
+	environment_ability = environment_ability_entry.ability
+	environment_ability.cast_time = environment_ability_entry.cast_time
 	super._ready()
 	timer.wait_time = 6
 

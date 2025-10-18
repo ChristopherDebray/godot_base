@@ -6,18 +6,19 @@ class_name BaseWeather
 @onready var timer: Timer = $Timer
 @onready var color_rect: ColorRect = $CanvasLayer/ColorRect
 
-@export var environment_ability: AbilityData
+@export var environment_ability_entry: AbilityEntry
 @export var ability_cooldown: float = 10
 @export var player: Player = null
 @export var weather_type: EnvironmentManager.WEATHER_TYPE
 
+var environment_ability: AbilityData
 var target_camera: Camera2D = null
 var _enabled: bool = false
 var _intensity: float = 1.0  # 0.8..1.2
 
 func _ready() -> void:
 	timer.wait_time = ability_cooldown * _intensity
-	if not environment_ability:
+	if not environment_ability_entry:
 		timer.stop()
 
 func setup_for_camera(cam: Camera2D) -> void:
