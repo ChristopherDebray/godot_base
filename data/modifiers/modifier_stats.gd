@@ -32,6 +32,9 @@ func apply_to_damage(base_damage: float) -> float:
 func apply_to_size(base_size: float) -> float:
 	return base_size * get_multiplier(BaseModifier.ModifierType.SIZE_MULTIPLIER)
 
+func apply_to_speed(base_speed: float) -> float:
+	return base_speed * get_multiplier(BaseModifier.ModifierType.SPEED_MULTIPLIER)
+
 func get_bonus_projectiles() -> int:
 	return int(get_flat(BaseModifier.ModifierType.PROJECTILE_COUNT))
 

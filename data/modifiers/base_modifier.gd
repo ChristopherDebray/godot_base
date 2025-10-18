@@ -72,12 +72,16 @@ func get_description() -> String:
 			desc = "+%.0f damage" % value
 		ModifierType.SIZE_MULTIPLIER:
 			desc = "+%.0f%% size" % percent
+		ModifierType.SPEED_MULTIPLIER:
+			desc = "+%.0f%% speed" % percent
 		ModifierType.PROJECTILE_COUNT:
 			desc = "+%.0f projectiles" % value
 		ModifierType.PIERCING:
 			desc = "+%.0f piercing" % value
 		ModifierType.CHAIN_COUNT:
 			desc = "+%.0f chains" % value
+		ModifierType.COOLDOWN_MULTIPLIER:
+			desc = "-%.0f%% cooldown" % percent
 		ModifierType.MAX_HEALTH_FLAT:
 			desc = "+%.0f max HP" % value
 		ModifierType.MAX_HEALTH_MULTIPLIER:

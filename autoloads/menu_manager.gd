@@ -11,7 +11,6 @@ func push(menu: Control) -> void:
 	menu.show()
 	await get_tree().process_frame
 	_grab_first_focus(menu)
-	print('PUSH')
 
 func pop() -> void:
 	if _stack.size() == 0:

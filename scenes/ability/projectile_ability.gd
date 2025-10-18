@@ -1,7 +1,6 @@
 extends BaseAbility
 class_name ProjectileAbility
 
-@export var SPEED: float = 400.0
 var _dir_of_travel: Vector2 = Vector2.ZERO
 
 func init(ability_data: AbilityData, ctx: AimContext) -> void:
@@ -13,7 +12,7 @@ func setup_on_ready() -> void:
 	rotation = _dir_of_travel.angle()
 
 func _physics_process(delta: float) -> void:
-	global_position += SPEED * delta * _dir_of_travel
+	global_position += final_speed * delta * _dir_of_travel
 	if has_exceeded_range(global_position):
 		on_ability_timeout()
 

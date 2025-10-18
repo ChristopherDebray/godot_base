@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=4 uid="uid://b7exrgfspotf3"]
+[gd_scene load_steps=5 format=4 uid="uid://b7exrgfspotf3"]
 
 [ext_resource type="PackedScene" uid="uid://bm3vsdux3ux7u" path="res://scenes/level/level_base.tscn" id="1_1btmw"]
 [ext_resource type="PackedScene" uid="uid://3r744noguafd" path="res://scenes/_trap/bear_trap.tscn" id="3_2heyh"]
+[ext_resource type="PackedScene" uid="uid://b6j88espg78qf" path="res://scenes/npc/ennemy/farmer/farmer.tscn" id="3_2uvmr"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_mbvtx"]
 vertices = PackedVector2Array(2969.17, 20.9766, 2982.81, 1158.96, 18.9609, 1153.02, 16.0312, 17.0234)
@@ -13,6 +14,9 @@ agent_radius = 15.0
 
 [node name="walls" parent="YsortLayer" index="0"]
 tile_map_data = PackedByteArray("AAAEAAYAAQALAAAAAAAFAAYAAQACAAAAAAAGAAYAAQACAAAAAAAHAAYAAQACAAAAAAAIAAYAAQASAAAAAAAFAAIAAQACAAAAAAAGAAIAAQACAAAAAAAHAAIAAQACAAAAAAAIAAIAAQASAAAAAAAEAAIAAQABAAAAAAAOAAIAAQADAAAAAAAOAAMAAQAUAAAAAAAOAAUAAQATAAAAAAAEAAMAAQAUAAAAAAAEAAUAAQATAAAAAAAOAAYAAQAMAAAAAAAKAAYAAQARAAAAAAALAAYAAQACAAAAAAAMAAYAAQACAAAAAAANAAYAAQACAAAAAAAKAAIAAQARAAAAAAALAAIAAQACAAAAAAAMAAIAAQACAAAAAAANAAIAAQACAAAAAAA=")
+
+[node name="wallsSm" parent="YsortLayer" index="1"]
+tile_map_data = PackedByteArray("AAAcAAkAAQACAAAAAAAcAAoAAQAFAAAAAAAcAAsAAQAFAAAAAAAcAAwAAQAFAAAAAAAcAA0AAQAFAAAAAAAcAA4AAQAKAAAAAAAdAA4AAQAKAAAAAAAeAA4AAQAKAAAAAAAfAA4AAQAKAAAAAAAgAA4AAQAKAAAAAAAhAA4AAQAKAAAAAAAhAA0AAQAGAAAAAAAhAAwAAQAGAAAAAAAhAAsAAQAGAAAAAAAhAAoAAQAGAAAAAAAhAAkAAQACAAAAAAAgAAkAAQACAAAAAAAfAAkAAQACAAAAAAAeAAkAAQACAAAAAAAdAAkAAQACAAAAAAA=")
 
 [node name="Player" parent="YsortLayer/Players" index="0"]
 position = Vector2(462, 222)
@@ -31,6 +35,15 @@ position = Vector2(1018, 257)
 
 [node name="BaseSelfActivatingTrap5" parent="YsortLayer/Traps" index="4" instance=ExtResource("3_2heyh")]
 position = Vector2(757, 453)
+
+[node name="Farmer" parent="YsortLayer/Npcs" index="0" instance=ExtResource("3_2uvmr")]
+position = Vector2(675, 275)
+
+[node name="Farmer2" parent="YsortLayer/Npcs" index="1" instance=ExtResource("3_2uvmr")]
+position = Vector2(654, 249)
+
+[node name="Farmer3" parent="YsortLayer/Npcs" index="2" instance=ExtResource("3_2uvmr")]
+position = Vector2(708, 244)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." index="4"]
 visible = false

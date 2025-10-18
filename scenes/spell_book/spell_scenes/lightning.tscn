@@ -115,18 +115,18 @@ aoe_radius_tiles = 5.0
 abilityName = "lightning"
 windup_time = 2.0
 
-[node name="AnimatedSprite2D" parent="." index="0"]
+[node name="AnimatedSprite2D" parent="." index="2"]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_uifw5")
 animation = &"repeat"
 
-[node name="LifetimeTimer" parent="." index="1"]
+[node name="LifetimeTimer" parent="." index="3"]
 wait_time = 2.0
 
-[node name="DelayTimer" parent="." index="2"]
+[node name="DelayTimer" parent="." index="4"]
 wait_time = 2.0
 
-[node name="AreaOfEffect" parent="." index="4"]
+[node name="AreaOfEffect" parent="." index="6"]
 monitoring = false
 
 [node name="CollisionShape2D" parent="AreaOfEffect" index="0"]

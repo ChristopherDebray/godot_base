@@ -28,7 +28,7 @@ var aoe_damage: float
 var effect: EffectData
 var range: float = 30.0
 var target_type: AbilityManager.TARGET_TYPE
-var aoe_triggered := 0
+var aoe_has_triggered := false
 
 var sender: Node
 var _has_hit: bool = false
@@ -41,6 +41,7 @@ var _max_range_sq: float = 0.0
 # Stats finales après modifiers
 var final_damage: float
 var final_size: float
+var final_speed: float
 var final_projectile_count: int
 var final_piercing: int
 var final_chain_count: int
@@ -59,6 +60,7 @@ func _apply_modifier_stats(data: AbilityData, stats: ModifierStats) -> void:
 	final_projectile_count = data.base_projectile_count + stats.get_bonus_projectiles()
 	final_piercing = data.base_piercing + stats.get_bonus_piercing()
 	final_chain_count = data.base_chain_count + stats.get_bonus_chains()
+	final_speed = stats.apply_to_speed(data.base_speed)
 
 func configure_masks(masks: Array) -> void:
 	_pending_masks = masks
@@ -86,6 +88,7 @@ func init_ability_resource(data: AbilityData) -> void:
 		final_projectile_count = data.base_projectile_count
 		final_piercing = data.base_piercing
 		final_chain_count = data.base_chain_count
+		final_speed = data.base_speed
 	
 	# Initialiser les compteurs
 	_piercing_hits_left = final_piercing
@@ -198,23 +201,32 @@ func _spawn_chain_effect(target_pos: Vector2) -> void:
 	pass
 
 func _on_area_of_effect_body_entered(body: Node2D) -> void:
-	on_aoe_hit()
+	if not aoe_has_triggered:
+		on_aoe_hit()
 
 func on_aoe_hit():
-	if aoe_triggered > 0:
+	if aoe_has_triggered:
 		return
-	for receiver in area_of_effect.get_overlapping_bodies():
+	aoe_has_triggered = true
+	
+	var space_state = get_world_2d().direct_space_state
+	var query = PhysicsShapeQueryParameters2D.new()
+	
+	var shape = area_of_effect_collision_shape.shape
+	query.shape = shape
+	query.transform = Transform2D(0, area_of_effect.global_position)
+	query.collision_mask = area_of_effect.collision_mask
+	
+	var results = space_state.intersect_shape(query)
+	for result in results:
+		var receiver = result.collider
+		if receiver == sender:
+			continue
 		if receiver is Damageable:
 			apply_damage_and_effect(receiver, aoe_damage)
 			if receiver is BaseNpc:
-				var enemy := receiver as BaseNpc
-				var instigator: Node
-				if (sender != null):
-					instigator = sender
-				else:
-					instigator = self
-				enemy.targeting.on_alert_from(instigator)
-	aoe_triggered = aoe_triggered + 1
+				var instigator = sender if sender != null else self
+				receiver.targeting.on_alert_from(instigator)
 
 func activate_aoe():
 	area_of_effect.monitoring = true
