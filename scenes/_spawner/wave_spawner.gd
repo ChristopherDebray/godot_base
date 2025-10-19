@@ -8,12 +8,14 @@ class_name WaveSpawner
 @export var player: Player
 @export var min_distance_from_player: float = 64.0 # avoid popping on the player
 @export var max_spawns_per_wave: int = 50
-@export var rng_seed: int = 12345   
-@export var spawn_interval: float = 1.2               # set from a run-state if you want reproducibility
+@export var rng_seed: int 
+@export var spawn_interval: float = 2               # set from a run-state if you want reproducibility
 
 @export var rules: Array[SpawnRule] = []
 @export var telegraph_scene: PackedScene
 @export var pre_spawn_delay: float = 0.6
+
+@export var deterministic: bool = true
 
 # Context (set from your WaveManager/Level)
 var biome: EnvironmentManager.BIOME = EnvironmentManager.BIOME.PLAINS
@@ -38,7 +40,10 @@ var remaining := 0
 var safety := 1000
 
 func _ready() -> void:
-	_rng.seed = rng_seed
+	if deterministic:
+		_rng.seed = rng_seed
+	else:
+		_rng.randomize()
 	_resolve_points()
 	_build_sorted_cache()
 	timer.wait_time = spawn_interval
@@ -92,6 +97,23 @@ func _do_spawn(index: int, pt: Node2D) -> void:
 	enemy.initial_state = BaseNpc.STATE.ATTACKING
 	enemy.global_position = pt.global_position
 	get_tree().current_scene.add_child(enemy)
+	
+	enemy.animated_sprite_2d.material.set_shader_parameter('mix_amount', 1)
+	enemy.animated_sprite_2d.material.set_shader_parameter('tint_color', Color(1,.3,.3))
+	
+	var tween := create_tween()
+	tween.tween_property(
+		enemy.animated_sprite_2d.material, 
+		"shader_parameter/tint_color", 
+		Color(1,1,1),
+		.3 # duration
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.tween_property(
+		enemy.animated_sprite_2d.material, 
+		"shader_parameter/mix_amount", 
+		0.0,
+		.2 # duration
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
 	_last_spawn_id = StringName(_ids[index])
 	budget -= _costs[index]
@@ -212,7 +234,6 @@ func spawn():
 
 	var pt := _pick_spawn_point(player)
 	if pt == null:
-		# No valid point found at safe distance; you can relax constraints or stop
 		return
 
 	_spawn_with_telegraph(i, pt)
