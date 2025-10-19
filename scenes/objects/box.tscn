@@ -1,10 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://bttpqkr228ecr"]
+[gd_scene load_steps=6 format=3 uid="uid://bttpqkr228ecr"]
 
 [ext_resource type="PackedScene" uid="uid://b2odxanbtxty4" path="res://scenes/_damageable/damageable.tscn" id="1_tf0hf"]
+[ext_resource type="Shader" uid="uid://d1uyq2bl6lehe" path="res://shaders/outline.gdshader" id="2_fjwrh"]
 [ext_resource type="Texture2D" uid="uid://ca4un0p31fadn" path="res://assets/objects/TopDownHouse_SmallItems.png" id="2_vfogt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tf0hf"]
 size = Vector2(29, 32)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vfogt"]
+shader = ExtResource("2_fjwrh")
+shader_parameter/outline_thickness = 0.35
+shader_parameter/outline_color = Color(0.898194, 0, 0.0188907, 1)
+shader_parameter/alpha_threshold = 0.2
+shader_parameter/feather = 0.15
+shader_parameter/pulse_speed = 6.0
+shader_parameter/pulse_amount = 0.5
+shader_parameter/thickness_pulse_ratio = 0.5
+shader_parameter/brightness_pulse_ratio = 1.0
+shader_parameter/pulse_phase = 6.283
+shader_parameter/mix_amount = 0.0
 
 [node name="Box" instance=ExtResource("1_tf0hf")]
 health = 100.0
@@ -15,6 +29,7 @@ position = Vector2(1.5, 0)
 shape = SubResource("RectangleShape2D_tf0hf")
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="2"]
+material = SubResource("ShaderMaterial_vfogt")
 scale = Vector2(2.125, 2.125)
 texture = ExtResource("2_vfogt")
 region_enabled = true

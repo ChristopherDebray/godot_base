@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://2r6c6v4iurb3"]
+
+[ext_resource type="Texture2D" uid="uid://cix5ixt8trrd1" path="res://assets/effects/Line1.png" id="1_dfqpn"]
+
+[node name="SpawnInward" type="CPUParticles2D"]
+amount = 15
+texture = ExtResource("1_dfqpn")
+lifetime = 0.8
+speed_scale = 3.0
+emission_shape = 1
+emission_sphere_radius = 80.0
+particle_flag_align_y = true
+gravity = Vector2(0, 0)
+radial_accel_min = -100.0
+radial_accel_max = -100.0
+scale_amount_min = 0.8
+scale_amount_max = 1.2
+color = Color(1, 0.367788, 0.300217, 1)

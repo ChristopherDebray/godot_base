@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaseModifier" load_steps=3 format=3 uid="uid://bbmx504ccsy6e"]
+
+[ext_resource type="PackedScene" uid="uid://cmmqbvxky0xdg" path="res://scenes/ability/common/thunderstrike.tscn" id="1_3nodg"]
+[ext_resource type="Script" uid="uid://b3efadvh4iqpp" path="res://data/modifiers/base_modifier.gd" id="1_my01g"]
+
+[resource]
+script = ExtResource("1_my01g")
+type = 7
+value = 4.0
+tags_required = Array[int]([1])
+weather_condition = 0
+is_multiplicative = true
+ability_to_spawn = ExtResource("1_3nodg")
+trigger_interval = 3.0
+metadata/_custom_type_script = "uid://b3efadvh4iqpp"

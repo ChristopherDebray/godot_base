@@ -40,11 +40,12 @@ animations = [{
 radius = 9.0
 height = 26.0
 
-[node name="Pierce" instance=ExtResource("1_gi4ig")]
+[node name="Slash" instance=ExtResource("1_gi4ig")]
+visible = true
 script = ExtResource("2_gi4ig")
-SPEED = 400.0
+abilityName = "slash"
 
-[node name="AnimatedSprite2D" parent="." index="0"]
+[node name="AnimatedSprite2D" parent="." index="2"]
 scale = Vector2(1.25, 1.25)
 sprite_frames = SubResource("SpriteFrames_o2yhj")
 frame = 1

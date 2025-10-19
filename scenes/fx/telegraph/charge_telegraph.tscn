@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdg0chai6d60d"]
+
+[ext_resource type="Texture2D" uid="uid://cix5ixt8trrd1" path="res://assets/effects/Line1.png" id="1_bkkya"]
+
+[node name="ChargeTelegraph" type="CPUParticles2D"]
+modulate = Color(0.766827, 0.119783, 0.161461, 1)
+amount = 6
+texture = ExtResource("1_bkkya")
+lifetime = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(30, 20)
+gravity = Vector2(0, -100)
+linear_accel_min = 100.0
+linear_accel_max = 100.0
+scale_amount_min = 0.5
+scale_amount_max = 0.5

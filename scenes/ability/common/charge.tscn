@@ -43,7 +43,7 @@ dash_distance = 200.0
 stop_on_collision = true
 keep_facing = true
 
-[node name="AnimatedSprite2D" parent="." index="0"]
+[node name="AnimatedSprite2D" parent="." index="2"]
 position = Vector2(2, 2)
 scale = Vector2(1.0625, 1.0625)
 sprite_frames = SubResource("SpriteFrames_hl7dd")

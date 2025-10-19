@@ -28,6 +28,7 @@ base_piercing = 1000
 base_chain_count = 0
 base_damage = 10.0
 base_speed = 900.0
+base_cast_time = 0.0
 damage = 10.0
 aoe_damage = 0.0
 main_element = 0

@@ -7,6 +7,7 @@
 
 [sub_resource type="Resource" id="Resource_aq5cm"]
 script = ExtResource("2_l1ud8")
+impact_distance = 6.0
 preferred_range = 160.0
 stop_range = 120.0
 strafe_bias = 0.6

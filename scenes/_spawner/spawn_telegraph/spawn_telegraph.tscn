@@ -1,10 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://ld78nlkqrkks"]
+[gd_scene load_steps=4 format=3 uid="uid://ld78nlkqrkks"]
 
 [ext_resource type="Script" uid="uid://cqbvkqkn33ch3" path="res://scenes/_spawner/spawn_telegraph/spawn_telegraph.gd" id="1_5ajx0"]
 [ext_resource type="Texture2D" uid="uid://cv0s1pedf6lnk" path="res://assets/effects/telegraph_spawn.png" id="1_6aj5l"]
+[ext_resource type="PackedScene" uid="uid://2r6c6v4iurb3" path="res://scenes/fx/spawn/spawn_inward.tscn" id="3_vgyff"]
 
 [node name="SpawnTelegraph" type="Node2D"]
 script = ExtResource("1_5ajx0")
 
 [node name="TelegraphSpawn" type="Sprite2D" parent="."]
 texture = ExtResource("1_6aj5l")
+
+[node name="SpawnInward" parent="." instance=ExtResource("3_vgyff")]
+position = Vector2(0, -26)

@@ -7,6 +7,7 @@
 
 [sub_resource type="Resource" id="Resource_daouv"]
 script = ExtResource("2_40kve")
+impact_distance = 6.0
 preferred_range = 40.0
 stop_range = 30.0
 strafe_bias = 0.6
@@ -95,6 +96,3 @@ position = Vector2(1, 16)
 [node name="AnimatedSprite2D" parent="SpriteContainer" index="1"]
 scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_yij76")
-
-[node name="Targeting" parent="." index="9"]
-auto_aggro_on_spawn = true

@@ -107,7 +107,7 @@ func _create_telegraph_if_needed() -> void:
 	if node:
 		owner_npc.add_child(node)
 		_telegraph_node = node
-		_telegraph_node.global_position = _saved_target_pos
+		_telegraph_node.global_position = owner_npc.global_position
 
 func _clear_telegraph() -> void:
 	if _telegraph_node and is_instance_valid(_telegraph_node):
@@ -180,7 +180,7 @@ func _do_launch_effect() -> void:
 
 	match current_ability.kind:
 		AbilityData.ABILITY_KIND.PROJECTILE, AbilityData.ABILITY_KIND.SELF, AbilityData.ABILITY_KIND.MOVEMENT:
-			SignalManager.use_ability.emit(current_ability, _saved_dir, _saved_origin, owner_npc.targeting.current_ability_target_type, owner_npc)
+			SignalManager.use_ability.emit(current_ability, _saved_dir, Vector2(0,0), owner_npc.targeting.current_ability_target_type, owner_npc)
 		AbilityData.ABILITY_KIND.AOE:
 			SignalManager.use_ability.emit(current_ability, _saved_target_pos, _saved_origin, owner_npc.targeting.current_ability_target_type, owner_npc)
 		_:
