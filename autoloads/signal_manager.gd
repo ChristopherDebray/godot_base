@@ -14,3 +14,7 @@ signal ability_interrupted(ability: AbilityData)
 signal ability_finished(ability: AbilityData)
 
 signal forced_motion_finished(interrupted: bool)
+
+signal player_interact()
+signal update_gold_amount(current_amount: int)
+signal update_blood_amount(current_amount: int)

@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://c7nxkmimhtshe"]
+
+[ext_resource type="PackedScene" uid="uid://c75t6c8bki4p5" path="res://scenes/_interactives/manual_interactive.tscn" id="1_kdekq"]
+[ext_resource type="PackedScene" uid="uid://2r6c6v4iurb3" path="res://scenes/fx/spawn/spawn_inward.tscn" id="2_0igyv"]
+[ext_resource type="Script" uid="uid://20nsux4v3vj7" path="res://scenes/_interactives/room_indicator.gd" id="2_wv0bn"]
+[ext_resource type="Texture2D" uid="uid://cmaa81sddb8kj" path="res://assets/objects/buble.png" id="3_wv0bn"]
+[ext_resource type="Texture2D" uid="uid://df5vipaesaq42" path="res://assets/objects/coin.png" id="4_nnvdf"]
+[ext_resource type="Texture2D" uid="uid://dulkmr86u58wf" path="res://assets/objects/reflect.png" id="5_a44ym"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0igyv"]
+radius = 56.1427
+
+[sub_resource type="Gradient" id="Gradient_s7olf"]
+offsets = PackedFloat32Array(0, 0.829596, 1)
+colors = PackedColorArray(0.886275, 0.945098, 0.968627, 1, 0.888185, 0.946032, 0.970254, 1, 0.780392, 0.894118, 0.941176, 0)
+
+[node name="RoomIndicator" instance=ExtResource("1_kdekq")]
+scale = Vector2(0.534534, 0.534534)
+script = ExtResource("2_wv0bn")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("CircleShape2D_0igyv")
+
+[node name="Particles" parent="." index="2" instance=ExtResource("2_0igyv")]
+position = Vector2(0, -1)
+emitting = false
+amount = 5
+lifetime = 1.0
+one_shot = true
+speed_scale = 5.0
+explosiveness = 1.0
+emission_sphere_radius = 30.0
+radial_accel_min = 100.0
+radial_accel_max = 100.0
+scale_amount_min = 1.8
+scale_amount_max = 2.0
+color = Color(0.780392, 0.894118, 0.941176, 1)
+color_ramp = SubResource("Gradient_s7olf")
+
+[node name="Bubble" type="Sprite2D" parent="." index="3"]
+texture = ExtResource("3_wv0bn")
+
+[node name="Indicator" type="Sprite2D" parent="." index="4"]
+scale = Vector2(1.1875, 1.1875)
+texture = ExtResource("4_nnvdf")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="BubbleReflect" type="Sprite2D" parent="." index="5"]
+texture = ExtResource("5_a44ym")

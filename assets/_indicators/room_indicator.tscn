@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://ce1j2wjlgej0c"]
+
+[ext_resource type="Texture2D" uid="uid://cmaa81sddb8kj" path="res://assets/objects/buble.png" id="1_2w7js"]
+[ext_resource type="Script" uid="uid://xq1c0cooi1ke" path="res://assets/_indicators/room_indicator.gd" id="1_32uam"]
+[ext_resource type="Texture2D" uid="uid://df5vipaesaq42" path="res://assets/objects/coin.png" id="3_32uam"]
+[ext_resource type="Texture2D" uid="uid://dulkmr86u58wf" path="res://assets/objects/reflect.png" id="3_wwf51"]
+[ext_resource type="PackedScene" uid="uid://2r6c6v4iurb3" path="res://scenes/fx/spawn/spawn_inward.tscn" id="5_wwf51"]
+
+[sub_resource type="Gradient" id="Gradient_wwf51"]
+offsets = PackedFloat32Array(0, 0.829596, 1)
+colors = PackedColorArray(0.886275, 0.945098, 0.968627, 1, 0.888185, 0.946032, 0.970254, 1, 0.780392, 0.894118, 0.941176, 0)
+
+[node name="RoomIndicator" type="Node2D"]
+script = ExtResource("1_32uam")
+
+[node name="SpawnInward" parent="." instance=ExtResource("5_wwf51")]
+position = Vector2(0, -1)
+emitting = false
+amount = 5
+lifetime = 1.0
+one_shot = true
+speed_scale = 5.0
+explosiveness = 1.0
+emission_sphere_radius = 30.0
+radial_accel_min = 100.0
+radial_accel_max = 100.0
+scale_amount_min = 1.8
+scale_amount_max = 2.0
+color = Color(0.780392, 0.894118, 0.941176, 1)
+color_ramp = SubResource("Gradient_wwf51")
+
+[node name="Bubble" type="Sprite2D" parent="."]
+texture = ExtResource("1_2w7js")
+
+[node name="Indicator" type="Sprite2D" parent="."]
+scale = Vector2(1.1875, 1.1875)
+texture = ExtResource("3_32uam")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="BubbleReflect" type="Sprite2D" parent="."]
+texture = ExtResource("3_wwf51")

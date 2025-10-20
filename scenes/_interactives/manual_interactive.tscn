@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c75t6c8bki4p5"]
+
+[ext_resource type="PackedScene" uid="uid://c71hgjo21iwjq" path="res://scenes/_interactives/base_interactive.tscn" id="1_dbfto"]
+[ext_resource type="Script" uid="uid://v3pskyiaquyo" path="res://scenes/_interactives/manual_interactive.gd" id="2_qibqw"]
+
+[node name="ManualInteractive" instance=ExtResource("1_dbfto")]
+script = ExtResource("2_qibqw")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

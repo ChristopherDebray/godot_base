@@ -101,6 +101,9 @@ func detect_interaction_inputs() -> void:
 	
 	if Input.is_action_just_pressed("use_spell"):
 		use_spell()
+	
+	if Input.is_action_just_pressed("validate"):
+		SignalManager.player_interact.emit()
 
 func activate_element(element: SpellsManager.ELEMENTS) -> void:
 	if active_elements.size() >= 2:

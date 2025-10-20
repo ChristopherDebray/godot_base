@@ -346,7 +346,8 @@ func _on_enemy_died(damageable: Damageable):
 	if remaining != 0:
 		return
 	
-	_level_ended()
+	if _upper_bound_cost(budget) <= 0:
+		_level_ended()
 
 func _level_ended():
 	WaveManager.on_wave_completed.emit()

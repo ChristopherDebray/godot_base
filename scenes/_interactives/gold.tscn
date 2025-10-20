@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://dfd4u6hyyetcu"]
+
+[ext_resource type="PackedScene" uid="uid://bwukvouewubjm" path="res://scenes/_interactives/zone_interactive.tscn" id="1_pds4a"]
+[ext_resource type="Script" uid="uid://cu2i70h3r63yg" path="res://scenes/_interactives/gold.gd" id="2_hmgu4"]
+[ext_resource type="Texture2D" uid="uid://df5vipaesaq42" path="res://assets/objects/coin.png" id="2_hrsse"]
+[ext_resource type="Texture2D" uid="uid://b74dtnapacn6s" path="res://assets/effects/spotlight.png" id="4_hmgu4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hrsse"]
+radius = 15.0333
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmgu4"]
+atlas = ExtResource("2_hrsse")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o5an5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmgu4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_o5an5"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_hmgu4"]
+offsets = PackedFloat32Array(0, 0.38565, 1)
+colors = PackedColorArray(0.866667, 0.721569, 0.2, 1, 0.866667, 0.721569, 0.2, 1, 0.866667, 0.721569, 0.2, 0)
+
+[node name="Gold" instance=ExtResource("1_pds4a")]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("2_hmgu4")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("CircleShape2D_hrsse")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+position = Vector2(0, 7)
+scale = Vector2(0.296875, 0.296875)
+sprite_frames = SubResource("SpriteFrames_o5an5")
+offset = Vector2(-17.6842, -18.5263)
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="." index="2"]
+position = Vector2(0, 7)
+scale = Vector2(0.359375, 0.359375)
+sprite_frames = SubResource("SpriteFrames_o5an5")
+offset = Vector2(2.78261, -25.7391)
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." index="3"]
+position = Vector2(0, 7)
+scale = Vector2(0.125, 0.125)
+sprite_frames = SubResource("SpriteFrames_o5an5")
+offset = Vector2(48, -34)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." index="4"]
+material = SubResource("CanvasItemMaterial_o5an5")
+position = Vector2(0, -1)
+amount = 3
+texture = ExtResource("4_hmgu4")
+lifetime = 0.4
+emission_shape = 2
+emission_sphere_radius = 10.0
+gravity = Vector2(0, 0)
+scale_amount_min = 0.01
+scale_amount_max = 0.02
+color_ramp = SubResource("Gradient_hmgu4")

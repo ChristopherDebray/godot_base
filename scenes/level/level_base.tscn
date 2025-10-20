@@ -508,6 +508,9 @@ y_sort_enabled = true
 [node name="Npcs" type="Node2D" parent="YsortLayer"]
 y_sort_enabled = true
 
+[node name="RewardSpawn" type="Marker2D" parent="YsortLayer"]
+position = Vector2(501, 313)
+
 [node name="Lights" type="Node2D" parent="."]
 
 [node name="Paths" type="Node2D" parent="."]
@@ -531,3 +534,5 @@ rules = Array[ExtResource("17_aagx2")]([SubResource("Resource_0ou4s")])
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.5
 one_shot = true
+
+[node name="EndLevelBlock" type="Node2D" parent="."]

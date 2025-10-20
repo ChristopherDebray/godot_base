@@ -1,0 +1,69 @@
+[gd_scene load_steps=11 format=3 uid="uid://c66urmdxowgna"]
+
+[ext_resource type="PackedScene" uid="uid://c75t6c8bki4p5" path="res://scenes/_interactives/manual_interactive.tscn" id="1_qkvk3"]
+[ext_resource type="Script" uid="uid://cxkxw2ih4ek5w" path="res://scenes/_interactives/chest.gd" id="2_3trdx"]
+[ext_resource type="Texture2D" uid="uid://b74dtnapacn6s" path="res://assets/effects/spotlight.png" id="2_bvw27"]
+[ext_resource type="Texture2D" uid="uid://bukxlkych7wtj" path="res://assets/objects/chest.png" id="2_mcer0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qkvk3"]
+radius = 36.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3trdx"]
+atlas = ExtResource("2_mcer0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5ki7"]
+atlas = ExtResource("2_mcer0")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qr802"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3trdx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5ki7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mcer0"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_3trdx"]
+offsets = PackedFloat32Array(0, 0.38565, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Chest" instance=ExtResource("1_qkvk3")]
+script = ExtResource("2_3trdx")
+
+[node name="Area2D" parent="." index="0"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("CircleShape2D_qkvk3")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+scale = Vector2(1.4, 1.4)
+sprite_frames = SubResource("SpriteFrames_qr802")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." index="2"]
+material = SubResource("CanvasItemMaterial_mcer0")
+position = Vector2(0, -1)
+amount = 3
+texture = ExtResource("2_bvw27")
+lifetime = 0.6
+emission_shape = 2
+emission_sphere_radius = 20.0
+gravity = Vector2(0, 0)
+scale_amount_min = 0.04
+scale_amount_max = 0.06
+color_ramp = SubResource("Gradient_3trdx")

@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqnnqulkpfar1"]
+[gd_scene load_steps=6 format=3 uid="uid://dqnnqulkpfar1"]
 
 [ext_resource type="Script" uid="uid://bsyx6ku3mx8yg" path="res://scenes/ui/in_game_ui.gd" id="1_3nhwc"]
 [ext_resource type="PackedScene" uid="uid://d264e4u15uply" path="res://scenes/ui/resource_indicator.tscn" id="1_qvqbd"]
+[ext_resource type="Theme" uid="uid://d3jium3bs8gi" path="res://assets/theme/theme_mage.tres" id="3_3nhwc"]
+[ext_resource type="Texture2D" uid="uid://df5vipaesaq42" path="res://assets/objects/coin.png" id="3_qvqbd"]
+[ext_resource type="Texture2D" uid="uid://dup3dl6kj1ewi" path="res://assets/objects/blood.png" id="4_3nhwc"]
 
 [node name="InGameUi" type="Control"]
 process_mode = 1
@@ -23,16 +26,16 @@ grow_vertical = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 60
+theme_override_constants/margin_bottom = 10
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 8
-theme_override_constants/margin_bottom = 60
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 100
+size_flags_horizontal = 0
+theme_override_constants/separation = 150
 
 [node name="ResourceIndicator" parent="MarginContainer/MarginContainer/HBoxContainer" instance=ExtResource("1_qvqbd")]
 layout_mode = 2
@@ -40,5 +43,48 @@ layout_mode = 2
 [node name="CooldownIndicators" type="HBoxContainer" parent="MarginContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 8
+size_flags_vertical = 0
 theme_override_constants/separation = 70
+
+[node name="MoneyIndicators" type="VBoxContainer" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+alignment = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/MarginContainer/MoneyIndicators"]
+layout_mode = 2
+theme = ExtResource("3_3nhwc")
+theme_override_constants/separation = 20
+alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/MarginContainer/MoneyIndicators/HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 8
+texture = ExtResource("3_qvqbd")
+stretch_mode = 2
+
+[node name="GoldCount" type="Label" parent="MarginContainer/MarginContainer/MoneyIndicators/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 40
+text = "0"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/MarginContainer/MoneyIndicators"]
+layout_mode = 2
+theme = ExtResource("3_3nhwc")
+theme_override_constants/separation = 20
+alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/MarginContainer/MoneyIndicators/HBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 8
+texture = ExtResource("4_3nhwc")
+stretch_mode = 2
+
+[node name="BloodCount" type="Label" parent="MarginContainer/MarginContainer/MoneyIndicators/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 40
+text = "0"
