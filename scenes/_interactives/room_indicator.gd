@@ -1,6 +1,9 @@
 extends ManualInteractive
 
 @onready var indicator: Sprite2D = $Indicator
+@onready var particles: CPUParticles2D = $Particles
+@onready var bubble: Sprite2D = $Bubble
+@onready var bubble_reflect: Sprite2D = $BubbleReflect
 
 const CHEST = preload("res://assets/objects/chest.png")
 const QUESTION_MARK = preload("res://assets/objects/question_mark.png")
@@ -31,7 +34,19 @@ func setup(room_type: BaseLevel.ROOM_TYPE):
 	_room_type = room_type
 
 func interact():
-	pass
+	var tween = create_tween()
+	pop_bubble(tween)
+	GameManager.next_room_type = _room_type
+	tween.finished.connect(func ():
+		GameManager.load_level('level_farm_two')
+	)
+
+func pop_bubble(tween: Tween):
+	particles.emitting = true
+	bubble_reflect.hide()
+	bubble.hide()
+	tween.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(indicator, "modulate", Color(1,1,1, 0), .6)
 
 func start_floaty_tween(duration_sec: float = 20.0) -> void:
 	var rng := RandomNumberGenerator.new()
@@ -46,14 +61,11 @@ func start_floaty_tween(duration_sec: float = 20.0) -> void:
 	var tw := create_tween()
 	tw.set_loops(loops)
 
-	# Monte
 	tw.tween_property(self, "position:y", -amplitude, period) \
 		.as_relative() \
 		.set_delay(phase) \
 		.set_trans(Tween.TRANS_SINE) \
 		.set_ease(Tween.EASE_IN_OUT)
-
-	# Redescend
 	tw.tween_property(self, "position:y", +amplitude, period) \
 		.as_relative() \
 		.set_trans(Tween.TRANS_SINE) \

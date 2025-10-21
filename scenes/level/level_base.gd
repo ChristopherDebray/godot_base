@@ -35,7 +35,10 @@ func _ready() -> void:
 	wave_spawner.spawn_wave()
 	weather_controller_component.setup(player.camera_player)
 	WaveManager.on_wave_completed.connect(_on_wave_completed)
-	set_room_type(pick_random_room_type())
+	var next_room_type = GameManager.next_room_type
+	if (not next_room_type):
+		next_room_type = pick_random_room_type()
+	set_room_type(next_room_type)
 
 func pick_random_room_type() -> ROOM_TYPE:
 	return ROOM_TYPE[ROOM_TYPE.keys()[randi() % ROOM_TYPE.size()]]

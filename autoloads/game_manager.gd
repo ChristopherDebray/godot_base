@@ -12,6 +12,7 @@ var camera_shake_noise: FastNoiseLite
 var used_controls := CONTROLS_TYPE.KEYBOARD
 var current_weather_type: EnvironmentManager.WEATHER_TYPE
 var current_room_type: BaseLevel.ROOM_TYPE
+var next_room_type: BaseLevel.ROOM_TYPE
 
 
 func _ready() -> void:

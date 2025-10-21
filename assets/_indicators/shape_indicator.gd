@@ -127,8 +127,8 @@ static func get_color_from_type(target_type: AbilityManager.TARGET_TYPE) -> Arra
 
 	match target_type:
 		AbilityManager.TARGET_TYPE.PLAYER:
-			new_fill_color = Color(0, 0, 1)
 			new_outline_color = Color(0, 0, 1)
+			new_fill_color = Color(0, 0, 1)
 		_:
 			new_fill_color = Color(1, 0, 0)
 			new_outline_color = Color(1, 0, 0)
